@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinamarca — HandbolNoticias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-hb-blue  { background-color: #003DA5; }
+        .text-hb-blue { color: #003DA5; }
+        .text-hb-orange { color: #FF6B00; }
+        .border-hb-orange { border-color: #FF6B00; }
+        .text-spain-red { color: #CC0000; }
+        .border-spain-red { border-color: #CC0000; }
+        .text-europe-green { color: #2E7D32; }
+        .border-europe-green { border-color: #2E7D32; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-14">
+        <a href="/" class="font-bold text-xl tracking-tight flex items-center gap-2">
+            🤾 <span>HandbolNoticias</span>
+        </a>
+        <div class="flex gap-6 text-sm font-medium">
+            <!-- España -->
+            <div class="relative group">
+                <button class="hover:text-orange-300 py-4">España ▾</button>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-52 z-50 py-1">
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Masculino</div>
+                    <a href="/spain/asobal/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">ASOBAL</a>
+                    <a href="/spain/dhp/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">División Honor Plata</a>
+                    <a href="/spain/primera-nacional-masc/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Primera Nacional</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Femenino</div>
+                    <a href="/spain/guerreras/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Liga Guerreras Iberdrola</a>
+                    <a href="/spain/dho-fem/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">División Honor Oro</a>
+                    <a href="/spain/dhp-fem/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">División Honor Plata</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Territorial</div>
+                    <a href="/spain/catalonia/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Cataluña</a>
+                    <a href="/spain/navarra/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Navarra</a>
+                    <a href="/spain/euskadi/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">País Vasco</a>
+                </div>
+            </div>
+            <!-- Europa -->
+            <div class="relative group">
+                <button class="hover:text-orange-300 py-4">Europa ▾</button>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-52 z-50 py-1">
+                    <a href="/europe/champions/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Champions League EHF</a>
+                    <a href="/europe/european-league/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">EHF European League</a>
+                    <a href="/europe/other/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Otras EHF</a>
+                </div>
+            </div>
+            <!-- Internacional -->
+            <div class="relative group">
+                <button class="hover:text-orange-300 py-4">Internacional ▾</button>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-52 z-50 py-1 max-h-96 overflow-y-auto">
+                    
+                    <a href="/france/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Francia</a>
+                    
+                    <a href="/germany/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Alemania</a>
+                    
+                    <a href="/denmark/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Dinamarca</a>
+                    
+                    <a href="/sweden/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Suecia</a>
+                    
+                    <a href="/norway/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Noruega</a>
+                    
+                    <a href="/portugal/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Portugal</a>
+                    
+                    <a href="/austria/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Austria</a>
+                    
+                    <a href="/switzerland/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Suiza</a>
+                    
+                    <a href="/iceland/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Islandia</a>
+                    
+                    <a href="/faroe-islands/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Islas Feroe</a>
+                    
+                    <a href="/hungary/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Hungría</a>
+                    
+                    <a href="/poland/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Polonia</a>
+                    
+                    <a href="/croatia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Croacia</a>
+                    
+                    <a href="/serbia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Serbia</a>
+                    
+                    <a href="/slovakia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Eslovaquia</a>
+                    
+                    <a href="/romania/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Rumania</a>
+                    
+                    <a href="/argentina/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Argentina</a>
+                    
+                    <a href="/brazil/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Brasil</a>
+                    
+                    <a href="/japan/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Japón</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
+    
+
+<nav class="text-sm text-gray-500 mb-6">
+    <a href="/" class="hover:text-hb-blue">Inicio</a>
+    <span class="mx-2">›</span>
+    <span class="text-gray-800 font-medium">Dinamarca</span>
+</nav>
+
+<h1 class="text-2xl font-bold mb-6 text-gray-900">Dinamarca</h1>
+
+
+<div class="text-center py-16 text-gray-400">
+    <div class="text-5xl mb-4">🤾</div>
+    <p>No hay noticias recientes en esta sección.</p>
+    <p class="text-sm mt-2">Se actualizan diariamente.</p>
+</div>
+
+
+
+</main>
+
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
+    <p>Actualizado: 26/05/2026 a las 20:24 UTC ·
+       <a href="https://github.com/melchor/handbolnoticias" class="underline hover:text-white">GitHub</a>
+    </p>
+    <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>
+</footer>
+
+</body>
+</html>
