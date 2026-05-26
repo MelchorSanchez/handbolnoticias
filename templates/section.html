@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}{{ section_label }} — HandbolNoticias{% endblock %}
+{% block content %}
+
+<nav class="text-sm text-gray-500 mb-6">
+    <a href="/" class="hover:text-hb-blue">Inicio</a>
+    <span class="mx-2">›</span>
+    <span class="text-gray-800 font-medium">{{ section_label }}</span>
+</nav>
+
+<h1 class="text-2xl font-bold mb-6 text-gray-900">{{ section_label }}</h1>
+
+{% if articles %}
+<div class="space-y-3">
+    {% for article in articles %}
+    <a href="{{ article.url }}" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        {% if article.image_url %}
+        <img src="{{ article.image_url }}" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        {% else %}
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        {% endif %}
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">{{ article.title }}</p>
+            {% if article.summary %}
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">{{ article.summary }}</p>
+            {% endif %}
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">{{ article.source_name }}</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">{{ article.published[:10] if article.published else "" }}</span>
+                {% if article.is_manual %}
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% else %}
+<div class="text-center py-16 text-gray-400">
+    <div class="text-5xl mb-4">🤾</div>
+    <p>No hay noticias recientes en esta sección.</p>
+    <p class="text-sm mt-2">Se actualizan diariamente.</p>
+</div>
+{% endif %}
+
+{% endblock %}
