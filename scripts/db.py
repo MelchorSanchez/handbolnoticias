@@ -42,6 +42,7 @@ def article_id(url: str) -> str:
 
 
 def insert_article(conn: sqlite3.Connection, article: dict) -> bool:
+    """Insert article; if it exists, update section if the classifier changed it. Returns True if new."""
     try:
         conn.execute("""
             INSERT INTO articles
@@ -54,6 +55,11 @@ def insert_article(conn: sqlite3.Connection, article: dict) -> bool:
         conn.commit()
         return True
     except sqlite3.IntegrityError:
+        conn.execute(
+            "UPDATE articles SET section = :section WHERE id = :id AND section != :section",
+            {"id": article["id"], "section": article["section"]},
+        )
+        conn.commit()
         return False
 
 
