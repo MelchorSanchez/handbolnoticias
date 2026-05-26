@@ -55,6 +55,7 @@ def fetch_rss(source: dict) -> list:
                 continue
             summary_html = entry.get("summary", "") or ""
             summary_text = BeautifulSoup(summary_html, "lxml").get_text()[:500]
+            raw_tags = [t.get("term", "") for t in getattr(entry, "tags", []) if t.get("term")]
             articles.append({
                 "id": _article_id(url),
                 "url": url,
@@ -67,6 +68,7 @@ def fetch_rss(source: dict) -> list:
                 "published": entry.get("published", _now()),
                 "fetched_at": _now(),
                 "is_manual": 0,
+                "_raw_tags": raw_tags,
             })
         return articles
     except Exception as exc:

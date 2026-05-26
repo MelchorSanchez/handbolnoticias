@@ -20,6 +20,10 @@ SECTIONS = {
             "spain/guerreras": "Liga Guerreras Iberdrola",
             "spain/dho-fem": "División Honor Oro fem.",
             "spain/dhp-fem": "División Honor Plata fem.",
+            "spain/seleccion-masc": "Selección Masculina",
+            "spain/seleccion-fem": "Selección Femenina",
+            "spain/base-masc": "Base Masculino",
+            "spain/base-fem": "Base Femenino",
             "spain/catalonia": "Cataluña",
             "spain/navarra": "Navarra",
             "spain/euskadi": "País Vasco",
@@ -63,6 +67,11 @@ SECTIONS = {
 
 INTL_SECTIONS = SECTIONS["international"]["subsections"]
 
+SECTION_LABELS = {}
+for _group in SECTIONS.values():
+    for _slug, _label in _group["subsections"].items():
+        SECTION_LABELS[_slug] = _label
+
 
 def _rows_to_dicts(rows):
     return [dict(row) for row in rows]
@@ -76,6 +85,16 @@ def _get_section_articles(conn, section_slug):
         ORDER BY published DESC, fetched_at DESC
         LIMIT 100
     """, (section_slug,)).fetchall()
+    return _rows_to_dicts(rows)
+
+
+def _get_all_recent_articles(conn):
+    rows = conn.execute("""
+        SELECT * FROM articles
+        WHERE published > datetime('now', '-7 days') OR published IS NULL
+        ORDER BY published DESC, fetched_at DESC
+        LIMIT 200
+    """).fetchall()
     return _rows_to_dicts(rows)
 
 
@@ -93,6 +112,8 @@ def render_all(conn):
                 "color": group["color"],
             }
 
+    all_articles = _get_all_recent_articles(conn)
+
     tmpl = env.get_template("index.html")
     html = tmpl.render(
         sections=SECTIONS,
@@ -102,6 +123,19 @@ def render_all(conn):
     )
     (OUTPUT_DIR / "index.html").write_text(html, encoding="utf-8")
     logger.info("Rendered index.html")
+
+    all_tmpl = env.get_template("all_news.html")
+    html = all_tmpl.render(
+        articles=all_articles,
+        section_labels=SECTION_LABELS,
+        sections=SECTIONS,
+        intl_sections=INTL_SECTIONS,
+        updated_at=updated_at,
+    )
+    all_dir = OUTPUT_DIR / "all"
+    all_dir.mkdir(parents=True, exist_ok=True)
+    (all_dir / "index.html").write_text(html, encoding="utf-8")
+    logger.info("Rendered all_news.html")
 
     section_tmpl = env.get_template("section.html")
     for slug, data in sections_data.items():

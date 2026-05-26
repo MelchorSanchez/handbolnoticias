@@ -4,6 +4,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+from classifier import classify
 from db import get_connection, init_db, insert_article
 from fetcher import fetch_all, load_sources
 from renderer import render_all
@@ -29,11 +30,18 @@ def main():
     logger.info("Artículos obtenidos: %d", len(articles))
 
     new_count = 0
+    classified_count = 0
     for article in articles:
+        detected = classify(article)
+        if detected and detected != article["section"]:
+            article["section"] = detected
+            classified_count += 1
+        article.pop("_raw_tags", None)
         article = translate_article(conn, article)
         if insert_article(conn, article):
             new_count += 1
 
+    logger.info("Artículos reclasificados: %d", classified_count)
     logger.info("Artículos nuevos insertados: %d", new_count)
 
     render_all(conn)
