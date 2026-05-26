@@ -1,0 +1,164 @@
+sources:
+  # ── España — ASOBAL ──────────────────────────────────────────────────────
+  - name: RFEBM
+    section: spain/asobal
+    type: rss
+    url: https://www.rfebm.com/feed/
+    max_items: 50
+
+  - name: LigaAsobal
+    section: spain/asobal
+    type: rss
+    url: https://www.ligaasobal.es/feed/
+    max_items: 50
+
+  - name: MiBalonmano
+    section: spain/asobal
+    type: rss
+    url: https://www.mibalonmano.es/feed/
+    max_items: 50
+
+  - name: BalonmanoCentral
+    section: spain/asobal
+    type: rss
+    url: https://www.balonmanocentral.com/feed/
+    max_items: 50
+
+  - name: Balonmano100x100
+    section: spain/asobal
+    type: rss
+    url: https://www.balonmano100x100.es/feed/
+    max_items: 30
+
+  - name: Balonmano.info
+    section: spain/asobal
+    type: rss
+    url: https://www.balonmano.info/feed/
+    max_items: 30
+
+  # ── España — División Honor Plata ─────────────────────────────────────────
+  - name: MiBalonmano-DHP
+    section: spain/dhp
+    type: rss
+    url: https://www.mibalonmano.es/category/division-honor-plata/feed/
+    max_items: 30
+
+  # ── España — Femenino ─────────────────────────────────────────────────────
+  - name: RFEBM-Femenino
+    section: spain/guerreras
+    type: rss
+    url: https://www.rfebm.com/category/femenino/feed/
+    max_items: 30
+
+  # ── España — Cataluña ─────────────────────────────────────────────────────
+  - name: CatHandbol
+    section: spain/catalonia
+    type: rss
+    url: https://www.cathandbol.cat/feed/
+    max_items: 30
+
+  # ── España — Prensa deportiva nacional ────────────────────────────────────
+  - name: Marca-Balonmano
+    section: spain/asobal
+    type: scrape
+    url: https://www.marca.com/balonmano.html
+    max_items: 20
+    selectors:
+      articles: "article"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  - name: AS-Balonmano
+    section: spain/asobal
+    type: scrape
+    url: https://as.com/balonmano/
+    max_items: 20
+    selectors:
+      articles: "article"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  - name: MundoDeportivo-Balonmano
+    section: spain/asobal
+    type: scrape
+    url: https://www.mundodeportivo.com/balonmano
+    max_items: 20
+    selectors:
+      articles: "article"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  # ── Europa ────────────────────────────────────────────────────────────────
+  - name: EHF
+    section: europe/champions
+    type: scrape
+    url: https://www.eurohandball.com/en/news/
+    max_items: 30
+    selectors:
+      articles: "article, .news-item"
+      title: "h2, h3, .title"
+      link: "a[href]"
+      image: "img"
+
+  # ── Internacional — Francia ───────────────────────────────────────────────
+  - name: LNH-Starligue
+    section: france
+    type: scrape
+    url: https://www.lnh.fr/fr/actualites
+    max_items: 20
+    selectors:
+      articles: "article, .news-card"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  # ── Internacional — Alemania ──────────────────────────────────────────────
+  - name: HBL-Bundesliga
+    section: germany
+    type: scrape
+    url: https://www.liquimoly-hbl.de/news/
+    max_items: 20
+    selectors:
+      articles: "article, .news-item"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  # ── Internacional — Dinamarca ─────────────────────────────────────────────
+  - name: Handball-Dinamarca
+    section: denmark
+    type: scrape
+    url: https://www.dhf.dk/nyheder/
+    max_items: 20
+    selectors:
+      articles: "article, .news"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  # ── Internacional — Noruega ───────────────────────────────────────────────
+  - name: NHF-Noruega
+    section: norway
+    type: scrape
+    url: https://www.handball.no/nyheter/
+    max_items: 20
+    selectors:
+      articles: "article"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  # ── Internacional — Portugal ──────────────────────────────────────────────
+  - name: FPA-Portugal
+    section: portugal
+    type: scrape
+    url: https://www.fpa.pt/noticias
+    max_items: 20
+    selectors:
+      articles: "article, .noticia"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
