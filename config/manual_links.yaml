@@ -1,0 +1,10 @@
+# Añade aquí links manuales a noticias de interés.
+# El script los procesará en la próxima ejecución.
+manual_links: []
+
+# Ejemplo:
+# manual_links:
+#   - url: https://ejemplo.com/noticia
+#     title: "Título opcional (si no, se auto-extrae)"
+#     section: spain/asobal
+#     date: "2026-05-26"
