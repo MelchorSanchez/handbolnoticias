@@ -28,12 +28,6 @@
                 <span class="text-xs font-medium text-gray-600">{{ article.source_name }}</span>
                 <span class="text-gray-300">·</span>
                 <span class="text-xs text-gray-400">{{ article.published[:10] if article.published else "" }}</span>
-                {% set label = section_labels.get(article.section, article.section) %}
-                <a href="/{{ article.section }}/"
-                   onclick="event.stopPropagation()"
-                   class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full hover:bg-blue-100">
-                    {{ label }}
-                </a>
                 {% if article.is_manual %}
                 <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
                 {% endif %}
