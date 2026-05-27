@@ -37,17 +37,51 @@ _SPECIFIC_EHF = frozenset({
 })
 
 # Gender signal patterns for Spanish handball text
-_MALE_WORDS = re.compile(r'\bjugadores?\b|\bporteros?\b|\bmasculinos?\b|\bentrenadores?\b|\bpivots?\b(?! femenin)')
-_FEMALE_WORDS = re.compile(r'\bjugadoras?\b|\bporteras?\b|\bfemenin[ao]s?\b|\bentrenadoras?\b')
+_MALE_WORDS = re.compile(
+    r'\bjugadores?\b|\bporteros?\b|\bmasculinos?\b|\bentrenadores?\b'
+    r'|\bpivots? masc|\bel jugador\b|\bun jugador\b|\bel portero\b|\bel pivot\b'
+    r'|\bel lateral\b|\bel central\b|\bel extremo\b|\bel entrenador\b'
+)
+_FEMALE_WORDS = re.compile(
+    r'\bjugadoras?\b|\bporteras?\b|\bfemenin[ao]s?\b|\bentrenadoras?\b'
+    r'|\bla jugadora\b|\buna jugadora\b|\bla portera\b|\bla pivot\b'
+    r'|\bla lateral\b|\bla entrenadora\b'
+)
+
+# Common unambiguously male/female Spanish & Basque first names in handball context
+# Used only when no positional vocabulary is found (e.g. empty summary)
+_MALE_NAMES = re.compile(
+    r'\b(?:Pablo|Carlos|Sergio|Antonio|Mario|Luis|Javier|David|Miguel|Angel'
+    r'|Manuel|Roberto|Fernando|Rafael|Alejandro|Alberto|Pedro|Jorge|Raul'
+    r'|Ivan|Ruben|Adrian|Daniel|Victor|Eduardo|Gonzalo'
+    r'|Rodrigo|Alvaro|Diego|Juan|Tomas|Dani|Juanin'
+    r'|Iker|Mikel|Jon|Ander|Unai|Julen|Aitor|Gorka|Joseba|Eneko|Xabi'
+    r'|Xavier|Alex|Ferran|Marc|Pau|Arnau|Jordi|Josep|Carles|Joan)\b',
+    re.IGNORECASE,
+)
+_FEMALE_NAMES = re.compile(
+    r'\b(?:Maria|Ana|Laura|Carmen|Marta|Sara|Elena|Cristina|Isabel'
+    r'|Patricia|Rosa|Lucia|Silvia|Nerea|Itziar|Almudena|Rocio'
+    r'|Amaia|Ane|Leire|Miren|Ainhoa|Uxue|Eider|Maite|Miriam|Sandra|Raquel'
+    r'|Noelia|Beatriz|Bea|Estela|Irene|Clara|Paula|Sheila|Jennifer|Darly'
+    r'|Mireya|Aileen|Alexandrina|Yuliya|Katarina|Eduarda|Bruna)\b',
+    re.IGNORECASE,
+)
 
 
 def _gender_signal(text):
-    """Return 'masc', 'fem', or None based on gendered handball vocabulary in the text."""
+    """Return 'masc', 'fem', or None based on gendered handball vocabulary in the text.
+    Falls back to first-name detection when no positional vocabulary is present."""
     masc = len(_MALE_WORDS.findall(text))
     fem = len(_FEMALE_WORDS.findall(text))
-    if masc > fem:
+    if masc != fem:
+        return 'masc' if masc > fem else 'fem'
+    # Fall back to first-name detection
+    masc_names = len(_MALE_NAMES.findall(text))
+    fem_names = len(_FEMALE_NAMES.findall(text))
+    if masc_names > fem_names:
         return 'masc'
-    if fem > masc:
+    if fem_names > masc_names:
         return 'fem'
     return None
 

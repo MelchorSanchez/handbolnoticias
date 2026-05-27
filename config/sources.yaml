@@ -169,6 +169,54 @@ sources:
     filter_keywords: [balonmano, handball, handbol]
 
   # ══════════════════════════════════════════════════════════════════════════
+  # ESPAÑA — Balonmano femenino especializado
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: BalonmanoInfo
+    section: spain/guerreras
+    type: scrape
+    url: https://www.balonmano.info/
+    max_items: 30
+    selectors:
+      articles: ".mvp-blog-story-wrap"
+      title: "h2"
+      link: "a[href]"
+      image: "img"
+
+  - name: DeporteCienPorcien
+    section: spain/guerreras
+    type: rss
+    url: https://deportecienporcien.com/feed/
+    max_items: 30
+    filter_keywords: [balonmano, handball, handbol, guerreras, asobal]
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # ESPAÑA — Balonmano masculino especializado
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: MiBalonmano
+    section: spain/asobal
+    type: scrape
+    url: https://www.mibalonmano.com/
+    max_items: 30
+    selectors:
+      articles: "[class*=\"post\"]"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  - name: BalonmanoActual
+    section: spain/asobal
+    type: rss
+    url: https://balonmanoactual.com/feed/
+    max_items: 30
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # ESPAÑA — Balonmano Cataluña
+  # ══════════════════════════════════════════════════════════════════════════
+  # cathandbol.cat es un sitio de estadísticas, no de noticias —
+  # las noticias catalanas llegan vía LaVanguardia, Ara y NacioDigital
+  # con filter_keywords y vía equipos en teams.yaml (spain/catalonia)
+
+  # ══════════════════════════════════════════════════════════════════════════
   # EUROPA — Handball internacional
   # ══════════════════════════════════════════════════════════════════════════
   - name: HandballPlanet
