@@ -26,7 +26,7 @@ SECTIONS = {
             "spain/base-fem":             "Base Femenino",
             "spain/catalonia":            "Cataluña",
             "spain/navarra":              "Navarra",
-            "spain/euskadi":              "País Vasco",
+            "spain/euskadi":              "Euskadi",
         },
     },
     "europe": {
