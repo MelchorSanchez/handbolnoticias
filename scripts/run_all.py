@@ -37,7 +37,7 @@ def _fix_detail_dates(conn):
     """For newly inserted articles without real dates, fetch the detail page."""
     rows = conn.execute("""
         SELECT id, url, source_name FROM articles
-        WHERE source_name IN ('BalonmanoInfo', 'MiBalonmano', 'CatHandbol')
+        WHERE source_name IN ('BalonmanoInfo','MiBalonmano','CatHandbol','MundoDeportivo-Balonmano')
           AND substr(published, 1, 10) = substr(fetched_at, 1, 10)
           AND fetched_at > datetime('now', '-2 hours')
     """).fetchall()
