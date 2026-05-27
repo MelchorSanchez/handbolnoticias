@@ -212,9 +212,16 @@ sources:
   # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Balonmano Cataluña
   # ══════════════════════════════════════════════════════════════════════════
-  # cathandbol.cat es un sitio de estadísticas, no de noticias —
-  # las noticias catalanas llegan vía LaVanguardia, Ara y NacioDigital
-  # con filter_keywords y vía equipos en teams.yaml (spain/catalonia)
+  - name: CatHandbol
+    section: spain/catalonia
+    type: scrape
+    url: https://www.cathandbol.cat/
+    max_items: 30
+    selectors:
+      articles: ".nspArt"
+      title: "h4.nspHeader a"
+      link: "h4.nspHeader a"
+      image: "img"
 
   # ══════════════════════════════════════════════════════════════════════════
   # EUROPA — Handball internacional
