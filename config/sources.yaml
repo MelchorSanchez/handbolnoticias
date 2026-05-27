@@ -181,7 +181,6 @@ sources:
       title: "h2"
       link: "a[href]"
       image: "img"
-      date: "time[datetime]"
 
   - name: DeporteCienPorcien
     section: spain/guerreras

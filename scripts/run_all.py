@@ -1,12 +1,16 @@
 import logging
 import sys
+import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+import httpx
+from bs4 import BeautifulSoup
+
 from classifier import classify
 from db import get_connection, init_db, insert_article, is_title_duplicate, article_exists
-from fetcher import fetch_all, load_sources
+from fetcher import fetch_all, load_sources, _parse_date_text, _now, HEADERS, TIMEOUT
 from renderer import render_all
 from translator import translate_article
 
@@ -16,6 +20,54 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 logger = logging.getLogger(__name__)
+
+
+_DETAIL_DATE_SELECTORS = [
+    "time[datetime]",
+    "span.artdate",
+    "span.span-date",
+    ".itemDateCreated",
+    ".entry-date",
+]
+
+_DETAIL_DATE_SOURCES = {"BalonmanoInfo", "MiBalonmano", "CatHandbol"}
+
+
+def _fix_detail_dates(conn):
+    """For newly inserted articles without real dates, fetch the detail page."""
+    rows = conn.execute("""
+        SELECT id, url, source_name FROM articles
+        WHERE source_name IN ('BalonmanoInfo', 'MiBalonmano', 'CatHandbol')
+          AND substr(published, 1, 10) = substr(fetched_at, 1, 10)
+          AND fetched_at > datetime('now', '-2 hours')
+    """).fetchall()
+    if not rows:
+        return
+    logger.info("Fixing dates for %d recently inserted articles via detail pages", len(rows))
+    now_date = _now()[:10]
+    fixed = 0
+    for row in rows:
+        try:
+            resp = httpx.get(row["url"], headers=HEADERS, timeout=TIMEOUT, follow_redirects=True)
+            resp.raise_for_status()
+            soup = BeautifulSoup(resp.text, "lxml")
+            for sel in _DETAIL_DATE_SELECTORS:
+                el = soup.select_one(sel)
+                if el:
+                    dt_attr = el.get("datetime", "").strip()
+                    text = dt_attr if dt_attr else el.get_text().strip()
+                    if text:
+                        real_date = _parse_date_text(text)
+                        if real_date[:10] != now_date:
+                            conn.execute("UPDATE articles SET published=? WHERE id=?",
+                                         (real_date, row["id"]))
+                            conn.commit()
+                            fixed += 1
+                            break
+        except Exception as exc:
+            logger.debug("Detail date fetch failed %s: %s", row["url"], exc)
+        time.sleep(0.2)
+    logger.info("Detail date fix: corrected %d/%d articles", fixed, len(rows))
 
 
 def main():
@@ -67,6 +119,7 @@ def main():
     logger.info("Artículos duplicados omitidos: %d", dup_count)
     logger.info("Artículos nuevos insertados: %d", new_count)
 
+    _fix_detail_dates(conn)
     render_all(conn)
     conn.close()
     logger.info("=== Pipeline completado ===")

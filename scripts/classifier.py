@@ -248,16 +248,18 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text=""):
                 s = set(sections)
 
     # Rule 4a: Suppress European club sections that come only from team-name matching
-    # when the article is already keyword-matched to a Spanish domestic section.
-    # Prevents transfer/player news about Spanish clubs from appearing under Champions etc.
+    # when any Spanish domestic section is present (keyword OR team matched).
+    # Logic: an article about a Spanish club belongs to Spanish sections by default;
+    # it only goes to a European section if the article explicitly uses European
+    # competition keywords (Champions League, European League, etc.).
     _EUROPE_CLUB = frozenset({
         "europe/champions", "europe/champions-women",
         "europe/european-league", "europe/european-league-women",
         "europe/cup-men", "europe/cup-women",
     })
-    spain_kw = s & _SPAIN_NATIONAL & keyword_sections
+    spain_present = s & _SPAIN_NATIONAL          # any Spanish section, keyword or team
     europe_team_only = (s & _EUROPE_CLUB) - keyword_sections
-    if spain_kw and europe_team_only:
+    if spain_present and europe_team_only:
         sections = [sec for sec in sections if sec not in europe_team_only]
         s = set(sections)
 
