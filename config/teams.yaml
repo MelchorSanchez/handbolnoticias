@@ -1,0 +1,193 @@
+# Lista de equipos por competición para clasificación de artículos.
+# Añade o corrige nombres según sea necesario.
+# Los nombres son insensibles a mayúsculas.
+
+teams:
+  spain/asobal:
+    - FC Barcelona
+    - Barça
+    - Bidasoa
+    - Granollers
+    - Fraikin Granollers
+    - Fraikin BM Granollers
+    - Ademar
+    - Ademar de Leon
+    - BM Cuenca
+    - Balonmano Cuenca
+    - Portland San Antonio
+    - Portland BM
+    - Bathco Torrelavega
+    - Torrelavega
+    - Recoletas Valladolid
+    - Recoletas BM
+    - Atletico Valladolid BM
+    - Fertiberia Puerto Sagunto
+    - Fertiberia Sagunto
+    - Abanca Ademar
+    - BM Logroño LA Rioja
+    - Dicorpebal Logroño
+    - Cangas
+    - BM Cangas
+    - Nava
+    - Viveros Herol Nava
+    - Caserio
+    - Caserio Ciudad Real
+    - Rebi Cuenca
+    - Puente Genil
+    - Bathco BM. Torrelavega
+    - Recoletas Atlético Valladolid
+    - Abanca Ademar León
+    - Balonmano Caserío Ciudad Real
+    - Horneo Eón Alicante
+    - REBI Balonmano Cuenca
+    - BM Villa de Aranda
+    - Frigoríficos del Morrazo
+    - Ángel Ximénez Puente Genil
+    - Viveros Herol BM Nava
+    - Proin
+    - Sevilla
+    - Proin Sevilla
+
+
+  spain/guerreras:
+    - Guardés
+    - Atlético Guardés
+    - Mecalia Atlético Guardés
+    - Bera Bera
+    - Amara Bera Bera
+    - Super Amara Bera Bera
+    - Rocasa
+    - Rocasa Gran Canaria
+    - Costa del Sol Málaga
+    - Malaga
+    - Itxako
+    - BM Elda
+    - Elda Prestigio
+    - Remudas
+    - Bm Málaga
+    - BM Valladolid
+    - Aula Valladolid
+    - BM Granollers
+    - BM Porriño
+    - Beti Onak
+    - Replasa Beti Onak
+
+  spain/dho-fem:
+    -
+
+  spain/dhp:
+    - Agustinos Alicante
+    - Agustinos
+    - BM Sinfín
+    - Bada Huesca
+    - BM Guadalajara
+    - BM Huesca
+    - Benidorm BM
+    - Anaitasuna
+    - Oviedo
+    - Confia Base Oviedo
+
+  spain/dhp-fem:
+    - BM Manzanares
+    - BM Zamora
+
+  spain/seleccion-masc:
+    - Los Hispanos
+    - Selección española masculina
+    - David Barrufet
+    - Jordi Ribera
+    - España masculina
+
+  spain/seleccion-fem:
+    - Las Guerreras
+    - Selección española femenina
+    - España femenina
+
+  europe/champions:
+    - Magdeburgo
+    - Kielce
+    - Veszprém
+    - PSG Handball
+    - Paris Saint-Germain Handball
+    - THW Kiel
+    - Aalborg
+    - Kolstad
+    - Montpellier HB
+    - Füchse Berlin
+    - Pick Szeged
+    - Sporting CP
+    - Nantes HBC
+
+
+  europe/european-league:
+    - Göppingen
+    - SL Benfica Handball
+    - Irudek Bidasoa Irun
+
+  germany:
+    - Bundesliga Handball
+    - DHB Pokal
+    - Rhein-Neckar
+    - Füchse
+    - SG Flensburg
+    - THW Kiel
+    - Bergischer HC
+    - TBV Lemgo
+    - HSV Hamburg Handball
+
+  france:
+    - Nantes HBC
+    - Montpellier HB
+    - Paris Saint-Germain Handball
+    - Limoges Saint-Etienne
+    - FENIX Toulouse
+    - Cesson Rennes
+    - Chartres
+
+  denmark:
+    - Aalborg Håndbold
+    - Kolstad
+    - GOG Håndbold
+    - Bjerringbro-Silkeborg
+
+  sweden:
+    - IFK Kristianstad
+    - Hammarby Handboll
+    - Skuru IK
+    - Lugi HF
+
+  norway:
+    - Elverum Handball
+    - Kolstad
+    - Drammen HK
+    - Vipers Kristiansand
+
+  portugal:
+    - Sporting CP Handball
+    - SL Benfica Handball
+    - FC Porto Handball
+    - Águas Santas
+
+  hungary:
+    - Pick Szeged
+    - Veszprém HC
+    - Telekom Veszprém
+    - Ferencváros
+
+  croatia:
+    - PPD Zagreb
+    - RK Nexe
+    - RK Dinamo Zagreb
+
+  argentina:
+    - Club Atlético Talleres
+    - San Juan
+    - Selección Argentina balonmano
+
+  brazil:
+    - Seleção Brasileira de Handebol
+    - Pinheiros
+
+  japan:
+    - Selección japonesa balonmano
+    - JHA

@@ -32,10 +32,17 @@ def main():
     new_count = 0
     classified_count = 0
     for article in articles:
-        detected = classify(article)
-        if detected and detected != article["section"]:
-            article["section"] = detected
-            classified_count += 1
+        sections = classify(article)
+        if sections:
+            primary = sections[0]
+            extras = "|".join(sections[1:])
+            if primary != article["section"]:
+                classified_count += 1
+            article["section"] = primary
+            article["extra_sections"] = extras
+        else:
+            article["extra_sections"] = ""
+
         article.pop("_raw_tags", None)
         article = translate_article(conn, article)
         if insert_article(conn, article):

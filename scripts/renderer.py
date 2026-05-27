@@ -80,11 +80,12 @@ def _rows_to_dicts(rows):
 def _get_section_articles(conn, section_slug):
     rows = conn.execute("""
         SELECT * FROM articles
-        WHERE section = ?
+        WHERE (section = ?
+               OR (extra_sections != '' AND ('|' || extra_sections || '|') LIKE ('%|' || ? || '|%')))
           AND (published > datetime('now', '-30 days') OR published IS NULL)
         ORDER BY published DESC, fetched_at DESC
         LIMIT 100
-    """, (section_slug,)).fetchall()
+    """, (section_slug, section_slug)).fetchall()
     return _rows_to_dicts(rows)
 
 

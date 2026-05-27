@@ -7,6 +7,7 @@ logger = logging.getLogger(__name__)
 
 CONFIG_DIR = Path(__file__).parent.parent / "config"
 _rules = None
+_teams = None
 
 
 def _load_rules():
@@ -15,6 +16,18 @@ def _load_rules():
         with open(CONFIG_DIR / "classifier_rules.yaml") as f:
             _rules = yaml.safe_load(f)["rules"]
     return _rules
+
+
+def _load_teams():
+    global _teams
+    if _teams is None:
+        path = CONFIG_DIR / "teams.yaml"
+        if path.exists():
+            with open(path) as f:
+                _teams = yaml.safe_load(f).get("teams", {})
+        else:
+            _teams = {}
+    return _teams
 
 
 def _extract_tags(article):
@@ -31,22 +44,21 @@ def _text(article):
 
 
 def _matches_rule(rule, text, tags):
-    # Check tag match first (priority B)
+    excludes = [e.lower() for e in rule.get("exclude", [])]
+
+    # Tag match (RSS tags — very specific, skip require_any)
     rule_tags = [t.lower() for t in rule.get("tags", [])]
     if any(rt in tag for tag in tags for rt in rule_tags):
-        return True
+        return not any(ex in text for ex in excludes)
 
-    # Keyword match (priority A)
+    # Keyword match
     keywords = [k.lower() for k in rule.get("keywords", [])]
     if not any(kw in text for kw in keywords):
         return False
 
-    # Exclusion check
-    excludes = [e.lower() for e in rule.get("exclude", [])]
     if any(ex in text for ex in excludes):
         return False
 
-    # require_any check
     require_any = [r.lower() for r in rule.get("require_any", [])]
     if require_any and not any(r in text for r in require_any):
         return False
@@ -54,17 +66,40 @@ def _matches_rule(rule, text, tags):
     return True
 
 
+def _sections_from_teams(text):
+    """Return sections matched by team names (ordered, no duplicates)."""
+    teams = _load_teams()
+    matched = []
+    for section, team_list in teams.items():
+        for team in team_list:
+            if team and team.lower() in text:
+                if section not in matched:
+                    matched.append(section)
+                break
+    return matched
+
+
 def classify(article):
-    """Return the best section slug for the article, or None to keep default."""
+    """Return list of matching section slugs (empty = keep source default).
+    First element is the primary section; the article appears in all of them."""
     text = _text(article)
     tags = _extract_tags(article)
     rules = _load_rules()
 
+    sections = []
+
+    # Keyword / tag rules first (ordered by specificity)
     for rule in rules:
         if _matches_rule(rule, text, tags):
-            logger.debug(
-                "Classified '%s' → %s", article.get("title_orig", "")[:60], rule["section"]
-            )
-            return rule["section"]
+            s = rule["section"]
+            if s not in sections:
+                sections.append(s)
+                logger.debug("Rule '%s' → %s", article.get("title_orig", "")[:60], s)
 
-    return None
+    # Team-name matches add extra sections
+    for s in _sections_from_teams(text):
+        if s not in sections:
+            sections.append(s)
+            logger.debug("Team '%s' → %s", article.get("title_orig", "")[:60], s)
+
+    return sections

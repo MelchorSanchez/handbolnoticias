@@ -15,7 +15,7 @@ def conn(tmp_path, monkeypatch):
     return get_connection()
 
 
-def sample_article(url="https://example.com/1", section="spain/asobal"):
+def sample_article(url="https://example.com/1", section="spain/asobal", extra_sections=""):
     return {
         "id": article_id(url),
         "url": url,
@@ -25,6 +25,7 @@ def sample_article(url="https://example.com/1", section="spain/asobal"):
         "image_url": None,
         "source_name": "test.es",
         "section": section,
+        "extra_sections": extra_sections,
         "published": "2026-05-26T10:00:00+00:00",
         "fetched_at": "2026-05-26T12:00:00+00:00",
         "is_manual": 0,
@@ -67,3 +68,11 @@ def test_get_recent_by_section_returns_top_n(conn):
         insert_article(conn, sample_article(url=f"https://example.com/{i}"))
     rows = get_recent_by_section(conn, "spain/asobal", limit=3)
     assert len(rows) == 3
+
+
+def test_get_articles_by_extra_section(conn):
+    insert_article(conn, sample_article(url="https://a.com", section="spain/guerreras",
+                                        extra_sections="europe/other"))
+    assert len(get_articles_by_section(conn, "europe/other")) == 1
+    assert len(get_articles_by_section(conn, "spain/guerreras")) == 1
+    assert len(get_articles_by_section(conn, "spain/asobal")) == 0
