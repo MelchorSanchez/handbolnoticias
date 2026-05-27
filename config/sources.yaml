@@ -238,9 +238,9 @@ sources:
   - name: IHF-news
     section: ihf/world-men
     type: rss
-    url: https://www.ihf.info/rss.xml
-    max_items: 10
-    filter_keywords: [handball, balonmano, world championship, world cup, euro, ihf, andebol, handebol]
+    url: https://www.ihf.info/news/rss.xml
+    max_items: 20
+    filter_keywords: [handball, world, ihf, championship, beach, coaching, qualification, euro, cup]
 
   - name: EHF-news
     section: europe/champions
