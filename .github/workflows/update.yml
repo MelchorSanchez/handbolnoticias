@@ -24,7 +24,16 @@ jobs:
       - name: Instalar dependencias
         run: pip install -r requirements.txt
 
+      - name: Cache sesión Instagram
+        uses: actions/cache@v4
+        with:
+          path: data/instagram_sessions
+          key: instagram-session-${{ secrets.INSTAGRAM_USERNAME }}-v1
+
       - name: Ejecutar pipeline
+        env:
+          INSTAGRAM_USERNAME: ${{ secrets.INSTAGRAM_USERNAME }}
+          INSTAGRAM_PASSWORD: ${{ secrets.INSTAGRAM_PASSWORD }}
         run: python scripts/run_all.py
 
       - name: Commit y push si hay cambios

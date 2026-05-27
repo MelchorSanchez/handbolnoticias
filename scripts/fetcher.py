@@ -1,5 +1,8 @@
 import hashlib
+import itertools
 import logging
+import os
+import re
 from datetime import datetime, timezone
 from urllib.parse import urlparse
 
@@ -12,8 +15,88 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 CONFIG_DIR = Path(__file__).parent.parent / "config"
+DATA_DIR = Path(__file__).parent.parent / "data"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; HandbolNoticias/1.0; +https://github.com/handbolnoticias)"}
 TIMEOUT = 10.0
+
+# Instagram: reject pure countdown/promo posts, keep results/news/transfers
+_IG_REJECT = re.compile(
+    r'\b(mañana\s+(partido|jugamos|nos\s+vemos)|este\s+(sábado|domingo|lunes|martes'
+    r'|miércoles|jueves|viernes|finde)|partido\s+(el|este)\s+(sábado|domingo|lunes'
+    r'|martes|miércoles|jueves|viernes|próximo|de\s+mañana)|os\s+esperamos\s+el'
+    r'|nos\s+vemos\s+el|entradas\s+a\s+la\s+venta|compra\s+tu\s+entrada'
+    r'|horario\s+de\s+(la\s+)?jornada|próxima\s+jornada|jornada\s+\d+\s+de\s+la\s+temporada)\b',
+    re.IGNORECASE,
+)
+_IG_ACCEPT = re.compile(
+    r'(\b\d{1,2}[-–]\d{1,2}\b'  # score like 29-27
+    r'|\bfich[oaóa]?\b|\bfirm[oaóa]?\b|\brenuev[oa]\b|\bcontrato\b'
+    r'|\bvictoria\b|\bderrota\b|\bempate\b|\bcampe[oó]n\b|\bcampeonas?\b'
+    r'|\bascenso\b|\bdescenso\b|\bpromoci[oó]n\b|\bfinal\s+four\b'
+    r'|\bnuevo\s+(jugador|entrenador|técnico)\b|\bnueva\s+(jugadora|entrenadora)\b'
+    r'|\bsuma\s+\d+\s+puntos\b|\bclasificaci[oó]n\b)',
+    re.IGNORECASE,
+)
+
+_IG_NOT_INITIALIZED = object()
+_ig_loader = _IG_NOT_INITIALIZED  # sentinel: one login attempt per pipeline run
+
+
+def _instagram_is_news(caption: str) -> bool:
+    """Return True if an Instagram caption looks like real news vs. a promo/countdown post."""
+    if not caption or len(caption.strip()) < 30:
+        return False
+    if _IG_ACCEPT.search(caption):
+        return True
+    if _IG_REJECT.search(caption):
+        return False
+    return True
+
+
+def _get_instagram_loader():
+    """
+    Return an authenticated instaloader instance, or None if credentials absent.
+    Sessions are cached in data/instagram_sessions/ to avoid re-login each run.
+    Set INSTAGRAM_USERNAME and INSTAGRAM_PASSWORD env vars (or GitHub Secrets).
+    """
+    try:
+        import instaloader
+        username = os.environ.get("INSTAGRAM_USERNAME", "").strip()
+        password = os.environ.get("INSTAGRAM_PASSWORD", "").strip()
+        if not username or not password:
+            logger.info("Instagram: INSTAGRAM_USERNAME/PASSWORD not set, skipping Instagram sources")
+            return None
+
+        session_dir = DATA_DIR / "instagram_sessions"
+        session_dir.mkdir(parents=True, exist_ok=True)
+        session_file = session_dir / f"session-{username}"
+
+        L = instaloader.Instaloader(
+            download_pictures=False,
+            download_videos=False,
+            download_video_thumbnails=False,
+            download_geotags=False,
+            download_comments=False,
+            save_metadata=False,
+            compress_json=False,
+            quiet=True,
+        )
+
+        if session_file.exists():
+            try:
+                L.load_session_from_file(username, str(session_file))
+                logger.info("Instagram: loaded cached session for @%s", username)
+                return L
+            except Exception as e:
+                logger.warning("Instagram: cached session invalid (%s), re-logging in", e)
+
+        L.login(username, password)
+        L.save_session_to_file(str(session_file))
+        logger.info("Instagram: logged in as @%s, session saved", username)
+        return L
+    except Exception as exc:
+        logger.error("Instagram login failed: %s", exc)
+        return None
 
 
 def load_sources() -> list:
@@ -47,7 +130,6 @@ def extract_image(entry) -> str:
 
 def _clean_cdata(text: str) -> str:
     """Strip <![CDATA[...]]> wrappers that some feeds leave unprocessed."""
-    import re
     return re.sub(r"<!\[CDATA\[(.*?)]]>", r"\1", text, flags=re.DOTALL).strip()
 
 
@@ -138,6 +220,45 @@ def fetch_scrape(source: dict) -> list:
         return []
 
 
+def fetch_instagram(source: dict) -> list:
+    """Fetch recent posts from a public Instagram account using instaloader."""
+    global _ig_loader
+    if _ig_loader is _IG_NOT_INITIALIZED:
+        _ig_loader = _get_instagram_loader()
+    if _ig_loader is None:
+        return []
+
+    account = source["account"]
+    try:
+        import instaloader
+        profile = instaloader.Profile.from_username(_ig_loader.context, account)
+        articles = []
+        for post in itertools.islice(profile.get_posts(), source.get("max_items", 5)):
+            caption = post.caption or ""
+            if not _instagram_is_news(caption):
+                logger.debug("Instagram skip (promo) @%s: %s", account, caption[:60])
+                continue
+            url = f"https://www.instagram.com/p/{post.shortcode}/"
+            first_line = caption.split("\n")[0].strip()[:200]
+            articles.append({
+                "id": _article_id(url),
+                "url": url,
+                "title": first_line or url,
+                "title_orig": first_line or url,
+                "summary": caption[:500],
+                "image_url": post.url,
+                "source_name": f"@{account}",
+                "section": source["section"],
+                "published": post.date_utc.isoformat(),
+                "fetched_at": _now(),
+                "is_manual": 0,
+            })
+        return articles
+    except Exception as exc:
+        logger.error("Instagram error @%s: %s", account, exc)
+        return []
+
+
 def fetch_manual_links() -> list:
     path = CONFIG_DIR / "manual_links.yaml"
     if not path.exists():
@@ -170,5 +291,7 @@ def fetch_all(sources: list) -> list:
             articles.extend(fetch_rss(source))
         elif source["type"] == "scrape":
             articles.extend(fetch_scrape(source))
+        elif source["type"] == "instagram":
+            articles.extend(fetch_instagram(source))
     articles.extend(fetch_manual_links())
     return articles

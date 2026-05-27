@@ -382,3 +382,36 @@ sources:
       link: "a[href]"
       image: "img"
 
+  # ══════════════════════════════════════════════════════════════════════════
+  # INSTAGRAM — Cuentas de balonmano
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: Instagram-upskill-handball
+    section: europe/champions
+    type: instagram
+    account: upskill_handball
+    max_items: 8
+
+  - name: Instagram-rthandball
+    section: europe/champions
+    type: instagram
+    account: rthandball
+    max_items: 8
+
+  - name: Instagram-balonmano-primeranacional
+    section: spain/primera-nacional-masc
+    type: instagram
+    account: balonmanoprimeranacional
+    max_items: 8
+
+  - name: Instagram-balonmano-platafemenina
+    section: spain/dhp-fem
+    type: instagram
+    account: balonmanoplatafemenina
+    max_items: 8
+
+  - name: Instagram-balonmano-espanol
+    section: spain/asobal
+    type: instagram
+    account: balonmanoespanol
+    max_items: 8
+
