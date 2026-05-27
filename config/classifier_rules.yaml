@@ -1,77 +1,173 @@
 rules:
   # ═══════════════════════════════════════════════════════════════════
   # IHF — Mundiales (hombres / mujeres / sub-)
+  # Sinónimos: World Championship / World Cup / Mundial / Copa del Mundo
   # ═══════════════════════════════════════════════════════════════════
   - section: ihf/world-men
     tags: [ihf-world-men, world-championship-men, mundial-masculino]
-    keywords: [ihf world championship men, world championship men, mundial masculino,
-               campeonato del mundo masculino, "world men's handball championship",
-               "sub-21 masculino mundial", "u21 world championship men",
-               "u19 world championship men", "u17 world championship men",
-               "sub-19 masculino mundial", "sub-17 masculino mundial"]
-    exclude: [femenin, women, mujer]
+    keywords:
+      # Inglés — género explícito
+      - "world championship men"
+      - "men's world championship"
+      - "men's world handball"
+      - "world men's handball championship"
+      - "men handball world championship"
+      # Inglés — IHF genérico (sin género; cubre "2027 World Championship", wild cards, etc.)
+      - "ihf world championship"
+      - "world handball championship"
+      - "handball world championship"
+      - "ihf wild card"
+      - "world cup handball"
+      - "handball world cup"
+      - "ihf championship"
+      - "ihf 2025"
+      - "ihf 2026"
+      - "ihf 2027"
+      - "ihf 2028"
+      # Español
+      - "mundial masculino"
+      - "campeonato del mundo masculino"
+      - "copa del mundo balonmano"
+      - "mundial de balonmano"
+      - "campeonato mundial de balonmano"
+      - "copa mundial de balonmano"
+      - "mundial balonmano"
+      # Sub-categorías
+      - "u21 world championship men"
+      - "u19 world championship men"
+      - "u17 world championship men"
+      - "sub-21 masculino mundial"
+      - "sub-19 masculino mundial"
+      - "sub-17 masculino mundial"
+    exclude: [femenin, women, mujer, "world championship women", "champions league", "european league"]
 
   - section: ihf/world-women
     tags: [ihf-world-women, world-championship-women, mundial-femenino]
-    keywords: [ihf world championship women, world championship women, mundial femenino,
-               campeonato del mundo femenino, "world women's handball championship",
-               "u21 world championship women", "u19 world championship women",
-               "u17 world championship women",
-               "sub-21 femenino mundial", "sub-19 femenino mundial"]
-    exclude: [masculin, men's, hombre]
+    keywords:
+      # Inglés — género explícito
+      - "world championship women"
+      - "women's world championship"
+      - "women's world handball"
+      - "world women's handball championship"
+      - "women handball world championship"
+      # Español
+      - "mundial femenino"
+      - "campeonato del mundo femenino"
+      - "copa del mundo balonmano femenino"
+      - "mundial de balonmano femenino"
+      - "mundial balonmano femenino"
+      # Sub-categorías
+      - "u21 world championship women"
+      - "u19 world championship women"
+      - "u17 world championship women"
+      - "sub-21 femenino mundial"
+      - "sub-19 femenino mundial"
+    exclude: [masculin, "men's", hombre, "world championship men", "champions league", "european league"]
 
   # ═══════════════════════════════════════════════════════════════════
   # EHF EURO — Eurocopas nacionales (hombres / mujeres / sub-)
+  # Sinónimos: EHF Euro / European Championship / Eurocopa / EURO
   # ═══════════════════════════════════════════════════════════════════
   - section: europe/euro-men
     tags: [ehf-euro-men, european-championship-men, eurocopa-masculina]
-    keywords: ["ehf euro men", "european championship men", eurocopa masculina,
-               "campeonato europeo masculino", "european handball championship men",
-               "men's ehf euro", "men ehf euro",
-               "u21 european championship men", "u19 european championship men",
-               "u17 european championship men", "m20 european championship",
-               "sub-21 europeo masculino", "sub-19 europeo masculino",
-               "sub-17 europeo masculino"]
-    exclude: [women, femenin, mujer]
+    keywords:
+      # Inglés — género explícito
+      - "ehf euro men"
+      - "men's ehf euro"
+      - "european championship men"
+      - "european handball championship men"
+      - "men's european handball championship"
+      - "men's handball euro"
+      # Español
+      - "eurocopa masculina"
+      - "campeonato europeo masculino"
+      - "campeonato de europa masculino"
+      - "euro balonmano masculino"
+      # Sub-categorías
+      - "u21 european championship men"
+      - "u19 european championship men"
+      - "u17 european championship men"
+      - "m20 european championship"
+      - "sub-21 europeo masculino"
+      - "sub-19 europeo masculino"
+      - "sub-17 europeo masculino"
+    exclude: [women, femenin, mujer, "world championship", "champions league"]
 
   - section: europe/euro-women
     tags: [ehf-euro-women, european-championship-women, eurocopa-femenina]
-    keywords: ["ehf euro women", "european championship women", eurocopa femenina,
-               "campeonato europeo femenino", "european handball championship women",
-               "women's ehf euro", "women ehf euro",
-               "u21 european championship women", "u19 european championship women",
-               "u17 european championship women", "w20 european championship",
-               "sub-21 europeo femenino", "sub-19 europeo femenino"]
-    exclude: [men's, masculin, hombre]
+    keywords:
+      # Inglés — género explícito
+      - "ehf euro women"
+      - "women's ehf euro"
+      - "european championship women"
+      - "european handball championship women"
+      - "women's european handball championship"
+      - "women's handball euro"
+      # Español
+      - "eurocopa femenina"
+      - "campeonato europeo femenino"
+      - "campeonato de europa femenino"
+      - "euro balonmano femenino"
+      # Sub-categorías
+      - "u21 european championship women"
+      - "u19 european championship women"
+      - "u17 european championship women"
+      - "w20 european championship"
+      - "sub-21 europeo femenino"
+      - "sub-19 europeo femenino"
+    exclude: [men's, masculin, hombre, "world championship", "champions league"]
 
   # ═══════════════════════════════════════════════════════════════════
   # EHF Champions League
+  # Sinónimos: EHF CL / Liga de Campeones / Final Four
   # ═══════════════════════════════════════════════════════════════════
   - section: europe/champions-women
     tags: [ehf-champions-league-women, champions-league-women]
-    keywords: ["ehf champions league women", "champions league women", "champions league femenina",
-               "champions league fem", "final four femenina", "ehf cl women",
-               "women's champions league", "liga de campeones femenina"]
+    keywords:
+      - "ehf champions league women"
+      - "champions league women"
+      - "champions league femenina"
+      - "champions league fem"
+      - "women's champions league"
+      - "liga de campeones femenina"
+      - "final four femenina"
+      - "ehf cl women"
 
   - section: europe/champions
     tags: [ehf-champions-league, champions-league-handball, ehf-cl]
-    keywords: ["ehf champions league", "champions league ehf", "champions league handball",
-               "liga de campeones ehf", "champions league de balonmano",
-               "final four ehf", "final4 ehf", "final four champions"]
-    exclude: [women, femenin]
+    keywords:
+      - "ehf champions league"
+      - "champions league ehf"
+      - "champions league handball"
+      - "liga de campeones ehf"
+      - "champions league de balonmano"
+      - "ehf cl"
+      - "final four ehf"
+      - "final4 ehf"
+      - "final four champions"
+      - "final four balonmano"
+    exclude: [women, femenin, "world championship", "world cup"]
 
   # ═══════════════════════════════════════════════════════════════════
   # EHF European League
+  # Sinónimos: EHF EL / European League / Copa EHF
   # ═══════════════════════════════════════════════════════════════════
   - section: europe/european-league-women
     tags: [ehf-european-league-women, european-league-women]
-    keywords: ["ehf european league women", "european league women", "european league femenina",
-               "european league fem"]
+    keywords:
+      - "ehf european league women"
+      - "european league women"
+      - "european league femenina"
+      - "european league fem"
 
   - section: europe/european-league
     tags: [ehf-european-league, european-league-handball]
-    keywords: ["ehf european league", "european league ehf", "european league handball",
-               "copa ehf", "copa de la ehf"]
+    keywords:
+      - "ehf european league"
+      - "european league ehf"
+      - "european league handball"
+      - "copa ehf"
+      - "copa de la ehf"
     exclude: [women, femenin]
 
   # ═══════════════════════════════════════════════════════════════════
@@ -79,13 +175,21 @@ rules:
   # ═══════════════════════════════════════════════════════════════════
   - section: europe/cup-women
     tags: [ehf-cup-women, european-cup-women]
-    keywords: ["ehf european cup women", "european cup women", "copa europea femenina",
-               "ehf cup women", "challenge cup women"]
+    keywords:
+      - "ehf european cup women"
+      - "european cup women"
+      - "copa europea femenina"
+      - "ehf cup women"
+      - "challenge cup women"
 
   - section: europe/cup-men
     tags: [ehf-cup-men, european-cup-men]
-    keywords: ["ehf european cup", "european cup handball", "copa europea balonmano",
-               "ehf cup handball", "challenge cup handball"]
+    keywords:
+      - "ehf european cup"
+      - "european cup handball"
+      - "copa europea balonmano"
+      - "ehf cup handball"
+      - "challenge cup handball"
     exclude: [women, femenin, champions league, european league]
 
   # ═══════════════════════════════════════════════════════════════════
@@ -95,7 +199,7 @@ rules:
     tags: [ehf, eurohandball]
     keywords: [eurohandball, "ehf beach handball", "beach handball", "handbol platja"]
     exclude: [champions league, european league, european cup, copa europea, ehf cup,
-              euro men, euro women, world championship]
+              euro men, euro women, world championship, world cup]
 
   # ═══════════════════════════════════════════════════════════════════
   # Selección Nacional España
@@ -160,7 +264,8 @@ rules:
 
   - section: spain/primera-nacional-masc
     tags: [primera-nacional]
-    keywords: ["primera nacional masculin", "primera nacional", "1ª nacional", "1a nacional"]
+    keywords: ["primera nacional masculin", "primera nacional", "1ª nacional", "1a nacional",
+               "1acath", "1a estatal", lliga estatal]
     exclude: [femenin]
 
   # ═══════════════════════════════════════════════════════════════════
@@ -182,7 +287,8 @@ rules:
     tags: [dhp-femenino, division-honor-plata-femenino]
     keywords: ["división honor plata femenino", "dhp femenino",
                "segunda división femenina", "división honor plata fem",
-               "division honor plata fem"]
+               "division honor plata fem", "ligacatargf", "lligacatargf",
+               "lliga catalana argent femenina"]
     exclude: [masculin]
 
   # ═══════════════════════════════════════════════════════════════════

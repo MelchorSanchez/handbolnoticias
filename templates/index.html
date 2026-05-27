@@ -6,7 +6,7 @@
 {% set group_articles = [] %}
 {% for slug in group.subsections.keys() %}
   {% if slug in sections_data and sections_data[slug].articles %}
-    {% for a in sections_data[slug].articles[:2] %}
+    {% for a in sections_data[slug].articles[:3] %}
       {% set _ = group_articles.append((slug, sections_data[slug].label, a)) %}
     {% endfor %}
   {% endif %}
@@ -18,7 +18,7 @@
         <h2 class="text-xl font-bold text-{{ group.color }}-700">{{ group.label }}</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {% for slug, label, article in group_articles[:6] %}
+        {% for slug, label, article in (group_articles | sort(attribute='2.published', reverse=True))[:6] %}
         <a href="{{ article.url }}" target="_blank" rel="noopener"
            class="flex gap-3 bg-white rounded-lg shadow-sm hover:shadow-md transition p-3 border border-gray-100">
             {% if article.image_url %}

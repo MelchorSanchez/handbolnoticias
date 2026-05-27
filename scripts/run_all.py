@@ -29,15 +29,21 @@ def main():
     articles = fetch_all(sources)
     logger.info("Artículos obtenidos: %d", len(articles))
 
+    # Territorial sections are always kept as extra even when article is reclassified
+    _TERRITORIAL = {"spain/catalonia", "spain/navarra", "spain/euskadi"}
+
     new_count = 0
     classified_count = 0
     dup_count = 0
     for article in articles:
+        original_section = article["section"]
         sections = classify(article)
         if sections:
+            if original_section not in sections and original_section in _TERRITORIAL:
+                sections.append(original_section)
             primary = sections[0]
             extras = "|".join(sections[1:])
-            if primary != article["section"]:
+            if primary != original_section:
                 classified_count += 1
             article["section"] = primary
             article["extra_sections"] = extras

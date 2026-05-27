@@ -222,6 +222,7 @@ sources:
       title: "h4.nspHeader a"
       link: "h4.nspHeader a"
       image: "img"
+      date: "span.artdate"
 
   # ══════════════════════════════════════════════════════════════════════════
   # EUROPA — Handball internacional
@@ -237,6 +238,7 @@ sources:
     type: rss
     url: https://www.ihf.info/rss.xml
     max_items: 10
+    filter_keywords: [handball, balonmano, world championship, world cup, euro, ihf, andebol, handebol]
 
   - name: EHF-news
     section: europe/champions

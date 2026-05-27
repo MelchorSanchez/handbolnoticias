@@ -19,6 +19,36 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; HandbolNoticias/1.0; +https://github.com/handbolnoticias)"}
 TIMEOUT = 10.0
 
+_CATALAN_MONTHS = {
+    'gener': 1, 'febrer': 2, 'març': 3, 'abril': 4,
+    'maig': 5, 'juny': 6, 'juliol': 7, 'agost': 8,
+    'setembre': 9, 'octubre': 10, 'novembre': 11, 'desembre': 12,
+}
+_SPANISH_MONTHS = {
+    'enero': 1, 'febrero': 2, 'marzo': 3, 'abril': 4,
+    'mayo': 5, 'junio': 6, 'julio': 7, 'agosto': 8,
+    'septiembre': 9, 'octubre': 10, 'noviembre': 11, 'diciembre': 12,
+}
+_ALL_MONTHS = {**_CATALAN_MONTHS, **_SPANISH_MONTHS}
+
+
+def _parse_date_text(text: str) -> str:
+    """Parse human-readable date (Catalan/Spanish) from scraped text, return ISO string."""
+    clean = text.strip().lower()
+    m = re.search(r'(\d{1,2})\s+(?:de\s+)?(\w+)\s+(?:de\s+)?(\d{4})', clean)
+    if m:
+        day, month_name, year = int(m.group(1)), m.group(2), int(m.group(3))
+        month = _ALL_MONTHS.get(month_name)
+        if month:
+            try:
+                return datetime(year, month, day, 12, 0, 0, tzinfo=timezone.utc).isoformat()
+            except ValueError:
+                pass
+    m2 = re.search(r'(\d{4})-(\d{2})-(\d{2})', clean)
+    if m2:
+        return f"{m2.group(1)}-{m2.group(2)}-{m2.group(3)}T12:00:00+00:00"
+    return _now()
+
 # Instagram: reject pure countdown/promo posts, keep results/news/transfers
 _IG_REJECT = re.compile(
     r'\b(mañana\s+(partido|jugamos|nos\s+vemos)|este\s+(sábado|domingo|lunes|martes'
@@ -201,6 +231,9 @@ def fetch_scrape(source: dict) -> list:
             image_url = img_el.get("src") if img_el else None
             if image_url and image_url.startswith("/"):
                 image_url = f"{base.scheme}://{base.netloc}{image_url}"
+            date_sel = sel.get("date", "")
+            date_el = item.select_one(date_sel) if date_sel else None
+            published = _parse_date_text(date_el.get_text()) if date_el else _now()
             articles.append({
                 "id": _article_id(href),
                 "url": href,
@@ -210,7 +243,7 @@ def fetch_scrape(source: dict) -> list:
                 "image_url": image_url,
                 "source_name": source["name"],
                 "section": source["section"],
-                "published": _now(),
+                "published": published,
                 "fetched_at": _now(),
                 "is_manual": 0,
             })

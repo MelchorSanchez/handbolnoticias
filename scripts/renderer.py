@@ -138,7 +138,7 @@ def _get_section_articles(conn, section_slug):
         WHERE (section = ?
                OR (extra_sections != '' AND ('|' || extra_sections || '|') LIKE ('%|' || ? || '|%')))
           AND (published > datetime('now', '-30 days') OR published IS NULL)
-        ORDER BY published DESC, fetched_at DESC
+        ORDER BY COALESCE(published, fetched_at) DESC
         LIMIT 100
     """, (section_slug, section_slug)).fetchall()
     return _rows_to_dicts(rows)
@@ -148,7 +148,7 @@ def _get_all_recent_articles(conn):
     rows = conn.execute("""
         SELECT * FROM articles
         WHERE published > datetime('now', '-7 days') OR published IS NULL
-        ORDER BY published DESC, fetched_at DESC
+        ORDER BY COALESCE(published, fetched_at) DESC
         LIMIT 200
     """).fetchall()
     return _rows_to_dicts(rows)
