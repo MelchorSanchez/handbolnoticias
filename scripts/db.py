@@ -65,11 +65,18 @@ def insert_article(conn: sqlite3.Connection, article: dict) -> bool:
     except sqlite3.IntegrityError:
         conn.execute("""
             UPDATE articles
-            SET section = :section, extra_sections = :extra_sections
+            SET section        = :section,
+                extra_sections = :extra_sections,
+                published      = CASE
+                    WHEN :published IS NOT NULL AND :published != :fetched_at
+                    THEN :published
+                    ELSE published
+                END
             WHERE id = :id
-              AND (section != :section OR extra_sections != :extra_sections)
         """, {"id": article["id"], "section": article["section"],
-               "extra_sections": article["extra_sections"]})
+               "extra_sections": article["extra_sections"],
+               "published": article.get("published"),
+               "fetched_at": article.get("fetched_at")})
         conn.commit()
         return False
 

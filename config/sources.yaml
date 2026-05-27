@@ -203,7 +203,7 @@ sources:
       title: "h2, h3"
       link: "a[href]"
       image: "img"
-      date: "time[datetime]"
+      date: "span.span-date"
 
   - name: BalonmanoActual
     section: spain/asobal

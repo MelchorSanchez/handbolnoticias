@@ -33,8 +33,20 @@ _ALL_MONTHS = {**_CATALAN_MONTHS, **_SPANISH_MONTHS}
 
 
 def _parse_date_text(text: str) -> str:
-    """Parse human-readable date (Catalan/Spanish) from scraped text, return ISO string."""
+    """Parse human-readable date (Catalan/Spanish/Joomla) from scraped text, return ISO string."""
     clean = text.strip().lower()
+    # ISO: 2025-12-30 or 2025-12-30T...
+    m = re.search(r'(\d{4})-(\d{2})-(\d{2})', clean)
+    if m:
+        return f"{m.group(1)}-{m.group(2)}-{m.group(3)}T12:00:00+00:00"
+    # DD-MM-YYYY (e.g. "30-12-2025")
+    m = re.search(r'(\d{1,2})-(\d{1,2})-(\d{4})', clean)
+    if m:
+        try:
+            return datetime(int(m.group(3)), int(m.group(2)), int(m.group(1)), 12, 0, 0, tzinfo=timezone.utc).isoformat()
+        except ValueError:
+            pass
+    # DD month YYYY (e.g. "30 desembre 2025" / "30 de diciembre de 2025")
     m = re.search(r'(\d{1,2})\s+(?:de\s+)?(\w+)\s+(?:de\s+)?(\d{4})', clean)
     if m:
         day, month_name, year = int(m.group(1)), m.group(2), int(m.group(3))
@@ -44,9 +56,16 @@ def _parse_date_text(text: str) -> str:
                 return datetime(year, month, day, 12, 0, 0, tzinfo=timezone.utc).isoformat()
             except ValueError:
                 pass
-    m2 = re.search(r'(\d{4})-(\d{2})-(\d{2})', clean)
-    if m2:
-        return f"{m2.group(1)}-{m2.group(2)}-{m2.group(3)}T12:00:00+00:00"
+    # month DD, YYYY (Joomla: "desembre 30, 2025")
+    m = re.search(r'(\w+)\s+(\d{1,2}),?\s+(\d{4})', clean)
+    if m:
+        month_name, day, year = m.group(1), int(m.group(2)), int(m.group(3))
+        month = _ALL_MONTHS.get(month_name)
+        if month:
+            try:
+                return datetime(year, month, day, 12, 0, 0, tzinfo=timezone.utc).isoformat()
+            except ValueError:
+                pass
     return _now()
 
 # Instagram: reject pure countdown/promo posts, keep results/news/transfers
