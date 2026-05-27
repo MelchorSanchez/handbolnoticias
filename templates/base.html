@@ -23,8 +23,9 @@
         <a href="/" class="font-bold text-xl tracking-tight flex items-center gap-2">
             🤾 <span>HandbolNoticias</span>
         </a>
-        <div class="flex gap-6 text-sm font-medium">
+        <div class="flex gap-5 text-sm font-medium">
             <a href="/all/" class="hover:text-orange-300 py-4 font-semibold">Todas ▸</a>
+
             <!-- España -->
             <div class="relative group">
                 <button class="hover:text-orange-300 py-4">España ▾</button>
@@ -53,21 +54,40 @@
                     <a href="/spain/euskadi/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">País Vasco</a>
                 </div>
             </div>
-            <!-- Europa -->
+
+            <!-- Europa EHF -->
             <div class="relative group">
                 <button class="hover:text-orange-300 py-4">Europa ▾</button>
-                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-52 z-50 py-1">
-                    <a href="/europe/champions/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Champions League EHF</a>
-                    <a href="/europe/european-league/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">EHF European League</a>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-56 z-50 py-1">
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Club Masc</div>
+                    <a href="/europe/champions/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Champions League Masc</a>
+                    <a href="/europe/european-league/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European League Masc</a>
+                    <a href="/europe/cup-men/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European Cup Masc</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Club Fem</div>
+                    <a href="/europe/champions-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Champions League Fem</a>
+                    <a href="/europe/european-league-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European League Fem</a>
+                    <a href="/europe/cup-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European Cup Fem</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Selecciones</div>
+                    <a href="/europe/euro-men/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">EHF EURO Masc</a>
+                    <a href="/europe/euro-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">EHF EURO Fem</a>
                     <a href="/europe/other/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Otras EHF</a>
                 </div>
             </div>
-            <!-- Internacional -->
+
+            <!-- Internacional (IHF + Alemania + Francia + Resto) -->
             <div class="relative group">
                 <button class="hover:text-orange-300 py-4">Internacional ▾</button>
-                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-52 z-50 py-1 max-h-96 overflow-y-auto">
-                    {% for slug, label in intl_sections.items() %}
-                    <a href="/{{ slug }}/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">{{ label }}</a>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-52 z-50 py-1 max-h-[32rem] overflow-y-auto">
+                    {% for item in intl_menu %}
+                    {% if item.type == 'header' %}
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">{{ item.label }}</div>
+                    {% elif item.type == 'separator' %}
+                    <div class="border-t mx-3 my-1"></div>
+                    {% else %}
+                    <a href="/{{ item.slug }}/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">{{ item.label }}</a>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>

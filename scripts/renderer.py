@@ -14,63 +14,114 @@ SECTIONS = {
         "label": "España",
         "color": "red",
         "subsections": {
-            "spain/asobal": "ASOBAL",
-            "spain/dhp": "División Honor Plata",
+            "spain/asobal":               "ASOBAL",
+            "spain/dhp":                  "División Honor Plata",
             "spain/primera-nacional-masc": "Primera Nacional masc.",
-            "spain/guerreras": "Liga Guerreras Iberdrola",
-            "spain/dho-fem": "División Honor Oro fem.",
-            "spain/dhp-fem": "División Honor Plata fem.",
-            "spain/seleccion-masc": "Selección Masculina",
-            "spain/seleccion-fem": "Selección Femenina",
-            "spain/base-masc": "Base Masculino",
-            "spain/base-fem": "Base Femenino",
-            "spain/catalonia": "Cataluña",
-            "spain/navarra": "Navarra",
-            "spain/euskadi": "País Vasco",
+            "spain/guerreras":            "Liga Guerreras Iberdrola",
+            "spain/dho-fem":              "División Honor Oro fem.",
+            "spain/dhp-fem":              "División Honor Plata fem.",
+            "spain/seleccion-masc":       "Selección Masculina",
+            "spain/seleccion-fem":        "Selección Femenina",
+            "spain/base-masc":            "Base Masculino",
+            "spain/base-fem":             "Base Femenino",
+            "spain/catalonia":            "Cataluña",
+            "spain/navarra":              "Navarra",
+            "spain/euskadi":              "País Vasco",
         },
     },
     "europe": {
-        "label": "Europa",
+        "label": "Europa EHF",
         "color": "green",
         "subsections": {
-            "europe/champions": "Champions League EHF",
-            "europe/european-league": "EHF European League",
-            "europe/other": "Otras EHF",
+            "europe/champions":           "Champions League Masc",
+            "europe/champions-women":     "Champions League Fem",
+            "europe/european-league":     "European League Masc",
+            "europe/european-league-women": "European League Fem",
+            "europe/cup-men":             "European Cup Masc",
+            "europe/cup-women":           "European Cup Fem",
+            "europe/euro-men":            "EHF EURO Masc",
+            "europe/euro-women":          "EHF EURO Fem",
+            "europe/other":               "Otras EHF",
+        },
+    },
+    "ihf": {
+        "label": "IHF",
+        "color": "purple",
+        "subsections": {
+            "ihf/world-men":   "Mundial Masc",
+            "ihf/world-women": "Mundial Fem",
+        },
+    },
+    "germany": {
+        "label": "Alemania",
+        "color": "blue",
+        "subsections": {
+            "germany/bundesliga":  "Bundesliga",
+            "germany/zweite-liga": "2. Bundesliga",
+            "germany":             "General",
+        },
+    },
+    "france": {
+        "label": "Francia",
+        "color": "blue",
+        "subsections": {
+            "france/starligue": "Starligue",
+            "france/pro-d2":    "Pro D2",
+            "france":           "General",
         },
     },
     "international": {
         "label": "Internacional",
         "color": "blue",
         "subsections": {
-            "france": "Francia",
-            "germany": "Alemania",
-            "denmark": "Dinamarca",
-            "sweden": "Suecia",
-            "norway": "Noruega",
-            "portugal": "Portugal",
-            "austria": "Austria",
-            "switzerland": "Suiza",
-            "iceland": "Islandia",
+            "denmark":      "Dinamarca",
+            "sweden":       "Suecia",
+            "norway":       "Noruega",
+            "portugal":     "Portugal",
+            "austria":      "Austria",
+            "switzerland":  "Suiza",
+            "iceland":      "Islandia",
             "faroe-islands": "Islas Feroe",
-            "hungary": "Hungría",
-            "poland": "Polonia",
-            "croatia": "Croacia",
-            "serbia": "Serbia",
-            "slovakia": "Eslovaquia",
-            "romania": "Rumania",
-            "argentina": "Argentina",
-            "brazil": "Brasil",
-            "japan": "Japón",
+            "hungary":      "Hungría",
+            "poland":       "Polonia",
+            "croatia":      "Croacia",
+            "serbia":       "Serbia",
+            "slovakia":     "Eslovaquia",
+            "romania":      "Rumania",
+            "argentina":    "Argentina",
+            "brazil":       "Brasil",
+            "japan":        "Japón",
         },
     },
 }
 
-INTL_SECTIONS = SECTIONS["international"]["subsections"]
-
+# Flat label lookup for all sections
 SECTION_LABELS = {}
 for _group in SECTIONS.values():
     for _slug, _label in _group["subsections"].items():
         SECTION_LABELS[_slug] = _label
+
+# Structured Internacional dropdown (IHF + Alemania + Francia + rest)
+INTL_MENU = [
+    {"type": "header", "label": "IHF"},
+    {"type": "link",   "slug": "ihf/world-men",   "label": "Mundial Masc"},
+    {"type": "link",   "slug": "ihf/world-women",  "label": "Mundial Fem"},
+    {"type": "separator"},
+    {"type": "header", "label": "Alemania"},
+    {"type": "link",   "slug": "germany/bundesliga",  "label": "Bundesliga"},
+    {"type": "link",   "slug": "germany/zweite-liga", "label": "2. Bundesliga"},
+    {"type": "link",   "slug": "germany",             "label": "General"},
+    {"type": "separator"},
+    {"type": "header", "label": "Francia"},
+    {"type": "link",   "slug": "france/starligue", "label": "Starligue"},
+    {"type": "link",   "slug": "france/pro-d2",    "label": "Pro D2"},
+    {"type": "link",   "slug": "france",            "label": "General"},
+    {"type": "separator"},
+    {"type": "header", "label": "Otros países"},
+] + [
+    {"type": "link", "slug": slug, "label": label}
+    for slug, label in SECTIONS["international"]["subsections"].items()
+]
 
 
 def _rows_to_dicts(rows):
@@ -115,24 +166,20 @@ def render_all(conn):
 
     all_articles = _get_all_recent_articles(conn)
 
-    tmpl = env.get_template("index.html")
-    html = tmpl.render(
+    base_ctx = dict(
         sections=SECTIONS,
-        sections_data=sections_data,
-        intl_sections=INTL_SECTIONS,
+        intl_menu=INTL_MENU,
+        section_labels=SECTION_LABELS,
         updated_at=updated_at,
     )
+
+    tmpl = env.get_template("index.html")
+    html = tmpl.render(**base_ctx, sections_data=sections_data)
     (OUTPUT_DIR / "index.html").write_text(html, encoding="utf-8")
     logger.info("Rendered index.html")
 
     all_tmpl = env.get_template("all_news.html")
-    html = all_tmpl.render(
-        articles=all_articles,
-        section_labels=SECTION_LABELS,
-        sections=SECTIONS,
-        intl_sections=INTL_SECTIONS,
-        updated_at=updated_at,
-    )
+    html = all_tmpl.render(**base_ctx, articles=all_articles)
     all_dir = OUTPUT_DIR / "all"
     all_dir.mkdir(parents=True, exist_ok=True)
     (all_dir / "index.html").write_text(html, encoding="utf-8")
@@ -143,12 +190,10 @@ def render_all(conn):
         section_dir = OUTPUT_DIR / slug
         section_dir.mkdir(parents=True, exist_ok=True)
         html = section_tmpl.render(
+            **base_ctx,
             section_slug=slug,
             section_label=data["label"],
             articles=data["articles"],
-            sections=SECTIONS,
-            intl_sections=INTL_SECTIONS,
-            updated_at=updated_at,
         )
         (section_dir / "index.html").write_text(html, encoding="utf-8")
     logger.info("Rendered %d section pages", len(sections_data))

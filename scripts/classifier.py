@@ -9,6 +9,15 @@ CONFIG_DIR = Path(__file__).parent.parent / "config"
 _rules = None
 _teams = None
 
+# Base sections exclude domestic adult leagues (but can coexist with European/world sections)
+_BASE_SECTIONS = frozenset({"spain/base-masc", "spain/base-fem"})
+_DOMESTIC_ADULT = frozenset({
+    "spain/asobal", "spain/guerreras", "spain/dhp",
+    "spain/dho-fem", "spain/dhp-fem", "spain/primera-nacional-masc",
+    "germany/bundesliga", "germany/zweite-liga", "germany",
+    "france/starligue", "france/pro-d2", "france",
+})
+
 
 def _load_rules():
     global _rules
@@ -46,7 +55,7 @@ def _text(article):
 def _matches_rule(rule, text, tags):
     excludes = [e.lower() for e in rule.get("exclude", [])]
 
-    # Tag match (RSS tags — very specific, skip require_any)
+    # Tag match (RSS tags — very specific, bypass require_any)
     rule_tags = [t.lower() for t in rule.get("tags", [])]
     if any(rt in tag for tag in tags for rt in rule_tags):
         return not any(ex in text for ex in excludes)
@@ -79,6 +88,14 @@ def _sections_from_teams(text):
     return matched
 
 
+def _apply_priority_rules(sections):
+    """Post-process: base articles must not appear alongside adult domestic leagues."""
+    s = set(sections)
+    if s & _BASE_SECTIONS:
+        sections = [x for x in sections if x not in _DOMESTIC_ADULT]
+    return sections
+
+
 def classify(article):
     """Return list of matching section slugs (empty = keep source default).
     First element is the primary section; the article appears in all of them."""
@@ -88,7 +105,6 @@ def classify(article):
 
     sections = []
 
-    # Keyword / tag rules first (ordered by specificity)
     for rule in rules:
         if _matches_rule(rule, text, tags):
             s = rule["section"]
@@ -96,10 +112,9 @@ def classify(article):
                 sections.append(s)
                 logger.debug("Rule '%s' → %s", article.get("title_orig", "")[:60], s)
 
-    # Team-name matches add extra sections
     for s in _sections_from_teams(text):
         if s not in sections:
             sections.append(s)
             logger.debug("Team '%s' → %s", article.get("title_orig", "")[:60], s)
 
-    return sections
+    return _apply_priority_rules(sections)

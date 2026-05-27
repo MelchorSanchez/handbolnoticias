@@ -3,6 +3,7 @@
 # Los nombres son insensibles a mayúsculas.
 
 teams:
+  # ── España — Liga ASOBAL ──────────────────────────────────────────
   spain/asobal:
     - FC Barcelona
     - Barça
@@ -11,44 +12,26 @@ teams:
     - Fraikin Granollers
     - Fraikin BM Granollers
     - Ademar
-    - Ademar de Leon
     - BM Cuenca
-    - Balonmano Cuenca
     - Portland San Antonio
     - Portland BM
     - Bathco Torrelavega
     - Torrelavega
     - Recoletas Valladolid
     - Recoletas BM
-    - Atletico Valladolid BM
     - Fertiberia Puerto Sagunto
     - Fertiberia Sagunto
+    - BM Sinfín
     - Abanca Ademar
-    - BM Logroño LA Rioja
-    - Dicorpebal Logroño
+    - Deza
+    - BM Logroño
+    - BM Burgos
+    - BM Benidorm
     - Cangas
-    - BM Cangas
-    - Nava
-    - Viveros Herol Nava
-    - Caserio
-    - Caserio Ciudad Real
-    - Rebi Cuenca
-    - Puente Genil
-    - Bathco BM. Torrelavega
-    - Recoletas Atlético Valladolid
-    - Abanca Ademar León
-    - Balonmano Caserío Ciudad Real
-    - Horneo Eón Alicante
-    - REBI Balonmano Cuenca
-    - BM Villa de Aranda
-    - Frigoríficos del Morrazo
-    - Ángel Ximénez Puente Genil
-    - Viveros Herol BM Nava
-    - Proin
-    - Sevilla
-    - Proin Sevilla
+    - Helvetia Anaitasuna
+    - Anaitasuna
 
-
+  # ── España — Liga Guerreras ───────────────────────────────────────
   spain/guerreras:
     - Guardés
     - Atlético Guardés
@@ -59,74 +42,93 @@ teams:
     - Rocasa
     - Rocasa Gran Canaria
     - Costa del Sol Málaga
-    - Malaga
+    - Costa del Sol Nerja
+    - Rincón Dinamita
     - Itxako
+    - BM Lanzarote
+    - Mavi Lanzarote
     - BM Elda
     - Elda Prestigio
     - Remudas
-    - Bm Málaga
-    - BM Valladolid
-    - Aula Valladolid
-    - BM Granollers
-    - BM Porriño
-    - Beti Onak
-    - Replasa Beti Onak
+    - BM Alcobendas
+    - Joma Málaga
+    - Buñol
 
+  # ── España — División Honor Oro Fem ──────────────────────────────
   spain/dho-fem:
-    -
+    - BM Xirivella
+    - Mar Valencia
+    - BM Aluche
+    - BM Porriño
 
+  # ── España — División Honor Plata Masc ───────────────────────────
   spain/dhp:
-    - Agustinos Alicante
+    - Agustinos León
     - Agustinos
-    - BM Sinfín
-    - Bada Huesca
-    - BM Guadalajara
+    - BM Aragón
+    - Atlético Novás
+    - Alarcos Ciudad Real
     - BM Huesca
-    - Benidorm BM
-    - Anaitasuna
-    - Oviedo
-    - Confia Base Oviedo
+    - Bada Huesca
 
-  spain/dhp-fem:
-    - BM Manzanares
-    - BM Zamora
-
+  # ── España — Selección ────────────────────────────────────────────
   spain/seleccion-masc:
     - Los Hispanos
-    - Selección española masculina
-    - David Barrufet
-    - Jordi Ribera
-    - España masculina
 
   spain/seleccion-fem:
     - Las Guerreras
-    - Selección española femenina
-    - España femenina
 
+  # ── Europa — EHF Champions League Masc ───────────────────────────
   europe/champions:
     - Magdeburgo
+    - SC Magdeburg
     - Kielce
     - Veszprém
     - PSG Handball
     - Paris Saint-Germain Handball
     - THW Kiel
+    - SG Flensburg
     - Aalborg
     - Kolstad
     - Montpellier HB
     - Füchse Berlin
     - Pick Szeged
-    - Sporting CP
-    - Nantes HBC
+    - Rhein-Neckar Löwen
 
+  # ── Europa — EHF Champions League Fem ────────────────────────────
+  europe/champions-women:
+    - Győr
+    - Györ
+    - Vipers Kristiansand
+    - Metz Handball
+    - FTC Rail Cargo
+    - Brest Bretagne Handball
+    - CSM Bucharest
+    - CSM Bucarest
+    - Team Esbjerg
+    - Buducnost
+    - Odense HC
+    - Borussia Dortmund Handball
 
+  # ── Europa — EHF European League Masc ────────────────────────────
   europe/european-league:
+    - Sporting CP Handball
     - Göppingen
     - SL Benfica Handball
-    - Irudek Bidasoa Irun
+    - Nantes HBC
+    - Limoges Saint-Etienne
+    - Nîmes Olympique Handball
 
-  germany:
+  # ── Europa — EHF European Cup (Masc / Fem) ───────────────────────
+  europe/cup-men:
+    - Mecalia Atlético Guardés
+
+  europe/cup-women:
+    - Mecalia Atlético Guardés
+
+  # ── Alemania ──────────────────────────────────────────────────────
+  germany/bundesliga:
     - Bundesliga Handball
-    - DHB Pokal
     - Rhein-Neckar
     - Füchse
     - SG Flensburg
@@ -134,8 +136,24 @@ teams:
     - Bergischer HC
     - TBV Lemgo
     - HSV Hamburg Handball
+    - SC Magdeburg
+    - MT Melsungen
+    - Hannover-Burgdorf
+    - GWD Minden
+    - Magdeburgo
 
-  france:
+  germany/zweite-liga:
+    - TuS N-Lübbecke
+    - VfL Gummersbach
+    - Eulen Ludwigshafen
+
+  germany:
+    - DHB
+    - Handball Deutschland
+    - Die Mannschaft Handball
+
+  # ── Francia ───────────────────────────────────────────────────────
+  france/starligue:
     - Nantes HBC
     - Montpellier HB
     - Paris Saint-Germain Handball
@@ -143,51 +161,65 @@ teams:
     - FENIX Toulouse
     - Cesson Rennes
     - Chartres
+    - Saint-Raphael Var
 
+  france/pro-d2:
+    - Tremblay Handball
+    - Dunkerque Handball
+    - Pays d'Aix Handball
+
+  france:
+    - FFHB
+    - Fédération Française Handball
+    - équipe de France handball
+
+  # ── Dinamarca ─────────────────────────────────────────────────────
   denmark:
     - Aalborg Håndbold
-    - Kolstad
     - GOG Håndbold
     - Bjerringbro-Silkeborg
+    - Skjern Håndbold
 
+  # ── Suecia ────────────────────────────────────────────────────────
   sweden:
     - IFK Kristianstad
     - Hammarby Handboll
     - Skuru IK
     - Lugi HF
+    - Sävehof
 
+  # ── Noruega ───────────────────────────────────────────────────────
   norway:
     - Elverum Handball
-    - Kolstad
     - Drammen HK
     - Vipers Kristiansand
+    - Storhamar Handball
 
+  # ── Portugal ──────────────────────────────────────────────────────
   portugal:
     - Sporting CP Handball
     - SL Benfica Handball
     - FC Porto Handball
     - Águas Santas
 
+  # ── Hungría ───────────────────────────────────────────────────────
   hungary:
     - Pick Szeged
     - Veszprém HC
     - Telekom Veszprém
     - Ferencváros
 
+  # ── Croacia ───────────────────────────────────────────────────────
   croatia:
     - PPD Zagreb
     - RK Nexe
     - RK Dinamo Zagreb
 
+  # ── Argentina ─────────────────────────────────────────────────────
   argentina:
-    - Club Atlético Talleres
-    - San Juan
     - Selección Argentina balonmano
 
+  # ── Brasil ────────────────────────────────────────────────────────
   brazil:
-    - Seleção Brasileira de Handebol
+    - Seleção Brasileira Handebol
     - Pinheiros
-
-  japan:
-    - Selección japonesa balonmano
-    - JHA

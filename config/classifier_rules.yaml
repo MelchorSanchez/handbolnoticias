@@ -1,202 +1,306 @@
 rules:
-  # ── Selección Nacional ──────────────────────────────────────────────
-  - section: spain/seleccion-masc
-    tags: [seleccion-espanola-masculina, seleccion masculina, spain men]
-    keywords: [selección masculina, seleccion masculina, selección española masculina,
-               "los hispanos", goles del rey, nacional masculin]
-    exclude: [femenina, juvenil, cadete, infantil, alevín, benjamín, sub-18, sub-20, sub-21]
+  # ═══════════════════════════════════════════════════════════════════
+  # IHF — Mundiales (hombres / mujeres / sub-)
+  # ═══════════════════════════════════════════════════════════════════
+  - section: ihf/world-men
+    tags: [ihf-world-men, world-championship-men, mundial-masculino]
+    keywords: [ihf world championship men, world championship men, mundial masculino,
+               campeonato del mundo masculino, "world men's handball championship",
+               "sub-21 masculino mundial", "u21 world championship men",
+               "u19 world championship men", "u17 world championship men",
+               "sub-19 masculino mundial", "sub-17 masculino mundial"]
+    exclude: [femenin, women, mujer]
 
-  - section: spain/seleccion-fem
-    tags: [seleccion-espanola-femenina, seleccion femenina, spain women]
-    keywords: [selección femenina, seleccion femenina, selección española femenina,
-               "las guerreras", seleccionadora, nacional femenin]
-    exclude: [masculina, juvenil, cadete, infantil, alevín, benjamín, sub-18, sub-20, sub-21, liga guerreras iberdrola, asobal]
+  - section: ihf/world-women
+    tags: [ihf-world-women, world-championship-women, mundial-femenino]
+    keywords: [ihf world championship women, world championship women, mundial femenino,
+               campeonato del mundo femenino, "world women's handball championship",
+               "u21 world championship women", "u19 world championship women",
+               "u17 world championship women",
+               "sub-21 femenino mundial", "sub-19 femenino mundial"]
+    exclude: [masculin, men's, hombre]
 
-  # ── Categorías Base ─────────────────────────────────────────────────
-  - section: spain/base-masc
-    tags: [base-masculino, juvenil-masculino, cadete-masculino, infantil-masculino,
-           alevín-masculino, benjamín-masculino]
-    keywords: [juvenil masculino, cadete masculino, infantil masculino, alevín masculino,
-               benjamín masculino, "sub-20 masculino", "sub-18 masculino", "sub-16 masculino",
-               "sub-14 masculino", categorías base masculino, base masc]
-    require_any: [juvenil, cadete, infantil, alevín, alevín, benjamín, sub-20, sub-18, sub-16, sub-14]
-    exclude: [femenin, selección española]
+  # ═══════════════════════════════════════════════════════════════════
+  # EHF EURO — Eurocopas nacionales (hombres / mujeres / sub-)
+  # ═══════════════════════════════════════════════════════════════════
+  - section: europe/euro-men
+    tags: [ehf-euro-men, european-championship-men, eurocopa-masculina]
+    keywords: ["ehf euro men", "european championship men", eurocopa masculina,
+               "campeonato europeo masculino", "european handball championship men",
+               "men's ehf euro", "men ehf euro",
+               "u21 european championship men", "u19 european championship men",
+               "u17 european championship men", "m20 european championship",
+               "sub-21 europeo masculino", "sub-19 europeo masculino",
+               "sub-17 europeo masculino"]
+    exclude: [women, femenin, mujer]
 
-  - section: spain/base-fem
-    tags: [base-femenino, juvenil-femenino, cadete-femenino, infantil-femenino,
-           alevín-femenino, benjamín-femenino]
-    keywords: [juvenil femenino, cadete femenino, infantil femenino, alevín femenino,
-               benjamín femenino, "sub-20 femenino", "sub-18 femenino", "sub-16 femenino",
-               "sub-14 femenino", categorías base femenino, base fem]
-    require_any: [juvenil, cadete, infantil, alevín, alevín, benjamín, sub-20, sub-18, sub-16, sub-14]
-    exclude: [masculin, selección española]
+  - section: europe/euro-women
+    tags: [ehf-euro-women, european-championship-women, eurocopa-femenina]
+    keywords: ["ehf euro women", "european championship women", eurocopa femenina,
+               "campeonato europeo femenino", "european handball championship women",
+               "women's ehf euro", "women ehf euro",
+               "u21 european championship women", "u19 european championship women",
+               "u17 european championship women", "w20 european championship",
+               "sub-21 europeo femenino", "sub-19 europeo femenino"]
+    exclude: [men's, masculin, hombre]
 
-  # ── Liga Asobal ─────────────────────────────────────────────────────
-  - section: spain/asobal
-    tags: [asobal, balonmano asobal, liga asobal]
-    keywords: [asobal, "liga asobal", "liga sacyr asobal", "liga sacyr",
-               "división de honor", "division de honor masculina",
-               portland san antonio, bidasoa, ademar, granollers, fraikin,
-               cuenca, helvetia anaitasuna, bathco, deza, torrelavega, abanca]
-    exclude: [femenin, dho-fem, guerreras, plata, segunda]
+  # ═══════════════════════════════════════════════════════════════════
+  # EHF Champions League
+  # ═══════════════════════════════════════════════════════════════════
+  - section: europe/champions-women
+    tags: [ehf-champions-league-women, champions-league-women]
+    keywords: ["ehf champions league women", "champions league women", "champions league femenina",
+               "champions league fem", "final four femenina", "ehf cl women",
+               "women's champions league", "liga de campeones femenina"]
 
-  - section: spain/dhp
-    tags: [dhp, division-honor-plata, primera-nacional-masc]
-    keywords: ["división honor plata", "division honor plata", "dhp masculino",
-               "primera nacional masculina", "primera nacional masc"]
-    exclude: [femenin]
-
-  - section: spain/primera-nacional-masc
-    tags: [primera-nacional]
-    keywords: ["primera nacional"]
-    exclude: [femenin]
-
-  # ── Liga Femenina ────────────────────────────────────────────────────
-  - section: spain/guerreras
-    tags: [liga-guerreras, guerreras-iberdrola, liga-femenina-asobal]
-    keywords: ["liga guerreras", "guerreras iberdrola", "liga femenina",
-               "balonmano femenino", bm elda, bm le6n, bm lanzarote,
-               "super amara bera bera", "rincón dinamita", "itxako"]
-    exclude: [masculin, sub-20, sub-18, dhp, segunda]
-
-  - section: spain/dho-fem
-    tags: [dho-femenino, division-honor-oro-femenino]
-    keywords: ["división honor oro femenino", "division honor oro femenino",
-               "dho femenino", "primera divisón femenina"]
-    exclude: [masculin]
-
-  - section: spain/dhp-fem
-    tags: [dhp-femenino, division-honor-plata-femenino]
-    keywords: ["división honor plata femenino", "division honor plata femenino",
-               "dhp femenino", "segunda división femenina"]
-    exclude: [masculin]
-
-  # ── Territorial España ───────────────────────────────────────────────
-  - section: spain/catalonia
-    tags: [cataluña, catalonia, rfeb-cat, cathandbol]
-    keywords: [cathandbol, "handbol català", "rfeb cataluña", "handball catalunya",
-               "balonmano cataluña", "handbol catalonia"]
-
-  - section: spain/navarra
-    tags: [navarra, rfeb-navarra]
-    keywords: ["balonmano navarra", "handball navarra", "navarra balonmano",
-               "rfeb navarra", "federación navarra"]
-
-  - section: spain/euskadi
-    tags: [euskadi, pais-vasco, rfeb-euskadi]
-    keywords: [eskubaloia, "balonmano euskadi", "handball euskadi",
-               "handball vasco", "federación vasca", "rfeb euskadi"]
-
-  # ── Europa EHF ──────────────────────────────────────────────────────
   - section: europe/champions
     tags: [ehf-champions-league, champions-league-handball, ehf-cl]
-    keywords: ["ehf champions", "champions league ehf", "champions league handball",
+    keywords: ["ehf champions league", "champions league ehf", "champions league handball",
                "liga de campeones ehf", "champions league de balonmano",
-               "final four ehf", "final4 ehf"]
+               "final four ehf", "final4 ehf", "final four champions"]
+    exclude: [women, femenin]
+
+  # ═══════════════════════════════════════════════════════════════════
+  # EHF European League
+  # ═══════════════════════════════════════════════════════════════════
+  - section: europe/european-league-women
+    tags: [ehf-european-league-women, european-league-women]
+    keywords: ["ehf european league women", "european league women", "european league femenina",
+               "european league fem"]
 
   - section: europe/european-league
     tags: [ehf-european-league, european-league-handball]
     keywords: ["ehf european league", "european league ehf", "european league handball",
-               "copa ehf", "copa de la ehf", "ehf cup"]
+               "copa ehf", "copa de la ehf"]
+    exclude: [women, femenin]
 
+  # ═══════════════════════════════════════════════════════════════════
+  # EHF European Cup (antigua EHF Cup / Challenge Cup)
+  # ═══════════════════════════════════════════════════════════════════
+  - section: europe/cup-women
+    tags: [ehf-cup-women, european-cup-women]
+    keywords: ["ehf european cup women", "european cup women", "copa europea femenina",
+               "ehf cup women", "challenge cup women"]
+
+  - section: europe/cup-men
+    tags: [ehf-cup-men, european-cup-men]
+    keywords: ["ehf european cup", "european cup handball", "copa europea balonmano",
+               "ehf cup handball", "challenge cup handball"]
+    exclude: [women, femenin, champions league, european league]
+
+  # ═══════════════════════════════════════════════════════════════════
+  # Otras EHF (catch-all EHF)
+  # ═══════════════════════════════════════════════════════════════════
   - section: europe/other
-    tags: [ehf, eurohandball, european-championship, world-championship]
-    keywords: [eurohandball, "campeonato europeo", "europeo de balonmano",
-               "mundial de balonmano", "campeonato del mundo balonmano",
-               "ehf euro", "world championship handball", "ihf world"]
+    tags: [ehf, eurohandball]
+    keywords: [eurohandball, "ehf beach handball", "beach handball", "handbol platja"]
+    exclude: [champions league, european league, euro men, euro women, world championship]
 
-  # ── Internacional ────────────────────────────────────────────────────
-  - section: france
-    tags: [france, handball-france, lnh, starligue, pro-d2]
-    keywords: [starligue, "pro d2", "lnh handball", "ffhb", "handball france",
-               "équipe de france", "balonmano francés"]
+  # ═══════════════════════════════════════════════════════════════════
+  # Selección Nacional España
+  # ═══════════════════════════════════════════════════════════════════
+  - section: spain/seleccion-masc
+    tags: [seleccion-espanola-masculina, seleccion-masculina]
+    keywords: [selección masculina, seleccion masculina, selección española masculina,
+               "los hispanos", nacional masculin]
+    exclude: [femenina, juvenil, cadete, infantil, sub-18, sub-20, sub-21]
+
+  - section: spain/seleccion-fem
+    tags: [seleccion-espanola-femenina, seleccion-femenina]
+    keywords: [selección femenina, seleccion femenina, selección española femenina,
+               "las guerreras", seleccionadora, nacional femenin]
+    exclude: [masculina, juvenil, cadete, infantil, sub-18, sub-20, sub-21,
+              liga guerreras iberdrola, asobal]
+
+  # ═══════════════════════════════════════════════════════════════════
+  # Categorías Base España
+  # ═══════════════════════════════════════════════════════════════════
+  - section: spain/base-masc
+    tags: [base-masculino, juvenil-masculino, cadete-masculino, infantil-masculino]
+    keywords: [juvenil masculino, cadete masculino, infantil masculino, alevín masculino,
+               benjamín masculino, campeonato de españa cadete, campeonato de españa juvenil,
+               campeonato de españa infantil, campeonato de españa alevín,
+               "sub-20 masculino", "sub-18 masculino", "sub-16 masculino",
+               categorías base masculino]
+    require_any: [juvenil, cadete, infantil, "alevín", "alevin", benjamín, benjamin,
+                  sub-20, sub-18, sub-16, sub-14, campeonato de españa base]
+    exclude: [femenin, selección española, seleccion española]
+
+  - section: spain/base-fem
+    tags: [base-femenino, juvenil-femenino, cadete-femenino, infantil-femenino]
+    keywords: [juvenil femenino, cadete femenino, infantil femenino, alevín femenino,
+               benjamín femenino, campeonato de españa cadete femenino,
+               campeonato de españa juvenil femenino,
+               "sub-20 femenino", "sub-18 femenino", "sub-16 femenino",
+               categorías base femenino]
+    require_any: [juvenil, cadete, infantil, "alevín", "alevin", benjamín, benjamin,
+                  sub-20, sub-18, sub-16, sub-14]
+    exclude: [masculin, selección española, seleccion española]
+
+  # ═══════════════════════════════════════════════════════════════════
+  # Liga ASOBAL y otras ligas masculinas España
+  # ═══════════════════════════════════════════════════════════════════
+  - section: spain/asobal
+    tags: [asobal, liga-asobal]
+    keywords: [asobal, "liga asobal", "liga sacyr asobal", "liga sacyr",
+               "división de honor masculina", "division de honor masculina"]
+    exclude: [femenin, juvenil, cadete, infantil, alevín, benjamín, base]
+
+  - section: spain/dhp
+    tags: [dhp, division-honor-plata-masc]
+    keywords: ["división honor plata masculino", "division honor plata masculino",
+               "dhp masculino", "primera nacional masculina", dhp]
+    exclude: [femenin]
+
+  - section: spain/primera-nacional-masc
+    tags: [primera-nacional]
+    keywords: ["primera nacional masculin"]
+    exclude: [femenin]
+
+  # ═══════════════════════════════════════════════════════════════════
+  # Liga femenina España
+  # ═══════════════════════════════════════════════════════════════════
+  - section: spain/guerreras
+    tags: [liga-guerreras, guerreras-iberdrola, liga-femenina-asobal]
+    keywords: ["liga guerreras", "guerreras iberdrola", "liga femenina balonmano",
+               "liga primera división femenina", liga guerreras]
+    exclude: [masculin, sub-20, sub-18, juvenil, cadete]
+
+  - section: spain/dho-fem
+    tags: [dho-femenino, division-honor-oro-femenino]
+    keywords: ["división honor oro femenino", "dho femenino",
+               "primera división femenina"]
+    exclude: [masculin]
+
+  - section: spain/dhp-fem
+    tags: [dhp-femenino, division-honor-plata-femenino]
+    keywords: ["división honor plata femenino", "dhp femenino",
+               "segunda división femenina"]
+    exclude: [masculin]
+
+  # ═══════════════════════════════════════════════════════════════════
+  # Territorial España
+  # ═══════════════════════════════════════════════════════════════════
+  - section: spain/catalonia
+    tags: [cataluña, catalonia, cathandbol]
+    keywords: [cathandbol, "handbol català", "rfeb cataluña", "handball catalunya"]
+
+  - section: spain/navarra
+    tags: [navarra, rfeb-navarra]
+    keywords: ["balonmano navarra", "handball navarra", "federación navarra de balonmano"]
+
+  - section: spain/euskadi
+    tags: [euskadi, pais-vasco, rfeb-euskadi]
+    keywords: [eskubaloia, "balonmano euskadi", "handball euskadi", "federación vasca"]
+
+  # ═══════════════════════════════════════════════════════════════════
+  # Alemania
+  # ═══════════════════════════════════════════════════════════════════
+  - section: germany/bundesliga
+    tags: [bundesliga, hbl, dkb-bundesliga]
+    keywords: [bundesliga, "hbl handball", "dkb bundesliga", "handball-bundesliga",
+               "liqui moly hbl", "daikin hbl"]
+    exclude: ["2. bundesliga", zweite, women, frauen]
+
+  - section: germany/zweite-liga
+    tags: [zweite-bundesliga, 2-bundesliga]
+    keywords: ["2. bundesliga handball", "zweite handball-bundesliga",
+               "2. handball-bundesliga", "zweite liga handball"]
 
   - section: germany
-    tags: [germany, handball-germany, bundesliga, hbl]
-    keywords: [bundesliga, "dkb bundesliga", "hbl handball", "dhb", "handball-bundesliga",
-               "balonmano alemán", "handball deutschland"]
+    tags: [germany, handball-germany, dhb]
+    keywords: [dhb handball, "handball deutschland", "handball germany",
+               balonmano alemán, "handball frauen bundesliga"]
 
+  # ═══════════════════════════════════════════════════════════════════
+  # Francia
+  # ═══════════════════════════════════════════════════════════════════
+  - section: france/starligue
+    tags: [starligue, lidl-starligue, lnh]
+    keywords: [starligue, "lidl starligue", "lnh handball", "lnh starligue"]
+    exclude: ["pro d2", proligue]
+
+  - section: france/pro-d2
+    tags: [pro-d2, proligue]
+    keywords: ["pro d2 handball", proligue, "deuxième division française handball"]
+
+  - section: france
+    tags: [france, handball-france, ffhb]
+    keywords: [ffhb, "handball france", "équipe de france handball",
+               "balonmano francés", "handball féminin france"]
+
+  # ═══════════════════════════════════════════════════════════════════
+  # Resto de países
+  # ═══════════════════════════════════════════════════════════════════
   - section: denmark
-    tags: [denmark, handball-denmark, dhf, herre-ligaen]
+    tags: [denmark, handball-denmark, dhf]
     keywords: ["dhf handball", "herre ligaen", "kvindeligaen", "handball denmark",
                "balonmano danés", "danish handball"]
 
   - section: sweden
     tags: [sweden, handball-sweden, shl-handball]
     keywords: ["shl handball", "svenska handbollförbundet", "handball sweden",
-               "balonmano suecia", "swedish handball"]
+               "balonmano suecia"]
 
   - section: norway
     tags: [norway, handball-norway, nhf]
     keywords: ["nhf handball", "handball norway", "norsk handball",
-               "balonmano noruega", "norwegian handball"]
+               "balonmano noruega"]
 
   - section: portugal
     tags: [portugal, handball-portugal, fpa]
-    keywords: ["fpa handball", "andebol", "handball portugal",
-               "balonmano portugal", "liga portuguesa"]
+    keywords: ["fpa handball", andebol, "handball portugal", "balonmano portugal",
+               "liga portuguesa andebol"]
 
   - section: austria
     tags: [austria, handball-austria, oehb]
-    keywords: ["öhb handball", "handball austria", "handball österreich",
-               "balonmano austria", "austrian handball"]
+    keywords: ["öhb handball", "handball austria", "balonmano austria"]
 
   - section: switzerland
     tags: [switzerland, handball-switzerland, shv]
-    keywords: ["shv handball", "handball suisse", "handball schweiz",
-               "balonmano suiza", "swiss handball"]
+    keywords: ["shv handball", "handball suisse", "handball schweiz", "balonmano suiza"]
 
   - section: iceland
-    tags: [iceland, handball-iceland, hsi]
-    keywords: ["hsi handball", "handball iceland", "handball island",
-               "balonmano islandia", "icelandic handball"]
+    tags: [iceland, handball-iceland]
+    keywords: ["handball iceland", "handball island", "balonmano islandia"]
 
   - section: faroe-islands
     tags: [faroe-islands, handball-faroe]
-    keywords: ["faroe handball", "handball faroe", "balonmano feroe",
-               "islas feroe", "faroese handball"]
+    keywords: ["faroe handball", "islas feroe", "faroese handball"]
 
   - section: hungary
     tags: [hungary, handball-hungary, mksz]
-    keywords: ["mksz handball", "handball hungary", "kézilabda",
-               "balonmano hungría", "hungarian handball"]
+    keywords: ["mksz handball", "kézilabda", "balonmano hungría", "hungarian handball"]
 
   - section: poland
-    tags: [poland, handball-poland, zpr]
-    keywords: ["zpr handball", "handball polska", "superliga polska",
-               "balonmano polonia", "polish handball"]
+    tags: [poland, handball-poland]
+    keywords: ["handball polska", "superliga polska", "balonmano polonia"]
 
   - section: croatia
-    tags: [croatia, handball-croatia, hrs]
-    keywords: ["hrs handball", "handball croatia", "rukomet hrvatska",
-               "balonmano croacia", "croatian handball"]
+    tags: [croatia, handball-croatia]
+    keywords: ["handball croatia", "rukomet hrvatska", "balonmano croacia"]
 
   - section: serbia
-    tags: [serbia, handball-serbia, rss]
-    keywords: ["rss handball", "handball serbia", "rukometni",
-               "balonmano serbia", "serbian handball"]
+    tags: [serbia, handball-serbia]
+    keywords: ["handball serbia", "rukometni", "balonmano serbia"]
 
   - section: slovakia
     tags: [slovakia, handball-slovakia]
-    keywords: ["handball slovakia", "handball slovensko", "slovenský hádzaná",
-               "balonmano eslovaquia", "slovak handball"]
+    keywords: ["handball slovakia", "slovenský hádzaná", "balonmano eslovaquia"]
 
   - section: romania
     tags: [romania, handball-romania, frh]
-    keywords: ["frh handball", "handball romania", "handbal romania",
-               "balonmano rumania", "romanian handball"]
+    keywords: ["frh handball", "handbal romania", "balonmano rumania"]
 
   - section: argentina
     tags: [argentina, handball-argentina, cach]
     keywords: ["cach handball", "handball argentina", "balonmano argentina",
-               "federación argentina", "argentina handball"]
+               "federación argentina de balonmano"]
 
   - section: brazil
     tags: [brazil, handball-brazil, cbhb]
-    keywords: ["cbhb handball", "handball brasil", "handebol brasil",
-               "balonmano brasil", "brazilian handball", "handebol"]
+    keywords: ["cbhb handball", handebol, "handball brasil", "balonmano brasil"]
 
   - section: japan
     tags: [japan, handball-japan, jha]
-    keywords: ["jha handball", "handball japan", "nihon handball",
-               "balonmano japón", "japanese handball"]
+    keywords: ["jha handball", "handball japan", "balonmano japón"]
