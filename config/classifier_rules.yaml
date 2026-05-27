@@ -265,7 +265,7 @@ rules:
   - section: spain/primera-nacional-masc
     tags: [primera-nacional]
     keywords: ["primera nacional masculin", "primera nacional", "1ª nacional", "1a nacional",
-               "1acath", "1a estatal", lliga estatal]
+               "1aestatal", "1a estatal", "lliga estatal"]
     exclude: [femenin]
 
   # ═══════════════════════════════════════════════════════════════════
