@@ -45,6 +45,15 @@ def extract_image(entry) -> str:
     return None
 
 
+def _passes_filter(source: dict, title: str, summary: str) -> bool:
+    """If source defines filter_keywords, skip articles that don't mention any of them."""
+    keywords = source.get("filter_keywords", [])
+    if not keywords:
+        return True
+    text = (title + " " + summary).lower()
+    return any(kw.lower() in text for kw in keywords)
+
+
 def fetch_rss(source: dict) -> list:
     try:
         feed = feedparser.parse(source["url"])
@@ -55,12 +64,15 @@ def fetch_rss(source: dict) -> list:
                 continue
             summary_html = entry.get("summary", "") or ""
             summary_text = BeautifulSoup(summary_html, "lxml").get_text()[:500]
+            title = entry.get("title", "").strip()
+            if not _passes_filter(source, title, summary_text):
+                continue
             raw_tags = [t.get("term", "") for t in getattr(entry, "tags", []) if t.get("term")]
             articles.append({
                 "id": _article_id(url),
                 "url": url,
-                "title": entry.get("title", "").strip(),
-                "title_orig": entry.get("title", "").strip(),
+                "title": title,
+                "title_orig": title,
                 "summary": summary_text,
                 "image_url": extract_image(entry),
                 "source_name": source["name"],
@@ -94,6 +106,9 @@ def fetch_scrape(source: dict) -> list:
                 href = f"{base.scheme}://{base.netloc}{href}"
             if not href:
                 continue
+            title_text = title_el.get_text().strip()
+            if not _passes_filter(source, title_text, ""):
+                continue
             img_el = item.select_one(sel.get("image", "img"))
             image_url = img_el.get("src") if img_el else None
             if image_url and image_url.startswith("/"):
@@ -101,8 +116,8 @@ def fetch_scrape(source: dict) -> list:
             articles.append({
                 "id": _article_id(href),
                 "url": href,
-                "title": title_el.get_text().strip(),
-                "title_orig": title_el.get_text().strip(),
+                "title": title_text,
+                "title_orig": title_text,
                 "summary": "",
                 "image_url": image_url,
                 "source_name": source["name"],

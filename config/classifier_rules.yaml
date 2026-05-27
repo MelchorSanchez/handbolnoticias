@@ -292,6 +292,26 @@ rules:
     tags: [romania, handball-romania, frh]
     keywords: ["frh handball", "handbal romania", "balonmano rumania"]
 
+  - section: greece
+    tags: [greece, handball-greece]
+    keywords: ["handball greece", "handball hellas", "balonmano grecia",
+               "χειροσφαίριση", "handball graecia"]
+
+  - section: italy
+    tags: [italy, handball-italy, figh]
+    keywords: ["figh handball", "pallamano italia", "handball italy",
+               "balonmano italia", "serie a pallamano", "pallamano"]
+
+  - section: slovenia
+    tags: [slovenia, handball-slovenia, rzs]
+    keywords: ["rzs handball", "handball slovenija", "rokometna",
+               "balonmano eslovenia", "handball slovenia"]
+
+  - section: north-macedonia
+    tags: [north-macedonia, handball-macedonia]
+    keywords: ["handball north macedonia", "handball macedonia",
+               "balonmano macedonia", "rkm handball"]
+
   - section: argentina
     tags: [argentina, handball-argentina, cach]
     keywords: ["cach handball", "handball argentina", "balonmano argentina",

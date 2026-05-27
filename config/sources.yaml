@@ -1,78 +1,17 @@
 sources:
-  # ── España — ASOBAL ──────────────────────────────────────────────────────
+  # ══════════════════════════════════════════════════════════════════════════
+  # ESPAÑA — Balonmano especializado
+  # ══════════════════════════════════════════════════════════════════════════
   - name: RFEBM
     section: spain/asobal
     type: rss
     url: https://www.rfebm.com/feed/
     max_items: 50
 
-  - name: LigaAsobal
-    section: spain/asobal
-    type: rss
-    url: https://www.ligaasobal.es/feed/
-    max_items: 50
-
-  - name: MiBalonmano
-    section: spain/asobal
-    type: rss
-    url: https://www.mibalonmano.es/feed/
-    max_items: 50
-
-  - name: BalonmanoCentral
-    section: spain/asobal
-    type: rss
-    url: https://www.balonmanocentral.com/feed/
-    max_items: 50
-
-  - name: Balonmano100x100
-    section: spain/asobal
-    type: rss
-    url: https://www.balonmano100x100.es/feed/
-    max_items: 30
-
-  - name: Balonmano.info
-    section: spain/asobal
-    type: rss
-    url: https://www.balonmano.info/feed/
-    max_items: 30
-
-  # ── España — División Honor Plata ─────────────────────────────────────────
-  - name: MiBalonmano-DHP
-    section: spain/dhp
-    type: rss
-    url: https://www.mibalonmano.es/category/division-honor-plata/feed/
-    max_items: 30
-
-  # ── España — Femenino ─────────────────────────────────────────────────────
-  - name: RFEBM-Femenino
-    section: spain/guerreras
-    type: rss
-    url: https://www.rfebm.com/category/femenino/feed/
-    max_items: 30
-
-  # ── España — Cataluña ─────────────────────────────────────────────────────
-  - name: CatHandbol
-    section: spain/catalonia
-    type: rss
-    url: https://www.cathandbol.cat/feed/
-    max_items: 30
-
-  # ── España — Prensa deportiva nacional ────────────────────────────────────
   - name: Marca-Balonmano
     section: spain/asobal
     type: scrape
     url: https://www.marca.com/balonmano.html
-    max_items: 20
-    selectors:
-      articles: "article"
-      title: "h2, h3"
-      link: "a[href]"
-      image: "img"
-
-  - name: AS-Balonmano
-    section: spain/asobal
-    type: scrape
-    url: https://as.com/balonmano/
     max_items: 20
     selectors:
       articles: "article"
@@ -91,8 +30,149 @@ sources:
       link: "a[href]"
       image: "img"
 
-  # ── Europa ────────────────────────────────────────────────────────────────
-  - name: EHF
+  # ══════════════════════════════════════════════════════════════════════════
+  # ESPAÑA — Prensa nacional (con filtro balonmano)
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: ElPais-dep
+    section: spain/asobal
+    type: rss
+    url: https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/deportes/portada
+    max_items: 50
+    filter_keywords: [balonmano, handball, handbol]
+
+  - name: ElMundo-dep
+    section: spain/asobal
+    type: rss
+    url: https://www.elmundo.es/rss/deportes.xml
+    max_items: 50
+    filter_keywords: [balonmano, handball, handbol]
+
+  - name: ElConfidencial-dep
+    section: spain/asobal
+    type: rss
+    url: https://www.elconfidencial.com/rss/deportes.xml
+    max_items: 30
+    filter_keywords: [balonmano, handball, handbol]
+
+  - name: EuropaPress-dep
+    section: spain/asobal
+    type: rss
+    url: https://www.europapress.es/rss/rss.aspx?ch=00080
+    max_items: 50
+    filter_keywords: [balonmano, handball, handbol]
+
+  - name: 20minutos-dep
+    section: spain/asobal
+    type: rss
+    url: https://www.20minutos.es/rss/deportes/
+    max_items: 30
+    filter_keywords: [balonmano, handball, handbol]
+
+  - name: Superdeporte
+    section: spain/asobal
+    type: rss
+    url: https://www.superdeporte.es/rss/
+    max_items: 20
+    filter_keywords: [balonmano, handball]
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # ESPAÑA — Prensa regional: Navarra / País Vasco
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: DiarioNavarra-dep
+    section: spain/navarra
+    type: rss
+    url: https://www.diariodenavarra.es/rss/deportes.xml
+    max_items: 30
+    filter_keywords: [balonmano, handball, handbol, eskubaloia, anaitasuna, bidasoa]
+
+  - name: Deia-dep
+    section: spain/euskadi
+    type: rss
+    url: https://www.deia.eus/rss/
+    max_items: 20
+    filter_keywords: [balonmano, handball, handbol, eskubaloia, bidasoa, anaitasuna]
+
+  - name: NoticiasAlava-dep
+    section: spain/euskadi
+    type: rss
+    url: https://www.noticiasdealava.eus/rss/
+    max_items: 20
+    filter_keywords: [balonmano, handball, handbol, eskubaloia]
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # ESPAÑA — Prensa regional: Aragón / Castilla y León
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: HeraldoAragon-dep
+    section: spain/asobal
+    type: rss
+    url: https://www.heraldo.es/rss/deportes.xml
+    max_items: 30
+    filter_keywords: [balonmano, handball, handbol]
+
+  - name: DiarioLeon-dep
+    section: spain/asobal
+    type: rss
+    url: https://www.diariodeleon.es/rss/deportes.xml
+    max_items: 30
+    filter_keywords: [balonmano, handball, handbol, ademar]
+
+  - name: LanzaCiudadReal
+    section: spain/asobal
+    type: rss
+    url: https://www.lanzadigital.com/rss/
+    max_items: 15
+    filter_keywords: [balonmano, handball, handbol, cuenca]
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # ESPAÑA — Prensa regional: Cataluña
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: LaVanguardia-dep
+    section: spain/catalonia
+    type: rss
+    url: https://www.lavanguardia.com/rss/home.xml
+    max_items: 50
+    filter_keywords: [balonmano, handball, handbol]
+
+  - name: Ara-cat
+    section: spain/catalonia
+    type: rss
+    url: https://www.ara.cat/rss/
+    max_items: 30
+    filter_keywords: [balonmano, handball, handbol]
+
+  - name: NacioDigital
+    section: spain/catalonia
+    type: rss
+    url: https://www.naciodigital.cat/rss
+    max_items: 20
+    filter_keywords: [handbol, handball, balonmano]
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # ESPAÑA — Prensa regional: Galicia
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: FaroVigo-dep
+    section: spain/asobal
+    type: rss
+    url: https://www.farodevigo.es/rss/
+    max_items: 20
+    filter_keywords: [balonmano, handball, handbol]
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # EUROPA — Handball internacional
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: HandballPlanet
+    section: europe/champions
+    type: rss
+    url: https://handball-planet.com/feed/
+    max_items: 10
+
+  - name: IHF-news
+    section: ihf/world-men
+    type: rss
+    url: https://www.ihf.info/rss.xml
+    max_items: 10
+
+  - name: EHF-news
     section: europe/champions
     type: scrape
     url: https://www.eurohandball.com/en/news/
@@ -103,43 +183,65 @@ sources:
       link: "a[href]"
       image: "img"
 
-  # ── Internacional — Francia ───────────────────────────────────────────────
-  - name: LNH-Starligue
+  # ══════════════════════════════════════════════════════════════════════════
+  # INTERNACIONAL — Francia
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: Handnews-fr
     section: france
-    type: scrape
-    url: https://www.lnh.fr/fr/actualites
+    type: rss
+    url: https://www.handnews.fr/feed/
     max_items: 20
-    selectors:
-      articles: "article, .news-card"
-      title: "h2, h3"
-      link: "a[href]"
-      image: "img"
 
-  # ── Internacional — Alemania ──────────────────────────────────────────────
-  - name: HBL-Bundesliga
+  # ══════════════════════════════════════════════════════════════════════════
+  # INTERNACIONAL — Alemania
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: SpiegelSport
     section: germany
+    type: rss
+    url: https://www.spiegel.de/sport/index.rss
+    max_items: 30
+    filter_keywords: [handball, balonmano]
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # INTERNACIONAL — Portugal
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: FPA-Portugal
+    section: portugal
     type: scrape
-    url: https://www.liquimoly-hbl.de/news/
+    url: https://www.fpa.pt/noticias
     max_items: 20
     selectors:
-      articles: "article, .news-item"
+      articles: "article, .noticia"
       title: "h2, h3"
       link: "a[href]"
       image: "img"
 
-  # ── Internacional — Dinamarca ─────────────────────────────────────────────
-  - name: Handball-Dinamarca
-    section: denmark
-    type: scrape
-    url: https://www.dhf.dk/nyheder/
+  - name: Record-pt
+    section: portugal
+    type: rss
+    url: https://www.record.pt/rss/
     max_items: 20
-    selectors:
-      articles: "article, .news"
-      title: "h2, h3"
-      link: "a[href]"
-      image: "img"
+    filter_keywords: [andebol, handball]
 
-  # ── Internacional — Noruega ───────────────────────────────────────────────
+  # ══════════════════════════════════════════════════════════════════════════
+  # INTERNACIONAL — Suecia
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: Aftonbladet-sport
+    section: sweden
+    type: rss
+    url: https://www.aftonbladet.se/sportbladet/rss.xml
+    max_items: 30
+    filter_keywords: [handboll, handball]
+
+  - name: Handbollskanalen
+    section: sweden
+    type: rss
+    url: https://www.handbollskanalen.se/rss/
+    max_items: 20
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # INTERNACIONAL — Noruega
+  # ══════════════════════════════════════════════════════════════════════════
   - name: NHF-Noruega
     section: norway
     type: scrape
@@ -151,14 +253,66 @@ sources:
       link: "a[href]"
       image: "img"
 
-  # ── Internacional — Portugal ──────────────────────────────────────────────
-  - name: FPA-Portugal
-    section: portugal
+  - name: NRK-sport
+    section: norway
+    type: rss
+    url: https://www.nrk.no/sport/toppsaker.rss
+    max_items: 20
+    filter_keywords: [håndball, handball]
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # INTERNACIONAL — Dinamarca
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: DHF-Dinamarca
+    section: denmark
     type: scrape
-    url: https://www.fpa.pt/noticias
+    url: https://www.dhf.dk/nyheder/
     max_items: 20
     selectors:
-      articles: "article, .noticia"
+      articles: "article, .news"
       title: "h2, h3"
       link: "a[href]"
       image: "img"
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # INTERNACIONAL — Italia
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: Gazzetta-sport
+    section: italy
+    type: rss
+    url: https://www.gazzetta.it/rss/altri-sport.xml
+    max_items: 30
+    filter_keywords: [pallamano, handball]
+
+  - name: Corriere-sport
+    section: italy
+    type: rss
+    url: https://www.corrieredellosport.it/rss/
+    max_items: 20
+    filter_keywords: [pallamano, handball]
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # INTERNACIONAL — Hungría / Croacia / Eslovenia / Grecia
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: HRS-Croatia
+    section: croatia
+    type: scrape
+    url: https://www.hrs.hr/novosti/
+    max_items: 20
+    selectors:
+      articles: "article"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  - name: RZS-Slovenia
+    section: slovenia
+    type: scrape
+    url: https://www.rokometna-zveza.si/novice/
+    max_items: 20
+    selectors:
+      articles: "article, .novica"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+

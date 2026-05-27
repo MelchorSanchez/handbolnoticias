@@ -23,13 +23,25 @@ teams:
     - Fertiberia Sagunto
     - BM Sinfín
     - Abanca Ademar
-    - Deza
     - BM Logroño
     - BM Burgos
     - BM Benidorm
     - Cangas
-    - Helvetia Anaitasuna
-    - Anaitasuna
+    - Barça
+    - Dicorpebal Logroño La Rioja
+    - Fraikin BM Granollers
+    - Irudek Bidasoa Irun
+    - Bathco BM Torrelavega
+    - Recoletas Atlético Valladolid
+    - Abanca Ademar León
+    - Caserío Ciudad Real
+    - Horneo BM Alicante
+    - Rebi BM Cuenca
+    - Tubos Aranda Villa de Aranda
+    - Frigoríficos del Morrazo
+    - Cajasol Ángel Ximénez Puente Genil
+    - Viveros Herol BM Nava
+    - Cajasol Sevilla BM Proin
 
   # ── España — Liga Guerreras ───────────────────────────────────────
   spain/guerreras:
@@ -42,34 +54,246 @@ teams:
     - Rocasa
     - Rocasa Gran Canaria
     - Costa del Sol Málaga
-    - Costa del Sol Nerja
-    - Rincón Dinamita
     - Itxako
-    - BM Lanzarote
-    - Mavi Lanzarote
     - BM Elda
     - Elda Prestigio
     - Remudas
-    - BM Alcobendas
-    - Joma Málaga
-    - Buñol
+    - Super Amara Bera Bera
+    - Rocasa Gran Canaria
+    - Mecalia Atlético Guardés
+    - Costa del Sol Málaga
+    - Conservas Orbe Porriño
+    - KH-7 BM Granollers
+    - AtticGo Elche
+    - Replasa Beti-Onak
+    - Elda Prestigio
+    - Morvedre
+    - Aula Valladolid
+    - La Rioja
+    - Super Amara Bera Bera
+    - Rocasa Gran Canaria
+    - Costa del Sol Málaga
+    - Mecalia Atlético Guardés
+    - Conservas Orbe Zendal BM Porriño
+    - Replasa Beti-Onak
+    - AtticGo BM Elche
+    - Grafometal Sporting La Rioja
+    - KH-7 BM Granollers
+    - Elda Prestigio
+    - Caja Rural Aula Valladolid
+    - C.BM Morvedre
+    - Zonzamas Plus Car Lanzarote
+    - CICAR Lanzarote Ciudad de Arrecife
+    - Soliss BM Pozuelo de CVA
+    - Lobas Global Atac Oviedo
 
   # ── España — División Honor Oro Fem ──────────────────────────────
   spain/dho-fem:
-    - BM Xirivella
-    - Mar Valencia
-    - BM Aluche
-    - BM Porriño
+    - BM Bolaños
+    - Rahi-Sepisur Córdoba
+    - BM Zuazo
+    - BM Ikasa Boadilla
+    - Cleba León
+    - Schär Colores Zaragoza
+    - Anaitasuna
+    - Pereda
+    - Lleida
+    - Puerto del Carmen
+    - Mislata
+    - Carballal
+    - Zonzamas Plus Car Lanzarote
+    - CICAR Lanzarote Ciudad de Arrecife
 
   # ── España — División Honor Plata Masc ───────────────────────────
   spain/dhp:
-    - Agustinos León
-    - Agustinos
-    - BM Aragón
-    - Atlético Novás
-    - Alarcos Ciudad Real
+    - Cajasol Sevilla BM Proin
+    - Fertiberia Puerto Sagunto
+    - UBU San Pablo Burgos
+    - Fundación Agustinos Alicante
+    - Helvetia Anaitasuna
+    - Trasmapi Eivissa
+    - Barça Atlètic
+    - OAR Coruña
+    - Sinfín Santander
+    - BM Benidorm
+    - Cisne Colegio Los Sauces
+    - BM Contazara Zaragoza
+    - Base Oviedo
+    - BM Soria
+    - Trops Málaga
+    - BM Alcobendas
+    - Guadalajara
+    - Guadalajara
     - BM Huesca
     - Bada Huesca
+    - Sanicentro BM Guadalajara
+
+  # ── España — Primera Nacional Masc ───────────────────────────
+  spain/primera-nacional-masc:
+  #Grupo A
+    - Valinox Novás
+    - Ingenio
+    - Lanzarote Arrecife
+    - Calvo Xiria
+    - Bueu
+    - Carballal
+    - Gáldar
+    - Teucro
+    - Reconquista Vigo
+    - Culleredo
+    - Luceros
+    - Lalín
+    - Tacoronte
+    - Porriño
+    - Cañiza
+    - Ourense
+  #Grupo B
+    - Zamora
+    - Torrelavega
+    - Sanse
+    - Lafuente Pereda
+    - Covadonga
+    - Horizonte Atlética
+    - Salamanca
+    - Pinto
+    - SAFA Madrid
+    - Gijón
+    - Camargo
+    - Santoña
+    - Ademar León
+    - Maravillas
+    - Astillero
+    - Arroyo
+  #Grupo C
+    - Zarautz
+    - Romo
+    - Eibar
+    - Barakaldo
+    - Tolosa
+    - Tarazona
+    - Ereintza
+    - Bidasoa B
+    - Pulpo
+    - Anaitasuna
+    - Beti-Onak
+    - Uharte
+    - Loyola
+    - Usurbil
+    - Trapagaran
+    - Egia
+  #Grupo D
+    - Granollers
+    - La Roca
+    - Bordils
+    - Sant Cugat
+    - Sant Vicenç
+    - Sarrià
+    - Sant Joan Despí
+    - Montcada
+    - OAR Gràcia
+    - Sant Esteve
+    - Palautordera
+    - Sant Quirze
+    - Calella
+    - Esplugues
+    - Palautordera Salicrú
+    - Banyoles
+  #Grupo E
+    - Sant Joan
+    - Elda
+    - Leganés
+    - Marni
+    - Petrer
+    - Mislata
+    - Águilas
+    - Puerto Sagunto B
+    - Mallorca
+    - UCAM Murcia
+    - Torrevieja
+    - Móstoles
+    - Algemesí
+    - Castellón
+    - Agustinos Alicante
+    - Elche
+  #Grupo F
+    - Dólmenes Antequera
+    - Cantera Sur
+    - Palma del Río
+    - BM Bolaños
+    - Kutxabank Logroño
+    - Moguer
+    - Algeciras
+    - Melilla
+    - Málaga
+    - La Salle Córdoba
+    - Pozuelo
+    - Montequinto
+    - Proin Sevilla
+    - Mijas
+    - Alarcos
+    - Herencia
+
+  # ── España — División Honor Plata MFem ───────────────────────────
+  spain/dhp-fem:
+  #Grupo A
+    - BM Leganés
+    - BM Cañiza
+    - Rocasa Gran Canaria
+    - Getasur
+    - Sanse
+    - SAR Rodavigo
+    - Gijón
+    - Meaño
+    - Aula Valladolid
+    - Hand Vall
+    - Fuentes Carrionas
+    - Romade
+    - Porriño
+    - Perdomo
+  #Grupo B
+    - Lauko Ermuko
+    - Beti-Onak
+    - Los Chelines
+    - Bera Bera
+    - Eibar
+    - Zarautz
+    - Camargo
+    - Basauri
+    - La Jota Zaragoza
+    - BM Loyola
+    - Kukullaga
+    - Malkaitz
+    - Urdaneta
+    - Sinfín
+  #Grupo C
+    - BM Marni
+    - Onda
+    - Sant Joan Despí
+    - Sant Vicenç
+    - Elche
+    - La Roca
+    - Palautordera
+    - OAR Gràcia
+    - Granollers Atlètic
+    - Sant Quirze
+    - Almassora
+    - Ribes
+    - Morro Jable
+  #Grupo D
+    - UCAM Murcia
+    - Montequinto
+    - Ciudad Imperial
+    - Caserío Ciudad Real
+    - Melilla
+    - Estudiantes
+    - Deza CBM
+    - Mijas
+    - Urci Almería
+    - Alcobendas
+    - Pozuelo CVA
+    - Roquetas
+    - Villaverde
+    - Torrejón
 
   # ── España — Selección ────────────────────────────────────────────
   spain/seleccion-masc:
@@ -80,20 +304,22 @@ teams:
 
   # ── Europa — EHF Champions League Masc ───────────────────────────
   europe/champions:
-    - Magdeburgo
-    - SC Magdeburg
-    - Kielce
-    - Veszprém
-    - PSG Handball
+    - Barça
     - Paris Saint-Germain Handball
-    - THW Kiel
-    - SG Flensburg
-    - Aalborg
-    - Kolstad
-    - Montpellier HB
     - Füchse Berlin
-    - Pick Szeged
-    - Rhein-Neckar Löwen
+    - SC Magdeburg
+    - One Veszprém HC
+    - Orlen Wisła Płock
+    - Sporting CP
+    - CS Dinamo București
+    - HC Zagreb
+    - Aalborg Håndbold
+    - GOG
+    - HBC Nantes
+    - OTP Bank-Pick Szeged
+    - HC Eurofarm Pelister
+    - Kolstad Håndball
+    - Industria Kielce
 
   # ── Europa — EHF Champions League Fem ────────────────────────────
   europe/champions-women:
@@ -109,22 +335,202 @@ teams:
     - Buducnost
     - Odense HC
     - Borussia Dortmund Handball
+    - Brest Bretagne Handball
+    - CSM București
+    - Győri Audi ETO KC
+    - Metz Handball
+    - FTC-Rail Cargo Hungaria
+    - Gloria Bistrița
+    - Odense Håndbold
+    - Team Esbjerg
+    - BV Borussia Dortmund
+    - DVSC Schaeffler
+    - HC Podravka
+    - Ikast Håndbold
+    - Krim OTP Group Mercator
+    - OTP Group Buducnost
+    - Sola HK
+    - Storhamar Handball Elite
 
   # ── Europa — EHF European League Masc ────────────────────────────
   europe/european-league:
-    - Sporting CP Handball
-    - Göppingen
-    - SL Benfica Handball
-    - Nantes HBC
-    - Limoges Saint-Etienne
-    - Nîmes Olympique Handball
+    - FC Porto
+    - HC Vardar 1961
+    - Montpellier Handball
+    - MT Melsungen
+    - Recken - TSV Hannover-Burgdorf
+    - RK Nexe
+    - SG Flensburg-Handewitt
+    - THW Kiel
+    - HCB Karvina
+    - Elverum Håndball
+    - Fredericia Håndboldklub
+    - IFK Kristianstad
+    - SAH - Aarhus
+    - Fraikin BM. Granollers
+    - IRUDEK Bidasoa Irun
+    - Kadetten Schaffhausen
+    - Sport Lisboa e Benfica
+    - Abanca Ademar Leon
+    - AHC Potaissa Turda
+    - BSV Bern
+    - CS Minaur Baia Mare
+    - Fenix Toulouse
+    - FTC-Green Collect
+    - HC Kriens-Luzern
+    - HF Karlskrona
+    - IK Sävehof
+    - Knattspyrnufélagið Fram
+    - MRK Sesvete
+    - RD LL Grosist Slovan
+    - Rebud KPR Ostrovia Ostrow Wlkp
+    - RK Partizan AdmiralBet
+    - Saint-Raphael Var Handball
+    - TATRAN Presov
+    - ABC de Braga Lusíadas Saúde
+    - Bathco BM. Torrelavega
+    - HC Alkaloid
+    - HK Malmö
+    - KGHM Chrobry Glogow
+    - Maritimo da Madeira Andebol/SAD
+    - Mors-Thy Håndbold
+    - MRK Cakovec
+    - MRK Dugo Selo
+    - RK Gorenje Velenje
+    - Stjarnan
+
+  # ── Europa — EHF European League Women ────────────────────────────
+  europe/european-league-women:
+    - JDA Bourgogne Dijon Handball
+    - MOL Esztergom
+    - Thüringer HC
+    - Viborg HK
+    - CS Rapid Bucuresti
+    - HC Lokomotiva Zagreb
+    - Motherson Mosonmagyarovari KC
+    - Nykøbing Falster Håndbold
+    - Chambray Touraine Handball
+    - CS Minaur Baia Mare
+    - CSM Corona Brasov
+    - HSG Blomberg-Lippe
+    - KGHM MKS Zaglebie Lubin
+    - Larvik
+    - Tertnes Bergen
+    - VfL Oldenburg
+    - ES Besançon Féminin
+    - GC Amicitia Zürich
+    - HC Dalmatinka Ploce
+    - HH Elite
+    - HSG Bensheim/Auerbach Flames
+    - IK Sävehof
+    - Molde Elite
+    - PGE MKS El-Volt Lublin
+    - Super Amara Bera Bera
+    - Valur
+    - ZRK Crvena Zvezda
+    - Armada Praxis Yalikavaspor
+    - DHK Banik Most
+    - Hypo Niederösterreich
+    - JuRo Unirek VZV
+    - LC Brühl Handball
+    - O.F.N. Ionias
+    - Skara HF
+    - SPONO Eagles
+    - Sport Lisboa e Benfica
 
   # ── Europa — EHF European Cup (Masc / Fem) ───────────────────────
   europe/cup-men:
-    - Mecalia Atlético Guardés
+    - GRK Ohrid
+    - HC Izvidac
+    - MOL Tatabanya KC
+    - RK Celje Pivovarna Laško
+    - ACS HC Buzau 2012
+    - HCB Karvina
+    - Nilüfer BSK
+    - Olympiacos SFP
+    - Balatonfüredi KSE
+    - Besiktas JK
+    - BK-46
+    - HC Dukla Praha
+    - RK Konjuh Zivinice
+    - RK Trimo Trebnje
+    - Runar Sandefjord
+    - SKKP Handball Brno
+    - A.C. PAOK
+    - Bianco Monte Drama 1986
+    - Cassano Magnago HC
+    - HB Dudelange
+    - HB Red Boys Differdange
+    - HC Berchem
+    - HC Fivers WAT Margareten
+    - HC Vojvodina
+    - HSC Suhr Aarau
+    - Maccabi Tel Aviv
+    - MRK Sloga Doboj
+    - Põlva Serviti
+    - Raimond Sassari
+    - RK Budvanska Rivijera
+    - Sparkasse Schwaz Handball Tirol
+    - VHC Sviesa
 
   europe/cup-women:
     - Mecalia Atlético Guardés
+    - Club Balonmán Atlético Guardes
+    - Bursa Büyüksehir BSK
+    - Costa del Sol Malaga
+    - A.C. PAOK
+    - ATTICGO Bm Elche
+    - Cabooter Fortes Venlo
+    - Hazena Kynzvart
+    - Handball Erice SSD ARL
+    - Jomi Salerno
+    - KPR Gminy Kobierzyce
+    - Madeira Andebol SAD
+    - Replasa Beti-Onak
+    - ZORK Bor
+    - ZRK Mlinotest Ajdovscina
+    - ŽRK Split 2010
+    - ADAA São Pedro do Sul
+    - AEK Athens HC
+    - CASCADA - HC Garliava SC
+    - Energa Start Elblag
+    - H.V. Quintus
+    - Handball Kaerjeng
+    - Haukar
+    - HC Byala
+    - HC Gjorche Petrov-WHC AD Skopje
+    - HK Slovan Duslo Sala
+    - KHF Istogu
+    - MADx WAT Atzgersdorf
+    - Union Korneuburg Damen
+    - Westfriesland SEW
+    - WHC Metalurg Avtokomanda
+    - Yellow Winterthur
+    - ABC de Braga
+    - AEP Panorama
+    - Anagennisi Artas
+    - Azeryol HC
+    - Cyview Developers Latsia
+    - H71
+    - HB Dudelange
+    - HB Red Boys Differdange
+    - HC DAC Dunajská Streda
+    - HC Galychanka Lviv
+    - Holon Yuvalim HC
+    - KHF Ferizaj
+    - KHF Samadrexha
+    - KHF Shqiponja
+    - Kur
+    - Maccabi Haarazim Ramat Gan
+    - OZRK Krajina Cazin
+    - Selfoss
+    - Trabzon Ortahisar BSK
+    - Üsküdar B.S.K.
+    - WHC Cair Skopje
+    - ZRD Litija
+    - ZRK Krivaja
+    - ZRK Kumanovo
+    - ZRK Zeleznicar Indija
 
   # ── Alemania ──────────────────────────────────────────────────────
   germany/bundesliga:
@@ -218,6 +624,32 @@ teams:
   # ── Argentina ─────────────────────────────────────────────────────
   argentina:
     - Selección Argentina balonmano
+
+  # ── Italia ────────────────────────────────────────────────────────
+  italy:
+    - Conversano
+    - Bolzano
+    - Pressano
+    - Junior Fasano
+    - Sassari
+    - Brixen Handball
+
+  # ── Grecia ────────────────────────────────────────────────────────
+  greece:
+    - Aris Thessaloniki
+    - Olympiakos Handball
+    - AEK Athens Handball
+
+  # ── Eslovenia ─────────────────────────────────────────────────────
+  slovenia:
+    - RK Celje
+    - RK Koper
+    - RK Velenje
+
+  # ── Macedonia del Norte ───────────────────────────────────────────
+  north-macedonia:
+    - RK Vardar
+    - Metalurg Skopje
 
   # ── Brasil ────────────────────────────────────────────────────────
   brazil:
