@@ -94,7 +94,8 @@ rules:
   - section: europe/other
     tags: [ehf, eurohandball]
     keywords: [eurohandball, "ehf beach handball", "beach handball", "handbol platja"]
-    exclude: [champions league, european league, euro men, euro women, world championship]
+    exclude: [champions league, european league, european cup, copa europea, ehf cup,
+              euro men, euro women, world championship]
 
   # ═══════════════════════════════════════════════════════════════════
   # Selección Nacional España
@@ -102,15 +103,19 @@ rules:
   - section: spain/seleccion-masc
     tags: [seleccion-espanola-masculina, seleccion-masculina]
     keywords: [selección masculina, seleccion masculina, selección española masculina,
-               "los hispanos", nacional masculin]
-    exclude: [femenina, juvenil, cadete, infantil, sub-18, sub-20, sub-21]
+               "los hispanos", "selección nacional masculin", "seleccion nacional masculin",
+               "equipo nacional masculin"]
+    exclude: [femenina, juvenil, cadete, infantil, sub-18, sub-20, sub-21,
+              "primera nacional", "division honor", "división honor"]
 
   - section: spain/seleccion-fem
     tags: [seleccion-espanola-femenina, seleccion-femenina]
     keywords: [selección femenina, seleccion femenina, selección española femenina,
-               "las guerreras", seleccionadora, nacional femenin]
+               "las guerreras", seleccionadora, "selección nacional femenin",
+               "seleccion nacional femenin", "equipo nacional femenin"]
     exclude: [masculina, juvenil, cadete, infantil, sub-18, sub-20, sub-21,
-              liga guerreras iberdrola, asobal]
+              liga guerreras iberdrola, asobal, "primera nacional", "division honor",
+              "división honor"]
 
   # ═══════════════════════════════════════════════════════════════════
   # Categorías Base España
@@ -149,12 +154,13 @@ rules:
   - section: spain/dhp
     tags: [dhp, division-honor-plata-masc]
     keywords: ["división honor plata masculino", "division honor plata masculino",
-               "dhp masculino", "primera nacional masculina", dhp]
+               "división de honor plata", "division de honor plata",
+               "dhp masculino", dhp]
     exclude: [femenin]
 
   - section: spain/primera-nacional-masc
     tags: [primera-nacional]
-    keywords: ["primera nacional masculin"]
+    keywords: ["primera nacional masculin", "primera nacional"]
     exclude: [femenin]
 
   # ═══════════════════════════════════════════════════════════════════

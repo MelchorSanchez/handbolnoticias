@@ -1,4 +1,5 @@
 import hashlib
+import re
 import sqlite3
 from pathlib import Path
 
@@ -104,3 +105,32 @@ def get_recent_by_section(conn: sqlite3.Connection, section: str, limit: int = 5
 def get_all_sections(conn: sqlite3.Connection) -> list:
     rows = conn.execute("SELECT DISTINCT section FROM articles").fetchall()
     return [row["section"] for row in rows]
+
+
+def article_exists(conn: sqlite3.Connection, article_id: str) -> bool:
+    row = conn.execute("SELECT 1 FROM articles WHERE id = ?", (article_id,)).fetchone()
+    return row is not None
+
+
+def _title_words(title: str) -> frozenset:
+    words = re.sub(r'[^\w\s]', ' ', title.lower()).split()
+    return frozenset(w for w in words if len(w) > 3)
+
+
+def is_title_duplicate(conn: sqlite3.Connection, title: str) -> bool:
+    """Return True if an existing article (last 48 h) has ≥80% title word overlap."""
+    new_words = _title_words(title)
+    if len(new_words) < 4:
+        return False
+    rows = conn.execute("""
+        SELECT title_orig FROM articles
+        WHERE fetched_at > datetime('now', '-48 hours')
+    """).fetchall()
+    for row in rows:
+        existing = _title_words(row["title_orig"] or "")
+        if not existing:
+            continue
+        union = len(new_words | existing)
+        if union and len(new_words & existing) / union >= 0.8:
+            return True
+    return False

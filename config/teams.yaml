@@ -164,6 +164,7 @@ teams:
     - Maravillas
     - Astillero
     - Arroyo
+    - Sariegos
   #Grupo C
     - Zarautz
     - Romo
@@ -174,7 +175,7 @@ teams:
     - Ereintza
     - Bidasoa B
     - Pulpo
-    - Anaitasuna
+    - Anaitasuna B
     - Beti-Onak
     - Uharte
     - Loyola
@@ -228,12 +229,12 @@ teams:
     - La Salle Córdoba
     - Pozuelo
     - Montequinto
-    - Proin Sevilla
+    - Proin Sevilla B
     - Mijas
     - Alarcos
     - Herencia
 
-  # ── España — División Honor Plata MFem ───────────────────────────
+  # ── España — División Honor Plata Fem ───────────────────────────
   spain/dhp-fem:
   #Grupo A
     - BM Leganés
@@ -254,7 +255,7 @@ teams:
     - Lauko Ermuko
     - Beti-Onak
     - Los Chelines
-    - Bera Bera
+    - Bera Bera B
     - Eibar
     - Zarautz
     - Camargo
@@ -290,17 +291,16 @@ teams:
     - Mijas
     - Urci Almería
     - Alcobendas
-    - Pozuelo CVA
+    - Pozuelo CVA B
     - Roquetas
     - Villaverde
     - Torrejón
 
   # ── España — Selección ────────────────────────────────────────────
-  spain/seleccion-masc:
-    - Los Hispanos
+  # Nicknames handled via keywords with proper excludes; no team list needed
+  spain/seleccion-masc: []
 
-  spain/seleccion-fem:
-    - Las Guerreras
+  spain/seleccion-fem: []
 
   # ── Europa — EHF Champions League Masc ───────────────────────────
   europe/champions:
@@ -655,3 +655,135 @@ teams:
   brazil:
     - Seleção Brasileira Handebol
     - Pinheiros
+
+  # ── España: Navarra ───────────────────────────────────────────────
+  spain/navarra:
+    - Agrupación Deportiva San Juan
+    - Alde Zaharreko Kluba
+    - Anaitazarra
+    - Aurrera KE
+    - Baztango Kirol Taldea
+    - BM Lizarreria
+    - Club Deportivo Aoiz
+    - Club Deportivo Lagunak
+    - Club Deportivo Erreka
+    - CD River Ega Balonmano
+    - CD Cantolagua
+    - Club Balonmano Ardoi
+    - Club Balonmano Burlada
+    - Club Balonmano Mendavia
+    - Club Balonmano Noain
+    - Club Balonmano Tafalla
+    - Club Balonmano Uharte
+    - Eskubaloia Taldea
+    - Club Deportivo Beti-Onak
+    - Club Deportivo Atalaya
+    - Club Deportivo Balonmano Bardenas
+    - Club Deportivo Lekumberri
+    - Club Deportivo San Ignacio
+    - GDM La Merced
+    - Malkaitz Eskubaloia
+    - Oberena
+    - Anaitasuna
+    - UDC Txantrea KKE
+    - Txantrea
+    - Ultzama
+    - Valle de Egüés
+
+  # ── España: Cataluña ──────────────────────────────────────────────
+  spain/catalonia:
+    - Club Handbol Sant Cugat
+    - Club Handbol Terrassa
+    - Fundació Balonmano Granollers
+    - Handbol Gavà
+    - Handbol Bordils
+    - Handbol Ripollet
+    - Club Handbol Mollet
+    - Club Handbol Vic
+    - Club Handbol Manresa
+    - Club Handbol Sabadell
+    - Club Handbol Mataró
+    - Club Handbol L'Hospitalet
+    - Club Handbol Banyoles
+    - Club Handbol Olot
+    - Club Handbol Girona
+    - Club Handbol Lleida
+    - Club Handbol Tarragona
+    - Club Handbol Reus
+    - Club Handbol Palau-solità
+    - Club Handbol Castelldefels
+    - Club Handbol Baix Llobregat
+    - Club Handbol Sant Quirze
+    - Club Handbol Esparreguera
+    - Club Handbol Arenys
+    - Club Handbol Calella
+    - Club Handbol Nou Barris
+    - Club Handbol Prat
+    - Handbol Gràcia
+    - Handbol Blanes
+    - Handbol Figueres
+    - Handbol Tordera
+    - Handbol Cunit
+    - Handbol Cambrils
+    - Handbol Roda
+    - Handbol Amposta
+    - Handbol Tortosa
+    - Handbol Valls
+    - Handbol Montblanc
+    - Handbol Molins de Rei
+    - Handbol Sant Feliu
+    - Handbol Barberà
+    - Handbol Cornellà
+    - Handbol Esplugues
+    - AE Handbol Badalona
+    - Handbol Sant Joan Despí
+    - Handbol Santa Perpètua
+    - Handbol Pallejà
+    - Handbol Martorell
+    - Handbol Igualada
+    - Handbol Vilafranca
+    - Handbol Vilanova
+    - Handbol Sitges
+    - Handbol Cubelles
+    - Handbol Cerdanyola
+    - Handbol Molins
+    - Handbol Rubí
+    - Barcelona Handbol
+    - INEF Lleida Handbol
+  # ── España: Euskadi ──────────────────────────────────────────────
+  spain/euskadi:
+    - Bidasoa Irún
+    - Irudek Bidasoa Irún
+    - Zarautz
+    - Zarautz KT
+    - Eibar
+    - SD Eibar Balonmano
+    - Barakaldo
+    - BM Barakaldo
+    - Tolosa
+    - Tolosa CF Eskubaloia
+    - Ereintza
+    - Ereintza KE
+    - Trapagaran
+    - Usurbil
+    - Egia
+    - Hernani
+    - Laudio
+    - Amorebieta
+    - Durango
+    - Gernika
+    - Aretxabaleta
+    - Araberri
+    - Basauri
+    - Kukullaga
+    - Lauko Ermuko
+    - Urdaneta
+    - Bera Bera
+    - Super Amara Bera Bera
+    - Amara Bera Bera
+    - Beti Onak
+    - Replasa Beti-Onak
+    - Arrasate
+    - Eskibel
+    - Santutxu
+    - Hondarribia

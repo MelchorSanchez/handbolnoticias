@@ -78,6 +78,17 @@ sources:
   # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Prensa regional: Navarra / País Vasco
   # ══════════════════════════════════════════════════════════════════════════
+  - name: FNavarraBM
+    section: spain/navarra
+    type: scrape
+    url: https://fnavarrabm.com/category/noticias/
+    max_items: 20
+    selectors:
+      articles: ".post"
+      title: "h3"
+      link: "a[href]"
+      image: "img"
+
   - name: DiarioNavarra-dep
     section: spain/navarra
     type: rss

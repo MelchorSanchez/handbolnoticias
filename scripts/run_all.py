@@ -5,7 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from classifier import classify
-from db import get_connection, init_db, insert_article
+from db import get_connection, init_db, insert_article, is_title_duplicate, article_exists
 from fetcher import fetch_all, load_sources
 from renderer import render_all
 from translator import translate_article
@@ -31,6 +31,7 @@ def main():
 
     new_count = 0
     classified_count = 0
+    dup_count = 0
     for article in articles:
         sections = classify(article)
         if sections:
@@ -44,11 +45,20 @@ def main():
             article["extra_sections"] = ""
 
         article.pop("_raw_tags", None)
+
+        # Skip title-dup check for already-known articles (let the UPDATE run normally)
+        if not article_exists(conn, article["id"]):
+            orig_title = article.get("title_orig") or article.get("title", "")
+            if is_title_duplicate(conn, orig_title):
+                dup_count += 1
+                continue
+
         article = translate_article(conn, article)
         if insert_article(conn, article):
             new_count += 1
 
     logger.info("Artículos reclasificados: %d", classified_count)
+    logger.info("Artículos duplicados omitidos: %d", dup_count)
     logger.info("Artículos nuevos insertados: %d", new_count)
 
     render_all(conn)
