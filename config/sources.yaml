@@ -181,6 +181,7 @@ sources:
       title: "h2"
       link: "a[href]"
       image: "img"
+      date: "time[datetime]"
 
   - name: DeporteCienPorcien
     section: spain/guerreras
@@ -202,6 +203,7 @@ sources:
       title: "h2, h3"
       link: "a[href]"
       image: "img"
+      date: "time[datetime]"
 
   - name: BalonmanoActual
     section: spain/asobal

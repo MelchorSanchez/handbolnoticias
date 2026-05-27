@@ -10,6 +10,18 @@ CONFIG_DIR = Path(__file__).parent.parent / "config"
 _rules = None
 _teams = None
 
+# Hashtags from CatHandbol that mark purely regional Catalan competitions.
+# When present, team-name matches must not pull the article into Spanish national sections.
+_CATALAN_ONLY = re.compile(
+    r'#?(1acathfem|2acathfem|3acathfem|3acath|2acath|lligacatargm|lligacatorm|lligacatorf)',
+    re.IGNORECASE,
+)
+_SPAIN_NATIONAL = frozenset({
+    "spain/asobal", "spain/dhp", "spain/primera-nacional-masc",
+    "spain/guerreras", "spain/dho-fem", "spain/dhp-fem",
+    "spain/seleccion-masc", "spain/seleccion-fem",
+})
+
 # Base sections exclude domestic adult leagues (but can coexist with European/world sections)
 _BASE_SECTIONS = frozenset({"spain/base-masc", "spain/base-fem"})
 _DOMESTIC_ADULT = frozenset({
@@ -282,4 +294,10 @@ def classify(article):
             logger.debug("Team '%s' → %s", article.get("title_orig", "")[:60], sec)
 
     sections = keyword_sections + team_sections
+
+    # If a Catalan-only competition hashtag is present, drop any Spanish national sections
+    # that crept in via team-name matching (e.g. a B-team from a national-level club).
+    if _CATALAN_ONLY.search(text):
+        sections = [s for s in sections if s not in _SPAIN_NATIONAL]
+
     return _apply_priority_rules(sections, frozenset(keyword_sections), text)

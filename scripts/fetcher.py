@@ -142,6 +142,17 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def _rss_date(entry) -> str:
+    """Return ISO 8601 UTC date from a feedparser entry. Falls back to now."""
+    parsed = getattr(entry, "published_parsed", None)
+    if parsed:
+        try:
+            return datetime(*parsed[:6], tzinfo=timezone.utc).isoformat()
+        except (ValueError, TypeError):
+            pass
+    return _now()
+
+
 def extract_image(entry) -> str:
     if hasattr(entry, "enclosures") and entry.enclosures:
         for enc in entry.enclosures:
@@ -195,7 +206,7 @@ def fetch_rss(source: dict) -> list:
                 "image_url": extract_image(entry),
                 "source_name": source["name"],
                 "section": source["section"],
-                "published": entry.get("published", _now()),
+                "published": _rss_date(entry),
                 "fetched_at": _now(),
                 "is_manual": 0,
                 "_raw_tags": raw_tags,
@@ -233,7 +244,11 @@ def fetch_scrape(source: dict) -> list:
                 image_url = f"{base.scheme}://{base.netloc}{image_url}"
             date_sel = sel.get("date", "")
             date_el = item.select_one(date_sel) if date_sel else None
-            published = _parse_date_text(date_el.get_text()) if date_el else _now()
+            if date_el:
+                dt_attr = date_el.get("datetime", "").strip()
+                published = _parse_date_text(dt_attr) if dt_attr else _parse_date_text(date_el.get_text())
+            else:
+                published = _now()
             articles.append({
                 "id": _article_id(href),
                 "url": href,
