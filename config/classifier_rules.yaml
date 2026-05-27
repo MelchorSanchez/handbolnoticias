@@ -160,7 +160,7 @@ rules:
 
   - section: spain/primera-nacional-masc
     tags: [primera-nacional]
-    keywords: ["primera nacional masculin", "primera nacional"]
+    keywords: ["primera nacional masculin", "primera nacional", "1ª nacional", "1a nacional"]
     exclude: [femenin]
 
   # ═══════════════════════════════════════════════════════════════════

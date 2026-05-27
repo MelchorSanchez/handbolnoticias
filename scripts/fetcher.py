@@ -45,6 +45,12 @@ def extract_image(entry) -> str:
     return None
 
 
+def _clean_cdata(text: str) -> str:
+    """Strip <![CDATA[...]]> wrappers that some feeds leave unprocessed."""
+    import re
+    return re.sub(r"<!\[CDATA\[(.*?)]]>", r"\1", text, flags=re.DOTALL).strip()
+
+
 def _passes_filter(source: dict, title: str, summary: str) -> bool:
     """If source defines filter_keywords, skip articles that don't mention any of them."""
     keywords = source.get("filter_keywords", [])
@@ -64,7 +70,7 @@ def fetch_rss(source: dict) -> list:
                 continue
             summary_html = entry.get("summary", "") or ""
             summary_text = BeautifulSoup(summary_html, "lxml").get_text()[:500]
-            title = entry.get("title", "").strip()
+            title = _clean_cdata(entry.get("title", "").strip())
             if not _passes_filter(source, title, summary_text):
                 continue
             raw_tags = [t.get("term", "") for t in getattr(entry, "tags", []) if t.get("term")]
@@ -106,7 +112,7 @@ def fetch_scrape(source: dict) -> list:
                 href = f"{base.scheme}://{base.netloc}{href}"
             if not href:
                 continue
-            title_text = title_el.get_text().strip()
+            title_text = _clean_cdata(title_el.get_text().strip())
             if not _passes_filter(source, title_text, ""):
                 continue
             img_el = item.select_one(sel.get("image", "img"))
