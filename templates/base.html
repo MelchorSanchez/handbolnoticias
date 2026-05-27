@@ -18,17 +18,11 @@
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<!-- Masthead -->
-<div class="bg-hb-blue">
-    <div class="max-w-7xl mx-auto px-6 py-4">
-        <a href="/">
-            <img src="/assets/logo.png" alt="HandbolNoticias" class="h-auto w-full max-w-2xl">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between py-2">
+        <a href="/" class="flex-shrink-0">
+            <img src="/assets/logo.png" alt="HandbolNoticias" class="h-28 w-auto">
         </a>
-    </div>
-</div>
-
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40 border-t border-blue-700/40">
-    <div class="max-w-7xl mx-auto px-4 flex items-center justify-end h-12">
         <div class="flex gap-5 text-sm font-medium">
             <a href="/all/" class="hover:text-orange-300 py-4 font-semibold">Todas ▸</a>
 
@@ -100,7 +94,6 @@
         </div>
     </div>
 </nav>
-
 
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     {% block content %}{% endblock %}

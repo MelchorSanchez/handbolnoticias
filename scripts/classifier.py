@@ -247,6 +247,20 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text=""):
                 sections = [sec for sec in sections if sec != fem_sec]
                 s = set(sections)
 
+    # Rule 4a: Suppress European club sections that come only from team-name matching
+    # when the article is already keyword-matched to a Spanish domestic section.
+    # Prevents transfer/player news about Spanish clubs from appearing under Champions etc.
+    _EUROPE_CLUB = frozenset({
+        "europe/champions", "europe/champions-women",
+        "europe/european-league", "europe/european-league-women",
+        "europe/cup-men", "europe/cup-women",
+    })
+    spain_kw = s & _SPAIN_NATIONAL & keyword_sections
+    europe_team_only = (s & _EUROPE_CLUB) - keyword_sections
+    if spain_kw and europe_team_only:
+        sections = [sec for sec in sections if sec not in europe_team_only]
+        s = set(sections)
+
     # Rule 4: cross-gender domestic incompatibility for Spanish club sections.
     # Priority: (a) keyword source, (b) gender vocabulary signals, (c) keep both.
     _SPAIN_CLUB_MASC = {"spain/asobal", "spain/dhp", "spain/primera-nacional-masc"}
