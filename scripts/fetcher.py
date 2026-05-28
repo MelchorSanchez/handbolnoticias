@@ -236,6 +236,29 @@ def fetch_rss(source: dict) -> list:
         return []
 
 
+def _date_from_url(url: str):
+    """Extract publication date embedded in news article URLs.
+    Handles /YYYY/MM/DD/ (Marca, FNavarraBM) and /YYYYMMDD/ (MundoDeportivo) patterns.
+    Returns ISO string or None."""
+    # /2026/05/24/ style
+    m = re.search(r'/(\d{4})/(\d{2})/(\d{2})/', url)
+    if m:
+        try:
+            return datetime(int(m.group(1)), int(m.group(2)), int(m.group(3)),
+                            12, 0, 0, tzinfo=timezone.utc).isoformat()
+        except ValueError:
+            pass
+    # /20260524/ style (8-digit date block between slashes)
+    m = re.search(r'/(\d{4})(\d{2})(\d{2})/', url)
+    if m:
+        try:
+            return datetime(int(m.group(1)), int(m.group(2)), int(m.group(3)),
+                            12, 0, 0, tzinfo=timezone.utc).isoformat()
+        except ValueError:
+            pass
+    return None
+
+
 def fetch_scrape(source: dict) -> list:
     try:
         resp = httpx.get(source["url"], headers=HEADERS, timeout=TIMEOUT, follow_redirects=True)
@@ -267,7 +290,7 @@ def fetch_scrape(source: dict) -> list:
                 dt_attr = date_el.get("datetime", "").strip()
                 published = _parse_date_text(dt_attr) if dt_attr else _parse_date_text(date_el.get_text())
             else:
-                published = _now()
+                published = _date_from_url(href) or _now()
             articles.append({
                 "id": _article_id(href),
                 "url": href,

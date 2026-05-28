@@ -68,7 +68,7 @@ def insert_article(conn: sqlite3.Connection, article: dict) -> bool:
             SET section        = :section,
                 extra_sections = :extra_sections,
                 published      = CASE
-                    WHEN :published IS NOT NULL AND :published != :fetched_at
+                    WHEN :published IS NOT NULL AND :published < published
                     THEN :published
                     ELSE published
                 END
