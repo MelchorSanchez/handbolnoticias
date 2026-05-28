@@ -560,14 +560,50 @@ teams:
     - HSV Hamburg Handball
     - HSV Handball
     - Magdeburgo
+    - SC Magdeburg
+    - Füchse Berlin
+    - SG Flensburg-Handewitt
+    - VfL Gummersbach
+    - THW Kiel
+    - TBV Lemgo Lippe
+    - MT Melsungen
+    - Rhein-Neckar Löwen
+    - FRISCH AUF! Göppingen
+    - TSV Hannover-Burgdorf
+    - Handball Sport Verein Hamburg
+    - TVB Stuttgart
+    - ThSV Eisenach
+    - HC Erlangen
+    - Bergischer HC
+    - HSG Wetzlar
+    - GWD Minden
+    - SC DHfK Leipzig
 
-  germany/zweite-liga:
+  germany/bundesliga2:
     - TuS N-Lübbecke
     - Eulen Ludwigshafen
     - HBW Balingen-Weilstetten
     - VfL Bad Schwartau
     - ASV Hamm-Westfalen
-
+    - SG BBM Bietigheim
+    - HBW Balingen-Weilstetten
+    - HC Elbflorenz 2006
+    - VfL Potsdam
+    - HSG Nordhorn-Lingen
+    - VfL Eintracht Hagen
+    - VfL Lübeck-Schwartau
+    - Dessau-Roßlauer HV 06
+    - TuS N-Lübbecke
+    - HSC 2000 Coburg
+    - TV 05/07 Hüttenberg
+    - Eulen Ludwigshafen
+    - TSV Bayer Dormagen
+    - TV Großwallstadt
+    - TuS Ferndorf
+    - TuSEM Essen
+    - HSG Krefeld Niederrhein
+    - HC Oppenweiler/Backnang
+    
   # ── Alemania — Femenino ───────────────────────────────────────────
   germany/bundesliga-fem:
     - Borussia Dortmund Handball
@@ -583,11 +619,39 @@ teams:
     - BSV Sachsen Zwickau
     - Buxtehuder SV
     - Buxtehude
+    - HSG Blomberg-Lippe
+    - Borussia Dortmund
+    - HSG Bensheim/Auerbach
+    - Thüringer HC
+    - VfL Oldenburg
+    - Sport-Union Neckarsulm
+    - TuS Metzingen
+    - BSV Sachsen Zwickau
+    - FRISCH AUF Göppingen
+    - Buxtehuder SV
+    - SV Union Halle-Neustadt
+    - HB Ludwigsburg
 
-  germany/zweite-liga-fem:
+  germany/bundesliga2-fem:
     - TSV Bayer Leverkusen
     - VfL Oldenburg II
     - HC Leipzig Damen
+    - HC Leipzig
+    - TG Nürtingen
+    - Füchse Berlin
+    - HC Rödertal
+    - HSV Solingen-Gräfrath 76
+    - ESV 1927 Regensburg
+    - SV Werder Bremen
+    - Bergischer HC
+    - FSV Mainz 05
+    - VfL Waiblingen
+    - HSG Freiburg
+    - TSV Bayer 04 Leverkusen
+    - HL Buchholz 08-Rosengarten
+    - Rostocker HC
+    - SG 09 Kirchhof
+    - TuS Lintfort
 
   germany:
     - DHB

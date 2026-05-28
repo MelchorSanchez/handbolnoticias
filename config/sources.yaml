@@ -503,6 +503,18 @@ sources:
     url: https://www.gwd-minden.de/feed/
     max_items: 10
 
+  - name: FrischAuf-web
+    section: germany/bundesliga
+    type: rss
+    url: https://www.frisch-auf.de/feed/
+    max_items: 10
+
+  - name: DHfKLeipzig-web
+    section: germany/bundesliga
+    type: rss
+    url: https://www.scdhfk-handball.de/feed/
+    max_items: 10
+
   # ── Alemania — Bundesliga Femenina ────────────────────────────────
   - name: BlombergLippe-web
     section: germany/bundesliga-fem
@@ -550,6 +562,27 @@ sources:
     max_items: 10
 
   # ══════════════════════════════════════════════════════════════════════════
+  # CLUBES FRANCE — Starligue / D1F
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: MontpellierHB-web
+    section: france/starligue
+    type: rss
+    url: https://montpellier-handball.com/feed/
+    max_items: 10
+
+  - name: PSGHandball-web
+    section: france/starligue
+    type: rss
+    url: https://www.psg.fr/handball/feed/
+    max_items: 10
+
+  - name: MetzHandball-web
+    section: france/d1f
+    type: rss
+    url: https://metz-handball.com/feed/
+    max_items: 10
+
+  # ══════════════════════════════════════════════════════════════════════════
   # CLUBES EUROPEOS — Champions League / European League
   # ══════════════════════════════════════════════════════════════════════════
   - name: Kolstad-web
@@ -562,5 +595,25 @@ sources:
     section: europe/champions-women
     type: rss
     url: https://www.teamesbjerg.dk/feed/
+    max_items: 10
+
+  # ── Noruega ────────────────────────────────────────────────────────
+  - name: Elverum-web
+    section: norway
+    type: rss
+    url: https://www.elverum-handball.no/feed/
+    max_items: 10
+
+  - name: SolaHK-web
+    section: norway
+    type: rss
+    url: https://www.sola-hk.no/feed/
+    max_items: 10
+
+  # ── Dinamarca ──────────────────────────────────────────────────────
+  - name: GOG-web
+    section: denmark
+    type: rss
+    url: https://www.gog.dk/feed/
     max_items: 10
 

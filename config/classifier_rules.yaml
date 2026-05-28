@@ -315,7 +315,7 @@ rules:
                "liqui moly hbl", "daikin hbl"]
     exclude: ["2. bundesliga", zweite, frauen, damen, women]
 
-  - section: germany/zweite-liga
+  - section: germany/bundesliga2
     tags: [zweite-bundesliga, 2-bundesliga]
     keywords: ["2. bundesliga handball", "zweite handball-bundesliga",
                "2. handball-bundesliga", "zweite liga handball"]
@@ -326,7 +326,7 @@ rules:
     keywords: ["1. bundesliga frauen", "1. bundesliga damen", "alsco hbf",
                "hbf handball", "bundesliga damen handball", "handball bundesliga frauen"]
 
-  - section: germany/zweite-liga-fem
+  - section: germany/bundesliga2-fem
     tags: [2-bundesliga-frauen, zweite-bundesliga-frauen]
     keywords: ["2. bundesliga frauen", "2. bundesliga damen", "zweite bundesliga damen"]
 

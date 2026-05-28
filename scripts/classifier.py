@@ -27,8 +27,8 @@ _BASE_SECTIONS = frozenset({"spain/base-masc", "spain/base-fem"})
 _DOMESTIC_ADULT = frozenset({
     "spain/asobal", "spain/guerreras", "spain/dhp",
     "spain/dho-fem", "spain/dhp-fem", "spain/primera-nacional-masc",
-    "germany/bundesliga", "germany/zweite-liga", "germany",
-    "germany/bundesliga-fem", "germany/zweite-liga-fem",
+    "germany/bundesliga", "germany/bundesliga2", "germany",
+    "germany/bundesliga-fem", "germany/bundesliga2-fem",
     "france/starligue", "france/pro-d2", "france",
     "france/d1f", "france/d2f",
 })
@@ -38,8 +38,8 @@ _DOMESTIC_ADULT = frozenset({
 _PRIORITY_GROUPS = [
     ["spain/asobal", "spain/dhp", "spain/primera-nacional-masc"],
     ["spain/guerreras", "spain/dho-fem", "spain/dhp-fem"],
-    ["germany/bundesliga", "germany/zweite-liga", "germany"],
-    ["germany/bundesliga-fem", "germany/zweite-liga-fem"],
+    ["germany/bundesliga", "germany/bundesliga2", "germany"],
+    ["germany/bundesliga-fem", "germany/bundesliga2-fem"],
     ["france/starligue", "france/pro-d2", "france"],
     ["france/d1f", "france/d2f"],
 ]
@@ -263,8 +263,8 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text=""):
     })
     _DOMESTIC_ANY = _SPAIN_NATIONAL | frozenset({
         "france/starligue", "france/pro-d2", "france", "france/d1f", "france/d2f",
-        "germany/bundesliga", "germany/zweite-liga", "germany",
-        "germany/bundesliga-fem", "germany/zweite-liga-fem",
+        "germany/bundesliga", "germany/bundesliga2", "germany",
+        "germany/bundesliga-fem", "germany/bundesliga2-fem",
         "portugal", "denmark", "sweden", "norway",
     })
     domestic_present = s & _DOMESTIC_ANY
