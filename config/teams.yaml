@@ -533,47 +533,113 @@ teams:
     - ZRK Kumanovo
     - ZRK Zeleznicar Indija
 
-  # ── Alemania ──────────────────────────────────────────────────────
+  # ── Alemania — Masculino ──────────────────────────────────────────
   germany/bundesliga:
-    - Bundesliga Handball
-    - Rhein-Neckar
-    - Füchse
-    - SG Flensburg
     - THW Kiel
-    - Bergischer HC
-    - TBV Lemgo
-    - HSV Hamburg Handball
+    - SG Flensburg-Handewitt
+    - SG Flensburg
     - SC Magdeburg
+    - Rhein-Neckar Löwen
+    - Rhein-Neckar
+    - Füchse Berlin
+    - Füchse
     - MT Melsungen
+    - TSV Hannover-Burgdorf
     - Hannover-Burgdorf
+    - VfL Gummersbach
+    - TBV Lemgo Lippe
+    - TBV Lemgo
+    - ThSV Eisenach
+    - Frisch Auf Göppingen
+    - SC DHfK Leipzig
+    - HSG Wetzlar
+    - HC Erlangen
+    - TVB Stuttgart
+    - Bergischer HC
     - GWD Minden
+    - HSV Hamburg Handball
+    - HSV Handball
     - Magdeburgo
 
   germany/zweite-liga:
     - TuS N-Lübbecke
-    - VfL Gummersbach
     - Eulen Ludwigshafen
+    - HBW Balingen-Weilstetten
+    - VfL Bad Schwartau
+    - ASV Hamm-Westfalen
+
+  # ── Alemania — Femenino ───────────────────────────────────────────
+  germany/bundesliga-fem:
+    - Borussia Dortmund Handball
+    - HSG Blomberg-Lippe
+    - Blomberg-Lippe
+    - Thüringer HC
+    - HSG Bensheim/Auerbach
+    - VfL Oldenburg
+    - Sport-Union Neckarsulm
+    - SUN Neckarsulm
+    - SV Union Halle-Neustadt
+    - TuS Metzingen
+    - BSV Sachsen Zwickau
+    - Buxtehuder SV
+    - Buxtehude
+
+  germany/zweite-liga-fem:
+    - TSV Bayer Leverkusen
+    - VfL Oldenburg II
+    - HC Leipzig Damen
 
   germany:
     - DHB
     - Handball Deutschland
     - Die Mannschaft Handball
 
-  # ── Francia ───────────────────────────────────────────────────────
+  # ── Francia — Masculino ───────────────────────────────────────────
   france/starligue:
-    - Nantes HBC
-    - Montpellier HB
     - Paris Saint-Germain Handball
+    - PSG Handball
+    - HBC Nantes
+    - Montpellier HB
+    - Chambéry Savoie Mont Blanc
+    - Dunkerque HB
+    - Istres Provence Handball
     - Limoges Saint-Etienne
+    - USAM Nîmes
+    - Saint-Raphaël Var
+    - Sélestat
     - FENIX Toulouse
     - Cesson Rennes
+    - Aix-en-Provence
     - Chartres
-    - Saint-Raphael Var
+    - Dijon
 
   france/pro-d2:
     - Tremblay Handball
-    - Dunkerque Handball
     - Pays d'Aix Handball
+    - Ivry Handball
+    - Créteil Handball
+    - Toulouse Handball
+
+  # ── Francia — Femenino ────────────────────────────────────────────
+  france/d1f:
+    - Metz Handball
+    - Brest Bretagne Handball
+    - OGC Nice Handball
+    - JDA Dijon Handball
+    - ESBF Besançon
+    - Paris 92
+    - Chambray Touraine Handball
+    - Plan-de-Cuques
+    - Saint-Amand Handball
+    - Toulon Handball
+    - Stella Metz
+    - Achenheim
+    - Sambre-Avesnois
+    - Le Havre Handball
+
+  france/d2f:
+    - Issy Paris Hand
+    - Dijon HB Féminin
 
   france:
     - FFHB
@@ -586,6 +652,16 @@ teams:
     - GOG Håndbold
     - Bjerringbro-Silkeborg
     - Skjern Håndbold
+    - Aalborg Håndbold
+    - GOG Håndbold
+    - Bjerringbro-Silkeborg
+    - Skjern Håndbold
+    - Team Esbjerg
+    - Odense Håndbold
+    - Ikast Håndbold
+    - Viborg HK
+    - Fredericia
+    - HOJ Elite
 
   # ── Suecia ────────────────────────────────────────────────────────
   sweden:
@@ -601,6 +677,13 @@ teams:
     - Drammen HK
     - Vipers Kristiansand
     - Storhamar Handball
+    - Kolstad Håndball
+    - Elverum Håndball
+    - Runar Sandefjord
+    - Vipers Kristiansand
+    - Storhamar Håndball
+    - Larvik HK
+    - Sola HK
 
   # ── Portugal ──────────────────────────────────────────────────────
   portugal:
@@ -608,6 +691,33 @@ teams:
     - SL Benfica Handball
     - FC Porto Handball
     - Águas Santas
+    - ABC Braga
+    - Madeira SAD
+
+  # ── Austria ──────────────────────────────────────────────────────
+  autria:
+   - Alpla HC Hard
+   - Fivers Margareten
+   - Hypo Niederösterreich
+   - BT Füchse
+  # ── Suiza ──────────────────────────────────────────────────────
+  switzerland:
+  - Kadetten Schaffhausen
+  - HC Kriens-Luzern
+  - LC Brühl
+  - Yellow Winterthur
+  # ── Islandia ──────────────────────────────────────────────────────
+  iceland:
+  - FH Hafnarfjörður
+  - Valur
+  - KA Akureyri
+  - ÍBV
+  # ── Islas Feroe ──────────────────────────────────────────────────────
+  faoe-islands:
+  - H71
+  - KÍF Kollafjørður
+  - Neistin
+  - VÍF
 
   # ── Hungría ───────────────────────────────────────────────────────
   hungary:
@@ -615,16 +725,59 @@ teams:
     - Veszprém HC
     - Telekom Veszprém
     - Ferencváros
+    - Gyori
+    - Tatabánya KC
+    - Győri Audi ETO KC
+    - FTC-Rail Cargo Hungaria
+    - DVSC Schaeffler
 
   # ── Croacia ───────────────────────────────────────────────────────
   croatia:
     - PPD Zagreb
     - RK Nexe
     - RK Dinamo Zagreb
+    - RK Sesvete
+    - Podravka Koprivnica
+    - Lokomotiva Zagreb    
 
+  # ── Rumania ───────────────────────────────────────────────────────
+  romania: 
+    - Dinamo București
+    - CSM București
+    - Rapid București
+    - SCM Râmnicu Vâlcea
+    - Gloria Bistrița
+    - Minaur Baia Mare
+    - Constanta   
+    
+  # ── Serbia ───────────────────────────────────────────────────────
+  serbia:
+    - Vojvodina
+    - Partizan de belgrado
+    - Dinamo (Pančevo)
+    - Metaloplastika (Šabac)
+    - Partizan (Belgrade)
+    - Crvena zvezda / Red Star (Belgrade)
+    - ŽRK Crvena Zvezda
+    - Radnički Kragujevac
+    - ŽORK Jagodina
+    - ŽRK Naisa Niš
+    - ŽRK Železničar 
+    - Radnički (Kragujevac)
+    
   # ── Argentina ─────────────────────────────────────────────────────
   argentina:
     - Selección Argentina balonmano
+    - River Plate Handball
+    - SEDALO
+    - Dorrego Handball
+    - UNLu
+    - Luján
+    - San Fernando Handball
+    - Villa Ballester
+    - VILO Handball
+    - SAG Lomas
+    - Esudiantes de la Plata handball
 
   # ── Italia ────────────────────────────────────────────────────────
   italy:
@@ -634,28 +787,72 @@ teams:
     - Junior Fasano
     - Sassari
     - Brixen Handball
+    - SSV Bozen
+    - Jomi Salerno
 
   # ── Grecia ────────────────────────────────────────────────────────
   greece:
     - Aris Thessaloniki
     - Olympiakos Handball
     - AEK Athens Handball
+    - PAOK
+    - Diomidis Argous
+
+  # ── Polonia ────────────────────────────────────────────────────────
+  poland:
+    - Industria Kielce
+    - Wisła Płock
+    - Górnik Zabrze
+    - Azoty Puławy
+    - MKS Lublin
+    - Zaglebie Lubin
+    - Chrobry Glogow
+
 
   # ── Eslovenia ─────────────────────────────────────────────────────
   slovenia:
     - RK Celje
     - RK Koper
     - RK Velenje
+    - RK Gorenje Velenje
+    - RK Trimo Trebnje
+    - RK Krim
+
+  # ── Eslovaquia ─────────────────────────────────────────────────────
+  slovakia:
+    - Tatran Prešov
+    - Iuventa Michalovce
+    - DAC Dunajská Streda
 
   # ── Macedonia del Norte ───────────────────────────────────────────
   north-macedonia:
     - RK Vardar
     - Metalurg Skopje
+    - RK Eurofarm Pelister
+    - RK Alkaloid
+    - RK Ohrid
+    - ŽRK Vardar
 
   # ── Brasil ────────────────────────────────────────────────────────
   brazil:
     - Seleção Brasileira Handebol
     - Pinheiros
+    - Handebol Taubaté
+    - Nacional Handebol Clube
+    - Português Recife
+    - Clube Concórdia
+    - Metodista São Bernardo   
+    
+  # ── Japon ────────────────────────────────────────────────────────
+  japon:
+    - Seleccion Japonesa Balonmano 
+    - Pinheiros    
+    - Toyota Auto Body Brave Kings
+    - Zeekstar Tokyo
+    - Osaki Osol
+    - Daido Steel Phenix
+    - Omron
+    - Sony Semiconductor Blue Sakuya
 
   # ── España: Navarra ───────────────────────────────────────────────
   spain/navarra:

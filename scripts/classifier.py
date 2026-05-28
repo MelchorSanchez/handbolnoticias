@@ -28,7 +28,9 @@ _DOMESTIC_ADULT = frozenset({
     "spain/asobal", "spain/guerreras", "spain/dhp",
     "spain/dho-fem", "spain/dhp-fem", "spain/primera-nacional-masc",
     "germany/bundesliga", "germany/zweite-liga", "germany",
+    "germany/bundesliga-fem", "germany/zweite-liga-fem",
     "france/starligue", "france/pro-d2", "france",
+    "france/d1f", "france/d2f",
 })
 
 # Within each group, if multiple sections are present keep only the highest-priority one.
@@ -37,7 +39,9 @@ _PRIORITY_GROUPS = [
     ["spain/asobal", "spain/dhp", "spain/primera-nacional-masc"],
     ["spain/guerreras", "spain/dho-fem", "spain/dhp-fem"],
     ["germany/bundesliga", "germany/zweite-liga", "germany"],
+    ["germany/bundesliga-fem", "germany/zweite-liga-fem"],
     ["france/starligue", "france/pro-d2", "france"],
+    ["france/d1f", "france/d2f"],
 ]
 
 # Specific EHF sections suppress the catch-all europe/other
@@ -258,8 +262,9 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text=""):
         "europe/cup-men", "europe/cup-women",
     })
     _DOMESTIC_ANY = _SPAIN_NATIONAL | frozenset({
-        "france/starligue", "france/pro-d2", "france",
+        "france/starligue", "france/pro-d2", "france", "france/d1f", "france/d2f",
         "germany/bundesliga", "germany/zweite-liga", "germany",
+        "germany/bundesliga-fem", "germany/zweite-liga-fem",
         "portugal", "denmark", "sweden", "norway",
     })
     domestic_present = s & _DOMESTIC_ANY

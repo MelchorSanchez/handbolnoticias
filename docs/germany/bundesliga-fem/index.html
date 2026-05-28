@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alsco HBF (Fem) — HandbolNoticias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-hb-blue  { background-color: #003DA5; }
+        .text-hb-blue { color: #003DA5; }
+        .text-hb-orange { color: #FF6B00; }
+        .border-hb-orange { border-color: #FF6B00; }
+        .text-spain-red { color: #CC0000; }
+        .border-spain-red { border-color: #CC0000; }
+        .text-europe-green { color: #2E7D32; }
+        .border-europe-green { border-color: #2E7D32; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-20">
+        <a href="/" class="flex items-center gap-3 flex-1 min-w-0">
+            <img src="/assets/logo.png" alt="" class="h-8 w-auto flex-shrink-0">
+            <span class="text-2xl font-black tracking-tight text-white truncate">HandbolNoticias</span>
+        </a>
+        <div class="flex gap-5 text-sm font-medium flex-shrink-0 ml-6">
+            <a href="/all/" class="hover:text-orange-300 py-4 font-semibold">Todas ▸</a>
+
+            <!-- España -->
+            <div class="relative group">
+                <button class="hover:text-orange-300 py-4">España ▾</button>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-52 z-50 py-1">
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Masculino</div>
+                    <a href="/spain/asobal/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">ASOBAL</a>
+                    <a href="/spain/dhp/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">División Honor Plata</a>
+                    <a href="/spain/primera-nacional-masc/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Primera Nacional</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Femenino</div>
+                    <a href="/spain/guerreras/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Liga Guerreras Iberdrola</a>
+                    <a href="/spain/dho-fem/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">División Honor Oro</a>
+                    <a href="/spain/dhp-fem/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">División Honor Plata</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Selección</div>
+                    <a href="/spain/seleccion-masc/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Selección Masculina</a>
+                    <a href="/spain/seleccion-fem/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Selección Femenina</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Base</div>
+                    <a href="/spain/base-masc/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Base Masculino</a>
+                    <a href="/spain/base-fem/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Base Femenino</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Territorial</div>
+                    <a href="/spain/catalonia/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Cataluña</a>
+                    <a href="/spain/navarra/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Navarra</a>
+                    <a href="/spain/euskadi/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Euskadi</a>
+                </div>
+            </div>
+
+            <!-- Europa EHF -->
+            <div class="relative group">
+                <button class="hover:text-orange-300 py-4">Europa ▾</button>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-56 z-50 py-1">
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Club Masc</div>
+                    <a href="/europe/champions/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Champions League Masc</a>
+                    <a href="/europe/european-league/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European League Masc</a>
+                    <a href="/europe/cup-men/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European Cup Masc</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Club Fem</div>
+                    <a href="/europe/champions-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Champions League Fem</a>
+                    <a href="/europe/european-league-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European League Fem</a>
+                    <a href="/europe/cup-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European Cup Fem</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Selecciones</div>
+                    <a href="/europe/euro-men/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">EHF EURO Masc</a>
+                    <a href="/europe/euro-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">EHF EURO Fem</a>
+                    <a href="/europe/other/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Otras EHF</a>
+                </div>
+            </div>
+
+            <!-- Internacional (IHF + Alemania + Francia + Resto) -->
+            <div class="relative group">
+                <button class="hover:text-orange-300 py-4">Internacional ▾</button>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-52 z-50 py-1 max-h-[32rem] overflow-y-auto">
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">IHF</div>
+                    
+                    
+                    
+                    <a href="/ihf/world-men/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Mundial Masc</a>
+                    
+                    
+                    
+                    <a href="/ihf/world-women/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Mundial Fem</a>
+                    
+                    
+                    
+                    <div class="border-t mx-3 my-1"></div>
+                    
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Alemania Masc</div>
+                    
+                    
+                    
+                    <a href="/germany/bundesliga/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Daikin HBL</a>
+                    
+                    
+                    
+                    <a href="/germany/zweite-liga/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">2. Bundesliga</a>
+                    
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Alemania Fem</div>
+                    
+                    
+                    
+                    <a href="/germany/bundesliga-fem/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Alsco HBF</a>
+                    
+                    
+                    
+                    <a href="/germany/zweite-liga-fem/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">2. Bundesliga Fem</a>
+                    
+                    
+                    
+                    <a href="/germany/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">General</a>
+                    
+                    
+                    
+                    <div class="border-t mx-3 my-1"></div>
+                    
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Francia Masc</div>
+                    
+                    
+                    
+                    <a href="/france/starligue/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Liqui Moly Starligue</a>
+                    
+                    
+                    
+                    <a href="/france/pro-d2/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">ProLigue</a>
+                    
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Francia Fem</div>
+                    
+                    
+                    
+                    <a href="/france/d1f/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Ligue Butagaz Énergie</a>
+                    
+                    
+                    
+                    <a href="/france/d2f/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">D2F</a>
+                    
+                    
+                    
+                    <a href="/france/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">General</a>
+                    
+                    
+                    
+                    <div class="border-t mx-3 my-1"></div>
+                    
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Otros países</div>
+                    
+                    
+                    
+                    <a href="/denmark/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Dinamarca</a>
+                    
+                    
+                    
+                    <a href="/sweden/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Suecia</a>
+                    
+                    
+                    
+                    <a href="/norway/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Noruega</a>
+                    
+                    
+                    
+                    <a href="/portugal/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Portugal</a>
+                    
+                    
+                    
+                    <a href="/austria/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Austria</a>
+                    
+                    
+                    
+                    <a href="/switzerland/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Suiza</a>
+                    
+                    
+                    
+                    <a href="/iceland/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Islandia</a>
+                    
+                    
+                    
+                    <a href="/faroe-islands/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Islas Feroe</a>
+                    
+                    
+                    
+                    <a href="/hungary/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Hungría</a>
+                    
+                    
+                    
+                    <a href="/poland/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Polonia</a>
+                    
+                    
+                    
+                    <a href="/croatia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Croacia</a>
+                    
+                    
+                    
+                    <a href="/serbia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Serbia</a>
+                    
+                    
+                    
+                    <a href="/slovakia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Eslovaquia</a>
+                    
+                    
+                    
+                    <a href="/slovenia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Eslovenia</a>
+                    
+                    
+                    
+                    <a href="/romania/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Rumania</a>
+                    
+                    
+                    
+                    <a href="/greece/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Grecia</a>
+                    
+                    
+                    
+                    <a href="/italy/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Italia</a>
+                    
+                    
+                    
+                    <a href="/north-macedonia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Macedonia del Norte</a>
+                    
+                    
+                    
+                    <a href="/argentina/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Argentina</a>
+                    
+                    
+                    
+                    <a href="/brazil/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Brasil</a>
+                    
+                    
+                    
+                    <a href="/japan/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Japón</a>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
+    
+
+<nav class="text-sm text-gray-500 mb-6">
+    <a href="/" class="hover:text-hb-blue">Inicio</a>
+    <span class="mx-2">›</span>
+    <span class="text-gray-800 font-medium">Alsco HBF (Fem)</span>
+</nav>
+
+<h1 class="text-2xl font-bold mb-6 text-gray-900">Alsco HBF (Fem)</h1>
+
+
+<div class="space-y-3">
+    
+    <a href="https://hsg-blomberg-lippe.de/2026/05/28/offener-schlagabtausch-um-die-meisterschaft/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Abierto intercambio de golpes por el campeonato</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">The post Intercambio abierto de golpes por el campeonato apareció por primera vez en HSG Blomberg-Lippe Bundesliga GmbH.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BlombergLippe-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-28</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://hsg-blomberg-lippe.de/2026/05/28/zwei-auszeichnungen-fuer-die-hsg-vor-dem-meisterschaftsfinale/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Dos premios para el HSG antes de la final del campeonato</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">The post Dos premios para HSG antes de la final del campeonato apareció por primera vez en HSG Blomberg-Lippe Bundesliga GmbH.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BlombergLippe-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-28</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.bsv-live.de/in-zwickau-platz-sieben-sichern/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.bsv-live.de/wp-content/uploads/2026/05/Vorbericht_Nachbericht-27.png" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Conseguir el séptimo puesto en Zwickau</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Foto: BSV Sachsen Zwickau Séptimo puesto asegurado en Zwickau: ¡el BSV quiere terminar la temporada con buen pie! La última jornada de la ALSCO Handball Bundesliga trae al Buxtehuder SV a un viaje a Zwickau. El domingo a las 15 h. Jugamos contra el otro BSV, el club de deportes de pelota BSV Sachsen Zwickau. Después</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Buxtehude-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-28</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://hsg-blomberg-lippe.de/2026/05/26/oeffnungszeiten-der-geschaeftsstelle/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Horario de apertura de la oficina</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El horario de apertura de la oficina de correos apareció por primera vez en HSG Blomberg-Lippe Bundesliga GmbH.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BlombergLippe-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-26</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.bsv-live.de/best-of-vs-goeppingen/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.bsv-live.de/wp-content/uploads/2026/05/BEST-OF-22.png" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">LO MEJOR DE VS. Göppingen</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Buxtehude-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-26</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://hsg-blomberg-lippe.de/2026/05/25/entscheidungsspiel-um-die-deutsche-meisterschaft-vorverkauf-fuer-play-off-finale-gestartet/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Juego decisivo para el campeonato alemán: comenzaron las ventas anticipadas para la final del play-off</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">The post Partido decisivo para el campeonato alemán: comenzaron las ventas anticipadas para la final del play-off apareció por primera vez en HSG Blomberg-Lippe Bundesliga GmbH.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BlombergLippe-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-24</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://hsg-blomberg-lippe.de/2026/05/24/krimisieg-aufholjagd-und-vertagter-matchball-die-hsg-siegt-erneut-zuhause-gegen-den-bvb/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Victoria emocionante, remontada y match point aplazado: el HSG vuelve a ganar en casa al BVB</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">The post Victoria del crimen, recuperación y punto de partido aplazado: HSG vuelve a ganar en casa al BVB apareció por primera vez en HSG Blomberg-Lippe Bundesliga GmbH.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BlombergLippe-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-24</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.bsv-live.de/bsv-kroent-einen-emotionalen-heimabschluss-mit-einem-sieg/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.bsv-live.de/wp-content/uploads/2026/05/Vorbericht_Nachbericht-9.png" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El BSV corona un emotivo final en casa con una victoria</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Foto: Felix Schlikis El BSV corona un emotivo final en casa con una victoria Lágrimas, caras sonrientes y una victoria en casa: Buxtehuder SV consiguió dos puntos en el último partido en casa de la temporada 2025/26 en la ALSCO Handball Bundesliga. Las mujeres de Buxtehuder ganaron a FrischAuf Göppingen por 32:3</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Buxtehude-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-24</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.thueringer-hc.de/thueringer-hc-erkaempft-bronze-julie-holm-trifft-in-letzter-sekunde/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Thüringer HC gana el bronce – Julie Holm anota en el último segundo</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El Thüringer HC consiguió el sábado por la noche el tercer puesto en la ALSCO Handball Bundesliga femenina con una espectacular victoria a domicilio por 28:27 ante el HSG Bensheim/Auerbach. En un partido intenso y abierto hasta los últimos segundos, Julie Holm marcó el gol decisivo.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">ThueringerHC-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-23</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.bsv-live.de/anika-hampel-spielerin-der-saison-im-bsv/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.bsv-live.de/wp-content/uploads/2026/05/Spielerin-der-Saison-3.png" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">¡Anika Hampel “Jugadora de la temporada” en BSV!</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Foto: Felix Schlikis Anika Hampel ¡“Jugadora de la temporada” en el BSV! Los aficionados y el jurado decidieron por unanimidad: ¡La “Jugadora de la temporada 2025/26” del Buxtehuder SV es Anika Hampel! Después del último partido de la Bundesliga en casa contra el FrischAuf Göppingen en el pabellón norte, Claas Schme entregó el premio</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Buxtehude-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-23</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.bsv-live.de/endstand-3230/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.bsv-live.de/wp-content/uploads/2026/05/25-26-Matchday-HZ-EZ-112.png" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Puntuación final 32:30</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Foto: Felix Schlikis Qué lindo es... Ganamos en el último partido en casa de la temporada 2025/26</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Buxtehude-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-23</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.thueringer-hc.de/noch-einmal-motivieren/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Motivar de nuevo</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El sábado 23 de mayo de 2026 a las 18:00 horas tendrá lugar en el Weststadthalle Bensheim el partido decisivo por el tercer puesto entre los dos perdedores de la serie de semifinales HSG Bensheim/Auerbach y Thüringer HC. Las “Llamas” que están mejor posicionadas tras la ronda principal están ahí</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">ThueringerHC-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-22</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://hsg-blomberg-lippe.de/2026/05/21/revanche-an-der-ulmenallee-hsg-will-bvb-matchball-verhindern/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Venganza contra Ulmenallee: HSG quiere evitar el punto de partido del BVB</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">The post Revanche an der Ulmenallee – HSG will BVB-Matchball verhindern appeared first on HSG Blomberg-Lippe Bundesliga GmbH.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BlombergLippe-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-21</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://hsg-blomberg-lippe.de/2026/05/21/nach-sechs-jahren-marie-michalczik-verlaesst-die-hsg/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Después de seis años: Marie Michalczik deja el HSG</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">La publicación Después de seis años: Marie Michalczik deja HSG apareció por primera vez en HSG Blomberg-Lippe Bundesliga GmbH.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BlombergLippe-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-21</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.bsv-live.de/bsv-letztes-heimspiel-der-saison-duell-der-remis-koenige/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.bsv-live.de/wp-content/uploads/2026/05/Vorbericht_Nachbericht-1.png" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">BSV: último partido de la temporada en casa: duelo entre los reyes del sorteo</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Foto: FRISCH ON Göppingen En el último partido en casa de la temporada 2025/26, el Buxtehuder SV recibe el sábado por la tarde al FrischAuf Göppingen en la ALSCO Handball Bundesliga. Ambos equipos ya han conseguido el descenso: ahora el duelo directo gira en torno a la mejor clasificación posible para la final</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Buxtehude-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-21</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://tus-metzingen.de/2026/05/20/u18-pokalfinale/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Final de la Copa Sub-18</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El domingo pasado teníamos en la agenda el siguiente gran momento: la tan esperada final de la Copa U18. Después de vencer con éxito a numerosos equipos en las rondas principales anteriores de la ronda de copa de este año, finalmente se nos permitió ser uno de</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Metzingen-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-20</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://tus-metzingen.de/2026/05/20/spieler-gesucht/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">! ¡Se buscan jugadores!</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Buscamos jugadoras motivadas y con experiencia en voleibol para nuestro equipo femenino y de relevos U20. Si tienes 17 años o menos y te gustaría entrenar orientado al rendimiento en un gran equipo, ¡ven y conócenos! Esperamos verte.📩 Interesado en uno</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Metzingen-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-20</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.bsv-live.de/stolze-erfolgs-bilanz-der-handball-akademie-buxtehude/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.bsv-live.de/wp-content/uploads/2026/05/ccd0b58f-7964-4246-981d-2f44fec7f29e-scaled.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Orgullosa trayectoria de la Academia de Balonmano de Buxtehude</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">La temporada 2025/26 es una historia de éxito absoluto para el balonmano juvenil de Buxtehuder. La conquista del campeonato juvenil de Alemania A es el mayor logro de esta temporada. El pasado martes 19 de mayo de 2026, la alcaldesa Katja Oldenburg-Schmidt invitó a los campeones a una recepción en el antiguo,</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Buxtehude-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-20</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://tus-metzingen.de/2026/05/18/wuerttembergische-meisterschaften-u17-2025-26-in-backnang/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Campeonato de Wurtemberg U17 2025/26 en Backnang</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El sábado 16 de mayo de 2025, TuS Metzingen se reunió a las 8:00 horas en el Schönbeinhalle de Metzingen. Muy motivados, nos preparamos para el día del partido en el coche de camino a Backnang. Después de llegar, calentamos lentamente nuestros cuerpos y calentamos. tenso y emocionado</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Metzingen-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-18</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.bsv-live.de/ohne-spiel-buxtehuder-sv-hat-den-klassenerhalt-sicher/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.bsv-live.de/wp-content/uploads/2026/05/Jubel-BSV.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Sin partido: ¡el Buxtehuder SV tiene garantizado su permanencia en la liga!</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Foto: Jürgen Wittholt Los jugadores del Buxtehuder SV no jugaron el fin de semana y, sin embargo, sucedió algo crucial: con la derrota del domingo por la tarde ante el SV Union Halle-Neustadt por 25:28 en FrischAuf Göppingen, ¡el descenso del BSV finalmente está asegurado! La mujer Buxtehuder</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Buxtehude-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-18</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="http://www.ihf.info/media-center/news/all-time-comeback-sees-dijon-take-maiden-ehf-european-league-women-title" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">All-time comeback sees Dijon take maiden EHF European League Women title</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">All-time comeback sees Dijon take maiden EHF European League Women title
+17 May. 2026
+
+gn.editor
+Sun, 05/17/2026 - 19:49
+JDA Bourgogne Dijon Handball became the second French team in history to win the EHF European League Women, the second-tier European club competition, with a stunning comeback in </p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">IHF-news</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-17</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.thueringer-hc.de/thueringer-hc-verpasst-historische-titelverteidigung/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Thüringer HC se pierde la histórica defensa del título</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El sueño de defender el título histórico se hizo añicos: el Thüringer HC perdió la final de la Liga Europea contra el anfitrión JDA Bourgogne Dijon por 25:29 después de una primera parte furiosa. Por lo tanto, los turingianos perdieron la oportunidad de convertirse en el primer equipo de la competición.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">ThueringerHC-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-17</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://hsg-blomberg-lippe.de/2026/05/17/knappe-erste-finalniederlage-hsg-unterliegt-nach-starker-halbzeit-beim-bvb/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Primera derrota final por poco: HSG perdió ante el BVB después de una buena mitad</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">The post Primera derrota final estrecha: HSG pierde ante BVB después de una buena mitad apareció primero en HSG Blomberg-Lippe Bundesliga GmbH.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BlombergLippe-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-17</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.bsv-live.de/buxtehuder-sv-waehlt-vivenu-als-neuen-ticketing-partner/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.bsv-live.de/wp-content/uploads/2026/05/Unbenannt-12.png" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Buxtehuder SV elige vivenu como nuevo socio de venta de entradas</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Buxtehuder SV elige vivenu como nuevo socio de venta de entradas a partir de la temporada 2026/2027. A partir de la próxima temporada, el equipo femenino de balonmano de la Bundesliga, Buxtehuder SV, confiará en vivenu como nuevo socio de venta de entradas. Con esta decisión, el club da el siguiente paso en su estrategia de digitalización. Casarse</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Buxtehude-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-17</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.thueringer-hc.de/finale-zum-zweiten-mal-in-folge-thueringer-hc-kaempft-viborg-nieder/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Segunda final consecutiva: el Thüringer HC derrota al Viborg</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Thüringer HC vuelve a estar en la final de la EHF European League. El campeón defensor venció el sábado al principal club danés Viborg HK 26:24 (11:10) en las semifinales de las finales de la EHF en Dijon, Francia, y pudo seguir soñando con un histórico segundo título consecutivo.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">ThueringerHC-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-16</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="http://www.ihf.info/media-center/news/thuringer-aim-historic-back-back-wins-ehf-finals-women" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Thüringer aim for historic back-to-back wins in the EHF Finals Women</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Thüringer aim for historic back-to-back wins in the EHF Finals Women
+14 May. 2026
+
+gn.editor
+Fri, 05/15/2026 - 13:04
+Thüringer HC will try to become the first team in history to secure back-to-back trophies in the EHF European League Women, when the EHF Finals Women takes place this weekend, on 16 a</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">IHF-news</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-15</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.thueringer-hc.de/auf-zur-titelverteidigung/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">A defender el título</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El Thüringer HC será el actual campeón en la Final a 4 de la EHF European League el fin de semana del 16 y 17 de mayo en Dijon (FRA) y se enfrentará inicialmente al representante danés Viborg HK en las semifinales (sábado, 15:00 horas, Palais des Sports Dijon). La JDA anfitriona disputará la segunda semifinal a las 18 horas</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">ThueringerHC-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-15</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://hsg-blomberg-lippe.de/2026/05/14/teil-eins-des-finalen-fights-die-hsg-trifft-auf-borussia-dortmund/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Primera parte de la pelea final: HSG se enfrenta al Borussia Dortmund</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">The post Primera parte de la pelea final: HSG se enfrenta a Borussia Dortmund apareció por primera vez en HSG Blomberg-Lippe Bundesliga GmbH.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BlombergLippe-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-14</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://hsg-blomberg-lippe.de/2026/05/13/lizenz-fuer-die-saison-2026-27-gesichert/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Licencia asegurada para la temporada 2026/27</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">The post Licencia asegurada para la temporada 2026/27 apareció por primera vez en HSG Blomberg-Lippe Bundesliga GmbH.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BlombergLippe-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-13</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://tus-metzingen.de/2026/05/12/geschaeftsstelle-waehrend-der-ferien-geschlossen-2/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Oficina cerrada durante los días festivos</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El TuS Metzingen e.V. La oficina permanecerá cerrada del 18 de mayo al 7 de junio de 2026. A partir del lunes 8 de junio de 2026, estaremos nuevamente a su disposición como de costumbre los lunes, martes y jueves de 9:00 a. m. a 12:00 p. m. y los martes de 18:00 a 21:00 horas. a 8:00 p.m. Deseamos a todos unas felices fiestas y</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Metzingen-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-12</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://tus-metzingen.de/2026/05/11/3x-gold-und-1x-silber-beim-bezirksfinale-in-weil-im-schoenbuch/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">3x oro y 1x plata en la final de distrito en Weil im Schönbuch</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">En la final regional de Weil im Schönbuch, 8 de 11 gimnastas lograron clasificarse para la final estatal que se celebrará el 20 de junio de 2026 en Gruibingen. AK 7: Linn 1.er lugar, Anna 4.° lugar, Anastasia 5.° lugar, Theresa 7.° lugar, Leela 13.° lugar AK 8: Milena 1.° lugar AK 9: Esila 6.° lugar, Liana 11.° lugar AK 10: Luisa 1.° lugar, Ame</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Metzingen-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-11</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://hsg-blomberg-lippe.de/2026/05/11/ticketing-infos-zu-den-finalspielen/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Información sobre entradas para la final</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">The post Información sobre venta de entradas para la final apareció por primera vez en HSG Blomberg-Lippe Bundesliga GmbH.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BlombergLippe-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-11</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://tus-metzingen.de/2026/05/09/u17-bezirksmeisterschaft-tus-metzingen/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Campeonato distrital sub-17 – TuS Metzingen</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Campeonato de distrito U17 - TuS Metzingen convence con confianza El sábado 2 de mayo de 2026 estaba en el programa la segunda parte del campeonato de distrito para los jóvenes U17 de TuS Metzingen. Objetivo del día: los dos primeros puestos que dan acceso al campeonato de Württemberg. Con gran anticipación</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Metzingen-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-09</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.thueringer-hc.de/thueringer-hc-verpasst-finaleinzug-deutliche-niederlage-in-blomberg/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Thüringer HC se pierde la final: clara derrota en Blomberg</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El HC de Turingia se quedó sin una plaza para la final del campeonato alemán. En el decisivo tercer partido de semifinales, el equipo de Herbert Müller perdió claramente fuera de casa ante el HSG Blomberg-Lippe por 35:24 (19:10). THC juega ahora por el tercer puesto, mientras que Blomberg está en la final</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">ThueringerHC-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-09</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.thueringer-hc.de/in-blomberg-ueberraschen/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Sorpresa en Blomberg</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El sábado a las 17:00 horas en Blomberg se disputará la tercera y decisiva semifinal del play-off “Best of Three” entre HSG Blomberg-Lippe y Thüringer HC. El THC se ganó y se ganó este partido decisivo con una victoria en el segundo partido. Ahora está bien</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">ThueringerHC-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-08</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://tus-metzingen.de/2026/05/07/kiss-feriensportwochen-2026/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Semanas deportivas navideñas KiSS 2026</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Inscripción para las semanas deportivas de vacaciones KiSS La escuela deportiva para niños de Metzingen ofrece durante las dos primeras semanas de las vacaciones de verano un campamento deportivo en la Öschhalle de Metzingen. Puede registrarse para las respectivas semanas deportivas aquí: Semana deportiva navideña KiSS del 03.08 al 07.08.2026https://forms.gle/i5XHX6jfdZ9C7R1z</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Metzingen-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-07</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://tus-metzingen.de/2026/05/05/landesliga-sued-2-wettkampftag/" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Liga Regional Sur – 2do día de competencia</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El sábado Lina, Ida, Amelie, Sina, Mia y Eva lograron un fenomenal segundo puesto en Albstadt-Ebingen. Los seis realizaron excelentes ejercicios de estilo libre y se motivaron mutuamente, lo que condujo a este excelente desempeño del equipo. En la categoría de cuatro atletas, Ida obtuvo el cuarto lugar.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Metzingen-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+</div>
+
+
+
+</main>
+
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
+    <p>Actualizado: 28/05/2026 a las 11:55 UTC ·
+       <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
+    </p>
+    <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>
+</footer>
+
+</body>
+</html>

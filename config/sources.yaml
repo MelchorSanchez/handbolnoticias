@@ -491,6 +491,43 @@ sources:
     url: https://www.hsv-handball.de/feed/
     max_items: 10
 
+  - name: Gummersbach-web
+    section: germany/bundesliga
+    type: rss
+    url: https://www.vfl-gummersbach.de/feed/
+    max_items: 10
+
+  - name: Minden-web
+    section: germany/bundesliga
+    type: rss
+    url: https://www.gwd-minden.de/feed/
+    max_items: 10
+
+  # ── Alemania — Bundesliga Femenina ────────────────────────────────
+  - name: BlombergLippe-web
+    section: germany/bundesliga-fem
+    type: rss
+    url: https://www.hsg-blomberg-lippe.de/feed/
+    max_items: 10
+
+  - name: ThueringerHC-web
+    section: germany/bundesliga-fem
+    type: rss
+    url: https://www.thueringer-hc.de/feed/
+    max_items: 10
+
+  - name: Metzingen-web
+    section: germany/bundesliga-fem
+    type: rss
+    url: https://www.tus-metzingen.de/feed/
+    max_items: 10
+
+  - name: Buxtehude-web
+    section: germany/bundesliga-fem
+    type: rss
+    url: https://www.bsv-live.de/feed/
+    max_items: 10
+
   # ══════════════════════════════════════════════════════════════════════════
   # CLUBES ESPAÑOLES — ASOBAL adicionales
   # ══════════════════════════════════════════════════════════════════════════

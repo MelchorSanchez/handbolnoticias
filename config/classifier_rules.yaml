@@ -313,34 +313,56 @@ rules:
     tags: [bundesliga, hbl, dkb-bundesliga]
     keywords: [bundesliga, "hbl handball", "dkb bundesliga", "handball-bundesliga",
                "liqui moly hbl", "daikin hbl"]
-    exclude: ["2. bundesliga", zweite, women, frauen]
+    exclude: ["2. bundesliga", zweite, frauen, damen, women]
 
   - section: germany/zweite-liga
     tags: [zweite-bundesliga, 2-bundesliga]
     keywords: ["2. bundesliga handball", "zweite handball-bundesliga",
                "2. handball-bundesliga", "zweite liga handball"]
+    exclude: [frauen, damen, women]
+
+  - section: germany/bundesliga-fem
+    tags: [hbf, bundesliga-frauen, 1-bundesliga-frauen]
+    keywords: ["1. bundesliga frauen", "1. bundesliga damen", "alsco hbf",
+               "hbf handball", "bundesliga damen handball", "handball bundesliga frauen"]
+
+  - section: germany/zweite-liga-fem
+    tags: [2-bundesliga-frauen, zweite-bundesliga-frauen]
+    keywords: ["2. bundesliga frauen", "2. bundesliga damen", "zweite bundesliga damen"]
 
   - section: germany
     tags: [germany, handball-germany, dhb]
     keywords: [dhb handball, "handball deutschland", "handball germany",
-               balonmano alemán, "handball frauen bundesliga"]
+               balonmano alemán]
 
   # ═══════════════════════════════════════════════════════════════════
   # Francia
   # ═══════════════════════════════════════════════════════════════════
   - section: france/starligue
     tags: [starligue, lidl-starligue, lnh]
-    keywords: [starligue, "lidl starligue", "lnh handball", "lnh starligue"]
-    exclude: ["pro d2", proligue]
+    keywords: [starligue, "lidl starligue", "lnh handball", "lnh starligue",
+               "liqui moly starligue"]
+    exclude: ["pro d2", proligue, proligue, féminin, feminine]
 
   - section: france/pro-d2
     tags: [pro-d2, proligue]
-    keywords: ["pro d2 handball", proligue, "deuxième division française handball"]
+    keywords: ["pro d2 handball", proligue, "deuxième division française handball",
+               "proligue handball"]
+    exclude: [féminin, feminine]
+
+  - section: france/d1f
+    tags: [d1f, ligue-butagaz, lfh]
+    keywords: ["ligue butagaz", "d1f handball", "division 1 féminine handball",
+               "1ère division féminine handball", "ligue féminine handball"]
+
+  - section: france/d2f
+    tags: [d2f, division2-feminine]
+    keywords: ["d2f handball", "division 2 féminine handball", "deuxième division féminine"]
 
   - section: france
     tags: [france, handball-france, ffhb]
     keywords: [ffhb, "handball france", "équipe de france handball",
-               "balonmano francés", "handball féminin france"]
+               "balonmano francés"]
 
   # ═══════════════════════════════════════════════════════════════════
   # Resto de países
