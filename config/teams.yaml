@@ -606,19 +606,51 @@ teams:
     - Limoges Saint-Etienne
     - USAM Nîmes
     - Saint-Raphaël Var
-    - Sélestat
     - FENIX Toulouse
     - Cesson Rennes
     - Aix-en-Provence
     - Chartres
     - Dijon
+    - Tremblay Handball
+    - Paris
+    - Nantes
+    - Montpellier
+    - Limoges
+    - Chambéry
+    - Saint-Raphaël
+    - Tremblay
+    - Toulouse
+    - Aix
+    - Cesson-Rennes
+    - Nîmes
+    - Sélestat
+    - Dunkerque
+    - Chartres
+    - Dijon
+    - Istres
 
   france/pro-d2:
-    - Tremblay Handball
     - Pays d'Aix Handball
     - Ivry Handball
     - Créteil Handball
     - Toulouse Handball
+    - Sélestat
+    - Saran
+    - Ivry
+    - Caen
+    - Pontault
+    - Pau Billère
+    - Cherbourg
+    - Valence
+    - Créteil
+    - Cournon
+    - Besançon
+    - Frontignan
+    - Sarrebourg
+    - Saintes
+    - Massy
+    - Angers
+
 
   # ── Francia — Femenino ────────────────────────────────────────────
   france/d1f:
@@ -636,10 +668,33 @@ teams:
     - Achenheim
     - Sambre-Avesnois
     - Le Havre Handball
+    - Brest Bretagne Handball
+    - Metz Handball
+    - Chambray Touraine Handball
+    - St-Amand Handball - Porte du Hainaut
+    - JDA Bourgogne Dijon Handball
+    - OGC Nice Côte d'Azur Handball
+    - Handball Plan-de-Cuques
+    - Entente Sportive Besançon Féminin
+    - Paris 92
+    - Strasbourg Achenheim Truchtersheim Handball
+    - Stella St-Maur Handball
+    - Toulon Métropole Var Handball
+    - Sambre Avesnois Handball
+    - Havre Athletic Club Handball
 
   france/d2f:
     - Issy Paris Hand
     - Dijon HB Féminin
+    - Handball Clermont Auvergne Métropole 63
+    - Bouillargues Handball Nîmes Méditerranée
+    - ASUL Vaulx-en-Velin
+    - La Roche sur Yon Vendée Handball
+    - USAM Nîmes Gard Nîmoises
+    - Stade Pessacais Union Club Handball
+    - Le Pouzin HB07
+    - Club Athlétique Béglais Handball
+    - Palente Besançon Handball
 
   france:
     - FFHB
@@ -648,10 +703,6 @@ teams:
 
   # ── Dinamarca ─────────────────────────────────────────────────────
   denmark:
-    - Aalborg Håndbold
-    - GOG Håndbold
-    - Bjerringbro-Silkeborg
-    - Skjern Håndbold
     - Aalborg Håndbold
     - GOG Håndbold
     - Bjerringbro-Silkeborg
@@ -674,14 +725,13 @@ teams:
   # ── Noruega ───────────────────────────────────────────────────────
   norway:
     - Elverum Handball
+    - Elverum Håndball
     - Drammen HK
     - Vipers Kristiansand
     - Storhamar Handball
-    - Kolstad Håndball
-    - Elverum Håndball
-    - Runar Sandefjord
-    - Vipers Kristiansand
     - Storhamar Håndball
+    - Kolstad Håndball
+    - Runar Sandefjord
     - Larvik HK
     - Sola HK
 
@@ -695,29 +745,32 @@ teams:
     - Madeira SAD
 
   # ── Austria ──────────────────────────────────────────────────────
-  autria:
-   - Alpla HC Hard
-   - Fivers Margareten
-   - Hypo Niederösterreich
-   - BT Füchse
+  austria:
+    - Alpla HC Hard
+    - Fivers Margareten
+    - Hypo Niederösterreich
+    - BT Füchse
+
   # ── Suiza ──────────────────────────────────────────────────────
   switzerland:
-  - Kadetten Schaffhausen
-  - HC Kriens-Luzern
-  - LC Brühl
-  - Yellow Winterthur
+    - Kadetten Schaffhausen
+    - HC Kriens-Luzern
+    - LC Brühl
+    - Yellow Winterthur
+
   # ── Islandia ──────────────────────────────────────────────────────
   iceland:
-  - FH Hafnarfjörður
-  - Valur
-  - KA Akureyri
-  - ÍBV
+    - FH Hafnarfjörður
+    - Valur
+    - KA Akureyri
+    - ÍBV
+
   # ── Islas Feroe ──────────────────────────────────────────────────────
-  faoe-islands:
-  - H71
-  - KÍF Kollafjørður
-  - Neistin
-  - VÍF
+  faroe-islands:
+    - H71
+    - KÍF Kollafjørður
+    - Neistin
+    - VÍF
 
   # ── Hungría ───────────────────────────────────────────────────────
   hungary:
