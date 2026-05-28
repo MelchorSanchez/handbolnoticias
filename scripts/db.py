@@ -36,6 +36,9 @@ def init_db():
                 translated  TEXT NOT NULL,
                 lang_from   TEXT
             );
+            CREATE TABLE IF NOT EXISTS blocked_articles (
+                url TEXT PRIMARY KEY
+            );
         """)
         # Migrate: add extra_sections if upgrading from old schema
         try:
@@ -48,9 +51,22 @@ def article_id(url: str) -> str:
     return hashlib.sha256(url.encode()).hexdigest()[:16]
 
 
+def block_article(conn: sqlite3.Connection, url: str):
+    """Permanently block a URL from being inserted again."""
+    conn.execute("INSERT OR IGNORE INTO blocked_articles (url) VALUES (?)", (url,))
+    conn.execute("DELETE FROM articles WHERE url = ?", (url,))
+    conn.commit()
+
+
+def is_blocked(conn: sqlite3.Connection, url: str) -> bool:
+    return conn.execute("SELECT 1 FROM blocked_articles WHERE url = ?", (url,)).fetchone() is not None
+
+
 def insert_article(conn: sqlite3.Connection, article: dict) -> bool:
     """Insert article; if it exists, update section/extra_sections if classifier changed them.
     Returns True if new."""
+    if is_blocked(conn, article["url"]):
+        return False
     try:
         conn.execute("""
             INSERT INTO articles
