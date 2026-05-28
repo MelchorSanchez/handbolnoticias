@@ -586,13 +586,13 @@ sources:
   # CLUBES EUROPEOS — Champions League / European League
   # ══════════════════════════════════════════════════════════════════════════
   - name: Kolstad-web
-    section: europe/champions
+    section: norway
     type: rss
     url: https://kolstad-handball.no/feed/
     max_items: 10
 
   - name: Esbjerg-web
-    section: europe/champions-women
+    section: denmark
     type: rss
     url: https://www.teamesbjerg.dk/feed/
     max_items: 10

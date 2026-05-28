@@ -269,7 +269,10 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text=""):
         "france/starligue", "france/pro-d2", "france", "france/d1f", "france/d2f",
         "germany/bundesliga", "germany/bundesliga2", "germany",
         "germany/bundesliga-fem", "germany/bundesliga2-fem",
-        "portugal", "denmark", "sweden", "norway",
+        "portugal", "denmark", "sweden", "norway", "austria", "switzerland",
+        "iceland", "faroe-islands", "hungary", "poland", "croatia", "serbia",
+        "slovakia", "slovenia", "romania", "greece", "italy", "north-macedonia",
+        "argentina", "brazil", "japan",
     })
     domestic_present = s & _DOMESTIC_ANY
     europe_team_only = (s & _EUROPE_CLUB) - keyword_sections
