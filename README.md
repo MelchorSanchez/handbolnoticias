@@ -1,5 +1,9 @@
 # HandbolNoticias
 
+<p align="center">
+  <img src="docs/assets/logo.png" alt="HandbolNoticias" height="80">
+</p>
+
 **Agregador de noticias de balonmano en español.**
 
 🌐 [handbolnoticias.pages.dev](https://handbolnoticias.pages.dev)
