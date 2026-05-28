@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/logo.png" alt="HandbolNoticias" height="200">
+  <img src="docs/assets/logo.png">
 </p>
 
 # HandbolNoticias
