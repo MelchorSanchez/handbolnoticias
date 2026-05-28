@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="docs/assets/logo.png">
-</p>
-
 # HandbolNoticias
 
 **Agregador de noticias de balonmano en español.**
