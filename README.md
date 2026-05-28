@@ -1,7 +1,7 @@
 # HandbolNoticias
 
 <p align="center">
-  <img src="docs/assets/logo.png" alt="HandbolNoticias" height="80">
+  <img src="docs/assets/logo.png" alt="HandbolNoticias" height="200">
 </p>
 
 **Agregador de noticias de balonmano en español.**
