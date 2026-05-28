@@ -194,7 +194,10 @@ def _clean_cdata(text: str) -> str:
 
 
 def _passes_filter(source: dict, title: str, summary: str) -> bool:
-    """If source defines filter_keywords, skip articles that don't mention any of them."""
+    """Return False to skip articles that don't pass source-level filters."""
+    min_len = source.get("min_title_length", 0)
+    if min_len and len(title) < min_len:
+        return False
     keywords = source.get("filter_keywords", [])
     if not keywords:
         return True

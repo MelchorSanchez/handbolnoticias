@@ -484,6 +484,7 @@ sources:
     type: rss
     url: https://sg-flensburg-handewitt.de/rss
     max_items: 10
+    min_title_length: 15
 
   - name: HSVHamburg-web
     section: germany/bundesliga
