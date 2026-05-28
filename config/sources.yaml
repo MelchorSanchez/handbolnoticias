@@ -479,3 +479,51 @@ sources:
     url: https://sc-magdeburg.de/feed/
     max_items: 10
 
+  - name: Flensburg-web
+    section: germany/bundesliga
+    type: rss
+    url: https://sg-flensburg-handewitt.de/rss
+    max_items: 10
+
+  - name: HSVHamburg-web
+    section: germany/bundesliga
+    type: rss
+    url: https://www.hsv-handball.de/feed/
+    max_items: 10
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # CLUBES ESPAÑOLES — ASOBAL adicionales
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: Benidorm-web
+    section: spain/asobal
+    type: rss
+    url: https://bmbenidorm.com/feed/
+    max_items: 10
+
+  - name: PuenteGenil-web
+    section: spain/asobal
+    type: rss
+    url: https://clubbalonmanopuentegenil.es/feed/
+    max_items: 10
+
+  - name: Cangas-web
+    section: spain/asobal
+    type: rss
+    url: https://www.balonmancangas.com/feed/
+    max_items: 10
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # CLUBES EUROPEOS — Champions League / European League
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: Kolstad-web
+    section: europe/champions
+    type: rss
+    url: https://kolstad-handball.no/feed/
+    max_items: 10
+
+  - name: Esbjerg-web
+    section: europe/champions-women
+    type: rss
+    url: https://www.teamesbjerg.dk/feed/
+    max_items: 10
+

@@ -257,9 +257,14 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text=""):
         "europe/european-league", "europe/european-league-women",
         "europe/cup-men", "europe/cup-women",
     })
-    spain_present = s & _SPAIN_NATIONAL          # any Spanish section, keyword or team
+    _DOMESTIC_ANY = _SPAIN_NATIONAL | frozenset({
+        "france/starligue", "france/pro-d2", "france",
+        "germany/bundesliga", "germany/zweite-liga", "germany",
+        "portugal", "denmark", "sweden", "norway",
+    })
+    domestic_present = s & _DOMESTIC_ANY
     europe_team_only = (s & _EUROPE_CLUB) - keyword_sections
-    if spain_present and europe_team_only:
+    if domestic_present and europe_team_only:
         sections = [sec for sec in sections if sec not in europe_team_only]
         s = set(sections)
 
