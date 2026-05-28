@@ -27,7 +27,7 @@ Un pipeline Python se ejecuta periódicamente y realiza estos pasos:
 Fetch → Classify → Translate → Render
 ```
 
-1. **Fetch** — obtiene artículos de ~72 fuentes (RSS, scraping web, Instagram)
+1. **Fetch** — obtiene artículos de ~72 fuentes (RSS y scraping web)
 2. **Classify** — asigna cada artículo a una o más secciones usando reglas de keywords, nombres de equipos y señales de género gramatical
 3. **Translate** — traduce los títulos al español cuando el artículo está en otro idioma
 4. **Render** — genera el HTML estático con Jinja2 y lo publica en `docs/`
