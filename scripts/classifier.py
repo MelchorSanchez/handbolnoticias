@@ -62,6 +62,10 @@ _FEMALE_WORDS = re.compile(
     r'\bjugadoras?\b|\bporteras?\b|\bfemenin[ao]s?\b|\bentrenadoras?\b'
     r'|\bla jugadora\b|\buna jugadora\b|\bla portera\b|\bla pivot\b'
     r'|\bla lateral\b|\bla entrenadora\b'
+    # German feminine handball vocabulary
+    r'|\bspielerin(nen)?\b|\bhandballerin(nen)?\b|\btorfrau\b|\btrainerin\b'
+    r'|\bfrauen.?bundesliga\b|\bdamen.?bundesliga\b|\bfrauen.?handball\b'
+    r'|\bhbf\b'
 )
 
 # Common unambiguously male/female Spanish & Basque first names in handball context
@@ -287,13 +291,33 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text=""):
         elif fem_from_kw and not masc_from_kw:
             sections = [sec for sec in sections if sec not in _SPAIN_CLUB_MASC]
         else:
-            # Neither (or both) from keywords: use gender vocabulary signals
             gender = _gender_signal(text)
             if gender == 'masc':
                 sections = [sec for sec in sections if sec not in _SPAIN_CLUB_FEM]
             elif gender == 'fem':
                 sections = [sec for sec in sections if sec not in _SPAIN_CLUB_MASC]
-            # If truly ambiguous, keep both genders so the article appears in both pages
+
+    # Rule 4b: cross-gender domestic incompatibility for German club sections.
+    _GERMANY_CLUB_MASC = {"germany/bundesliga", "germany/bundesliga2"}
+    _GERMANY_CLUB_FEM = {"germany/bundesliga-fem", "germany/bundesliga2-fem"}
+    has_masc_g = bool(s & _GERMANY_CLUB_MASC)
+    has_fem_g = bool(s & _GERMANY_CLUB_FEM)
+    if has_masc_g and has_fem_g:
+        masc_from_kw = s & _GERMANY_CLUB_MASC & keyword_sections
+        fem_from_kw = s & _GERMANY_CLUB_FEM & keyword_sections
+        if masc_from_kw and not fem_from_kw:
+            sections = [sec for sec in sections if sec not in _GERMANY_CLUB_FEM]
+            s = set(sections)
+        elif fem_from_kw and not masc_from_kw:
+            sections = [sec for sec in sections if sec not in _GERMANY_CLUB_MASC]
+            s = set(sections)
+        else:
+            gender = _gender_signal(text)
+            if gender == 'masc':
+                sections = [sec for sec in sections if sec not in _GERMANY_CLUB_FEM]
+            elif gender == 'fem':
+                sections = [sec for sec in sections if sec not in _GERMANY_CLUB_MASC]
+            # If truly ambiguous, keep both
 
     return sections
 

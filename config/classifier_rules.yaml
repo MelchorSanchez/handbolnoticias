@@ -311,9 +311,9 @@ rules:
   # ═══════════════════════════════════════════════════════════════════
   - section: germany/bundesliga
     tags: [bundesliga, hbl, dkb-bundesliga]
-    keywords: [bundesliga, "hbl handball", "dkb bundesliga", "handball-bundesliga",
-               "liqui moly hbl", "daikin hbl"]
-    exclude: ["2. bundesliga", zweite, frauen, damen, women]
+    keywords: ["hbl handball", "dkb bundesliga", "liqui moly hbl", "daikin hbl",
+               "handball-bundesliga", "handball bundesliga masc"]
+    exclude: ["2. bundesliga", zweite, frauen, damen, women, hbf]
 
   - section: germany/bundesliga2
     tags: [zweite-bundesliga, 2-bundesliga]
