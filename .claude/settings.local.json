@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 *)",
+      "WebSearch",
+      "WebFetch(domain:www.montpellierhandball.com)",
+      "WebFetch(domain:www.sg-flensburg-handewitt.de)",
+      "WebFetch(domain:hbcnantes.com)",
+      "WebFetch(domain:bmbenidorm.com)"
+    ]
+  }
+}
