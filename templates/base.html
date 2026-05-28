@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}HandbolNoticias{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Todas las noticias de balonmano y handball: ASOBAL, Liga Guerreras Iberdrola, EHF Champions League, Bundesliga, Starligue y selecciones nacionales. Actualizado a diario.{% endblock %}">
+    <link rel="canonical" href="{% block canonical_url %}https://handbolnoticias.pages.dev/{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="HandbolNoticias">
+    <meta property="og:title" content="{{ self.title() }}">
+    <meta property="og:description" content="{{ self.meta_description() }}">
+    <meta property="og:url" content="{{ self.canonical_url() }}">
+    <meta property="og:image" content="https://handbolnoticias.pages.dev/assets/logo.png">
+    <meta name="twitter:card" content="summary">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .bg-hb-blue  { background-color: #003DA5; }

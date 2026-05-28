@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block title %}{{ section_label }} — HandbolNoticias{% endblock %}
+{% block meta_description %}{{ section_description }}{% endblock %}
+{% block canonical_url %}https://handbolnoticias.pages.dev/{{ section_slug }}/{% endblock %}
 {% block content %}
 
 <nav class="text-sm text-gray-500 mb-6">
