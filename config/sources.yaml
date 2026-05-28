@@ -386,35 +386,96 @@ sources:
       image: "img"
 
   # ══════════════════════════════════════════════════════════════════════════
-  # INSTAGRAM — Cuentas de balonmano
+  # CLUBES ESPAÑOLES — Sitios web oficiales
   # ══════════════════════════════════════════════════════════════════════════
-  - name: Instagram-upskill-handball
-    section: europe/champions
-    type: instagram
-    account: upskill_handball
-    max_items: 8
-
-  - name: Instagram-rthandball
-    section: europe/champions
-    type: instagram
-    account: rthandball
-    max_items: 8
-
-  - name: Instagram-balonmano-primeranacional
-    section: spain/primera-nacional-masc
-    type: instagram
-    account: balonmanoprimeranacional
-    max_items: 8
-
-  - name: Instagram-balonmano-platafemenina
-    section: spain/dhp-fem
-    type: instagram
-    account: balonmanoplatafemenina
-    max_items: 8
-
-  - name: Instagram-balonmano-espanol
+  - name: Bidasoa-web
     section: spain/asobal
-    type: instagram
-    account: balonmanoespanol
-    max_items: 8
+    type: scrape
+    url: https://www.cdbidasoa.eus/noticias/
+    max_items: 10
+    selectors:
+      articles: ".post"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  - name: Ademar-web
+    section: spain/asobal
+    type: scrape
+    url: https://www.ademar.com/noticias/
+    max_items: 10
+    selectors:
+      articles: ".card"
+      title: "h2, h3, h4"
+      link: "a[href]"
+      image: "img"
+      date: "time[datetime]"
+    filter_keywords: [balonmano, handball, Ademar, ASOBAL, fichaje, renovaci, partido, resultado, liga, copa]
+
+  - name: Torrelavega-web
+    section: spain/asobal
+    type: scrape
+    url: https://balonmanotorrelavega.com/noticiastorrebalonmano/
+    max_items: 10
+    selectors:
+      articles: "article"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  - name: Guardes-web
+    section: spain/guerreras
+    type: scrape
+    url: https://balonmanatleticoguardes.com/category/noticias/
+    max_items: 10
+    selectors:
+      articles: ".post"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+      date: "time[datetime]"
+
+  - name: CostaSolMalaga-web
+    section: spain/guerreras
+    type: rss
+    url: https://www.bmmalagacostadelsol.com/feed/
+    max_items: 10
+
+  - name: Porrino-web
+    section: spain/guerreras
+    type: scrape
+    url: https://www.balonmanoporrino.com/blog/
+    max_items: 10
+    selectors:
+      articles: "article"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  - name: Granollers-web
+    section: spain/asobal
+    type: rss
+    url: https://bmgranollers.cat/feed/
+    max_items: 10
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # CLUBES ALEMANES — Sitios web oficiales (Bundesliga)
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: THWKiel-web
+    section: germany/bundesliga
+    type: rss
+    url: https://www.thw-handball.de/feed/
+    max_items: 10
+
+  - name: RheinNeckar-web
+    section: germany/bundesliga
+    type: rss
+    url: https://www.rhein-neckar-loewen.de/feed/
+    max_items: 10
+
+  - name: Magdeburg-web
+    section: germany/bundesliga
+    type: rss
+    url: https://sc-magdeburg.de/feed/
+    max_items: 10
 

@@ -28,9 +28,10 @@ _DETAIL_DATE_SELECTORS = [
     "span.span-date",
     ".itemDateCreated",
     ".entry-date",
+    ".lte-post-date",
 ]
 
-_DETAIL_DATE_SOURCES = {"BalonmanoInfo", "MiBalonmano", "CatHandbol"}
+_DETAIL_DATE_SOURCES = {"BalonmanoInfo", "MiBalonmano", "CatHandbol", "Porrino-web"}
 
 
 def _fix_detail_dates(conn):
