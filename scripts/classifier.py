@@ -279,7 +279,7 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text=""):
         "portugal", "denmark", "sweden", "norway", "austria", "switzerland",
         "iceland", "faroe-islands", "hungary", "poland", "croatia", "serbia",
         "slovakia", "slovenia", "romania", "greece", "italy", "north-macedonia",
-        "argentina", "brazil", "japan",
+        "argentina", "brazil", "japan", "turkey",
     })
     domestic_present = s & _DOMESTIC_ANY
     europe_team_only = (s & _EUROPE_CLUB) - keyword_sections

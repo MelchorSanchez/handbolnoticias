@@ -478,3 +478,9 @@ rules:
   - section: japan
     tags: [japan, handball-japan, jha]
     keywords: ["jha handball", "handball japan", "balonmano japón"]
+
+  - section: turkey
+    tags: [turkey, handball-turkey, thf]
+    keywords: ["handball turkey", "handball türkiye", "hentbol türkiye",
+               "balonmano turquía", "balonmano turquia",
+               "beşiktaş handball", "kastamonu belediyesi", "bolu belediyespor"]

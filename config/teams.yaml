@@ -773,6 +773,43 @@ teams:
     - Viborg HK
     - Fredericia
     - HOJ Elite
+    - Aalborg
+    - Skanderborg AGF
+    - GOG
+    - Holstebro
+    - Skjern
+    - Mors
+    - Bjerringbro/Silkeborg
+    - Fredericia
+    - Ribe-Esbjerg
+    - Nordsjælland
+    - Ringsted
+    - Sønderjyske
+    - HOJ
+    - Grindsted
+    - Skive
+    - Kolding
+    - Aarhus Handbold
+    - Sydhavsøerne
+    - Tønder
+    - Midtjylland
+    - Lemvig
+    - Raekker Molle
+    - Odder
+    - Norddjurs
+    - Vendsyssel
+    - HC Kobenhavn
+    - Give
+    - Tik Taastrup
+    - Ajax København
+    - Rodovre
+    - AGF
+    - Roskilde
+    - Gudme HK
+    - Ejstrup/Haervejen
+    - Sondermarkens
+    - Ydun
+    - Saeby
 
   # ── Suecia ────────────────────────────────────────────────────────
   sweden:
@@ -810,6 +847,30 @@ teams:
     - Fivers Margareten
     - Hypo Niederösterreich
     - BT Füchse
+    - Voslauer
+    - Alpla HC Hard
+    - Linz
+    - Ferlach
+    - Krems
+    - Fuchse
+    - Aon Fivers
+    - Barnbach/K.
+    - Handball Tirol
+    - Bregenz
+    - HSG Graz
+    - Hollabrunn
+    - Atzgersdorf
+    - Hypo NÖ
+    - MGA Handball
+    - Tulln
+    - Korneuburg
+    - Feldkirch
+    - Fuchse Bruck
+    - Krems-Langenlois
+    - Stockerau
+    - roomz JAGS WV
+    - St. Pölten
+    - Dornbirn/Schoren
 
   # ── Suiza ──────────────────────────────────────────────────────
   switzerland:
@@ -855,7 +916,37 @@ teams:
     - RK Dinamo Zagreb
     - RK Sesvete
     - Podravka Koprivnica
-    - Lokomotiva Zagreb    
+    - Lokomotiva Zagreb
+    - RK Zagreb
+    - Gorica
+    - Trogir
+    - RK Medjimurje
+    - Rudar
+    - Umag
+    - Vinkovci
+    - Varazdin
+    - Nexe
+    - Sesvete
+    - Dugo Selo
+    - Porec
+    - Metkovic
+    - Osijek
+    - Zamet
+    - Moslavina
+    - Podravka
+    - Lok. Zagreb
+    - Zrinski
+    - Bjelovar
+    - Dalmatinka
+    - Rudar Labin
+    - Koka
+    - Split 2010
+    - Zamet
+    - Osijek
+    - Sinj
+    - Sesvete
+    - Brod
+    - Dugo Selo
 
   # ── Rumania ───────────────────────────────────────────────────────
   romania: 
@@ -946,7 +1037,16 @@ teams:
     - Tatran Prešov
     - Iuventa Michalovce
     - DAC Dunajská Streda
-
+    - Prešov
+    - Bojnice
+    - Považská Bystrica
+    - Nové Zámky
+    - Modra
+    - HK Košice
+    - Hlohovec
+    - SKP Bratislava
+    - Topoľčany
+    - Záhorácí
   # ── Macedonia del Norte ───────────────────────────────────────────
   north-macedonia:
     - RK Vardar
@@ -968,14 +1068,27 @@ teams:
     
   # ── Japon ────────────────────────────────────────────────────────
   japon:
-    - Seleccion Japonesa Balonmano 
-    - Pinheiros    
+    - Seleccion Japonesa Balonmano
+    - Pinheiros
     - Toyota Auto Body Brave Kings
     - Zeekstar Tokyo
     - Osaki Osol
     - Daido Steel Phenix
     - Omron
     - Sony Semiconductor Blue Sakuya
+
+  # ── Turquía ────────────────────────────────────────────────────────
+  turkey:
+    - Beşiktaş
+    - Beşiktaş Mogaz
+    - Trabzonspor
+    - Fenerbahçe
+    - Galatasaray
+    - Sakarya Büyükşehir
+    - Kastamonu Belediyesi
+    - Bolu Belediyespor
+    - Serdivan Belediyespor
+    - Muratpaşa Belediyespor
 
   # ── España: Navarra ───────────────────────────────────────────────
   spain/navarra:
@@ -1102,8 +1215,6 @@ teams:
     - Bera Bera
     - Super Amara Bera Bera
     - Amara Bera Bera
-    - Beti Onak
-    - Replasa Beti-Onak
     - Arrasate
     - Eskibel
     - Santutxu

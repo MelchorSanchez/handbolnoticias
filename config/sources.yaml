@@ -618,3 +618,69 @@ sources:
     url: https://www.gog.dk/feed/
     max_items: 10
 
+  # ══════════════════════════════════════════════════════════════════════════
+  # INTERNACIONAL — Italia
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: PallamanoItalia
+    section: italy
+    type: scrape
+    url: https://www.pallamanoitalia.it/
+    max_items: 15
+    selectors:
+      articles: "article, .post"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # INTERNACIONAL — Argentina / Sudamérica
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: TodoHandball
+    section: argentina
+    type: rss
+    url: https://todohandball.com/feed/
+    max_items: 15
+    filter_keywords: [handball, balonmano, handebol, seleccion, copa, campeonato, libertadores, liga, mundial]
+
+  - name: HandballArgentina-CAH
+    section: argentina
+    type: rss
+    url: https://handballargentina.org/cah/category/noticias/feed/
+    max_items: 15
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # INTERNACIONAL — Brasil
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: CBHB-Brazil
+    section: brazil
+    type: scrape
+    url: https://www.cbhb.org.br/noticias/
+    max_items: 10
+    selectors:
+      articles: "article, .post, .noticia, .card"
+      title: "h2, h3, h4"
+      link: "a[href]"
+      image: "img"
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # FEDERACIONES NACIONALES — RSS confirmados
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: FFHandball-fed
+    section: france
+    type: rss
+    url: https://www.ffhandball.fr/feed/
+    max_items: 15
+    filter_keywords: [handball, equipe, france, championnat, selection, coupe]
+
+  - name: ZPRP-Poland
+    section: poland
+    type: rss
+    url: https://www.zprp.pl/feed/
+    max_items: 15
+
+  - name: OEHB-Austria
+    section: austria
+    type: rss
+    url: https://www.oehb.at/de/newsrss-alle---RSS20
+    max_items: 15
+
