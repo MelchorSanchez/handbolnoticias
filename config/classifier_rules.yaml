@@ -32,6 +32,14 @@ rules:
       - "campeonato mundial de balonmano"
       - "copa mundial de balonmano"
       - "mundial balonmano"
+      - "mundial 2027"
+      - "mundial 2028"
+      - "mundialista"
+      - "clasificación mundial balonmano"
+      - "clasificacion mundial balonmano"
+      - "play-off mundial balonmano"
+      - "playoff mundial balonmano"
+      - "clasificatorio mundial"
       # Sub-categorías
       - "u21 world championship men"
       - "u19 world championship men"
@@ -207,8 +215,8 @@ rules:
   - section: spain/seleccion-masc
     tags: [seleccion-espanola-masculina, seleccion-masculina]
     keywords: [selección masculina, seleccion masculina, selección española masculina,
-               "los hispanos", "selección nacional masculin", "seleccion nacional masculin",
-               "equipo nacional masculin"]
+               "los hispanos", hispanos, "selección nacional masculin", "seleccion nacional masculin",
+               "equipo nacional masculin", "seleccion española masc"]
     exclude: [femenina, juvenil, cadete, infantil, sub-18, sub-20, sub-21,
               "primera nacional", "division honor", "división honor"]
 
@@ -241,9 +249,10 @@ rules:
                benjamín femenino, campeonato de españa cadete femenino,
                campeonato de españa juvenil femenino,
                "sub-20 femenino", "sub-18 femenino", "sub-16 femenino",
-               categorías base femenino]
+               categorías base femenino, "juvenil a femení", "juvenil femení",
+               "cadete femení", "infantil femení", "femení campiones", "campiones d'espanya"]
     require_any: [juvenil, cadete, infantil, "alevín", "alevin", benjamín, benjamin,
-                  sub-20, sub-18, sub-16, sub-14]
+                  sub-20, sub-18, sub-16, sub-14, femení, campiones]
     exclude: [masculin, selección española, seleccion española]
 
   # ═══════════════════════════════════════════════════════════════════
@@ -274,7 +283,7 @@ rules:
   - section: spain/guerreras
     tags: [liga-guerreras, guerreras-iberdrola, liga-femenina-asobal]
     keywords: ["liga guerreras", "guerreras iberdrola", "liga femenina balonmano",
-               "liga primera división femenina", liga guerreras]
+               "liga primera división femenina", liga guerreras, guerreras, guerrera]
     exclude: [masculin, sub-20, sub-18, juvenil, cadete]
 
   - section: spain/dho-fem
@@ -333,7 +342,9 @@ rules:
   - section: germany
     tags: [germany, handball-germany, dhb]
     keywords: [dhb handball, "handball deutschland", "handball germany",
-               balonmano alemán]
+               "balonmano alemán", "balonmano aleman", "selección alemana",
+               "seleccion alemana", "alemania balonmano", "balonmano alemania",
+               gislason]
 
   # ═══════════════════════════════════════════════════════════════════
   # Francia
@@ -370,7 +381,8 @@ rules:
   - section: denmark
     tags: [denmark, handball-denmark, dhf]
     keywords: ["dhf handball", "herre ligaen", "kvindeligaen", "handball denmark",
-               "balonmano danés", "danish handball"]
+               "balonmano danés", "danish handball", "hoj elite", "hoj handball",
+               "hoj handbold", handbold, " hoj"]
 
   - section: sweden
     tags: [sweden, handball-sweden, shl-handball]

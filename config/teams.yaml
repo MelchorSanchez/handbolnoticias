@@ -839,6 +839,8 @@ teams:
   # ── Hungría ───────────────────────────────────────────────────────
   hungary:
     - Pick Szeged
+    - One Veszprém
+    - One Veszprem
     - Veszprém HC
     - Telekom Veszprém
     - Ferencváros
@@ -847,6 +849,8 @@ teams:
     - Győri Audi ETO KC
     - FTC-Rail Cargo Hungaria
     - DVSC Schaeffler
+    - Érd NK
+    - Erd NK
 
   # ── Croacia ───────────────────────────────────────────────────────
   croatia:
@@ -865,7 +869,10 @@ teams:
     - SCM Râmnicu Vâlcea
     - Gloria Bistrița
     - Minaur Baia Mare
-    - Constanta   
+    - Constanta
+    - Dunarea Braila
+    - Slatina
+    - SCM Râmnicu Vâlcea   
     
   # ── Serbia ───────────────────────────────────────────────────────
   serbia:
@@ -924,6 +931,7 @@ teams:
     - MKS Lublin
     - Zaglebie Lubin
     - Chrobry Glogow
+    - MKS Zagłębie Lubin
 
 
   # ── Eslovenia ─────────────────────────────────────────────────────
