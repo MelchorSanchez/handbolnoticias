@@ -561,7 +561,7 @@ sources:
   # CLUBES ESPAÑOLES — ASOBAL adicionales
   # ══════════════════════════════════════════════════════════════════════════
   - name: Benidorm-web
-    section: spain/asobal
+    section: spain/dhp
     type: rss
     url: https://bmbenidorm.com/feed/
     max_items: 10

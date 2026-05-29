@@ -484,3 +484,9 @@ rules:
     keywords: ["handball turkey", "handball türkiye", "hentbol türkiye",
                "balonmano turquía", "balonmano turquia",
                "beşiktaş handball", "kastamonu belediyesi", "bolu belediyespor"]
+
+  - section: czech-republic
+    tags: [czech-handball, svaz-hazene, czech-republic-handball]
+    keywords: ["handball czech", "hazená", "svaz házené", "česká házená",
+               "balonmano república checa", "balonmano checo", "handball tschechien",
+               "dhb tschechien", "karvina handball", "dukla prague handball"]

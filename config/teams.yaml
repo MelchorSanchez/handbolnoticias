@@ -25,7 +25,6 @@ teams:
     - Abanca Ademar
     - BM Logroño
     - BM Burgos
-    - BM Benidorm
     - Cangas
     - Barça
     - Dicorpebal Logroño La Rioja
@@ -1436,23 +1435,23 @@ teams:
 
   # ── Republica Checa ────────────────────────────────────────────────────────
   czech-republic:    
-Karvina
-Plzen
-Dukla Prague
-Zubri
-Lovosice
-Brno
-Nove Veseli
-Frydek-Mistek
-Jicin
-Koprivnice
-Zlin
-Strakonice
-Most
-Slavia Praga
-Lazne Kynzvart
-Pisek
-Olomouc
+    - Karvina
+    - Plzen
+    - Dukla Prague
+    - Zubri
+    - Lovosice
+    - Brno
+    - Nove Veseli
+    - Frydek-Mistek
+    - Jicin
+    - Koprivnice
+    - Zlin
+    - Strakonice
+    - Most
+    - Slavia Praga
+    - Lazne Kynzvart
+    - Pisek
+    - Olomouc
 
   # ── España: Navarra ───────────────────────────────────────────────
   spain/navarra:

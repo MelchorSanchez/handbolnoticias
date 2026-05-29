@@ -67,6 +67,7 @@ SECTION_DESCRIPTIONS = {
     "brazil":                     "Noticias de balonmano en Brasil: selección y clubs brasileños.",
     "japan":                      "Noticias de balonmano en Japón: selección y clubs japoneses.",
     "turkey":                     "Noticias de balonmano en Turquía: selección y handball turco.",
+    "czech-republic":             "Noticias de balonmano en República Checa: selección y clubs checos.",
 }
 
 SECTIONS = {
@@ -160,6 +161,7 @@ SECTIONS = {
             "brazil":         "Brasil",
             "japan":          "Japón",
             "turkey":         "Turquía",
+            "czech-republic": "República Checa",
         },
     },
 }
