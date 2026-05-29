@@ -818,6 +818,32 @@ teams:
     - Skuru IK
     - Lugi HF
     - Sävehof
+    - Savehof
+    - Önnereds
+    - Skara
+    - H 65 Hoor
+    - Boden
+    - Vasteras
+    - Skovde
+    - Skuru
+    - Hallby
+    - Kristianstad
+    - Aranas
+    - Kungalvs
+    - Kristianstad
+    - Malmo
+    - Hammarby
+    - Skövde
+    - Alingsås
+    - Savehof
+    - Ystads IF
+    - Karlskrona
+    - Onnered
+    - Amo HK
+    - Hallby
+    - Helsingborg
+    - Vasteras Irsta HF
+    - Guif
 
   # ── Noruega ───────────────────────────────────────────────────────
   norway:
@@ -831,6 +857,34 @@ teams:
     - Runar Sandefjord
     - Larvik HK
     - Sola HK
+    - Elverum
+    - Kolstad
+    - Bergen
+    - Drammen
+    - Runar
+    - Sandefjord TIF
+    - Naerbo
+    - Fjellhammer
+    - Arendal
+    - Kristiansand
+    - Follo
+    - Sandnes
+    - Halden
+    - Baekkelaget
+    - Sola
+    - Storhamar
+    - Molde
+    - Larvik
+    - Tertnes
+    - Fredrikstad
+    - Fana
+    - Gjerpen
+    - Byåsen
+    - Follo
+    - Oppsal
+    - Fjellhammer
+    - Haslum
+    - Romerike Ravens
 
   # ── Portugal ──────────────────────────────────────────────────────
   portugal:
@@ -840,6 +894,28 @@ teams:
     - Águas Santas
     - ABC Braga
     - Madeira SAD
+    - Sporting
+    - Porto
+    - Benfica
+    - Aguas Santas
+    - Maritimo
+    - ABC Braga
+    - Povoa
+    - Belenenses
+    - Vitoria SC
+    - Avanca
+    - Gaia
+    - Arsenal
+    - Benfica
+    - Madeira SAD
+    - Sao Pedro Sul
+    - CJ Almeida Garrett
+    - ABC Braga
+    - Gil Eanes
+    - CALE
+    - Colegio de Gaia
+    - Juvelis
+    - CS Madeira
 
   # ── Austria ──────────────────────────────────────────────────────
   austria:
@@ -878,6 +954,26 @@ teams:
     - HC Kriens-Luzern
     - LC Brühl
     - Yellow Winterthur
+    - Kadetten
+    - Kriens
+    - Pfadi Winterthur
+    - Bern
+    - Thun
+    - St. Gallen
+    - Basel
+    - Zürich
+    - Suhr
+    - Stäfa
+    - Amicitia Zurich
+    - Winterthur
+    - Bruhl
+    - Zug
+    - Nottwil
+    - Herzogenbuchsee
+    - Thun
+    - Aargau Ost
+    - Chennois
+    - Chênois Genève Handball
 
   # ── Islandia ──────────────────────────────────────────────────────
   iceland:
@@ -885,6 +981,26 @@ teams:
     - Valur
     - KA Akureyri
     - ÍBV
+    - Valur
+    - IBV
+    - Haukar
+    - IR Reykjavik
+    - Fram
+    - Ka Thor
+    - Stjarnan
+    - Selfoss
+    - Valur
+    - FH Hafnarfjordur
+    - Haukar
+    - IBV Vestmannaeyjar
+    - KA
+    - Afturelding
+    - Fram
+    - Kopavogur
+    - Thor Akureyri
+    - Selfoss
+    - Stjarnan
+    - IR Reykjavik
 
   # ── Islas Feroe ──────────────────────────────────────────────────────
   faroe-islands:
@@ -908,6 +1024,34 @@ teams:
     - DVSC Schaeffler
     - Érd NK
     - Erd NK
+    - Veszprem
+    - Szeged
+    - Tatabanya
+    - Ferencvaros
+    - Balatonfuredi
+    - NEKA
+    - PLER
+    - Gyor
+    - Gyongyosi
+    - Csurgoi
+    - Budai Farkasok
+    - Szigetszentmiklosi
+    - Komloi
+    - Budakalasz
+    - Győr
+    - Ferencvaros
+    - DVSC Schaeffler
+    - Esztergomi
+    - Vaci
+    - Alba Fehervar
+    - Mosonmagyarovar
+    - Kisvardai KC
+    - Budaors
+    - Vasas
+    - Szombathelyi
+    - NEKA
+    - Kozarmisleny
+    - Dunaujvarosi
 
   # ── Croacia ───────────────────────────────────────────────────────
   croatia:
@@ -959,8 +1103,32 @@ teams:
     - Constanta
     - Dunarea Braila
     - Slatina
-    - SCM Râmnicu Vâlcea   
-    
+    - SCM Râmnicu Vâlcea
+    - Dinamo Bucuresti
+    - Buzau
+    - CSM Bucuresti
+    - Timisoara
+    - Potaissa Turda
+    - Vaslui
+    - Minaur Baia Mare
+    - Suceava
+    - CSM Constanta
+    - Cluj
+    - Sighisoara
+    - CSM Focsani
+    - Bistrita
+    - CSM Bucuresti
+    - Brasov
+    - Ramnicu Valcea
+    - Dunarea Braila
+    - CSM Slatina
+    - Rapid Bucuresti
+    - Baia Mare
+    - Craiova
+    - Targu Jiu
+    - Zalau
+    - CSM Galati
+
   # ── Serbia ───────────────────────────────────────────────────────
   serbia:
     - Vojvodina
@@ -975,6 +1143,30 @@ teams:
     - ŽRK Naisa Niš
     - ŽRK Železničar 
     - Radnički (Kragujevac)
+    - Partizan
+    - Vojvodina
+    - Pancevo
+    - Dubocica
+    - Metaloplastika
+    - Vranje
+    - Jugovic
+    - Estrella Roja
+    - Radnicki
+    - Samot
+    - Kikinda
+    - Proleter
+    - Estrella Roja
+    - Nis
+    - RK Bor
+    - Mladost NP
+    - Ruma
+    - Jagodina
+    - Napredak
+    - Bekament
+    - ZRK Temerin
+    - Partizan
+    - Zeleznicar
+    - Medicinar Sabac
     
   # ── Argentina ─────────────────────────────────────────────────────
   argentina:
@@ -1000,7 +1192,33 @@ teams:
     - Brixen Handball
     - SSV Bozen
     - Jomi Salerno
-
+    - Cassano
+    - Sassari
+    - Bozen
+    - Fasano
+    - Conversano
+    - Albatro
+    - Trieste
+    - Chiaravalle
+    - Pressano
+    - Cingoli
+    - Cologne
+    - Brixen
+    - Meran
+    - Eppan
+    - Erice
+    - Jomi Salerno
+    - Brixen
+    - Cassano
+    - Teramo
+    - Leno
+    - Casalgrande Padana
+    - HAC Nuoro
+    - Mestrino
+    - Padova
+    - Ferrara
+    - Mezzocorona
+    
   # ── Grecia ────────────────────────────────────────────────────────
   greece:
     - Aris Thessaloniki
@@ -1008,6 +1226,18 @@ teams:
     - AEK Athens Handball
     - PAOK
     - Diomidis Argous
+    - Olympiacos SFP
+    - AEK Athens
+    - PAOK
+    - Ionikos
+    - Drama
+    - Diomidis Argous
+    - Kilkis
+    - Athinaikos
+    - Zafeirakis
+    - A.S.E. Douka
+    - Vrilissia
+    - Feronas
 
   # ── Polonia ────────────────────────────────────────────────────────
   poland:
@@ -1021,6 +1251,29 @@ teams:
     - MKS Zagłębie Lubin
     - Zagłębie Lublin
     - MKS Zagłębie Lublin
+    - Wisla Plock
+    - Kielce
+    - Ostrow Wielkopolski
+    - Wybrzeze Gdansk
+    - Chrobry Glogow
+    - MMTS Kwidzyn
+    - Kalisz
+    - Stal Mielec
+    - Legionowo
+    - Gwardia Opole
+    - Piotrkowianin Piotrków
+    - Puławy
+    - Zaglebie Lubin
+    - Zaglebie
+    - MKS Lublin
+    - Piotrcovia
+    - Koszalin
+    - Kobierzyce
+    - Gniezno
+    - Galychanka Lviv
+    - Sosnica Gliwice
+    - Start Elblag
+    - Ruch Kalisz
 
 
   # ── Eslovenia ─────────────────────────────────────────────────────
@@ -1031,6 +1284,31 @@ teams:
     - RK Gorenje Velenje
     - RK Trimo Trebnje
     - RK Krim
+    - Slovan
+    - Trebnje
+    - Celje
+    - Gorenje
+    - Gradec
+    - Krka
+    - Jeruzalem Ormoz
+    - Loka
+    - Ribnica
+    - Skofljica
+    - Ivancna Gorica
+    - Radovljica
+    - Ljubljana
+    - Ajdovscina
+    - RK Ljubljana
+    - Velenje
+    - Koper
+    - Izola
+    - Aklimat Ptuj
+    - Krka
+    - ZRD Litija
+    - Celje
+    - Olimpija
+    - Vrhnika
+    - Millennium
 
   # ── Eslovaquia ─────────────────────────────────────────────────────
   slovakia:
@@ -1047,6 +1325,15 @@ teams:
     - SKP Bratislava
     - Topoľčany
     - Záhorácí
+    - Trencin
+    - Presov
+    - Stupava
+    - Sala
+    - Zlatna na Ostrove
+    - Michalovce
+    - Banovce
+    - Dunajska Streda
+
   # ── Macedonia del Norte ───────────────────────────────────────────
   north-macedonia:
     - RK Vardar
@@ -1054,7 +1341,18 @@ teams:
     - RK Eurofarm Pelister
     - RK Alkaloid
     - RK Ohrid
-    - ŽRK Vardar
+    - Vardar 1961
+    - Eurofarm Pelister
+    - Ohrid
+    - Alkaloid
+    - Butel Skopje
+    - Tikvesh
+    - Eurofarm Pelister 2
+    - Prilep
+    - Tinex Prolet Skopje
+    - Kumanovo
+    - Struga
+    - Radovis
 
   # ── Brasil ────────────────────────────────────────────────────────
   brazil:
@@ -1076,6 +1374,31 @@ teams:
     - Daido Steel Phenix
     - Omron
     - Sony Semiconductor Blue Sakuya
+    - Brave Kings Kariya
+    - Toyoda Gosei
+    - Zeekstar Tokyo
+    - Toyota Boshoku Kyushu
+    - Daido
+    - Osaki Osol
+    - Toyota Motor East Japan
+    - Osaka
+    - Fukui Eiheiji Blue Thunder
+    - Wakunaga
+    - Toyama Dreams
+    - Ryukyu Corazon
+    - Fukuoka
+    - Earth Friends BM
+    - Kagawa Bank
+    - Kagoshima
+    - Aranmare Toyama
+    - Honey Bee Ishikawa
+    - Kumamoto
+    - Izumi Maple Reds
+    - The Terrace Hotels
+    - HC Nagoya
+    - Mie Violet Uris
+    - Takayama
+    - Osaka Lovvits
 
   # ── Turquía ────────────────────────────────────────────────────────
   turkey:
@@ -1089,6 +1412,47 @@ teams:
     - Bolu Belediyespor
     - Serdivan Belediyespor
     - Muratpaşa Belediyespor
+    - Beşiktaş
+    - Nilufer Bld.
+    - Istanbul Genclik
+    - Spor Toto
+    - Giresunspor
+    - Trabzon
+    - Guneysu
+    - Mihaliccik
+    - Beykoz Bld.
+    - Koycegiz Belediye
+    - Rize Genclik
+    - Ankara Hentbol
+    - Depsas
+    - Bursa BB
+    - Uskudar
+    - Yalikavak
+    - Trabzon Ortahisar
+    - Odunpazari
+    - Ankara Yurdum
+    - Göztepe
+    - Yenimahalle
+
+  # ── Republica Checa ────────────────────────────────────────────────────────
+  czech-republic:    
+Karvina
+Plzen
+Dukla Prague
+Zubri
+Lovosice
+Brno
+Nove Veseli
+Frydek-Mistek
+Jicin
+Koprivnice
+Zlin
+Strakonice
+Most
+Slavia Praga
+Lazne Kynzvart
+Pisek
+Olomouc
 
   # ── España: Navarra ───────────────────────────────────────────────
   spain/navarra:

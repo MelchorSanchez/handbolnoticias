@@ -534,6 +534,22 @@ sources:
     type: rss
     url: https://www.tus-metzingen.de/feed/
     max_items: 10
+    filter_keywords:
+      - handball
+      - bundesliga
+      - nationalmannschaft
+      - national
+      - international
+      - neuzugang
+      - abschied
+      - meister
+      - sieg
+      - niederlage
+      - spiel
+      - saison
+      - pokal
+      - weltmeister
+      - europameister
 
   - name: Buxtehude-web
     section: germany/bundesliga-fem
