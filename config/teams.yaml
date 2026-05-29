@@ -250,7 +250,6 @@ teams:
     - Hand Vall
     - Fuentes Carrionas
     - Romade
-    - Porriño
     - Perdomo
   #Grupo B
     - Lauko Ermuko
@@ -550,7 +549,6 @@ teams:
     - TBV Lemgo Lippe
     - TBV Lemgo
     - ThSV Eisenach
-
     - SC DHfK Leipzig
     - HSG Wetzlar
     - HC Erlangen
@@ -674,7 +672,6 @@ teams:
     - Cesson Rennes
     - Aix-en-Provence
     - Chartres
-    - Dijon
     - Tremblay Handball
     - Paris
     - Nantes
@@ -690,7 +687,6 @@ teams:
     - Sélestat
     - Dunkerque
     - Chartres
-    - Dijon
     - Istres
 
   france/pro-d2:
@@ -932,6 +928,8 @@ teams:
     - Zaglebie Lubin
     - Chrobry Glogow
     - MKS Zagłębie Lubin
+    - Zagłębie Lublin
+    - MKS Zagłębie Lublin
 
 
   # ── Eslovenia ─────────────────────────────────────────────────────

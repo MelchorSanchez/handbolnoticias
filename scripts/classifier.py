@@ -13,7 +13,7 @@ _teams = None
 # Hashtags from CatHandbol that mark purely regional Catalan competitions.
 # When present, team-name matches must not pull the article into Spanish national sections.
 _CATALAN_ONLY = re.compile(
-    r'#?(1acathfem|2acathfem|3acathfem|3acath|2acath|lligacatargm|lligacatorm|lligacatorf)',
+    r'#?(1acathfem|2acathfem|3acathfem|3acath|2acath|lligacatargm|lligacatorm|lligacatorf|lligacatargf)',
     re.IGNORECASE,
 )
 _SPAIN_NATIONAL = frozenset({
@@ -50,6 +50,12 @@ _SPECIFIC_EHF = frozenset({
     "europe/european-league", "europe/european-league-women",
     "europe/cup-men", "europe/cup-women",
     "europe/euro-men", "europe/euro-women",
+})
+
+_EUROPE_CLUB = frozenset({
+    "europe/champions", "europe/champions-women",
+    "europe/european-league", "europe/european-league-women",
+    "europe/cup-men", "europe/cup-women",
 })
 
 # Gender signal patterns for Spanish handball text
@@ -198,10 +204,16 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text=""):
     """
     s = set(sections)
 
-    # Rule 1: base vs adult domestic
+    # Rule 1: base vs adult domestic (and European club via team-name only).
+    # Youth CDE articles should not inherit Champions League merely because a club
+    # that happens to play in Europe is mentioned by name.
     if s & _BASE_SECTIONS:
         sections = [x for x in sections if x not in _DOMESTIC_ADULT]
         s = set(sections)
+        team_only_europe = (s & _EUROPE_CLUB) - keyword_sections
+        if team_only_europe:
+            sections = [x for x in sections if x not in team_only_europe]
+            s = set(sections)
 
     # Rule 2: domestic league hierarchy within same gender/country group.
     for group in _PRIORITY_GROUPS:
@@ -260,11 +272,6 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text=""):
     # Logic: an article about a Spanish club belongs to Spanish sections by default;
     # it only goes to a European section if the article explicitly uses European
     # competition keywords (Champions League, European League, etc.).
-    _EUROPE_CLUB = frozenset({
-        "europe/champions", "europe/champions-women",
-        "europe/european-league", "europe/european-league-women",
-        "europe/cup-men", "europe/cup-women",
-    })
     _DOMESTIC_ANY = _SPAIN_NATIONAL | frozenset({
         "france/starligue", "france/pro-d2", "france", "france/d1f", "france/d2f",
         "germany/bundesliga", "germany/bundesliga2", "germany",

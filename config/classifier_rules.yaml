@@ -40,6 +40,12 @@ rules:
       - "play-off mundial balonmano"
       - "playoff mundial balonmano"
       - "clasificatorio mundial"
+      # Inglés — WCh play-offs 2027
+      - "world championship 2027"
+      - "wch 2027"
+      - "ihf men's world championship"
+      - "world championship play-off"
+      - "wch play-off"
       # Sub-categorías
       - "u21 world championship men"
       - "u19 world championship men"
@@ -238,7 +244,7 @@ rules:
                benjamín masculino, campeonato de españa cadete, campeonato de españa juvenil,
                campeonato de españa infantil, campeonato de españa alevín,
                "sub-20 masculino", "sub-18 masculino", "sub-16 masculino",
-               categorías base masculino]
+               categorías base masculino, cdeinfantilbm, cdejuvenilbm, cdecadete]
     require_any: [juvenil, cadete, infantil, "alevín", "alevin", benjamín, benjamin,
                   sub-20, sub-18, sub-16, sub-14, campeonato de españa base]
     exclude: [femenin, selección española, seleccion española]
@@ -250,7 +256,8 @@ rules:
                campeonato de españa juvenil femenino,
                "sub-20 femenino", "sub-18 femenino", "sub-16 femenino",
                categorías base femenino, "juvenil a femení", "juvenil femení",
-               "cadete femení", "infantil femení", "femení campiones", "campiones d'espanya"]
+               "cadete femení", "infantil femení", "femení campiones", "campiones d'espanya",
+               cdeinfantilbm, cdejuvenilbm, cdecadete]
     require_any: [juvenil, cadete, infantil, "alevín", "alevin", benjamín, benjamin,
                   sub-20, sub-18, sub-16, sub-14, femení, campiones]
     exclude: [masculin, selección española, seleccion española]
