@@ -303,8 +303,7 @@ rules:
     tags: [dhp-femenino, division-honor-plata-femenino]
     keywords: ["división honor plata femenino", "dhp femenino",
                "segunda división femenina", "división honor plata fem",
-               "division honor plata fem", "ligacatargf", "lligacatargf",
-               "lliga catalana argent femenina"]
+               "division honor plata fem"]
     exclude: [masculin]
 
   # ═══════════════════════════════════════════════════════════════════
@@ -312,7 +311,10 @@ rules:
   # ═══════════════════════════════════════════════════════════════════
   - section: spain/catalonia
     tags: [cataluña, catalonia, cathandbol]
-    keywords: [cathandbol, "handbol català", "rfeb cataluña", "handball catalunya"]
+    keywords: [cathandbol, "handbol català", "rfeb cataluña", "handball catalunya",
+               "ligacatargf", "lligacatargf", "lliga catalana argent femenina",
+               "ligacatargm", "lligacatargm", "lliga catalana argent masculina",
+               "lligacatorf", "lligacatorm"]
 
   - section: spain/navarra
     tags: [navarra, rfeb-navarra]
@@ -359,7 +361,8 @@ rules:
   - section: france/starligue
     tags: [starligue, lidl-starligue, lnh]
     keywords: [starligue, "lidl starligue", "lnh handball", "lnh starligue",
-               "liqui moly starligue"]
+               "liqui moly starligue", psg, "psg handball", "paris saint-germain handball",
+               "paris sg handball"]
     exclude: ["pro d2", proligue, proligue, féminin, feminine]
 
   - section: france/pro-d2

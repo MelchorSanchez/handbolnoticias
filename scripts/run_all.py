@@ -31,7 +31,7 @@ _DETAIL_DATE_SELECTORS = [
     ".lte-post-date",
 ]
 
-_DETAIL_DATE_SOURCES = {"BalonmanoInfo", "MiBalonmano", "CatHandbol", "Porrino-web"}
+_DETAIL_DATE_SOURCES = {"BalonmanoInfo", "MiBalonmano", "CatHandbol", "Porrino-web", "PallamanoItalia"}
 
 
 def _fix_detail_dates(conn):

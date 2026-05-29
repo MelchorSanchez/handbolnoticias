@@ -1180,6 +1180,136 @@ teams:
     - VILO Handball
     - SAG Lomas
     - Esudiantes de la Plata handball
+    - Asociación Atlética Argentinos Juniors
+    - Beata Handball
+    - Círculo de Villa Devoto
+    - Club Atlético All Boys
+    - Club Atlético Atlanta
+    - Club Atlético Boca Juniors
+    - Club Atlético Huracán
+    - Club Atlético Nueva Chicago
+    - Club Atlético River Plate
+    - Club Atlético San Lorenzo de Almagro
+    - Club Atlético San Telmo
+    - Club Atlético Vélez Sarsfield
+    - Club Comunicaciones
+    - Club Social y Deportivo Federal Juniors
+    - Club Estrella de Boedo
+    - Fe.Me.Bal
+    - Ferro Carril Oeste
+    - FEINCO
+    - I.S.E.F. Dickens
+    - La Casa del Handball Argentino
+    - Palermo Handball
+    - Racing Club Villa del Parque
+    - UBA
+    - A.A.C.F. Quilmes
+    - Arsenal Fútbol Club
+    - Ateneo Don Bosco Handball
+    - C.A. Argentino de Quilmes
+    - C.A. y S. Villa Calzada
+    - C.A.D. Villa Modelo
+    - Club Atlético Banfield
+    - Club Atlético Banfield (sede Luis Guillon)
+    - Club Atlético Defensores de Glew
+    - Club Atlético Independiente (Sede)
+    - Club Atlético Independiente (sede Wilde)
+    - Club Atlético Lanús
+    - Club Atlético Los Andes (Sede Social)
+    - Club Atletico Monte Grande
+    - Club Atlético Temperley
+    - Club Atlético Talleres
+    - Club Deportivo Villa Elisa
+    - Club Estrella del Sur
+    - Club Guernica Social, Cultural y Deportivo
+    - Club Social y Deportivo Defensores de Banfield
+    - Ci.De.Co.
+    - Defensa y Justicia
+    - Estudiantes de La Plata
+    - Grilli Handball
+    - Handball Club Vecinal La Unión Villa Giambruno
+    - Handball La Patriada
+    - Instituto Manuel Belgrano
+    - Junta Vecinal Juan Cruz Varela
+    - Mariano Acosta Handball
+    - Municipalidad de Almirante Brown (sede principal)
+    - Municipalidad de Almirante Brown (sede Don Orione)
+    - Municipalidad de Avellaneda
+    - Municipalidad de Avellaneda
+    - Municipalidad de Berisso
+    - Municipalidad de Ensenada
+    - Municipalidad de Ezeiza
+    - Municipalidad de Quilmes
+    - Municipio Lomas de Zamora
+    - Racing Club
+    - S.A.G.A.B.
+    - S.A.P.A.
+    - S.E.C.L.A.
+    - S.E.D.A.L.O.
+    - Sagrado Corazón
+    - U.N. La Plata
+    - Asociación Escolar Goethe
+    - C.A. Chacarita Juniors
+    - C.D.S. Juventud Unida
+    - Campana Boat Club
+    - Centro Asturiano Handball
+    - Club Atlético Platense
+    - Club Ferrocarril Mitre
+    - I.D.J. de San Martín
+    - Municipalidad de Escobar
+    - Municipalidad de Escobar, Microestadio Municipal Maquinista Savio
+    - Microestadio Municipal Matheu
+    - Municipalidad de Pilar
+    - Municipalidad de San Martín
+    - Municipalidad de San Miguel
+    - Municipalidad de Vicente López
+    - Muñiz Handball
+    - Nuestra Señora de Luján
+    - S.A.G. Polvorines
+    - S.A.G. Villa Ballester
+    - San Fernando Handball
+    - Polideportivo Nº1 San Fernando
+    - Polideportivo N°2 San Fernando
+    - Polideportivo N°3 San Fernando
+    - Polideportivo N°8 San Fernando
+    - U.N.Lu.
+    - Polideportivo Municipal de Luján
+    - UNSAM
+    - VHC Juana Manso
+    - A.F.A.L.P.
+    - Banco Central Handball
+    - C.A. Defensores de Moreno
+    - C.A. Estudiantes
+    - C.I.D. Moreno
+    - C.S. Deportivo Merlo
+    - C.S. y C. Deportivo Laferrere
+    - C.S. y D. Isidro Casanova
+    - Círculo General Belgrano
+    - Club Atlético Ituzaingó
+    - Club Deprortivo Morón
+    - Colegio del Parque
+    - Colegio Ward
+    - Don Bosco Handball
+    - Universidad Nacional de Cuyo (UNCuyo)
+    - Municipalidad de Maipú (Mendoza)
+    - Club Mendoza de Regatas
+    - Vial San Juan / Universidad de San Juan
+    - Jockey Club Córdoba
+    - Universitario de Córdoba
+    - Club Atlético Belgrano (Córdoba)
+    - Alianza Villa María (Córdoba)
+    - Municipalidad de Alta Gracia (Córdoba)
+    - Club Atlético Once Unidos (Mar del Plata)
+    - Somisa de San Nicolás
+    - Porvenir Talleres
+    - Regatas de San Nicolás
+    - Sol de Mayo (Viedma)
+    - Alta Barda (Neuquén)
+    - Nueva Generación (Comodoro Rivadavia)
+    - Club Social y Deportivo Cumehue (Trelew)
+    - Club Ladricer (Tucumán)
+    - Centro Asturiano de Rosario
+    - Chaco For Ever / San Roque (Chaco)
 
   # ── Italia ────────────────────────────────────────────────────────
   italy:
@@ -1361,7 +1491,28 @@ teams:
     - Nacional Handebol Clube
     - Português Recife
     - Clube Concórdia
-    - Metodista São Bernardo   
+    - Metodista São Bernardo
+    - Esporte Clube Pinheiros (SP)
+    - Taubaté Handebol (SP)
+    - Handebol Itajaí / ADHI (SC)
+    - ACH / Cascavel / Lanali (PR)
+    - Nacional Handebol Clube (SC)
+    - FAE / Osasco (SP)
+    - Cerrado / Handesfa (GO)
+    - GHC (PI)
+    - Clube Português do Recife (PE)
+    - ASHB / Sorriso Hornets (MT)
+    - Manauense / Rio Negro (AM)
+    - BITZ Softwares / Pato Handebol (PR)
+    - Esporte Clube Pinheiros (SP)
+    - Clube Português do Recife (PE)
+    - Unimed / Maringá (PR)
+    - Criciúma / Handlages (SC)
+    - ACH / Cascavel (PR)
+    - Nacional Handebol Clube (SC)
+    - Handebol Taubaté (SP)
+    - Atlético Rio Negro (AM)
+    - Hand Torres (RS)
     
   # ── Japon ────────────────────────────────────────────────────────
   japon:
@@ -1484,6 +1635,8 @@ teams:
     - Anaitasuna
     - UDC Txantrea KKE
     - Txantrea
+    - Beti Onak
+    - Replasa Beti Onak
     - Ultzama
     - Valle de Egüés
 

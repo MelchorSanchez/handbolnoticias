@@ -190,7 +190,7 @@ def _sections_from_teams(text):
     return matched
 
 
-def _apply_priority_rules(sections, keyword_sections=frozenset(), text=""):
+def _apply_priority_rules(sections, keyword_sections=frozenset(), text="", source_section=""):
     """Post-process section list:
     1. Base articles must not appear alongside adult domestic leagues.
     2. Within each domestic group:
@@ -302,6 +302,10 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text=""):
             sections = [sec for sec in sections if sec not in _SPAIN_CLUB_MASC]
         else:
             gender = _gender_signal(text)
+            if gender is None and source_section in _SPAIN_CLUB_MASC:
+                gender = 'masc'
+            elif gender is None and source_section in _SPAIN_CLUB_FEM:
+                gender = 'fem'
             if gender == 'masc':
                 sections = [sec for sec in sections if sec not in _SPAIN_CLUB_FEM]
             elif gender == 'fem':
@@ -323,6 +327,10 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text=""):
             s = set(sections)
         else:
             gender = _gender_signal(text)
+            if gender is None and source_section in _GERMANY_CLUB_MASC:
+                gender = 'masc'
+            elif gender is None and source_section in _GERMANY_CLUB_FEM:
+                gender = 'fem'
             if gender == 'masc':
                 sections = [sec for sec in sections if sec not in _GERMANY_CLUB_FEM]
             elif gender == 'fem':
@@ -360,4 +368,5 @@ def classify(article):
     if _CATALAN_ONLY.search(text):
         sections = [s for s in sections if s not in _SPAIN_NATIONAL]
 
-    return _apply_priority_rules(sections, frozenset(keyword_sections), text)
+    return _apply_priority_rules(sections, frozenset(keyword_sections), text,
+                                 source_section=article.get("section", ""))

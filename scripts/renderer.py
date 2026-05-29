@@ -295,10 +295,11 @@ def render_all(conn):
 
     sitemap = _render_sitemap(list(sections_data.keys()))
     (OUTPUT_DIR / "sitemap.xml").write_text(sitemap, encoding="utf-8")
+    ROOT_DIR = OUTPUT_DIR.parent
+    (ROOT_DIR / "sitemap.xml").write_text(sitemap, encoding="utf-8")
     logger.info("Rendered sitemap.xml (%d URLs)", 2 + len(sections_data))
 
-    (OUTPUT_DIR / "robots.txt").write_text(
-        f"User-agent: *\nAllow: /\nSitemap: {BASE_URL}/sitemap.xml\n",
-        encoding="utf-8",
-    )
+    robots = f"User-agent: *\nAllow: /\nSitemap: {BASE_URL}/sitemap.xml\n"
+    (OUTPUT_DIR / "robots.txt").write_text(robots, encoding="utf-8")
+    (ROOT_DIR / "robots.txt").write_text(robots, encoding="utf-8")
     logger.info("Rendered robots.txt")

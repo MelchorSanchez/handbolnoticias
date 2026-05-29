@@ -647,6 +647,7 @@ sources:
       title: "h2, h3"
       link: "a[href]"
       image: "img"
+      date: "div.entry-meta"
 
   # ══════════════════════════════════════════════════════════════════════════
   # INTERNACIONAL — Argentina / Sudamérica

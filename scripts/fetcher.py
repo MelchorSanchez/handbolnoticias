@@ -29,7 +29,17 @@ _SPANISH_MONTHS = {
     'mayo': 5, 'junio': 6, 'julio': 7, 'agosto': 8,
     'septiembre': 9, 'octubre': 10, 'noviembre': 11, 'diciembre': 12,
 }
-_ALL_MONTHS = {**_CATALAN_MONTHS, **_SPANISH_MONTHS}
+_ENGLISH_MONTHS = {
+    'january': 1, 'february': 2, 'march': 3, 'april': 4,
+    'may': 5, 'june': 6, 'july': 7, 'august': 8,
+    'september': 9, 'october': 10, 'november': 11, 'december': 12,
+}
+_ITALIAN_MONTHS = {
+    'gennaio': 1, 'febbraio': 2, 'marzo': 3, 'aprile': 4,
+    'maggio': 5, 'giugno': 6, 'luglio': 7, 'agosto': 8,
+    'settembre': 9, 'ottobre': 10, 'novembre': 11, 'dicembre': 12,
+}
+_ALL_MONTHS = {**_CATALAN_MONTHS, **_SPANISH_MONTHS, **_ENGLISH_MONTHS, **_ITALIAN_MONTHS}
 
 
 def _parse_date_text(text: str) -> str:
@@ -39,6 +49,13 @@ def _parse_date_text(text: str) -> str:
     m = re.search(r'(\d{4})-(\d{2})-(\d{2})', clean)
     if m:
         return f"{m.group(1)}-{m.group(2)}-{m.group(3)}T12:00:00+00:00"
+    # DD.MM.YYYY (e.g. "30.12.2025")
+    m = re.search(r'(\d{1,2})\.(\d{1,2})\.(\d{4})', clean)
+    if m:
+        try:
+            return datetime(int(m.group(3)), int(m.group(2)), int(m.group(1)), 12, 0, 0, tzinfo=timezone.utc).isoformat()
+        except ValueError:
+            pass
     # DD-MM-YYYY (e.g. "30-12-2025")
     m = re.search(r'(\d{1,2})-(\d{1,2})-(\d{4})', clean)
     if m:
