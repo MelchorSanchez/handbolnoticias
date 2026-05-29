@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 TEMPLATES_DIR = Path(__file__).parent.parent / "templates"
 OUTPUT_DIR = Path(__file__).parent.parent / "docs"
-BASE_URL = "https://handbolnoticias.pages.dev"
+BASE_URL = "https://handbolnoticias.com"
 
 SECTION_DESCRIPTIONS = {
     "spain/asobal":               "Noticias de la Liga ASOBAL de balonmano masculino: resultados, clasificación, fichajes y todo sobre la máxima competición española.",
