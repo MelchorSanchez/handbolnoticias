@@ -556,6 +556,7 @@ sources:
     type: rss
     url: https://www.bsv-live.de/feed/
     max_items: 10
+    filter_keywords: [handball, bundesliga, ehf, frauen, damen]
 
   # ══════════════════════════════════════════════════════════════════════════
   # CLUBES ESPAÑOLES — ASOBAL adicionales
@@ -634,20 +635,7 @@ sources:
     url: https://www.gog.dk/feed/
     max_items: 10
 
-  # ══════════════════════════════════════════════════════════════════════════
-  # INTERNACIONAL — Italia
-  # ══════════════════════════════════════════════════════════════════════════
-  - name: PallamanoItalia
-    section: italy
-    type: scrape
-    url: https://www.pallamanoitalia.it/
-    max_items: 15
-    selectors:
-      articles: "article, .post"
-      title: "h2, h3"
-      link: "a[href]"
-      image: "img"
-      date: "div.entry-meta"
+
 
   # ══════════════════════════════════════════════════════════════════════════
   # INTERNACIONAL — Argentina / Sudamérica

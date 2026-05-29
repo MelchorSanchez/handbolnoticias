@@ -173,6 +173,7 @@ rules:
       - "european league women"
       - "european league femenina"
       - "european league fem"
+      - "ehf finals women"
 
   - section: europe/european-league
     tags: [ehf-european-league, european-league-handball]
@@ -182,6 +183,9 @@ rules:
       - "european league handball"
       - "copa ehf"
       - "copa de la ehf"
+      - "ehf finals men"
+      - "winamax ehf finals"
+      - "ehf finals hamburg"
     exclude: [women, femenin]
 
   # ═══════════════════════════════════════════════════════════════════
