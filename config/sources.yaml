@@ -132,7 +132,7 @@ sources:
     type: rss
     url: https://www.lanzadigital.com/rss/
     max_items: 15
-    filter_keywords: [balonmano, handball, handbol, cuenca]
+    filter_keywords: [balonmano, handball, handbol]
 
   # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Prensa regional: Cataluña
