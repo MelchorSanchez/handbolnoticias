@@ -108,7 +108,7 @@ sources:
     type: rss
     url: https://www.deia.eus/rss/
     max_items: 20
-    filter_keywords: [balonmano, handball, handbol, eskubaloia, bidasoa, bera bera, zarautz, eibar, barakaldo, tolosa, araberri, santutxu, ereintza, gernika, durango]
+    filter_keywords: [balonmano, handball, handbol, eskubaloia, bidasoa, bera bera, zarautz, eibar, barakaldo, tolosa, araberri, santutxu, ereintza, gernika]
     filter_title_only: true
 
   - name: NoticiasAlava-dep
@@ -116,7 +116,7 @@ sources:
     type: rss
     url: https://www.noticiasdealava.eus/rss/
     max_items: 20
-    filter_keywords: [balonmano, handball, handbol, eskubaloia, bidasoa, bera bera, zarautz, eibar, barakaldo, tolosa, araberri, santutxu, ereintza, gernika, durango]
+    filter_keywords: [balonmano, handball, handbol, eskubaloia, bidasoa, bera bera, zarautz, eibar, barakaldo, tolosa, araberri, santutxu, ereintza, gernika]
     filter_title_only: true
 
   # ══════════════════════════════════════════════════════════════════════════
@@ -180,7 +180,7 @@ sources:
     type: rss
     url: https://www.farodevigo.es/rss/
     max_items: 20
-    filter_keywords: [balonmano, handball, handbol, balonmán, frigoríficos, morrazo, cangas, porriño]
+    filter_keywords: [balonmano, handball, handbol, balonmán, frigoríficos, morrazo, porriño]
     filter_title_only: true
 
   # ══════════════════════════════════════════════════════════════════════════
@@ -575,12 +575,42 @@ sources:
     filter_keywords: [handball, bundesliga, ehf, frauen, damen]
 
   # ══════════════════════════════════════════════════════════════════════════
-  # CLUBES ESPAÑOLES — ASOBAL adicionales
+  # CLUBES ESPAÑOLES — ASOBAL / DHp (webs oficiales)
   # ══════════════════════════════════════════════════════════════════════════
-  - name: Benidorm-web
-    section: spain/dhp
+  - name: Bidasoa-web
+    section: spain/asobal
     type: rss
-    url: https://bmbenidorm.com/feed/
+    url: https://cdbidasoa.eus/feed/
+    max_items: 10
+
+  - name: Ademar-web
+    section: spain/asobal
+    type: rss
+    url: https://www.ademar.com/feed/
+    max_items: 10
+
+  - name: Torrelavega-web
+    section: spain/asobal
+    type: rss
+    url: https://balonmanotorrelavega.com/feed/
+    max_items: 10
+
+  - name: CaserioCR-web
+    section: spain/asobal
+    type: rss
+    url: https://balonmanocaserio.com/feed/
+    max_items: 10
+
+  - name: BMCuenca-web
+    section: spain/asobal
+    type: rss
+    url: https://www.bmciudadencantada.es/feed/
+    max_items: 10
+
+  - name: BMSinfin-web
+    section: spain/asobal
+    type: rss
+    url: https://www.bmsinfin.com/feed/
     max_items: 10
 
   - name: PuenteGenil-web
@@ -593,6 +623,31 @@ sources:
     section: spain/asobal
     type: rss
     url: https://www.balonmancangas.com/feed/
+    max_items: 10
+
+  - name: Benidorm-web
+    section: spain/dhp
+    type: rss
+    url: https://bmbenidorm.com/feed/
+    max_items: 10
+
+  # ── Clubes Liga Guerreras Iberdrola ──────────────────────────────────────
+  - name: BeaBera-web
+    section: spain/guerreras
+    type: rss
+    url: https://berabera.com/es/secciones/balonmano/noticias?format=feed
+    max_items: 10
+
+  - name: Rocasa-web
+    section: spain/guerreras
+    type: rss
+    url: https://balonmanoremudas.es/feed/
+    max_items: 10
+
+  - name: Elche-web
+    section: spain/guerreras
+    type: rss
+    url: https://cbmelche.es/feed/
     max_items: 10
 
   # ══════════════════════════════════════════════════════════════════════════
