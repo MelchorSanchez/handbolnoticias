@@ -353,15 +353,11 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text="", sourc
         "slovakia", "slovenia", "romania", "greece", "italy", "north-macedonia",
         "argentina", "brazil", "japan", "turkey", "czech-republic",
     })
-    # cup-men/cup-women are smaller competitions where team-name matching is reliable:
-    # few clubs participate and they rarely appear in domestic-league articles.
-    # Champions/EL are suppressed by team-name alone (too many top clubs trigger them).
-    _EUROPE_SUPPRESS = frozenset({
-        "europe/champions", "europe/champions-women",
-        "europe/european-league", "europe/european-league-women",
-    })
+    # All European club competitions are suppressed when only matched by team name
+    # and a domestic section is also present. Keyword-matched European sections are
+    # always kept regardless (e.g. an article explicitly mentioning "EHF Cup final").
     domestic_present = s & _DOMESTIC_ANY
-    europe_team_only = (s & _EUROPE_SUPPRESS) - keyword_sections
+    europe_team_only = (s & _EUROPE_CLUB) - keyword_sections
     if domestic_present and europe_team_only:
         sections = [sec for sec in sections if sec not in europe_team_only]
         s = set(sections)
