@@ -403,41 +403,6 @@ sources:
   # ══════════════════════════════════════════════════════════════════════════
   # CLUBES ESPAÑOLES — Sitios web oficiales
   # ══════════════════════════════════════════════════════════════════════════
-  - name: Bidasoa-web
-    section: spain/asobal
-    type: scrape
-    url: https://www.cdbidasoa.eus/noticias/
-    max_items: 10
-    selectors:
-      articles: ".post"
-      title: "h2, h3"
-      link: "a[href]"
-      image: "img"
-
-  - name: Ademar-web
-    section: spain/asobal
-    type: scrape
-    url: https://www.ademar.com/noticias/
-    max_items: 10
-    selectors:
-      articles: ".card"
-      title: "h2, h3, h4"
-      link: "a[href]"
-      image: "img"
-      date: "time[datetime]"
-    filter_keywords: [balonmano, handball, Ademar, ASOBAL, fichaje, renovaci, partido, resultado, liga, copa]
-
-  - name: Torrelavega-web
-    section: spain/asobal
-    type: scrape
-    url: https://balonmanotorrelavega.com/noticiastorrebalonmano/
-    max_items: 10
-    selectors:
-      articles: "article"
-      title: "h2, h3"
-      link: "a[href]"
-      image: "img"
-
   - name: Guardes-web
     section: spain/guerreras
     type: scrape
@@ -530,6 +495,12 @@ sources:
     section: germany/bundesliga
     type: rss
     url: https://www.scdhfk-handball.de/feed/
+    max_items: 10
+
+  - name: Hannover-web
+    section: germany/bundesliga
+    type: rss
+    url: https://www.die-recken.de/feed/
     max_items: 10
 
   # ── Alemania — Bundesliga Femenina ────────────────────────────────
