@@ -88,7 +88,7 @@ def insert_article(conn: sqlite3.Connection, article: dict) -> bool:
                     THEN :published
                     ELSE published
                 END
-            WHERE id = :id
+            WHERE id = :id AND is_manual = 0
         """, {"id": article["id"], "section": article["section"],
                "extra_sections": article["extra_sections"],
                "published": article.get("published"),

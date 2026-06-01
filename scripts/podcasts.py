@@ -17,7 +17,13 @@ SHOWS = [
         "color": "red",
         "description": "Entrevistas y análisis en español",
         "title_filter": "handball talks #",
-        "pinned_video_ids": ["S31v8wMrVd8", "7E_yI-2qmA8", "zg4pbjSrYY0", "DRPf0smcrWI", "2dIdroMb_Bk"],
+        "pinned_video_ids": [
+            {"id": "S31v8wMrVd8"},
+            {"id": "7E_yI-2qmA8"},
+            {"id": "zg4pbjSrYY0", "published": "2026-03-11"},
+            {"id": "DRPf0smcrWI", "published": "2026-02-10"},
+            {"id": "2dIdroMb_Bk", "published": "2026-01-10"},
+        ],
     },
     {
         "id": "liftados",
@@ -68,8 +74,9 @@ HEADERS = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/201001
 TIMEOUT = 15
 
 
-def _fetch_pinned_video(video_id):  # type: (str) -> dict
+def _fetch_pinned_video(pin):  # type: (dict) -> dict
     """Fetch metadata for a pinned YouTube video via oEmbed."""
+    video_id = pin["id"]
     url = f"https://www.youtube.com/watch?v={video_id}"
     try:
         resp = httpx.get(
@@ -79,9 +86,13 @@ def _fetch_pinned_video(video_id):  # type: (str) -> dict
         resp.raise_for_status()
         data = resp.json()
         thumbnail = f"https://i.ytimg.com/vi/{video_id}/mqdefault.jpg"
+        published_str = pin.get("published", "")
+        published = (
+            datetime.strptime(published_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+            if published_str else datetime.now(timezone.utc)
+        )
         return {"title": data.get("title", ""), "url": url,
-                "published": datetime.now(timezone.utc),
-                "thumbnail": thumbnail, "type": "video"}
+                "published": published, "thumbnail": thumbnail, "type": "video"}
     except Exception:
         return None
 
@@ -139,13 +150,14 @@ def _fetch_youtube(show):  # type: (dict) -> list
     pinned_ids = show.get("pinned_video_ids", [])
     if len(episodes) < 5 and pinned_ids:
         seen_video_ids = {ep["url"].split("v=")[-1].split("&")[0] for ep in episodes}
-        for vid_id in pinned_ids:
-            if vid_id in seen_video_ids:
+        for pin in pinned_ids:
+            pin_id = pin["id"] if isinstance(pin, dict) else pin
+            if pin_id in seen_video_ids:
                 continue
-            ep = _fetch_pinned_video(vid_id)
+            ep = _fetch_pinned_video(pin if isinstance(pin, dict) else {"id": pin})
             if ep:
                 episodes.append(ep)
-                seen_video_ids.add(vid_id)
+                seen_video_ids.add(pin_id)
             if len(episodes) >= 5:
                 break
     return episodes
