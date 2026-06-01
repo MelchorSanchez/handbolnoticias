@@ -185,7 +185,14 @@ _CLUB_PREFIXES = frozenset({
     'mkb', 'asc', 'bsc', 'dsc', 'hvg', 'spvg', 'rkb', 'skm', 'tkh', 'ahc',
     'cb', 'sd', 'cd', 'bm', 'rcd', 'cdb', 'cem', 'bmj',
     # Generic sport words that appear in many team names but are not distinctive
-    'handball', 'sport', 'sports', 'club', 'elite', 'united',
+    'handball', 'balonmano', 'sport', 'sports', 'club', 'elite', 'united',
+    # Generic words too common in Spanish text to be distinctive team identifiers
+    'universitario', 'universidad', 'atletico', 'atlético', 'atlética',
+    'deportivo', 'municipal', 'municipalidad', 'municipio',
+    'selección', 'seleccion', 'nacional', 'central', 'general',
+    'defensa', 'instituto', 'colegio', 'cultural', 'nuestra',
+    'asociación', 'asociacion', 'federación', 'federacion',
+    'confederación', 'fundación',
 })
 # Minimum word length for partial (word-level) team name matching.
 _WORD_MATCH_MIN_LEN = 7
