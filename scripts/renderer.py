@@ -21,6 +21,7 @@ SECTION_DESCRIPTIONS = {
     "spain/seleccion-fem":        "Noticias de la Selección Española Femenina de balonmano: convocatorias, partidos y torneos internacionales.",
     "spain/base-masc":            "Noticias del balonmano base masculino en España: selecciones juveniles, categorías inferiores y formación.",
     "spain/base-fem":             "Noticias del balonmano base femenino en España: selecciones juveniles, categorías inferiores y formación.",
+    "spain":                      "Noticias generales de balonmano en España: selección, competiciones nacionales e internacionales.",
     "spain/catalonia":            "Noticias de balonmano en Cataluña: handbol català, competicions autonòmiques i clubs.",
     "spain/navarra":              "Noticias de balonmano en Navarra: clubs, competiciones y jugadores navarros.",
     "spain/euskadi":              "Noticias de balonmano en Euskadi: clubs vascos, competiciones y jugadores.",
@@ -76,6 +77,7 @@ SECTIONS = {
         "label": "España",
         "color": "red",
         "subsections": {
+            "spain":                      "General",
             "spain/asobal":               "ASOBAL",
             "spain/dhp":                  "División Honor Plata",
             "spain/primera-nacional-masc": "Primera Nacional masc.",

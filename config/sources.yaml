@@ -3,13 +3,13 @@ sources:
   # ESPAÑA — Balonmano especializado
   # ══════════════════════════════════════════════════════════════════════════
   - name: RFEBM
-    section: spain/asobal
+    section: spain
     type: rss
     url: https://www.rfebm.com/feed/
     max_items: 50
 
   - name: Marca-Balonmano
-    section: spain/asobal
+    section: spain
     type: scrape
     url: https://www.marca.com/balonmano.html
     max_items: 20
@@ -20,7 +20,7 @@ sources:
       image: "img"
 
   - name: MundoDeportivo-Balonmano
-    section: spain/asobal
+    section: spain
     type: scrape
     url: https://www.mundodeportivo.com/balonmano
     max_items: 20
@@ -34,42 +34,42 @@ sources:
   # ESPAÑA — Prensa nacional (con filtro balonmano)
   # ══════════════════════════════════════════════════════════════════════════
   - name: ElPais-dep
-    section: spain/asobal
+    section: spain
     type: rss
     url: https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/deportes/portada
     max_items: 50
     filter_keywords: [balonmano, handball, handbol]
 
   - name: ElMundo-dep
-    section: spain/asobal
+    section: spain
     type: rss
     url: https://www.elmundo.es/rss/deportes.xml
     max_items: 50
     filter_keywords: [balonmano, handball, handbol]
 
   - name: ElConfidencial-dep
-    section: spain/asobal
+    section: spain
     type: rss
     url: https://www.elconfidencial.com/rss/deportes.xml
     max_items: 30
     filter_keywords: [balonmano, handball, handbol]
 
   - name: EuropaPress-dep
-    section: spain/asobal
+    section: spain
     type: rss
     url: https://www.europapress.es/rss/rss.aspx?ch=00080
     max_items: 50
     filter_keywords: [balonmano, handball, handbol]
 
   - name: 20minutos-dep
-    section: spain/asobal
+    section: spain
     type: rss
     url: https://www.20minutos.es/rss/deportes/
     max_items: 30
     filter_keywords: [balonmano, handball, handbol]
 
   - name: Superdeporte
-    section: spain/asobal
+    section: spain
     type: rss
     url: https://www.superdeporte.es/rss/
     max_items: 20
@@ -94,14 +94,14 @@ sources:
     type: rss
     url: https://www.diariodenavarra.es/rss/deportes.xml
     max_items: 30
-    filter_keywords: [balonmano, handball, handbol, eskubaloia, anaitasuna]
+    filter_keywords: [balonmano, handball, handbol, eskubaloia]
 
   - name: Deia-dep
     section: spain/euskadi
     type: rss
     url: https://www.deia.eus/rss/
     max_items: 20
-    filter_keywords: [balonmano, handball, handbol, eskubaloia, bidasoa]
+    filter_keywords: [balonmano, handball, handbol, eskubaloia]
 
   - name: NoticiasAlava-dep
     section: spain/euskadi
@@ -114,21 +114,21 @@ sources:
   # ESPAÑA — Prensa regional: Aragón / Castilla y León
   # ══════════════════════════════════════════════════════════════════════════
   - name: HeraldoAragon-dep
-    section: spain/asobal
+    section: spain
     type: rss
     url: https://www.heraldo.es/rss/deportes.xml
     max_items: 30
     filter_keywords: [balonmano, handball, handbol]
 
   - name: DiarioLeon-dep
-    section: spain/asobal
+    section: spain
     type: rss
     url: https://www.diariodeleon.es/rss/deportes.xml
     max_items: 30
-    filter_keywords: [balonmano, handball, handbol, ademar]
+    filter_keywords: [balonmano, handball, handbol]
 
   - name: LanzaCiudadReal
-    section: spain/asobal
+    section: spain
     type: rss
     url: https://www.lanzadigital.com/rss/
     max_items: 15
@@ -149,7 +149,7 @@ sources:
     type: rss
     url: https://www.ara.cat/rss/
     max_items: 30
-    filter_keywords: [balonmano, handball, handbol]
+    filter_keywords: [handbol, handball, balonmano]
 
   - name: NacioDigital
     section: spain/catalonia
@@ -162,17 +162,17 @@ sources:
   # ESPAÑA — Prensa regional: Galicia
   # ══════════════════════════════════════════════════════════════════════════
   - name: FaroVigo-dep
-    section: spain/asobal
+    section: spain
     type: rss
     url: https://www.farodevigo.es/rss/
     max_items: 20
-    filter_keywords: [balonmano, handball, handbol]
+    filter_keywords: [balonmano, handball, handbol, balonmán]
 
   # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Balonmano femenino especializado
   # ══════════════════════════════════════════════════════════════════════════
   - name: BalonmanoInfo
-    section: spain/guerreras
+    section: spain
     type: scrape
     url: https://www.balonmano.info/
     max_items: 30
@@ -183,17 +183,17 @@ sources:
       image: "img"
 
   - name: DeporteCienPorcien
-    section: spain/guerreras
+    section: spain
     type: rss
     url: https://deportecienporcien.com/feed/
     max_items: 30
-    filter_keywords: [balonmano, handball, handbol, guerreras, asobal]
+    filter_keywords: [balonmano, handball, handbol, guerreras, asobal, selección, seleccion]
 
   # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Balonmano masculino especializado
   # ══════════════════════════════════════════════════════════════════════════
   - name: MiBalonmano
-    section: spain/asobal
+    section: spain
     type: scrape
     url: https://www.mibalonmano.com/
     max_items: 30
@@ -205,7 +205,7 @@ sources:
       date: "span.span-date"
 
   - name: BalonmanoActual
-    section: spain/asobal
+    section: spain
     type: rss
     url: https://balonmanoactual.com/feed/
     max_items: 30
@@ -229,7 +229,7 @@ sources:
   # EUROPA — Handball internacional
   # ══════════════════════════════════════════════════════════════════════════
   - name: HandballPlanet
-    section: europe/champions
+    section: europe/other
     type: rss
     url: https://handball-planet.com/feed/
     max_items: 10
@@ -242,7 +242,7 @@ sources:
     filter_keywords: [handball, world, ihf, championship, beach, coaching, qualification, euro, cup]
 
   - name: EHF-news
-    section: europe/champions
+    section: europe/other
     type: scrape
     url: https://www.eurohandball.com/en/news/
     max_items: 30

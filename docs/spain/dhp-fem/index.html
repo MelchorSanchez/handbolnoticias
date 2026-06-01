@@ -52,6 +52,8 @@
             <div class="relative group">
                 <button class="hover:text-orange-300 py-4">España ▾</button>
                 <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-52 z-50 py-1">
+                    <a href="/spain/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-medium">General España</a>
+                    <div class="border-t mx-3 my-1"></div>
                     <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Masculino</div>
                     <a href="/spain/asobal/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">ASOBAL</a>
                     <a href="/spain/dhp/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">División Honor Plata</a>
@@ -297,6 +299,9 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
 
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
+        <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">General España</a>
+
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España — Masculino</div>
         <a href="/spain/asobal/" class="block px-6 py-2 border-b border-blue-800">ASOBAL</a>
         <a href="/spain/dhp/" class="block px-6 py-2 border-b border-blue-800">División Honor Plata</a>
@@ -535,10 +540,50 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <h1 class="text-2xl font-bold mb-6 text-gray-900">División Honor Plata fem.</h1>
 
 
-<div class="text-center py-16 text-gray-400">
-    <div class="text-5xl mb-4">🤾</div>
-    <p>No hay noticias recientes en esta sección.</p>
-    <p class="text-sm mt-2">Se actualizan diariamente.</p>
+<div class="space-y-3">
+    
+    <a href="https://www.diariodeleon.es/deportes/260601/2086878/universidad-leon-reconoce-talento-entrega-estudiantes-deportistas.html" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://imagenes.diariodeleon.es/files/og_thumbnail/uploads/2026/06/01/6a1d830bafcd3.jpeg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">La Universidad de León reconoce el talento y la entrega de sus estudiantes deportistas</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">La rectora de la ULE, Nuria González, destaca el deporte como parte esencial de la formación integral del estudiantado universitario y subraya el esfuerzo que supone compatibilizar la práctica deportiva de alto nivel con la actividad académica</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">DiarioLeon-dep</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-01</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.diariodeleon.es/deportes/260601/2086876/pescador-leones-jose-manuel-juan-cifuentes-proclamo-campeon-espana.html" target="_blank" rel="noopener"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://imagenes.diariodeleon.es/files/og_thumbnail/uploads/2026/06/01/6a1d7e3e09e8c.jpeg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El pescador leonés José Manuel Juan Cifuentes se proclamó campeón de España</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El Ayuntamiento de Santa Marina del Rey volvió a convertirse en el gran epicentro nacional de la pesca con la celebración del LVIII Campeonato de España de Pesca de Selecciones Autonómicas en la modalidad de Salmónidos Lance Absoluto</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">DiarioLeon-dep</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-01</span>
+                
+            </div>
+        </div>
+    </a>
+    
 </div>
 
 
@@ -546,7 +591,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 </main>
 
 <footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 01/06/2026 a las 12:55 UTC ·
+    <p>Actualizado: 01/06/2026 a las 13:16 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>
