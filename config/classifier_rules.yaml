@@ -78,6 +78,25 @@ rules:
       - "sub-19 femenino mundial"
     exclude: [masculin, "men's", hombre, "world championship men", "champions league", "european league"]
 
+  - section: ihf/other
+    tags: [ihf-news, ihf-general, ihf-beach, ihf-club]
+    keywords:
+      - "ihf beach handball"
+      - "beach handball world"
+      - "balonmano playa mundial"
+      - "campeonato del mundo de balonmano playa"
+      - "ihf men's club"
+      - "ihf women's club"
+      - "ihf club world"
+      - "clean sport"
+      - "ihf coaching"
+      - "ihf development"
+      - "ihf partnership"
+      - "ihf agreement"
+      - "ihf president"
+      - "ihf congress"
+      - "ihf trophy"
+
   # ═══════════════════════════════════════════════════════════════════
   # EHF EURO — Eurocopas nacionales (hombres / mujeres / sub-)
   # Sinónimos: EHF Euro / European Championship / Eurocopa / EURO
@@ -212,6 +231,11 @@ rules:
       - "copa europea balonmano"
       - "ehf cup handball"
       - "challenge cup handball"
+      - "ehf cup triumph"
+      - "ehf cup winner"
+      - "ehf cup final"
+      - "ehf cup 2025"
+      - "ehf cup 2026"
     exclude: [women, femenin, champions league, european league]
 
   # ═══════════════════════════════════════════════════════════════════

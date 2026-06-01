@@ -235,7 +235,7 @@ sources:
     max_items: 10
 
   - name: IHF-news
-    section: ihf/world-men
+    section: ihf/other
     type: rss
     url: https://www.ihf.info/news/rss.xml
     max_items: 20

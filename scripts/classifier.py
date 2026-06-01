@@ -184,6 +184,8 @@ _CLUB_PREFIXES = frozenset({
     'thw', 'bsv', 'hsv', 'ska', 'hbc', 'mks', 'tus', 'tsg', 'ssv', 'dhc',
     'mkb', 'asc', 'bsc', 'dsc', 'hvg', 'spvg', 'rkb', 'skm', 'tkh', 'ahc',
     'cb', 'sd', 'cd', 'bm', 'rcd', 'cdb', 'cem', 'bmj',
+    # Generic sport words that appear in many team names but are not distinctive
+    'handball', 'sport', 'sports', 'club', 'elite', 'united',
 })
 # Minimum word length for partial (word-level) team name matching.
 _WORD_MATCH_MIN_LEN = 7
@@ -329,10 +331,12 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text="", sourc
                     s = set(sections)
 
     # Rule 4a: Suppress European club sections that come only from team-name matching
-    # when any Spanish domestic section is present (keyword OR team matched).
-    # Logic: an article about a Spanish club belongs to Spanish sections by default;
-    # it only goes to a European section if the article explicitly uses European
-    # competition keywords (Champions League, European League, etc.).
+    # when any domestic section is present AND the article comes from a domestic source.
+    # Logic: "Barça beats Bidasoa in ASOBAL" should not inherit Champions League just
+    # because Barça also plays there.
+    # Exception: if the source is itself an international/European feed, European team
+    # matches are meaningful — "HC Ohrid wins EHF Cup" from handball-planet should keep
+    # both cup-men and north-macedonia even though both are team-matched.
     _DOMESTIC_ANY = _SPAIN_NATIONAL | frozenset({
         "france/starligue", "france/pro-d2", "france", "france/d1f", "france/d2f",
         "germany/bundesliga", "germany/bundesliga2", "germany",
@@ -342,8 +346,15 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text="", sourc
         "slovakia", "slovenia", "romania", "greece", "italy", "north-macedonia",
         "argentina", "brazil", "japan", "turkey", "czech-republic",
     })
+    # cup-men/cup-women are smaller competitions where team-name matching is reliable:
+    # few clubs participate and they rarely appear in domestic-league articles.
+    # Champions/EL are suppressed by team-name alone (too many top clubs trigger them).
+    _EUROPE_SUPPRESS = frozenset({
+        "europe/champions", "europe/champions-women",
+        "europe/european-league", "europe/european-league-women",
+    })
     domestic_present = s & _DOMESTIC_ANY
-    europe_team_only = (s & _EUROPE_CLUB) - keyword_sections
+    europe_team_only = (s & _EUROPE_SUPPRESS) - keyword_sections
     if domestic_present and europe_team_only:
         sections = [sec for sec in sections if sec not in europe_team_only]
         s = set(sections)

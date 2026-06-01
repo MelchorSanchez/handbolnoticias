@@ -35,6 +35,7 @@ SECTION_DESCRIPTIONS = {
     "europe/other":               "Otras noticias y competiciones EHF de balonmano europeo.",
     "ihf/world-men":              "Noticias del Campeonato del Mundo masculino de balonmano IHF: selecciones, resultados y clasificación.",
     "ihf/world-women":            "Noticias del Campeonato del Mundo femenino de balonmano IHF: selecciones, resultados y clasificación.",
+    "ihf/other":                  "Otras noticias de la IHF: balonmano playa, noticias institucionales y competiciones menores.",
     "germany/bundesliga":         "Noticias de la Daikin HBL (Handball-Bundesliga) masculina: resultados, fichajes y todos los clubs alemanes.",
     "germany/bundesliga2":        "Noticias de la 2. Bundesliga masculina de balonmano alemán: resultados y clasificación.",
     "germany/bundesliga-fem":     "Noticias de la Alsco HBF (Handball-Bundesliga Frauen): resultados, fichajes y clubs del balonmano femenino alemán.",
@@ -111,6 +112,7 @@ SECTIONS = {
         "subsections": {
             "ihf/world-men":   "Mundial Masc",
             "ihf/world-women": "Mundial Fem",
+            "ihf/other":       "Otras IHF",
         },
     },
     "germany": {
@@ -177,6 +179,7 @@ INTL_MENU = [
     {"type": "header", "label": "IHF"},
     {"type": "link",   "slug": "ihf/world-men",   "label": "Mundial Masc"},
     {"type": "link",   "slug": "ihf/world-women",  "label": "Mundial Fem"},
+    {"type": "link",   "slug": "ihf/other",        "label": "Otras IHF"},
     {"type": "separator"},
     {"type": "header", "label": "Alemania Masc"},
     {"type": "link",   "slug": "germany/bundesliga",  "label": "Daikin HBL"},
