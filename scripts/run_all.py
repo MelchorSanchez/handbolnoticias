@@ -84,6 +84,8 @@ def main():
 
     # Territorial sections are always kept as extra even when article is reclassified
     _TERRITORIAL = {"spain/catalonia", "spain/navarra", "spain/euskadi"}
+    # IHF source defaults are preserved as extra when classifier finds a more specific section
+    _IHF_PRESERVE = {"ihf/other", "ihf/world-men", "ihf/world-women"}
 
     new_count = 0
     classified_count = 0
@@ -93,6 +95,8 @@ def main():
         sections = classify(article)
         if sections:
             if original_section not in sections and original_section in _TERRITORIAL:
+                sections.append(original_section)
+            if original_section not in sections and original_section in _IHF_PRESERVE:
                 sections.append(original_section)
             primary = sections[0]
             extras = "|".join(sections[1:])

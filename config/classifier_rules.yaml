@@ -491,7 +491,9 @@ rules:
   - section: italy
     tags: [italy, handball-italy, figh]
     keywords: ["figh handball", "pallamano italia", "handball italy",
-               "balonmano italia", "serie a pallamano", "pallamano"]
+               "balonmano italia", "serie a pallamano", "pallamano",
+               "italian handball", "italy's handball", "italy handball",
+               "bob hanning"]
 
   - section: slovenia
     tags: [slovenia, handball-slovenia, rzs]
