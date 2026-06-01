@@ -16,6 +16,7 @@ SHOWS = [
         "type": "youtube",
         "color": "red",
         "description": "Entrevistas y análisis en español",
+        "title_filter": "handball talks #",
     },
     {
         "id": "liftados",
@@ -89,22 +90,32 @@ def _fetch_youtube(show):  # type: (dict) -> list
     resp = httpx.get(show["rss"], headers=HEADERS, timeout=TIMEOUT, follow_redirects=True)
     resp.raise_for_status()
     root = ET.fromstring(resp.text)
+    title_filter = show.get("title_filter", "").lower()
+    seen_links = set()
     episodes = []
-    for entry in root.findall("atom:entry", _NS)[:5]:
+    for entry in root.findall("atom:entry", _NS):
         title_el = entry.find("atom:title", _NS)
         link_el = entry.find("atom:link[@rel='alternate']", _NS)
         pub_el = entry.find("atom:published", _NS)
         thumb_el = entry.find(".//media:thumbnail", _NS)
         title = title_el.text if title_el is not None else ""
         link = link_el.attrib.get("href", "") if link_el is not None else ""
+        if link in seen_links:
+            continue
+        if "/shorts/" in link:
+            continue
+        if title_filter and title_filter not in title.lower():
+            continue
+        seen_links.add(link)
         published = _parse_date(pub_el.text if pub_el is not None else "")
         thumbnail = thumb_el.attrib.get("url", "") if thumb_el is not None else ""
-        # Upgrade to maxresdefault when available (video ID extraction)
         if "ytimg.com/vi/" in thumbnail:
             vid_id = thumbnail.split("/vi/")[1].split("/")[0]
             thumbnail = f"https://i.ytimg.com/vi/{vid_id}/mqdefault.jpg"
         episodes.append({"title": title, "url": link, "published": published,
                          "thumbnail": thumbnail, "type": "video"})
+        if len(episodes) >= 5:
+            break
     return episodes
 
 
