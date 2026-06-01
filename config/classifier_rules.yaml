@@ -53,6 +53,15 @@ rules:
       - "sub-21 masculino mundial"
       - "sub-19 masculino mundial"
       - "sub-17 masculino mundial"
+      # Selecciones nacionales en contexto de mundial
+      - "selección argelia"
+      - "técnico argelia"
+      - "entrenador argelia"
+      - "argelia balonmano"
+      - "balonmano argelia"
+      - "silla de ruedas mundial"
+      - "mundial silla de ruedas"
+      - "wheelchair world"
     exclude: [femenin, women, mujer, "world championship women", "champions league", "european league"]
 
   - section: ihf/world-women

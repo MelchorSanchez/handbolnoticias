@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcasts y Vídeos — HandbolNoticias</title>
+    <meta name="description" content="Los mejores podcasts y canales de YouTube sobre balonmano en español: Handball Talks, Liftados, Jim &amp; Vic, De Rosca y The Spin.">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="canonical" href="https://handbolnoticias.com/podcasts/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="HandbolNoticias">
+    <meta property="og:title" content="Podcasts y Vídeos — HandbolNoticias">
+    <meta property="og:description" content="Los mejores podcasts y canales de YouTube sobre balonmano en español: Handball Talks, Liftados, Jim &amp; Vic, De Rosca y The Spin.">
+    <meta property="og:url" content="https://handbolnoticias.com/podcasts/">
+    <meta property="og:image" content="https://handbolnoticias.com/assets/logo.png">
+    <meta name="twitter:card" content="summary">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-hb-blue  { background-color: #003DA5; }
+        .text-hb-blue { color: #003DA5; }
+        .text-hb-orange { color: #FF6B00; }
+        .border-hb-orange { border-color: #FF6B00; }
+        .text-spain-red { color: #CC0000; }
+        .border-spain-red { border-color: #CC0000; }
+        .text-europe-green { color: #2E7D32; }
+        .border-europe-green { border-color: #2E7D32; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+
+    <!-- ── Barra principal ── -->
+    <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
+
+        <!-- MÓVIL: logo + título + hamburguesa -->
+        <div class="flex md:hidden items-center w-full gap-3">
+            <img src="/assets/logo.png" alt="" class="h-10 w-auto flex-shrink-0">
+            <a href="/" class="text-lg font-black tracking-tight text-white">HandbolNoticias</a>
+            <div class="flex-1"></div>
+            <button id="menu-btn" aria-label="Menú" class="text-white text-2xl px-2 leading-none focus:outline-none">☰</button>
+        </div>
+
+        <!-- ESCRITORIO: logo izq + título centrado + nav der -->
+        <img src="/assets/logo.png" alt="" class="hidden md:block h-45 w-auto flex-shrink-0 mt-6">
+        <a href="/" class="hidden md:block absolute left-1/2 -translate-x-1/2 text-2xl font-black tracking-tight text-white whitespace-nowrap">HandbolNoticias</a>
+        <div class="hidden md:block flex-1"></div>
+        <div class="hidden md:flex items-center gap-5 text-sm font-medium flex-shrink-0">
+            <a href="/all/" class="hover:text-orange-300 py-4 font-semibold">Todas ▸</a>
+
+            <!-- España -->
+            <div class="relative group">
+                <button class="hover:text-orange-300 py-4">España ▾</button>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-52 z-50 py-1">
+                    <a href="/spain/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-medium">España Otros</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Masculino</div>
+                    <a href="/spain/asobal/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">ASOBAL</a>
+                    <a href="/spain/dhp/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">División Honor Plata</a>
+                    <a href="/spain/primera-nacional-masc/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Primera Nacional</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Femenino</div>
+                    <a href="/spain/guerreras/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Liga Guerreras Iberdrola</a>
+                    <a href="/spain/dho-fem/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">División Honor Oro</a>
+                    <a href="/spain/dhp-fem/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">División Honor Plata</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Selección</div>
+                    <a href="/spain/seleccion-masc/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Selección Masculina</a>
+                    <a href="/spain/seleccion-fem/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Selección Femenina</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Base</div>
+                    <a href="/spain/base-masc/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Base Masculino</a>
+                    <a href="/spain/base-fem/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Base Femenino</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Territorial</div>
+                    <a href="/spain/catalonia/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Cataluña</a>
+                    <a href="/spain/navarra/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Navarra</a>
+                    <a href="/spain/euskadi/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Euskadi</a>
+                </div>
+            </div>
+
+            <!-- Europa EHF -->
+            <div class="relative group">
+                <button class="hover:text-orange-300 py-4">Europa ▾</button>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-56 z-50 py-1">
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Club Masc</div>
+                    <a href="/europe/champions/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Champions League Masc</a>
+                    <a href="/europe/european-league/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European League Masc</a>
+                    <a href="/europe/cup-men/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European Cup Masc</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Club Fem</div>
+                    <a href="/europe/champions-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Champions League Fem</a>
+                    <a href="/europe/european-league-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European League Fem</a>
+                    <a href="/europe/cup-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European Cup Fem</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Selecciones</div>
+                    <a href="/europe/euro-men/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">EHF EURO Masc</a>
+                    <a href="/europe/euro-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">EHF EURO Fem</a>
+                    <a href="/europe/other/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Otras EHF</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">IHF</div>
+                    <a href="/ihf/world-men/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Mundial Masc</a>
+                    <a href="/ihf/world-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Mundial Fem</a>
+                    <a href="/ihf/other/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Otras IHF</a>
+                </div>
+            </div>
+
+            <!-- Internacional -->
+            <div class="relative group">
+                <button class="hover:text-orange-300 py-4">Internacional ▾</button>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-52 z-50 py-1 max-h-[32rem] overflow-y-auto">
+                    
+                </div>
+            </div>
+            <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+        </div>
+    </div>
+
+    <!-- ── Menú móvil (oculto por defecto) ── -->
+    <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
+        <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
+        <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
+        <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España — Masculino</div>
+        <a href="/spain/asobal/" class="block px-6 py-2 border-b border-blue-800">ASOBAL</a>
+        <a href="/spain/dhp/" class="block px-6 py-2 border-b border-blue-800">División Honor Plata</a>
+        <a href="/spain/primera-nacional-masc/" class="block px-6 py-2 border-b border-blue-800">Primera Nacional</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España — Femenino</div>
+        <a href="/spain/guerreras/" class="block px-6 py-2 border-b border-blue-800">Liga Guerreras Iberdrola</a>
+        <a href="/spain/dho-fem/" class="block px-6 py-2 border-b border-blue-800">División Honor Oro</a>
+        <a href="/spain/dhp-fem/" class="block px-6 py-2 border-b border-blue-800">División Honor Plata</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España — Selección</div>
+        <a href="/spain/seleccion-masc/" class="block px-6 py-2 border-b border-blue-800">Selección Masculina</a>
+        <a href="/spain/seleccion-fem/" class="block px-6 py-2 border-b border-blue-800">Selección Femenina</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España — Base y Territorial</div>
+        <a href="/spain/base-masc/" class="block px-6 py-2 border-b border-blue-800">Base Masculino</a>
+        <a href="/spain/base-fem/" class="block px-6 py-2 border-b border-blue-800">Base Femenino</a>
+        <a href="/spain/catalonia/" class="block px-6 py-2 border-b border-blue-800">Cataluña</a>
+        <a href="/spain/navarra/" class="block px-6 py-2 border-b border-blue-800">Navarra</a>
+        <a href="/spain/euskadi/" class="block px-6 py-2 border-b border-blue-800">Euskadi</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">Europa — Club Masc</div>
+        <a href="/europe/champions/" class="block px-6 py-2 border-b border-blue-800">Champions League Masc</a>
+        <a href="/europe/european-league/" class="block px-6 py-2 border-b border-blue-800">European League Masc</a>
+        <a href="/europe/cup-men/" class="block px-6 py-2 border-b border-blue-800">European Cup Masc</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">Europa — Club Fem</div>
+        <a href="/europe/champions-women/" class="block px-6 py-2 border-b border-blue-800">Champions League Fem</a>
+        <a href="/europe/european-league-women/" class="block px-6 py-2 border-b border-blue-800">European League Fem</a>
+        <a href="/europe/cup-women/" class="block px-6 py-2 border-b border-blue-800">European Cup Fem</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">Europa — Selecciones</div>
+        <a href="/europe/euro-men/" class="block px-6 py-2 border-b border-blue-800">EHF EURO Masc</a>
+        <a href="/europe/euro-women/" class="block px-6 py-2 border-b border-blue-800">EHF EURO Fem</a>
+        <a href="/europe/other/" class="block px-6 py-2 border-b border-blue-800">Otras EHF</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">IHF</div>
+        <a href="/ihf/world-men/" class="block px-6 py-2 border-b border-blue-800">Mundial Masc</a>
+        <a href="/ihf/world-women/" class="block px-6 py-2 border-b border-blue-800">Mundial Fem</a>
+        <a href="/ihf/other/" class="block px-6 py-2 border-b border-blue-800">Otras IHF</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">Internacional</div>
+        
+    </div>
+</nav>
+
+<script>
+document.getElementById('menu-btn').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+});
+</script>
+
+<main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
+    
+
+<nav class="text-sm text-gray-500 mb-6">
+    <a href="/" class="hover:text-hb-blue">Inicio</a>
+    <span class="mx-2">›</span>
+    <span class="text-gray-800 font-medium">Podcasts y Vídeos</span>
+</nav>
+
+<h1 class="text-2xl font-bold mb-2 text-gray-900">Podcasts y Vídeos</h1>
+<p class="text-gray-500 text-sm mb-8">Contenido en español sobre balonmano: debates, entrevistas y análisis.</p>
+
+
+
+
+
+<section class="mb-10">
+    <!-- Show header -->
+    <div class="flex items-center justify-between mb-4 pb-2 border-b-2 border-red-500">
+        <div class="flex items-center gap-3">
+            
+            <span class="text-red-600 text-xl">▶</span>
+            
+            <div>
+                <a href="https://www.youtube.com/@HandballTalks/videos" target="_blank" rel="noopener"
+                   class="text-lg font-bold text-red-700 hover:underline">Handball Talks</a>
+                <p class="text-xs text-gray-500">Entrevistas y análisis en español</p>
+            </div>
+        </div>
+        <a href="https://www.youtube.com/@HandballTalks/videos" target="_blank" rel="noopener"
+           class="text-xs font-medium px-3 py-1 rounded-full bg-red-100 text-red-700 hover:opacity-80 transition whitespace-nowrap">
+            Ver todos →
+        </a>
+    </div>
+
+    
+    <!-- Episodes grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        
+        <a href="https://www.youtube.com/watch?v=S31v8wMrVd8" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/S31v8wMrVd8/mqdefault.jpg" alt="Handball talks #027 - Lautaro Alarcón y Antonio Reyes | Desarrollo de canteras y base"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">Handball talks #027 - Lautaro Alarcón y Antonio Reyes | Desarrollo de canteras y base</p>
+                <p class="text-xs text-gray-400 mt-1">10 May 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/shorts/bB5gp-smXNs" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/bB5gp-smXNs/mqdefault.jpg" alt="Handball talks #027 - Lautaro Alarcón y Antonio Reyes | Desarrollo de canteras y base"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">Handball talks #027 - Lautaro Alarcón y Antonio Reyes | Desarrollo de canteras y base</p>
+                <p class="text-xs text-gray-400 mt-1">7 May 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/shorts/qfIuL8dJ1_c" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/qfIuL8dJ1_c/mqdefault.jpg" alt="La IMPORTANCIA de la TOMA DE DECISIONES - Jordi Rosell"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">La IMPORTANCIA de la TOMA DE DECISIONES - Jordi Rosell</p>
+                <p class="text-xs text-gray-400 mt-1">30 Apr 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/shorts/I1ejRBE5xIM" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/I1ejRBE5xIM/mqdefault.jpg" alt="¿CUÁLES son las MEJORES CANTERAS de EUROPA? - Jordi Rosell"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">¿CUÁLES son las MEJORES CANTERAS de EUROPA? - Jordi Rosell</p>
+                <p class="text-xs text-gray-400 mt-1">29 Apr 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/shorts/ZlRQ2fL3znI" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/ZlRQ2fL3znI/mqdefault.jpg" alt="¿QUÉ HACE un COORDINADOR del FCB? - Jordi Rosell"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">¿QUÉ HACE un COORDINADOR del FCB? - Jordi Rosell</p>
+                <p class="text-xs text-gray-400 mt-1">27 Apr 2026</p>
+            </div>
+        </a>
+        
+    </div>
+    
+</section>
+
+
+
+
+<section class="mb-10">
+    <!-- Show header -->
+    <div class="flex items-center justify-between mb-4 pb-2 border-b-2 border-orange-500">
+        <div class="flex items-center gap-3">
+            
+            <span class="text-red-600 text-xl">▶</span>
+            
+            <div>
+                <a href="https://www.youtube.com/@LiftadosBalonmano" target="_blank" rel="noopener"
+                   class="text-lg font-bold text-orange-700 hover:underline">Liftados Balonmano</a>
+                <p class="text-xs text-gray-500">Contenido de balonmano en YouTube</p>
+            </div>
+        </div>
+        <a href="https://www.youtube.com/@LiftadosBalonmano" target="_blank" rel="noopener"
+           class="text-xs font-medium px-3 py-1 rounded-full bg-orange-100 text-orange-700 hover:opacity-80 transition whitespace-nowrap">
+            Ver todos →
+        </a>
+    </div>
+
+    
+    <!-- Episodes grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        
+        <a href="https://www.youtube.com/watch?v=_M4QtpJLjMU" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/_M4QtpJLjMU/mqdefault.jpg" alt="Jorge Maqueda, el trotamundos del balonmano español"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">Jorge Maqueda, el trotamundos del balonmano español</p>
+                <p class="text-xs text-gray-400 mt-1">31 May 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=mbnYPU8zsB0" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/mbnYPU8zsB0/mqdefault.jpg" alt="#14 June Loidi y Andrea Loscos, compartir piso y equipo de balonmano en Liga Guerreras"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">#14 June Loidi y Andrea Loscos, compartir piso y equipo de balonmano en Liga Guerreras</p>
+                <p class="text-xs text-gray-400 mt-1">6 May 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=ufIpbyd_u5M" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/ufIpbyd_u5M/mqdefault.jpg" alt="Así trabaja Noruega el balonmano base: las claves del modelo que Gerard Gomis desvela en Liftados"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">Así trabaja Noruega el balonmano base: las claves del modelo que Gerard Gomis desvela en Liftados</p>
+                <p class="text-xs text-gray-400 mt-1">24 Dec 2025</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=dISpqfTJgAk" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/dISpqfTJgAk/mqdefault.jpg" alt="Ian Barrufet estrena la segunda temporada de Liftados"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">Ian Barrufet estrena la segunda temporada de Liftados</p>
+                <p class="text-xs text-gray-400 mt-1">4 Sep 2025</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/shorts/UvIC-_UyiUc" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/UvIC-_UyiUc/mqdefault.jpg" alt="¡Viviendo la experiencia de un partido en Berlín!"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">¡Viviendo la experiencia de un partido en Berlín!</p>
+                <p class="text-xs text-gray-400 mt-1">30 May 2025</p>
+            </div>
+        </a>
+        
+    </div>
+    
+</section>
+
+
+
+
+<section class="mb-10">
+    <!-- Show header -->
+    <div class="flex items-center justify-between mb-4 pb-2 border-b-2 border-blue-500">
+        <div class="flex items-center gap-3">
+            
+            <span class="text-red-600 text-xl">▶</span>
+            
+            <div>
+                <a href="https://www.youtube.com/@jimvichandballshow" target="_blank" rel="noopener"
+                   class="text-lg font-bold text-blue-700 hover:underline">Jim &amp; Vic Handball Show</a>
+                <p class="text-xs text-gray-500">Análisis y debate sobre balonmano</p>
+            </div>
+        </div>
+        <a href="https://www.youtube.com/@jimvichandballshow" target="_blank" rel="noopener"
+           class="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-700 hover:opacity-80 transition whitespace-nowrap">
+            Ver todos →
+        </a>
+    </div>
+
+    
+    <!-- Episodes grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        
+        <a href="https://www.youtube.com/watch?v=ldN6jqNxvX8" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/ldN6jqNxvX8/mqdefault.jpg" alt="6×9 | Sant Martí i Garbí pugen a #PrimeraNAC!"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">6×9 | Sant Martí i Garbí pugen a #PrimeraNAC!</p>
+                <p class="text-xs text-gray-400 mt-1">1 Jun 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=ynC1Pqqu9gI" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/ynC1Pqqu9gI/mqdefault.jpg" alt="6×8 | L&#39;equip ideal de Lliga Or amb Èric Tuset"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">6×8 | L&#39;equip ideal de Lliga Or amb Èric Tuset</p>
+                <p class="text-xs text-gray-400 mt-1">5 May 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=Gqg5pHIE_YY" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/Gqg5pHIE_YY/mqdefault.jpg" alt="6×7 | Les fases d&#39;ascens en joc!"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">6×7 | Les fases d&#39;ascens en joc!</p>
+                <p class="text-xs text-gray-400 mt-1">8 Apr 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=4je7Fe_TNOQ" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/4je7Fe_TNOQ/mqdefault.jpg" alt="6×6 | Entrevista amb Oriol Rey"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">6×6 | Entrevista amb Oriol Rey</p>
+                <p class="text-xs text-gray-400 mt-1">3 Mar 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=UT6ak2PaTcM" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/UT6ak2PaTcM/mqdefault.jpg" alt="6×5 | Comentem l&#39;europeu amb Víctor Romero!"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">6×5 | Comentem l&#39;europeu amb Víctor Romero!</p>
+                <p class="text-xs text-gray-400 mt-1">4 Feb 2026</p>
+            </div>
+        </a>
+        
+    </div>
+    
+</section>
+
+
+
+
+<section class="mb-10">
+    <!-- Show header -->
+    <div class="flex items-center justify-between mb-4 pb-2 border-b-2 border-purple-500">
+        <div class="flex items-center gap-3">
+            
+            <span class="text-purple-600 text-xl">🎙</span>
+            
+            <div>
+                <a href="https://www.cope.es/podcasts/de-rosca" target="_blank" rel="noopener"
+                   class="text-lg font-bold text-purple-700 hover:underline">De Rosca</a>
+                <p class="text-xs text-gray-500">El podcast de balonmano de COPE</p>
+            </div>
+        </div>
+        <a href="https://www.cope.es/podcasts/de-rosca" target="_blank" rel="noopener"
+           class="text-xs font-medium px-3 py-1 rounded-full bg-purple-100 text-purple-700 hover:opacity-80 transition whitespace-nowrap">
+            Ver todos →
+        </a>
+    </div>
+
+    
+    <!-- Episodes grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        
+        <a href="https://www.cope.es/podcasts/de-rosca/episodios/rosca-capitulo-592-25-20260525_3370992.html" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://imagenes.cope.es/images/logo-rss.png" alt="De Rosca, capítulo 592 (25-05-2026)"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">De Rosca, capítulo 592 (25-05-2026)</p>
+                <p class="text-xs text-gray-400 mt-1">25 May 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.cope.es/podcasts/de-rosca/episodios/rosca-capitulo-591-18-20260518_3366497.html" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://imagenes.cope.es/images/logo-rss.png" alt="De Rosca, capítulo 591 (18-05-2026)"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">De Rosca, capítulo 591 (18-05-2026)</p>
+                <p class="text-xs text-gray-400 mt-1">18 May 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.cope.es/podcasts/de-rosca/episodios/rosca-capitulo-590-11-20260511_3361813.html" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://imagenes.cope.es/images/logo-rss.png" alt="De Rosca, capítulo 590 (11-05-2026)"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">De Rosca, capítulo 590 (11-05-2026)</p>
+                <p class="text-xs text-gray-400 mt-1">11 May 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.cope.es/podcasts/de-rosca/episodios/rosca-capitulo-589-04-20260504_3357180.html" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://imagenes.cope.es/images/logo-rss.png" alt="De Rosca, capítulo 589 (04-05-2026)"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">De Rosca, capítulo 589 (04-05-2026)</p>
+                <p class="text-xs text-gray-400 mt-1">4 May 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.cope.es/podcasts/de-rosca/episodios/rosca-capitulo-588-27-20260427_3353242.html" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://imagenes.cope.es/images/logo-rss.png" alt="De Rosca, capítulo 588 (27-04-2026)"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">De Rosca, capítulo 588 (27-04-2026)</p>
+                <p class="text-xs text-gray-400 mt-1">27 Apr 2026</p>
+            </div>
+        </a>
+        
+    </div>
+    
+</section>
+
+
+
+
+<section class="mb-10">
+    <!-- Show header -->
+    <div class="flex items-center justify-between mb-4 pb-2 border-b-2 border-green-500">
+        <div class="flex items-center gap-3">
+            
+            <span class="text-red-600 text-xl">▶</span>
+            
+            <div>
+                <a href="https://www.youtube.com/playlist?list=PL6FkWVdzEY0XqKtEWFdl1eKBOk_73ynWT" target="_blank" rel="noopener"
+                   class="text-lg font-bold text-green-700 hover:underline">The Spin</a>
+                <p class="text-xs text-gray-500">Análisis del balonmano internacional</p>
+            </div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PL6FkWVdzEY0XqKtEWFdl1eKBOk_73ynWT" target="_blank" rel="noopener"
+           class="text-xs font-medium px-3 py-1 rounded-full bg-green-100 text-green-700 hover:opacity-80 transition whitespace-nowrap">
+            Ver todos →
+        </a>
+    </div>
+
+    
+    <!-- Episodes grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        
+        <a href="https://www.youtube.com/watch?v=ErHSj4P6W4c" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/ErHSj4P6W4c/mqdefault.jpg" alt="The craziest EHF FINAL4 events in history 😱 | The Spin: We talk handball | Podcast #97"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">The craziest EHF FINAL4 events in history 😱 | The Spin: We talk handball | Podcast #97</p>
+                <p class="text-xs text-gray-400 mt-1">19 May 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=Q5sHbO_7AAU" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/Q5sHbO_7AAU/mqdefault.jpg" alt="We talked to the best Goalkeeper ever! | The Spin: We talk handball | Podcast #96"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">We talked to the best Goalkeeper ever! | The Spin: We talk handball | Podcast #96</p>
+                <p class="text-xs text-gray-400 mt-1">28 Apr 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=NrByNegPeII" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/NrByNegPeII/mqdefault.jpg" alt="Who are the BEST FANS in handball? | The Spin: We talk handball | Podcast #95"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">Who are the BEST FANS in handball? | The Spin: We talk handball | Podcast #95</p>
+                <p class="text-xs text-gray-400 mt-1">15 Apr 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=IEWo_IAFzMo" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/IEWo_IAFzMo/mqdefault.jpg" alt="We ranked the EHF Champions League clubs. It got heated."
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">We ranked the EHF Champions League clubs. It got heated.</p>
+                <p class="text-xs text-gray-400 mt-1">31 Mar 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=oCjWunzoxXw" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://i.ytimg.com/vi/oCjWunzoxXw/mqdefault.jpg" alt="The Dujshebaev Era | The Spin Podcast #93"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/20">
+                    <span class="text-white text-3xl drop-shadow">▶</span>
+                </div>
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">The Dujshebaev Era | The Spin Podcast #93</p>
+                <p class="text-xs text-gray-400 mt-1">17 Mar 2026</p>
+            </div>
+        </a>
+        
+    </div>
+    
+</section>
+
+
+
+</main>
+
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
+    <p>Actualizado:  ·
+       <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
+    </p>
+    <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>
+</footer>
+
+</body>
+</html>

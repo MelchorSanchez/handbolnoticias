@@ -13,6 +13,7 @@ from db import get_connection, init_db, insert_article, is_title_duplicate, arti
 from fetcher import fetch_all, load_sources, _parse_date_text, _now, HEADERS, TIMEOUT
 from renderer import render_all
 from translator import translate_article
+from podcasts import main as render_podcasts
 
 logging.basicConfig(
     level=logging.INFO,
@@ -127,6 +128,7 @@ def main():
     _fix_detail_dates(conn)
     render_all(conn)
     conn.close()
+    render_podcasts()
     logger.info("=== Pipeline completado ===")
 
 

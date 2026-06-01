@@ -94,13 +94,16 @@ sources:
       title: "h3"
       link: "a[href]"
       image: "img"
+    filter_keywords: [balonmano, handball, eskubaloia, liga, copa, partido, torneo, selección, temporada, fichaje, renovación, ascenso, descenso, fase final, campeón]
+    filter_title_only: true
 
   - name: DiarioNavarra-dep
     section: spain/navarra
     type: rss
     url: https://www.diariodenavarra.es/rss/deportes.xml
     max_items: 30
-    filter_keywords: [balonmano, handball, handbol, eskubaloia, anaitasuna, beti onak, oberena, txantrea, ardoi, burlada, tafalla, noain, uharte, ultzama]
+    filter_keywords: [balonmano, handball, handbol, eskubaloia]
+    team_keywords: [anaitasuna, beti onak, oberena, txantrea, ardoi, burlada, tafalla, noain, uharte, ultzama]
     filter_title_only: true
 
   - name: Deia-dep
@@ -108,7 +111,8 @@ sources:
     type: rss
     url: https://www.deia.eus/rss/
     max_items: 20
-    filter_keywords: [balonmano, handball, handbol, eskubaloia, bidasoa, bera bera, zarautz, eibar, barakaldo, tolosa, araberri, santutxu, ereintza, gernika]
+    filter_keywords: [balonmano, handball, handbol, eskubaloia]
+    team_keywords: [bidasoa, bera bera, zarautz, eibar, barakaldo, tolosa, araberri, santutxu, ereintza, gernika]
     filter_title_only: true
 
   - name: NoticiasAlava-dep
@@ -116,7 +120,8 @@ sources:
     type: rss
     url: https://www.noticiasdealava.eus/rss/
     max_items: 20
-    filter_keywords: [balonmano, handball, handbol, eskubaloia, bidasoa, bera bera, zarautz, eibar, barakaldo, tolosa, araberri, santutxu, ereintza, gernika]
+    filter_keywords: [balonmano, handball, handbol, eskubaloia]
+    team_keywords: [bidasoa, bera bera, zarautz, eibar, barakaldo, tolosa, araberri, santutxu, ereintza, gernika]
     filter_title_only: true
 
   # ══════════════════════════════════════════════════════════════════════════
@@ -127,7 +132,8 @@ sources:
     type: rss
     url: https://www.heraldo.es/rss/deportes.xml
     max_items: 30
-    filter_keywords: [balonmano, handball, handbol, bada huesca, contazara, schär colores, la jota zaragoza]
+    filter_keywords: [balonmano, handball, handbol]
+    team_keywords: [bada huesca, contazara, schär colores, la jota zaragoza]
     filter_title_only: true
 
   - name: DiarioLeon-dep
@@ -135,7 +141,8 @@ sources:
     type: rss
     url: https://www.diariodeleon.es/rss/deportes.xml
     max_items: 30
-    filter_keywords: [balonmano, handball, handbol, ademar, recoletas, aula valladolid, cleba, ubu san pablo]
+    filter_keywords: [balonmano, handball, handbol]
+    team_keywords: [ademar, recoletas, aula valladolid, cleba, ubu san pablo]
     filter_title_only: true
 
   - name: LanzaCiudadReal
@@ -153,7 +160,8 @@ sources:
     type: rss
     url: https://www.lavanguardia.com/rss/home.xml
     max_items: 50
-    filter_keywords: [balonmano, handball, handbol, granollers, bordils, gavà, terrassa, badalona, nou barris, barça handbol]
+    filter_keywords: [balonmano, handball, handbol]
+    team_keywords: [granollers, bordils, gavà, terrassa, nou barris, barça handbol]
     filter_title_only: true
 
   - name: Ara-cat
@@ -161,7 +169,8 @@ sources:
     type: rss
     url: https://www.ara.cat/rss/
     max_items: 30
-    filter_keywords: [handbol, handball, balonmano, granollers, bordils, gavà, terrassa, badalona, nou barris, barça handbol]
+    filter_keywords: [handbol, handball, balonmano]
+    team_keywords: [granollers, bordils, gavà, terrassa, nou barris, barça handbol]
     filter_title_only: true
 
   - name: NacioDigital
@@ -169,7 +178,8 @@ sources:
     type: rss
     url: https://www.naciodigital.cat/rss
     max_items: 20
-    filter_keywords: [handbol, handball, balonmano, granollers, bordils, gavà, terrassa, badalona, nou barris]
+    filter_keywords: [handbol, handball, balonmano]
+    team_keywords: [granollers, bordils, gavà, terrassa, nou barris]
     filter_title_only: true
 
   # ══════════════════════════════════════════════════════════════════════════
@@ -180,7 +190,8 @@ sources:
     type: rss
     url: https://www.farodevigo.es/rss/
     max_items: 20
-    filter_keywords: [balonmano, handball, handbol, balonmán, frigoríficos, morrazo, porriño]
+    filter_keywords: [balonmano, handball, handbol, balonmán]
+    team_keywords: [frigoríficos, morrazo, porriño]
     filter_title_only: true
 
   # ══════════════════════════════════════════════════════════════════════════

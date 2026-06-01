@@ -69,6 +69,7 @@ _PRESERVE_PREFIXES = [
     "Proffskollen Dam",
     "Proffskollen Herr",
     "Proffskollen",
+    "Proligue",
 ]
 
 

@@ -225,10 +225,18 @@ def _passes_filter(source: dict, title: str, summary: str) -> bool:
     exclude = source.get("exclude_keywords", [])
     if exclude and any(kw.lower() in text for kw in exclude):
         return False
-    keywords = source.get("filter_keywords", [])
-    if not keywords:
+    keywords = source.get("filter_keywords", [])    # Level 1: sport terms, sufficient alone
+    team_keywords = source.get("team_keywords", [])  # Level 2: only pass with a Level 1 match
+    if not keywords and not team_keywords:
         return True
-    return any(kw.lower() in text for kw in keywords)
+    has_sport = bool(keywords) and any(kw.lower() in text for kw in keywords)
+    if has_sport:
+        return True
+    if not team_keywords:
+        return False
+    # team keywords only pass when also a sport term is found
+    has_team = any(kw.lower() in text for kw in team_keywords)
+    return has_sport and has_team
 
 
 def fetch_rss(source: dict) -> list:

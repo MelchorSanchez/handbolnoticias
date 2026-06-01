@@ -193,6 +193,10 @@ _CLUB_PREFIXES = frozenset({
     'defensa', 'instituto', 'colegio', 'cultural', 'nuestra',
     'asociación', 'asociacion', 'federación', 'federacion',
     'confederación', 'fundación',
+    # Common Spanish words that appear in Argentine team names but are not distinctive
+    'estrella', 'corazón', 'corazon', 'federal', 'lorenzo', 'sagrado',
+    'polideportivo', 'argentina', 'juniors', 'juvenil', 'juventud',
+    'atlante', 'talleres', 'circulos', 'círculo', 'circulo',
 })
 # Minimum word length for partial (word-level) team name matching.
 _WORD_MATCH_MIN_LEN = 7
