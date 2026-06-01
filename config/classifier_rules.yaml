@@ -230,7 +230,8 @@ rules:
     tags: [seleccion-espanola-masculina, seleccion-masculina]
     keywords: [selección masculina, seleccion masculina, selección española masculina,
                "los hispanos", hispanos, "selección nacional masculin", "seleccion nacional masculin",
-               "equipo nacional masculin", "seleccion española masc"]
+               "equipo nacional masculin", "seleccion española masc",
+               "hispanos de la arena"]
     exclude: [femenina, juvenil, cadete, infantil, sub-18, sub-20, sub-21,
               "primera nacional", "division honor", "división honor"]
 
@@ -238,7 +239,8 @@ rules:
     tags: [seleccion-espanola-femenina, seleccion-femenina]
     keywords: [selección femenina, seleccion femenina, selección española femenina,
                "las guerreras", seleccionadora, "selección nacional femenin",
-               "seleccion nacional femenin", "equipo nacional femenin"]
+               "seleccion nacional femenin", "equipo nacional femenin",
+               "guerreras de la arena"]
     exclude: [masculina, juvenil, cadete, infantil, sub-18, sub-20, sub-21,
               liga guerreras iberdrola, asobal, "primera nacional", "division honor",
               "división honor"]

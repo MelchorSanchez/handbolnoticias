@@ -13,7 +13,9 @@ _teams = None
 # Hashtags from CatHandbol that mark purely regional Catalan competitions.
 # When present, team-name matches must not pull the article into Spanish national sections.
 _CATALAN_ONLY = re.compile(
-    r'#?(1acathfem|2acathfem|3acathfem|3acath|2acath|lligacatargm|lligacatorm|lligacatorf|lligacatargf)',
+    r'#?(1acathfem|2acathfem|3acathfem|3acath|2acath|'
+    r'lligacatargm|lligacatorm|lligacatorf|lligacatargf|'
+    r'ligacatargm|ligacatorm|ligacatorf|ligacatargf)',
     re.IGNORECASE,
 )
 _SPAIN_NATIONAL = frozenset({
@@ -427,5 +429,19 @@ def classify(article):
     if _CATALAN_ONLY.search(text):
         sections = [s for s in sections if s not in _SPAIN_NATIONAL]
 
-    return _apply_priority_rules(sections, frozenset(keyword_sections), text,
-                                 source_section=article.get("section", ""))
+    # Territorial Spanish sections (Cataluña, Navarra, Euskadi) must come from keyword
+    # or source match — never from team-name matching alone.  Team names from those
+    # regions appear in all kinds of European/international coverage and generate too
+    # many false positives when matched by name without an explicit geographic keyword.
+    _SPAIN_TERRITORIAL = frozenset({"spain/catalonia", "spain/navarra", "spain/euskadi"})
+    kw_set = frozenset(keyword_sections)
+    source_section = article.get("section", "")
+    territorial_team_only = (
+        {sec for sec in sections if sec in _SPAIN_TERRITORIAL} - kw_set
+        - ({source_section} if source_section in _SPAIN_TERRITORIAL else set())
+    )
+    if territorial_team_only:
+        sections = [sec for sec in sections if sec not in territorial_team_only]
+
+    return _apply_priority_rules(sections, kw_set, text,
+                                 source_section=source_section)
