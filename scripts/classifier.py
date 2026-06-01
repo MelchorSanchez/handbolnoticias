@@ -176,14 +176,48 @@ _MIN_NAME_LEN = {
 _DEFAULT_MIN_NAME_LEN = 5
 
 
+# Short club prefixes that are not distinctive on their own.
+_CLUB_PREFIXES = frozenset({
+    'fc', 'bm', 'mt', 'rk', 'hc', 'sc', 'tv', 'tsv', 'vfl', 'sg', 'tbv',
+    'thw', 'bsv', 'hsv', 'ska', 'hbc', 'mks', 'tus', 'tsg', 'ssv', 'dhc',
+    'mkb', 'asc', 'bsc', 'dsc', 'hvg', 'spvg', 'rkb', 'skm', 'tkh', 'ahc',
+    'cb', 'sd', 'cd', 'bm', 'rcd', 'cdb', 'cem', 'bmj',
+})
+# Minimum word length for partial (word-level) team name matching.
+_WORD_MATCH_MIN_LEN = 7
+
+
+def _key_words(team_name):
+    """Extract distinctive words from a team name for partial matching."""
+    return [
+        w for w in re.split(r'[\s\-]+', team_name.lower())
+        if len(w) >= _WORD_MATCH_MIN_LEN and w not in _CLUB_PREFIXES
+    ]
+
+
 def _sections_from_teams(text):
-    """Return sections matched by team names (ordered, no duplicates)."""
+    """Return sections matched by team names (ordered, no duplicates).
+
+    Tries full-name match first; falls back to word-level match using
+    distinctive words (len >= 7, not a common club prefix) so that
+    'Melsungen' matches 'MT Melsungen' and vice versa.
+    """
     teams = _load_teams()
     matched = []
     for section, team_list in teams.items():
         min_len = _MIN_NAME_LEN.get(section, _DEFAULT_MIN_NAME_LEN)
         for team in team_list:
-            if team and len(team) >= min_len and team.lower() in text:
+            if not team:
+                continue
+            team_lower = team.lower()
+            # Full-name match
+            if len(team) >= min_len and team_lower in text:
+                if section not in matched:
+                    matched.append(section)
+                break
+            # Word-level match: any long distinctive word from the team name
+            kws = _key_words(team)
+            if kws and any(kw in text for kw in kws):
                 if section not in matched:
                     matched.append(section)
                 break
