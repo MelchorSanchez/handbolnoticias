@@ -186,7 +186,10 @@ rules:
       - "ehf finals men"
       - "winamax ehf finals"
       - "ehf finals hamburg"
-    exclude: [women, femenin]
+      - "título europeo"
+      - "campeón europeo"
+      - "campeones de europa"
+    exclude: [women, femenin, champions]
 
   # ═══════════════════════════════════════════════════════════════════
   # EHF European Cup (antigua EHF Cup / Challenge Cup)
