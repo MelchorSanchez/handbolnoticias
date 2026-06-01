@@ -94,14 +94,14 @@ sources:
     type: rss
     url: https://www.diariodenavarra.es/rss/deportes.xml
     max_items: 30
-    filter_keywords: [balonmano, handball, handbol, eskubaloia, anaitasuna, bidasoa]
+    filter_keywords: [balonmano, handball, handbol, eskubaloia, anaitasuna]
 
   - name: Deia-dep
     section: spain/euskadi
     type: rss
     url: https://www.deia.eus/rss/
     max_items: 20
-    filter_keywords: [balonmano, handball, handbol, eskubaloia, bidasoa, anaitasuna]
+    filter_keywords: [balonmano, handball, handbol, eskubaloia, bidasoa]
 
   - name: NoticiasAlava-dep
     section: spain/euskadi
