@@ -202,6 +202,7 @@ rules:
       - "copa europea femenina"
       - "ehf cup women"
       - "challenge cup women"
+      - "ehf european cup"
 
   - section: europe/cup-men
     tags: [ehf-cup-men, european-cup-men]

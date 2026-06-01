@@ -290,6 +290,16 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text="", sourc
         ("europe/champions", "europe/champions-women"),
         ("europe/euro-men", "europe/euro-women"),
     ]
+    _FEM_DOMESTIC = frozenset({
+        "spain/guerreras", "spain/dho-fem", "spain/dhp-fem",
+        "germany/bundesliga-fem", "germany/bundesliga2-fem",
+        "france/d1f", "france/d2f",
+    })
+    _MASC_DOMESTIC = frozenset({
+        "spain/asobal", "spain/dhp", "spain/primera-nacional-masc",
+        "germany/bundesliga", "germany/bundesliga2",
+        "france/starligue", "france/pro-d2",
+    })
     for masc_sec, fem_sec in _EHF_PAIRS:
         if masc_sec in s and fem_sec in s:
             masc_kw = masc_sec in keyword_sections
@@ -300,6 +310,21 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text="", sourc
             elif fem_kw and not masc_kw:
                 sections = [sec for sec in sections if sec != fem_sec]
                 s = set(sections)
+            else:
+                # Both keyword-matched (generic term like "ehf european cup"):
+                # use gender vocabulary, then domestic sections as tiebreaker.
+                gender = _gender_signal(text)
+                if gender is None:
+                    if s & _FEM_DOMESTIC:
+                        gender = 'fem'
+                    elif s & _MASC_DOMESTIC:
+                        gender = 'masc'
+                if gender == 'fem':
+                    sections = [sec for sec in sections if sec != masc_sec]
+                    s = set(sections)
+                elif gender == 'masc':
+                    sections = [sec for sec in sections if sec != fem_sec]
+                    s = set(sections)
 
     # Rule 4a: Suppress European club sections that come only from team-name matching
     # when any Spanish domestic section is present (keyword OR team matched).
