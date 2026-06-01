@@ -17,6 +17,7 @@ SHOWS = [
         "color": "red",
         "description": "Entrevistas y análisis en español",
         "title_filter": "handball talks #",
+        "pinned_video_ids": ["S31v8wMrVd8", "7E_yI-2qmA8", "zg4pbjSrYY0", "DRPf0smcrWI", "2dIdroMb_Bk"],
     },
     {
         "id": "liftados",
@@ -63,8 +64,26 @@ _NS = {
     "itunes": "http://www.itunes.com/dtds/podcast-1.0.dtd",
 }
 
-HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; HandbolNoticias/1.0)"}
+HEADERS = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0"}
 TIMEOUT = 15
+
+
+def _fetch_pinned_video(video_id):  # type: (str) -> dict
+    """Fetch metadata for a pinned YouTube video via oEmbed."""
+    url = f"https://www.youtube.com/watch?v={video_id}"
+    try:
+        resp = httpx.get(
+            f"https://www.youtube.com/oembed?url={url}&format=json",
+            headers=HEADERS, timeout=TIMEOUT,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        thumbnail = f"https://i.ytimg.com/vi/{video_id}/mqdefault.jpg"
+        return {"title": data.get("title", ""), "url": url,
+                "published": datetime.now(timezone.utc),
+                "thumbnail": thumbnail, "type": "video"}
+    except Exception:
+        return None
 
 
 def _parse_date(raw: str) -> datetime:
@@ -116,6 +135,19 @@ def _fetch_youtube(show):  # type: (dict) -> list
                          "thumbnail": thumbnail, "type": "video"})
         if len(episodes) >= 5:
             break
+    # Fill remaining slots from pinned_video_ids if RSS didn't return enough
+    pinned_ids = show.get("pinned_video_ids", [])
+    if len(episodes) < 5 and pinned_ids:
+        seen_video_ids = {ep["url"].split("v=")[-1].split("&")[0] for ep in episodes}
+        for vid_id in pinned_ids:
+            if vid_id in seen_video_ids:
+                continue
+            ep = _fetch_pinned_video(vid_id)
+            if ep:
+                episodes.append(ep)
+                seen_video_ids.add(vid_id)
+            if len(episodes) >= 5:
+                break
     return episodes
 
 
