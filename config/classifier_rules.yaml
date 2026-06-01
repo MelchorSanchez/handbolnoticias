@@ -116,6 +116,12 @@ rules:
       - "campeonato europeo masculino"
       - "campeonato de europa masculino"
       - "euro balonmano masculino"
+      - "europeo masculino"
+      - "europeo 2026"
+      - "euro 2026"
+      - "europeo masculino 2026"
+      - "sigurdsson europeo"
+      - "dagur sigurdsson"
       # Sub-categorías
       - "u21 european championship men"
       - "u19 european championship men"
@@ -255,7 +261,8 @@ rules:
     keywords: [selección masculina, seleccion masculina, selección española masculina,
                "los hispanos", hispanos, "selección nacional masculin", "seleccion nacional masculin",
                "equipo nacional masculin", "seleccion española masc",
-               "hispanos de la arena"]
+               "hispanos de la arena", "mundial universitario",
+               "convocatoria españa balonmano", "convocatoria seleccion"]
     exclude: [femenina, juvenil, cadete, infantil, sub-18, sub-20, sub-21,
               "primera nacional", "division honor", "división honor"]
 
@@ -370,7 +377,9 @@ rules:
   - section: germany/bundesliga2
     tags: [zweite-bundesliga, 2-bundesliga]
     keywords: ["2. bundesliga handball", "zweite handball-bundesliga",
-               "2. handball-bundesliga", "zweite liga handball"]
+               "2. handball-bundesliga", "zweite liga handball",
+               "bundesliga 2", "2.ª bundesliga", "2.ª hbl", "segunda bundesliga",
+               "2. hbl", "hbl 2"]
     exclude: [frauen, damen, women]
 
   - section: germany/bundesliga-fem
@@ -461,7 +470,10 @@ rules:
 
   - section: hungary
     tags: [hungary, handball-hungary, mksz]
-    keywords: ["mksz handball", "kézilabda", "balonmano hungría", "hungarian handball"]
+    keywords: ["mksz handball", "kézilabda", "balonmano hungría", "hungarian handball",
+               "liga húngara", "liga hungara", "balonmano húngaro", "balonmano hungaro",
+               "hungría balonmano", "hungria balonmano", "final húngara", "liga nacional húngara",
+               "veszprem", "veszprém", "pick szeged", "telekom veszprém"]
 
   - section: poland
     tags: [poland, handball-poland]
@@ -473,7 +485,9 @@ rules:
 
   - section: serbia
     tags: [serbia, handball-serbia]
-    keywords: ["handball serbia", "rukometni", "balonmano serbia", "balonmano serbio", "handball serbio"]
+    keywords: ["handball serbia", "rukometni", "balonmano serbia", "balonmano serbio", "handball serbio",
+               "escándalo balonmano serbio", "escandalo balonmano serbio", "serbia balonmano",
+               "federación serbia", "federacion serbia", "liga serbia balonmano"]
 
   - section: slovakia
     tags: [slovakia, handball-slovakia]

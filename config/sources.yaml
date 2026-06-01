@@ -608,6 +608,7 @@ sources:
     type: rss
     url: https://kolstad-handball.no/feed/
     max_items: 10
+    filter_keywords: [handball, håndball, kamp, liga, ehf, champions, mesterliga, play-off, playoff, finale, semifinale, kvartfinale, serietopper, eliteserien, bundesliga, tournament]
 
   - name: Esbjerg-web
     section: denmark

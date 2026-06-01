@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://handbolnoticias.com/</loc><changefreq>hourly</changefreq><priority>1.0</priority><lastmod>2026-06-01</lastmod></url>
   <url><loc>https://handbolnoticias.com/all/</loc><changefreq>hourly</changefreq><priority>0.8</priority><lastmod>2026-06-01</lastmod></url>
+  <url><loc>https://handbolnoticias.com/spain/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-01</lastmod></url>
   <url><loc>https://handbolnoticias.com/spain/asobal/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-01</lastmod></url>
   <url><loc>https://handbolnoticias.com/spain/dhp/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-01</lastmod></url>
   <url><loc>https://handbolnoticias.com/spain/primera-nacional-masc/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-01</lastmod></url>
