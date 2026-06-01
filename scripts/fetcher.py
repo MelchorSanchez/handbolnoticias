@@ -215,10 +215,13 @@ def _passes_filter(source: dict, title: str, summary: str) -> bool:
     min_len = source.get("min_title_length", 0)
     if min_len and len(title) < min_len:
         return False
+    text = (title + " " + summary).lower()
+    exclude = source.get("exclude_keywords", [])
+    if exclude and any(kw.lower() in text for kw in exclude):
+        return False
     keywords = source.get("filter_keywords", [])
     if not keywords:
         return True
-    text = (title + " " + summary).lower()
     return any(kw.lower() in text for kw in keywords)
 
 

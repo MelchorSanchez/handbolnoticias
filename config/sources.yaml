@@ -621,6 +621,8 @@ sources:
     type: rss
     url: https://www.elverum-handball.no/feed/
     max_items: 10
+    exclude_keywords:
+      - elvebris
 
   - name: SolaHK-web
     section: norway
