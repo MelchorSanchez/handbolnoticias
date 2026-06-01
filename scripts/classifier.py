@@ -444,9 +444,9 @@ def classify(article):
         sections = [s for s in sections if s not in _SPAIN_NATIONAL]
 
     # Territorial Spanish sections (Cataluña, Navarra, Euskadi) must come from keyword
-    # or source match — never from team-name matching alone.  Team names from those
-    # regions appear in all kinds of European/international coverage and generate too
-    # many false positives when matched by name without an explicit geographic keyword.
+    # or source match — never from team-name matching alone — UNLESS other non-territorial
+    # handball sections were already found (article is clearly about handball, so the
+    # geographic section adds useful context: e.g. Anaitasuna match → DHp + Navarra).
     _SPAIN_TERRITORIAL = frozenset({"spain/catalonia", "spain/navarra", "spain/euskadi"})
     kw_set = frozenset(keyword_sections)
     source_section = article.get("section", "")
@@ -454,7 +454,8 @@ def classify(article):
         {sec for sec in sections if sec in _SPAIN_TERRITORIAL} - kw_set
         - ({source_section} if source_section in _SPAIN_TERRITORIAL else set())
     )
-    if territorial_team_only:
+    non_territorial_sections = [sec for sec in sections if sec not in _SPAIN_TERRITORIAL]
+    if territorial_team_only and not non_territorial_sections:
         sections = [sec for sec in sections if sec not in territorial_team_only]
 
     return _apply_priority_rules(sections, kw_set, text,

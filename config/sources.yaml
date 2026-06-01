@@ -39,6 +39,7 @@ sources:
     url: https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/deportes/portada
     max_items: 50
     filter_keywords: [balonmano, handball, handbol]
+    filter_title_only: true
 
   - name: ElMundo-dep
     section: spain
@@ -46,6 +47,7 @@ sources:
     url: https://www.elmundo.es/rss/deportes.xml
     max_items: 50
     filter_keywords: [balonmano, handball, handbol]
+    filter_title_only: true
 
   - name: ElConfidencial-dep
     section: spain
@@ -53,6 +55,7 @@ sources:
     url: https://www.elconfidencial.com/rss/deportes.xml
     max_items: 30
     filter_keywords: [balonmano, handball, handbol]
+    filter_title_only: true
 
   - name: EuropaPress-dep
     section: spain
@@ -60,6 +63,7 @@ sources:
     url: https://www.europapress.es/rss/rss.aspx?ch=00080
     max_items: 50
     filter_keywords: [balonmano, handball, handbol]
+    filter_title_only: true
 
   - name: 20minutos-dep
     section: spain
@@ -67,6 +71,7 @@ sources:
     url: https://www.20minutos.es/rss/deportes/
     max_items: 30
     filter_keywords: [balonmano, handball, handbol]
+    filter_title_only: true
 
   - name: Superdeporte
     section: spain
@@ -74,6 +79,7 @@ sources:
     url: https://www.superdeporte.es/rss/
     max_items: 20
     filter_keywords: [balonmano, handball]
+    filter_title_only: true
 
   # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Prensa regional: Navarra / País Vasco
@@ -94,21 +100,24 @@ sources:
     type: rss
     url: https://www.diariodenavarra.es/rss/deportes.xml
     max_items: 30
-    filter_keywords: [balonmano, handball, handbol, eskubaloia]
+    filter_keywords: [balonmano, handball, handbol, eskubaloia, anaitasuna, beti onak, oberena, txantrea, ardoi, burlada, tafalla, noain, uharte, ultzama]
+    filter_title_only: true
 
   - name: Deia-dep
     section: spain/euskadi
     type: rss
     url: https://www.deia.eus/rss/
     max_items: 20
-    filter_keywords: [balonmano, handball, handbol, eskubaloia]
+    filter_keywords: [balonmano, handball, handbol, eskubaloia, bidasoa, bera bera, zarautz, eibar, barakaldo, tolosa, araberri, santutxu, ereintza, gernika, durango]
+    filter_title_only: true
 
   - name: NoticiasAlava-dep
     section: spain/euskadi
     type: rss
     url: https://www.noticiasdealava.eus/rss/
     max_items: 20
-    filter_keywords: [balonmano, handball, handbol, eskubaloia]
+    filter_keywords: [balonmano, handball, handbol, eskubaloia, bidasoa, bera bera, zarautz, eibar, barakaldo, tolosa, araberri, santutxu, ereintza, gernika, durango]
+    filter_title_only: true
 
   # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Prensa regional: Aragón / Castilla y León
@@ -118,14 +127,16 @@ sources:
     type: rss
     url: https://www.heraldo.es/rss/deportes.xml
     max_items: 30
-    filter_keywords: [balonmano, handball, handbol]
+    filter_keywords: [balonmano, handball, handbol, bada huesca, contazara, schär colores, la jota zaragoza]
+    filter_title_only: true
 
   - name: DiarioLeon-dep
     section: spain
     type: rss
     url: https://www.diariodeleon.es/rss/deportes.xml
     max_items: 30
-    filter_keywords: [balonmano, handball, handbol]
+    filter_keywords: [balonmano, handball, handbol, ademar, recoletas, aula valladolid, cleba, ubu san pablo]
+    filter_title_only: true
 
   - name: LanzaCiudadReal
     section: spain
@@ -142,21 +153,24 @@ sources:
     type: rss
     url: https://www.lavanguardia.com/rss/home.xml
     max_items: 50
-    filter_keywords: [balonmano, handball, handbol]
+    filter_keywords: [balonmano, handball, handbol, granollers, bordils, gavà, terrassa, badalona, nou barris, barça handbol]
+    filter_title_only: true
 
   - name: Ara-cat
     section: spain/catalonia
     type: rss
     url: https://www.ara.cat/rss/
     max_items: 30
-    filter_keywords: [handbol, handball, balonmano]
+    filter_keywords: [handbol, handball, balonmano, granollers, bordils, gavà, terrassa, badalona, nou barris, barça handbol]
+    filter_title_only: true
 
   - name: NacioDigital
     section: spain/catalonia
     type: rss
     url: https://www.naciodigital.cat/rss
     max_items: 20
-    filter_keywords: [handbol, handball, balonmano]
+    filter_keywords: [handbol, handball, balonmano, granollers, bordils, gavà, terrassa, badalona, nou barris]
+    filter_title_only: true
 
   # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Prensa regional: Galicia
@@ -166,7 +180,8 @@ sources:
     type: rss
     url: https://www.farodevigo.es/rss/
     max_items: 20
-    filter_keywords: [balonmano, handball, handbol, balonmán]
+    filter_keywords: [balonmano, handball, handbol, balonmán, frigoríficos, morrazo, cangas, porriño]
+    filter_title_only: true
 
   # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Balonmano femenino especializado
@@ -451,6 +466,7 @@ sources:
       title: "h2, h3"
       link: "a[href]"
       image: "img"
+    exclude_keywords: [chapanor, coplegal, "con el balonmano porriño"]
 
   - name: Granollers-web
     section: spain/asobal

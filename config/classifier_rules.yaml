@@ -331,13 +331,17 @@ rules:
   - section: spain/guerreras
     tags: [liga-guerreras, guerreras-iberdrola, liga-femenina-asobal]
     keywords: ["liga guerreras", "guerreras iberdrola", "liga femenina balonmano",
-               "liga primera división femenina", liga guerreras, guerreras, guerrera]
-    exclude: [masculin, sub-20, sub-18, juvenil, cadete]
+               "liga primera división femenina", "liga guerreras iberdrola",
+               "balonmano femenino liga", "primera división femenina balonmano"]
+    require_any: ["liga guerreras", "guerreras iberdrola", "liga femenina", "primera división femenina",
+                  "división honor oro", "dho femenino", "balonmano femenino liga"]
+    exclude: [masculin, sub-20, sub-18, juvenil, cadete, "world cup", "world championship", masters]
 
   - section: spain/dho-fem
     tags: [dho-femenino, division-honor-oro-femenino]
     keywords: ["división honor oro femenino", "dho femenino",
-               "primera división femenina"]
+               "primera división femenina", "división de honor oro",
+               "division de honor oro", "división honor oro"]
     exclude: [masculin]
 
   - section: spain/dhp-fem
@@ -477,7 +481,10 @@ rules:
 
   - section: poland
     tags: [poland, handball-poland]
-    keywords: ["handball polska", "superliga polska", "balonmano polonia"]
+    keywords: ["handball polska", "superliga polska", "balonmano polonia",
+               "liga polaca", "superliga polaca", "balonmano polaco",
+               "copa de polonia balonmano", "liga polaca balonmano",
+               "orlen superliga", "pgnig superliga"]
 
   - section: croatia
     tags: [croatia, handball-croatia]
@@ -495,7 +502,10 @@ rules:
 
   - section: romania
     tags: [romania, handball-romania, frh]
-    keywords: ["frh handball", "handbal romania", "balonmano rumania"]
+    keywords: ["frh handball", "handbal romania", "balonmano rumania",
+               "liga rumana", "balonmano rumano", "balonmano rumanía",
+               "rumania balonmano", "rumanía balonmano", "copa rumania",
+               "liga nacional rumania", "liga nationala"]
 
   - section: greece
     tags: [greece, handball-greece]

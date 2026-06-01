@@ -215,7 +215,13 @@ def _passes_filter(source: dict, title: str, summary: str) -> bool:
     min_len = source.get("min_title_length", 0)
     if min_len and len(title) < min_len:
         return False
-    text = (title + " " + summary).lower()
+    # filter_title_only: only check the title, not the RSS description/summary.
+    # Use for general-press sources whose RSS descriptions include boilerplate handball
+    # mentions in sidebars/footers, which would otherwise pass non-handball articles.
+    if source.get("filter_title_only"):
+        text = title.lower()
+    else:
+        text = (title + " " + summary).lower()
     exclude = source.get("exclude_keywords", [])
     if exclude and any(kw.lower() in text for kw in exclude):
         return False

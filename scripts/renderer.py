@@ -77,7 +77,7 @@ SECTIONS = {
         "label": "España",
         "color": "red",
         "subsections": {
-            "spain":                      "General",
+            "spain":                      "Otros",
             "spain/asobal":               "ASOBAL",
             "spain/dhp":                  "División Honor Plata",
             "spain/primera-nacional-masc": "Primera Nacional masc.",
