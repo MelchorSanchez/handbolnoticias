@@ -650,6 +650,13 @@ sources:
     url: https://cbmelche.es/feed/
     max_items: 10
 
+  - name: BetiOnak-web
+    section: spain/guerreras
+    type: rss
+    url: https://betionak.eus/feed/
+    max_items: 10
+    filter_keywords: [balonmano, handball, eskubaloia]
+
   # ══════════════════════════════════════════════════════════════════════════
   # CLUBES FRANCE — Starligue / D1F
   # ══════════════════════════════════════════════════════════════════════════
@@ -680,6 +687,7 @@ sources:
     url: https://kolstad-handball.no/feed/
     max_items: 10
     filter_keywords: [handball, håndball, kamp, liga, ehf, champions, mesterliga, play-off, playoff, finale, semifinale, kvartfinale, serietopper, eliteserien, bundesliga, tournament]
+    exclude_keywords: [sommerfest, partner, sponsor, jubileum, frivillig]
 
   - name: Esbjerg-web
     section: denmark
