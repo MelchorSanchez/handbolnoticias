@@ -37,8 +37,14 @@
     window.addEventListener('DOMContentLoaded', function() {
         new PagefindUI({
             element: "#search",
-            showSubResults: true,
+            showSubResults: false,
             showImages: false,
+            processResult: function(result) {
+                if (result.meta && result.meta.external_url) {
+                    result.url = result.meta.external_url;
+                }
+                return result;
+            },
             translations: {
                 placeholder: "Buscar noticias...",
                 zero_results: "No se encontraron resultados para [SEARCH_TERM]",

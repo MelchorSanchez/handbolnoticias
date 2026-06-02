@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title }} — HandbolNoticias{% endblock %}
+{% block meta_description %}{{ article.summary or article.title }}{% endblock %}
+{% block canonical_url %}https://handbolnoticias.com/articles/{{ article.id }}/{% endblock %}
+{% block content %}
+
+<div data-pagefind-body>
+    <span data-pagefind-meta="external_url">{{ article.url }}</span>
+    <h1 class="text-xl font-bold text-gray-900 mb-2">{{ article.title }}</h1>
+    {% if article.summary %}
+    <p class="text-gray-600 mb-3">{{ article.summary }}</p>
+    {% endif %}
+    <p class="text-sm text-gray-500">{{ article.source_name }}{% if article.published %} · {{ article.published[:10] }}{% endif %}</p>
+</div>
+
+<script>window.location.replace({{ article.url | tojson }});</script>
+
+{% endblock %}

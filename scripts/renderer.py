@@ -223,6 +223,15 @@ def _get_section_articles(conn, section_slug):
     return _rows_to_dicts(rows)
 
 
+def _get_indexable_articles(conn):
+    rows = conn.execute("""
+        SELECT * FROM articles
+        WHERE published > datetime('now', '-30 days') OR published IS NULL
+        ORDER BY COALESCE(published, fetched_at) DESC
+    """).fetchall()
+    return _rows_to_dicts(rows)
+
+
 def _get_all_recent_articles(conn):
     rows = conn.execute("""
         SELECT * FROM articles
@@ -250,6 +259,8 @@ def render_all(conn):
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     updated_at = datetime.now(timezone.utc).strftime("%d/%m/%Y a las %H:%M UTC")
+
+    indexable_articles = _get_indexable_articles(conn)
 
     sections_data = {}
     for group in SECTIONS.values():
@@ -306,6 +317,19 @@ def render_all(conn):
         search_tmpl.render(**base_ctx), encoding="utf-8"
     )
     logger.info("Rendered search.html")
+
+    article_tmpl = env.get_template("article.html")
+    articles_dir = OUTPUT_DIR / "articles"
+    import shutil
+    if articles_dir.exists():
+        shutil.rmtree(articles_dir)
+    articles_dir.mkdir(parents=True)
+    for art in indexable_articles:
+        art_dir = articles_dir / art["id"]
+        art_dir.mkdir(parents=True, exist_ok=True)
+        html = article_tmpl.render(**base_ctx, article=art)
+        (art_dir / "index.html").write_text(html, encoding="utf-8")
+    logger.info("Rendered %d article pages", len(indexable_articles))
 
     sitemap = _render_sitemap(list(sections_data.keys()))
     (OUTPUT_DIR / "sitemap.xml").write_text(sitemap, encoding="utf-8")
