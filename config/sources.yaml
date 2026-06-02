@@ -189,6 +189,15 @@ sources:
     team_keywords: [bada huesca, contazara, schär colores, la jota zaragoza]
     filter_title_only: true
 
+  - name: ElDecanoGuadalajara
+    section: spain
+    type: rss
+    url: https://eldecanodeguadalajara.com/rss.php?type=news
+    max_items: 20
+    filter_keywords:
+      - balonmano
+      - handball
+
   - name: ElNorteCastilla-dep
     section: spain
     type: rss
