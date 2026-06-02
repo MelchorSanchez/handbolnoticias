@@ -49,6 +49,13 @@ def _parse_date_text(text: str) -> str:
     m = re.search(r'(\d{4})-(\d{2})-(\d{2})', clean)
     if m:
         return f"{m.group(1)}-{m.group(2)}-{m.group(3)}T12:00:00+00:00"
+    # D/M/YYYY or D/M/YYYY, H:MM:SS (Sport.es format)
+    m = re.search(r'^(\d{1,2})/(\d{1,2})/(\d{4})', clean)
+    if m:
+        try:
+            return datetime(int(m.group(3)), int(m.group(2)), int(m.group(1)), 12, 0, 0, tzinfo=timezone.utc).isoformat()
+        except ValueError:
+            pass
     # DD.MM.YYYY (e.g. "30.12.2025")
     m = re.search(r'(\d{1,2})\.(\d{1,2})\.(\d{4})', clean)
     if m:

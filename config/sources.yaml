@@ -49,6 +49,7 @@ sources:
       title: "h2, h3"
       link: "a[href]"
       image: "img"
+      date: "time[datetime]"
 
   - name: CadenaSER-balonmano
     section: spain
@@ -256,6 +257,7 @@ sources:
       title: "h2, h3"
       link: "a[href]"
       image: "img"
+      date: "time[datetime]"
 
   - name: EixDiari-handbol
     section: spain/catalonia
