@@ -33,6 +33,12 @@ sources:
   # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Prensa nacional (con filtro balonmano)
   # ══════════════════════════════════════════════════════════════════════════
+  - name: AS-balonmano
+    section: spain
+    type: rss
+    url: https://feeds.as.com/mrss-s/pages/as/site/as.com/section/masdeporte/subsection/balonmano/
+    max_items: 20
+
   - name: ElPais-dep
     section: spain
     type: rss
@@ -106,6 +112,30 @@ sources:
     team_keywords: [anaitasuna, beti onak, oberena, txantrea, ardoi, burlada, tafalla, noain, uharte, ultzama]
     filter_title_only: true
 
+  - name: DiarioVasco-dep
+    section: spain/euskadi
+    type: rss
+    url: https://www.diariovasco.com/rss/2.0/?section=deportes
+    max_items: 30
+    filter_keywords: [balonmano, handball, handbol, eskubaloia]
+    team_keywords: [bera bera, bidasoa, zarautz, tolosa, araberri, santutxu, ereintza, gernika, txindoki]
+    filter_title_only: true
+
+  - name: NoticiasGipuzkoa-dep
+    section: spain/euskadi
+    type: rss
+    url: https://www.noticiasdegipuzkoa.eus/rss/
+    max_items: 20
+    filter_keywords: [balonmano, handball, handbol, eskubaloia]
+    team_keywords: [bera bera, bidasoa, zarautz, tolosa, araberri, txindoki]
+    filter_title_only: true
+
+  - name: ElCorreo-dep
+    section: spain/euskadi
+    type: rss
+    url: https://www.elcorreo.com/rss/2.0/?section=deporte-femenino/balonmano
+    max_items: 20
+
   - name: Deia-dep
     section: spain/euskadi
     type: rss
@@ -135,6 +165,18 @@ sources:
     filter_keywords: [balonmano, handball, handbol]
     team_keywords: [bada huesca, contazara, schär colores, la jota zaragoza]
     filter_title_only: true
+
+  - name: ElNorteCastilla-dep
+    section: spain
+    type: rss
+    url: https://www.elnortedecastilla.es/rss/2.0/?section=deportes/balonmano
+    max_items: 20
+
+  - name: BurgosConecta-dep
+    section: spain
+    type: rss
+    url: https://www.burgosconecta.es/rss/2.0/?section=deportes/balonmano
+    max_items: 15
 
   - name: DiarioLeon-dep
     section: spain
@@ -183,6 +225,23 @@ sources:
     filter_title_only: true
 
   # ══════════════════════════════════════════════════════════════════════════
+  # ESPAÑA — Prensa regional: Asturias / Cantabria
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: ElComercio-dep
+    section: spain
+    type: rss
+    url: https://www.elcomercio.es/rss/2.0/?section=deportes/balonmano
+    max_items: 20
+
+  - name: LNE-dep
+    section: spain
+    type: rss
+    url: https://www.lne.es/rss/
+    max_items: 20
+    filter_keywords: [balonmano, handball]
+    filter_title_only: true
+
+  # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Prensa regional: Galicia
   # ══════════════════════════════════════════════════════════════════════════
   - name: FaroVigo-dep
@@ -193,6 +252,24 @@ sources:
     filter_keywords: [balonmano, handball, handbol, balonmán]
     team_keywords: [frigoríficos, morrazo, porriño]
     filter_title_only: true
+
+  - name: DiarioPontevedra-dep
+    section: spain
+    type: rss
+    url: https://www.diariodepontevedra.es/rss/
+    max_items: 20
+    filter_keywords: [balonmano, handball, balonmán]
+    team_keywords: [porriño, morrazo, frigoríficos, cangas]
+    filter_title_only: true
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # ESPAÑA — Federaciones autonómicas
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: FAndAluza
+    section: spain
+    type: rss
+    url: https://fandaluzabm.org/feed/
+    max_items: 15
 
   # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Balonmano femenino especializado
@@ -716,6 +793,14 @@ sources:
     type: rss
     url: https://handballargentina.org/cah/category/noticias/feed/
     max_items: 15
+
+  - name: PanamSports
+    section: ihf/world-women
+    type: rss
+    url: https://www.panamsports.org/feed/
+    max_items: 10
+    filter_keywords: [handball, balonmano, handebol]
+    filter_title_only: true
 
   # ══════════════════════════════════════════════════════════════════════════
   # INTERNACIONAL — Brasil
