@@ -560,7 +560,10 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </nav>
 
     <h1 class="text-2xl font-bold mb-2 text-gray-900">Buscar noticias</h1>
-    <p class="text-sm text-gray-500 mb-6">Busca por jugador, equipo, competición o cualquier término.</p>
+    <p class="text-sm text-gray-500 mb-2">Busca por jugador, equipo, competición o cualquier término.</p>
+    <p class="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded px-3 py-2 mb-6 inline-block">
+        El índice de búsqueda cubre únicamente los artículos de los últimos 30 días.
+    </p>
 
     <div id="search"></div>
 
@@ -570,6 +573,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
             element: "#search",
             showSubResults: false,
             showImages: false,
+            sort: { date: "desc" },
             processResult: function(result) {
                 if (result.meta && result.meta.external_url) {
                     result.url = result.meta.external_url;
@@ -594,7 +598,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 </main>
 
 <footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
-    <p>Actualizado: 02/06/2026 a las 13:49 UTC ·
+    <p>Actualizado: 02/06/2026 a las 14:07 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

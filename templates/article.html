@@ -6,6 +6,7 @@
 
 <div data-pagefind-body>
     <span data-pagefind-meta="external_url">{{ article.url }}</span>
+    <span data-pagefind-sort="date">{{ article.published[:10] if article.published else '2000-01-01' }}</span>
     <h1 class="text-xl font-bold text-gray-900 mb-2">{{ article.title }}</h1>
     {% if article.summary %}
     <p class="text-gray-600 mb-3">{{ article.summary }}</p>
