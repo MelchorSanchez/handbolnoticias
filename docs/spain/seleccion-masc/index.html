@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">Selección Masculina</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">Selección Masculina</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">Selección Masculina</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
     
     <a href="https://www.rfebm.com/convocatoria-de-los-hispanos-promesas-para-los-amistosos-ante-francia-y-eslovaquia/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/06/1440x400_FotoPrincipal_web_HispanosPromesas-150x150.webp" alt=""
@@ -567,6 +582,8 @@ La entrada Convocatoria de los Hispanos Promesas para los amistosos ante Francia
     </a>
     
     <a href="https://www.marca.com/balonmano/liga-asobal/2026/05/29/esto-joya-hispanos-marcos-fis-ficho-barca.html" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/27/bBo7I1g5op28vyY2b.jpeg" alt=""
@@ -586,6 +603,8 @@ La entrada Convocatoria de los Hispanos Promesas para los amistosos ante Francia
     </a>
     
     <a href="https://www.rfebm.com/confirmado-el-calendario-del-campeonato-del-mundo-de-balonmano-playa-masculino-y-femenino/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/2026-Beach-match-schedule-150x150.webp" alt=""
@@ -608,6 +627,8 @@ La entrada Confirmado el calendario del Campeonato del Mundo de Balonmano Playa 
     </a>
     
     <a href="https://www.mibalonmano.com/espana-anuncia-convocatoria-mundial-universitario-2026-hispanos" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/449401669_18230605477272852_228655464088484400624_n@FISU.jpg" alt=""
@@ -627,6 +648,8 @@ La entrada Confirmado el calendario del Campeonato del Mundo de Balonmano Playa 
     </a>
     
     <a href="https://www.rfebm.com/convocatoria-de-los-hispanos-universitarios-para-el-campeonato-del-mundo-2026/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/1440x400_FotoPrincipal_web_HispanosUniversitarios-150x150.webp" alt=""
@@ -649,6 +672,8 @@ La entrada Convocatoria de los Hispanos Universitarios para el Campeonato del Mu
     </a>
     
     <a href="https://as.com/masdeporte/balonmano/israel-espana-partido-de-vuelta-del-playoff-de-clasificacion-para-el-mundial-2027-en-directo-en-vivo-f202605-d/" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/B4DLZRTJJ5MBPCXQKDT223R2FE.jpg?auth=f96d09c5efa6e16a1fc4243780fdb40df923babfb8d336df18f13d3afc552a85" alt=""
@@ -670,6 +695,8 @@ La entrada Convocatoria de los Hispanos Universitarios para el Campeonato del Mu
     </a>
     
     <a href="https://as.com/masdeporte/los-hispanos-cumplen-con-la-obligacion-de-clasificarse-para-el-mundial-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/53E7NUVQSFNTBCJWC22UKYJTMU.jpg?auth=852de3c255d7923177025d16e83f7f812fffa5c23203157f8f9d5174e029e361" alt=""
@@ -691,6 +718,8 @@ La entrada Convocatoria de los Hispanos Universitarios para el Campeonato del Mu
     </a>
     
     <a href="https://www.marca.com/balonmano/seleccion/2026/05/16/hispanos-vuelven-vencer-israel-estaran-mundial-2027.html" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/16/6a08d93d57e19.jpeg" alt=""
@@ -710,6 +739,8 @@ La entrada Convocatoria de los Hispanos Universitarios para el Campeonato del Mu
     </a>
     
     <a href="https://www.sport.es/es/noticias/deportes/espana-estara-mundial-2027-segundo-130307089" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/6afa8ce3-60ee-4736-9da3-df02dcff4b34_16-9-discover-aspect-ratio_default_0_x649y225.webp" alt=""
@@ -729,6 +760,8 @@ La entrada Convocatoria de los Hispanos Universitarios para el Campeonato del Mu
     </a>
     
     <a href="https://as.com/masdeporte/balonmano/jordi-ribera-la-eliminatoria-con-israel-no-esta-cerrada-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/V5OZ6FJK7RP3TJI7UNBLX3LWWE.jpg?auth=f0a9e9c3c68d0a85c2f1dcd5f5ca9b4a53e79fe9eb07733b530bca9c517d9f68" alt=""
@@ -752,6 +785,8 @@ La entrada Convocatoria de los Hispanos Universitarios para el Campeonato del Mu
     </a>
     
     <a href="https://www.marca.com/balonmano/seleccion/2026/05/15/hispanos-dan-primer-paso-israel-llegar-mundial.html" target="_blank" rel="noopener"
+       data-date="2026-05-15"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/15/6a06806706dd8.jpeg" alt=""
@@ -771,6 +806,8 @@ La entrada Convocatoria de los Hispanos Universitarios para el Campeonato del Mu
     </a>
     
     <a href="https://www.sport.es/es/noticias/deportes/hispanos-acercan-mundial-2027-pudo-130247465" target="_blank" rel="noopener"
+       data-date="2026-05-15"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/4c10fc05-cef4-4604-8bcc-9337028d99a2_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -790,6 +827,8 @@ La entrada Convocatoria de los Hispanos Universitarios para el Campeonato del Mu
     </a>
     
     <a href="https://as.com/masdeporte/espana-mantiene-la-incertidumbre-ante-israel-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-15"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/ZFRKD24FCBJDFA7GMNTWJYZ5C4.jpg?auth=7dcfa252bed040b1a2833825cd96660c6b3c4cc2ff98b1bb545d03952a5d50b7" alt=""
@@ -813,6 +852,8 @@ La entrada Convocatoria de los Hispanos Universitarios para el Campeonato del Mu
     </a>
     
     <a href="https://www.marca.com/balonmano/seleccion/2026/05/14/david-pisonero-busca-milagro-mundialista-hispanos-lejos-tierra-prometida.html" target="_blank" rel="noopener"
+       data-date="2026-05-14"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/13/6a03cb5547118.jpeg" alt=""
@@ -832,6 +873,8 @@ La entrada Convocatoria de los Hispanos Universitarios para el Campeonato del Mu
     </a>
     
     <a href="https://www.marca.com/balonmano/seleccion/2026/05/14/hispanos-dar-primer-paso-jj-oo-2028-10-000-km-distancia.html" target="_blank" rel="noopener"
+       data-date="2026-05-14"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/14/6a051fc597931.jpeg" alt=""
@@ -851,6 +894,8 @@ La entrada Convocatoria de los Hispanos Universitarios para el Campeonato del Mu
     </a>
     
     <a href="https://www.sport.es/es/noticias/deportes/hispanos-sentenciar-billete-mundial-130197173" target="_blank" rel="noopener"
+       data-date="2026-05-14"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/97603cf8-7ffe-4edf-a0f6-9ec493012999_16-9-discover-aspect-ratio_default_0_x357y178.webp" alt=""
@@ -871,12 +916,42 @@ La entrada Convocatoria de los Hispanos Universitarios para el Campeonato del Mu
     
 </div>
 
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
+
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

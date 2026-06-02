@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">Daikin HBL (Masc)</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">Daikin HBL (Masc)</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">Daikin HBL (Masc)</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
     
     <a href="https://www.vfl-gummersbach.de/akademieleiter-joerg-bohrmann-verlaesst-vfl-gummersbach-nach-sechs-jahren/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -564,6 +579,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/ein-letztes-mal-hoelle-nord" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/0/3/csm_20260407-IAJ18377_1777c68ed9.jpg" alt=""
@@ -583,6 +600,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.die-recken.de/letzte-auswaertsaufgabe-der-saison-fuehrt-die-recken-nach-mannheim/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -602,6 +621,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://handnews.fr/2026/ldc-m-limbroglio-melsungen-pour-la-ligue-des-champions/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/05/Capture-decran-2026-05-31-195831-300x186.png" alt=""
@@ -623,6 +644,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.rhein-neckar-loewen.de/letztes-heimspiel-gewinnen-fans-noch-einmal-begeistern-971886" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -643,6 +666,8 @@ La publicación “Gana el último partido en casa: vuelve a inspirar a los afic
     </a>
     
     <a href="https://gwd-minden.de/wir-empfangen-den-thw-kiel-zum-letzten-heimspiel-der-saison/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://gwd-minden.de/wp-content/uploads/2026/06/20260601_Vorbericht_GWD-THW_Web.jpg" alt=""
@@ -664,6 +689,8 @@ La publicación “Gana el último partido en casa: vuelve a inspirar a los afic
     </a>
     
     <a href="https://thw-handball.de/bundesliga/2026/06/pflichtspiel-nummer-50-thw-kiel-kehrt-am-mittwoch-bei-gwd-minden-zurueck-in-den-liga-alltag/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -683,6 +710,8 @@ La publicación “Gana el último partido en casa: vuelve a inspirar a los afic
     </a>
     
     <a href="https://www.lanzadigital.com/provincia/manzanares/ruben-marchan-gana-la-liga-europea-ehf-con-el-melsungen/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.lanzadigital.com/wp-content/uploads/2026/06/ruben-marchan.jpg" alt=""
@@ -708,6 +737,8 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://www.marca.com/balonmano/2026/06/01/melsungen-parrondo-logra-kiel-primer-titulo-europeo.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/06/01/6a1cb298e8164.jpeg" alt=""
@@ -727,6 +758,8 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-nationalteamspieler-elias-kofler-unterzeichnet-vier-jahres-vertrag-in-hamburg" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5981.jpg" alt=""
@@ -748,6 +781,8 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://www.vfl-gummersbach.de/grosses-fanfest-zum-saisonfinale-rund-um-den-letzten-heimspieltag/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -767,6 +802,8 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://www.rhein-neckar-loewen.de/timmermeister-fehlt-den-loewen-im-saisonendspurt-971876" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -787,6 +824,8 @@ La publicación Timmermeister no está en los Leones en el último tramo de la t
     </a>
     
     <a href="https://www.handball-planet.com/mt-melsungen-claim-first-trophy-in-club-history/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -806,6 +845,8 @@ La publicación Timmermeister no está en los Leones en el último tramo de la t
     </a>
     
     <a href="https://www.vfl-gummersbach.de/gummersbach-gastiert-beim-neuen-deutschen-meister-in-magdeburg/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -825,6 +866,8 @@ La publicación Timmermeister no está en los Leones en el último tramo de la t
     </a>
     
     <a href="https://handbollskanalen.se/varlden/proffskollen-herr-15-poang-av-joelsson-mot-fuchse-berlin/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -844,6 +887,8 @@ La publicación Timmermeister no está en los Leones en el último tramo de la t
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/noch-enttaeuscht" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/3/6/csm_20260531-IAJ30346_9bcbe38383.jpg" alt=""
@@ -863,6 +908,8 @@ La publicación Timmermeister no está en los Leones en el último tramo de la t
     </a>
     
     <a href="http://www.ihf.info/media-center/news/mt-melsungen-slay-giants-secure-first-ever-trophy" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -887,6 +934,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://thw-handball.de/european-league/2026/05/silber-fuer-die-zebras-finale-abwehrschlacht-findet-in-der-mt-melsungen-ihren-ehf-european-league-sieger/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -906,6 +955,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-legionaerinnen-uebersicht-mykola-bilyk-holt-silber-in-der-ehf-european-league" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5960.jpg" alt=""
@@ -927,6 +978,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://handbollskanalen.se/el-herrar/melsungen-europeiska-mastare-efter-rysare-mot-kiel/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -946,6 +999,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/bronze-fuer-die-sg" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/c/d/csm_20260531-IAJ38983_9e3f143487.jpg" alt=""
@@ -965,6 +1020,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://handnews.fr/2026/el-m-melsungen-soffre-le-premier-titre-europeen-de-son-histoire/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/05/Screenshot_2026-05-31-22-02-43-161_com.facebook.katana-edit-300x227.jpg" alt=""
@@ -986,6 +1043,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://handnews.fr/2026/el-m-montpellier-echoue-au-pied-du-podium/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2025/12/IMG_9428-300x200.jpg" alt=""
@@ -1007,6 +1066,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189887/melsungen-aleman-proclama-campeon-liga-europea-ehf-costa-kiel.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/uploads/2026/05/31/6a1c81e21e17a.jpeg" alt=""
@@ -1026,6 +1087,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.mibalonmano.com/mt-melsungen-campeon-ehf-european-league-25-26-nebojsa-simic-mvp" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/csm_Simic_HH_HF_36384fcdee@MTMelsungen-Kassler.jpg" alt=""
@@ -1045,6 +1108,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.handball-planet.com/thw-kiel-and-mt-melsungen-for-the-ehf-european-league-title/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1064,6 +1129,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://handbollskanalen.se/el-herrar/play-melsungen-till-historisk-final-besegrade-flensburg/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1083,6 +1150,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://handbollskanalen.se/el-herrar/play-johansson-och-wolff-bakom-kiels-finalavancemang/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1102,6 +1171,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.die-recken.de/rueckraumspieler-schliesst-sich-dauerhaft-der-sg-bbm-bietigheim-an/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1121,6 +1192,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://thw-handball.de/european-league/2026/05/mt-melsungen-ist-nach-klarem-erfolg-gegen-titelverteidiger-flensburg-finalgegner-der-zebras/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1140,6 +1213,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://handnews.fr/2026/el-melsungen-surclasse-flensburg-et-rejoint-kiel-en-finale/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2022/08/AT3W2313-300x200.jpg" alt=""
@@ -1161,6 +1236,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/samstag" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/c/c/csm_20260530-IAJ35393_ae825b6673.jpg" alt=""
@@ -1180,6 +1257,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://thw-handball.de/spielbericht/2026/05/der-traum-lebt-weiter-wir-sind-kiel-steht-nach-krimi-gegen-montpellier-im-finale/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1199,6 +1278,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://handnews.fr/2026/el-m-montpellier-defait-par-le-thw-kiel/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2025/04/imago1060936832-300x168.webp" alt=""
@@ -1220,6 +1301,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.spiegel.de/sport/handball-thw-kiel-die-gruende-fuer-die-krise-und-wege-zurueck-an-die-spitze-a-64a60d5a-5f6e-44a1-8155-12bfe396d3ce#ref=rss" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cdn.prod.www.spiegel.de/images/2d0a0a9d-6f40-4ee3-b4ed-4ec8af122fad_w520_r2.08_fpx52_fpy47.jpg" alt=""
@@ -1241,6 +1324,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.mibalonmano.com/thw-kiel-jugara-final-ehf-european-league-andy-wolff-heroe" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/HJj7di8WIAICX3s@EHF.jpg" alt=""
@@ -1260,6 +1345,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.mibalonmano.com/mt-melsungen-desarbola-flensburg-handewitt-jugara-final-ehf-european-league-26-ante-kiel" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/20260530-elm-main-12@EHF-kolektiff.jpg" alt=""
@@ -1279,6 +1366,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://thw-handball.de/weitere/2026/05/vom-jung-zebra-zum-u19-weltmeister-profi-handballer-rasmus-ankermann-zu-gast-bei-auf-der-platte/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1298,6 +1387,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.mibalonmano.com/gonzalo-perez-vargas-busca-hamburgo-primer-titulo-thw-kiel" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/imgthwdemage@THWKiel-SaschaKlahn.jpg" alt=""
@@ -1317,6 +1408,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-iker-romero-ist-trainer-der-saison-der-2.-deutschen-bundesliga" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5649.jpg" alt=""
@@ -1338,6 +1431,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="http://www.ihf.info/media-center/news/carbon-copy-line-provide-drama-high-octane-ehf-finals-men" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1362,6 +1457,8 @@ Hamburg will host the third consecutive edition of the EHF Finals Men, after Ger
     </a>
     
     <a href="https://www.rhein-neckar-loewen.de/besonderes-loewen-outlet-in-waghaeusel-971800" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1381,6 +1478,8 @@ Hamburg will host the third consecutive edition of the EHF Finals Men, after Ger
     </a>
     
     <a href="https://www.scdhfk-handball.de/2026/05/29/finn-schroven-komplettiert-den-kader-fuer-die-saison-2026-27/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1400,6 +1499,8 @@ Hamburg will host the third consecutive edition of the EHF Finals Men, after Ger
     </a>
     
     <a href="https://www.rhein-neckar-loewen.de/the-final-roar-bekommt-besonderen-special-olympics-charakter-971824" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1420,6 +1521,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://thw-handball.de/weitere/2026/05/aussergewoenhliches-lifestyle-shirt-thw-kiel-x-whatthabeawears-jetzt-wieder-ordern/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1439,6 +1542,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://gwd-minden.de/jan-malte-diekmann-bleibt-ein-weiteres-jahr-keno-danzenbaecher-verlaesst-den-verein-zum-saisonende/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://gwd-minden.de/wp-content/uploads/2026/05/Diekmann_Homepage.jpg" alt=""
@@ -1460,6 +1565,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-hurichbolic-leiten-ehf-european-league-halbfinale" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5974.jpg" alt=""
@@ -1481,6 +1588,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/fokus-auf-hamburg-1" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/e/7/csm_20250525-IAJ38870_15eb19b9d9.jpg" alt=""
@@ -1500,6 +1609,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.mibalonmano.com/tsv-hannover-burgdorf-confirma-salida-renars-uscins-2027" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/260404_010_@TSV-Hannover-Burgdorf.jpg" alt=""
@@ -1519,6 +1630,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://thw-handball.de/european-league/2026/05/das-finale-vor-dem-finale-thw-kiel-trifft-am-samstag-bei-den-winamax-ehf-finals-erneut-auf-montpellier-hb/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1538,6 +1651,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.die-recken.de/derzeit-ist-noch-nicht-an-einen-abschied-zu-denken/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1557,6 +1672,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.bsv-live.de/in-zwickau-platz-sieben-sichern/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.bsv-live.de/wp-content/uploads/2026/05/Vorbericht_Nachbericht-27.png" alt=""
@@ -1578,6 +1695,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.die-recken.de/recken-splitter-neues-aus-der-recken-welt-29/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1597,6 +1716,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.scdhfk-handball.de/2026/05/27/neuzugang-treuebekenntnis-dhfk-mannschaft-fuer-die-saison-2026-27-fast-komplett/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1616,6 +1737,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.thueringer-hc.de/ein-abend-voller-erinnerungen-dankbarkeit-und-abschied/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1635,6 +1758,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://thw-handball.de/european-league/2026/05/youngster-und-schwere-gegner-der-lange-weg-des-thw-kiel-zu-den-winamax-ehf-finals-in-hamburg/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1654,6 +1779,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://handnews.fr/2026/lms-montpellier-sincline-a-st-raphael-et-voit-disparaitre-ses-reves-de-ligue-des-champions/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/02/CI2I3427-300x200.jpg" alt=""
@@ -1675,6 +1802,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.handball-planet.com/thibaud-briet-to-sc-magdeburg/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1694,6 +1823,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://handnews.fr/2026/all-thibaud-briet-dans-le-viseur-du-sc-magdebourg/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/03/©AurelieNOTAR-3616-300x200.jpg" alt=""
@@ -1715,6 +1846,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.mibalonmano.com/el-sc-magdeburgo-avanza-en-el-fichaje-de-thibaud-briet" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/VPH_8892@OneVeszprem-PekaRoland.jpg" alt=""
@@ -1734,6 +1867,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://thw-handball.de/european-league/2026/05/fan-infos-zu-den-winamax-ehf-finals-kiel-traegt-am-wochenende-in-hamburg-weiss/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1753,6 +1888,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/fokus-auf-hamburg" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/1/b/csm_20260429-IAJ38676_7d0d2b0201.jpg" alt=""
@@ -1772,6 +1909,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-clemens-moestl-wechselt-zu-den-fuechsen-berlin" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5972.jpg" alt=""
@@ -1793,6 +1932,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.vfl-gummersbach.de/akademie-rueckblick-zum-wochenende-kw-21-4/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1812,6 +1953,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.die-recken.de/hannovers-top-vereine-laden-zur-6-kinderolympiade-am-maschsee-ein/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1831,6 +1974,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.scdhfk-handball.de/2026/05/25/balsam-fuer-die-gruen-weisse-seele-sommerfest-2026-untermauert-den-zusammenhalt-der-handballfamilie/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1850,6 +1995,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-bt-fuechse-holen-titel-in-der-u11" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5970.jpg" alt=""
@@ -1871,6 +2018,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://handnews.fr/2026/all-nouveau-record-de-buts-en-bundesliga-signe-mathias-gidsel/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2025/06/Mathias-Gidsel-SCMagdeburg-gael_drd_-300x200.jpg" alt=""
@@ -1892,6 +2041,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/geht-auf-kappe-von-uns-spielern" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/9/2/csm_20260524-IAJ31804_64ed9676ad.jpg" alt=""
@@ -1911,6 +2062,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://thw-handball.de/bundesliga/2026/05/zebras-ganz-souveraen-thw-kiel-holt-klaren-start-ziel-sieg-beim-bergischen-hc/" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1930,6 +2083,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/keine-pfingstpunkte" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/e/d/csm_20260524-IAJ12092_470a05a408.jpg" alt=""
@@ -1949,6 +2104,8 @@ Atención especial la contribución “EL ROAR FINAL”</p>
     </a>
     
     <a href="https://www.rhein-neckar-loewen.de/aufholjagd-kommt-zu-spaet-loewen-verlieren-gegen-magdeburg-971643" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1969,6 +2126,8 @@ La publicación La recuperación llega demasiado tarde: Löwen pierde contra Mag
     </a>
     
     <a href="https://www.bsv-live.de/bsv-kroent-einen-emotionalen-heimabschluss-mit-einem-sieg/" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.bsv-live.de/wp-content/uploads/2026/05/Vorbericht_Nachbericht-9.png" alt=""
@@ -1990,6 +2149,8 @@ La publicación La recuperación llega demasiado tarde: Löwen pierde contra Mag
     </a>
     
     <a href="https://gwd-minden.de/gwd-minden-unterliegt-beim-vfl-gummersbach/" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://gwd-minden.de/wp-content/uploads/2026/05/Unbenannt-1.png" alt=""
@@ -2011,6 +2172,8 @@ La publicación La recuperación llega demasiado tarde: Löwen pierde contra Mag
     </a>
     
     <a href="https://www.vfl-gummersbach.de/heimsieg-ueber-minden-sichert-gummersbach-platz-vier-am-saisonende/" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2030,6 +2193,8 @@ La publicación La recuperación llega demasiado tarde: Löwen pierde contra Mag
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/nun-gen-sueden" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/4/a/csm_20251129-IAJ31269_bd74511a80.jpg" alt=""
@@ -2049,6 +2214,8 @@ La publicación La recuperación llega demasiado tarde: Löwen pierde contra Mag
     </a>
     
     <a href="https://www.rhein-neckar-loewen.de/loewen-gegen-deutschen-meister-muessen-leidenschaftlich-sein-971623" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2069,6 +2236,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.vfl-gummersbach.de/akademie-vorschau-zum-wochenende-kw-21-2/" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2088,6 +2257,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.rhein-neckar-loewen.de/haukur-thrastarson-bleibt-bis-2028-ein-loewe-971600" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2107,6 +2278,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://thw-handball.de/bundesliga/2026/05/thw-kiel-startet-am-sonntag-in-duesseldorf-beim-bergischen-hc-in-den-saison-endspurt/" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2126,6 +2299,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.thueringer-hc.de/noch-einmal-motivieren/" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2145,6 +2320,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/hut-ab-vor-meinen-jungs" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/1/2/csm_20260210-IAJ36896_df2e9b6278.jpg" alt=""
@@ -2164,6 +2341,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.scdhfk-handball.de/2026/05/21/eine-gute-haelfte-reicht-nicht-gegen-den-ehf-final4-teilnehmer-aus-melsungen/" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2183,6 +2362,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/aergerliche-niederlage-in-magdeburg" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/c/b/csm_20251218-IAJ38488-pytlick_cd3e8f3d20.jpg" alt=""
@@ -2202,6 +2383,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.die-recken.de/tsv-hannover-burgdorf-punktet-beim-meister-in-berlin/" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2221,6 +2404,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://gwd-minden.de/gwd-minden-gastiert-beim-vfl-gummersbach/" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://gwd-minden.de/wp-content/uploads/2026/05/20260521_Vorbericht_Gummersbach-GWD_Web.jpg" alt=""
@@ -2242,6 +2427,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.die-recken.de/feise-steht-den-recken-in-den-letzten-saisonspielen-nicht-zur-verfuegung/" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2261,6 +2448,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260521/1004186332/31-30-magdeburgo-gana-bundesliga-coge-fuerza-final-four-barca-vista.html" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_100_103/files/fp/uploads/2026/05/10/6a00baa95199d.r_d.564-397-925.jpeg" alt=""
@@ -2280,6 +2469,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.scdhfk-handball.de/2026/05/20/alle-all-in-am-donnerstag-wartet-das-playoff-heimspiel-gegen-melsungen-inklusive-after-work-event/" target="_blank" rel="noopener"
+       data-date="2026-05-20"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2299,6 +2490,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/eine-schwere-woche" target="_blank" rel="noopener"
+       data-date="2026-05-20"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/5/6/csm_20260505-IAJ10444_b91dc7aa45.jpg" alt=""
@@ -2318,6 +2511,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.vfl-gummersbach.de/vfl-will-gegen-minden-platz-vier-vorzeitig-sichern/" target="_blank" rel="noopener"
+       data-date="2026-05-20"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2337,6 +2532,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.die-recken.de/recken-vor-schwerer-auswaertsaufgabe-bei-den-fuechsen/" target="_blank" rel="noopener"
+       data-date="2026-05-20"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2356,6 +2553,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://thw-handball.de/weitere/2026/05/kreislaeufer-petter-overby-laeuft-ab-dem-sommer-fuer-die-hsg-wetzlar-auf/" target="_blank" rel="noopener"
+       data-date="2026-05-19"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2375,6 +2574,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://gwd-minden.de/jetzt-die-letzten-freien-flaechen-auf-der-led-bande-beim-heimspiel-gegen-den-thw-kiel-sichern/" target="_blank" rel="noopener"
+       data-date="2026-05-19"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://gwd-minden.de/wp-content/uploads/2026/05/website.png" alt=""
@@ -2396,6 +2597,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.scdhfk-handball.de/2026/05/19/zsl-betreibergesellschaft-mbh-verlaengert-sponsoring-und-praesentiert-heimspiel-gegen-melsungen/" target="_blank" rel="noopener"
+       data-date="2026-05-19"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2415,6 +2618,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://thw-handball.de/weitere/2026/05/endlich-wieder-am-start-das-neue-app-erlebnis-beim-thw-kiel/" target="_blank" rel="noopener"
+       data-date="2026-05-19"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2434,6 +2639,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.scdhfk-handball.de/2026/05/18/sc-dhfk-leipzig-sucht-trainerin-im-nachwuchsleistungssport-m-w-d/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2453,6 +2660,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.scdhfk-handball.de/2026/05/18/wahre-helden-stehen-zu-ihrer-mannschaft/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2472,6 +2681,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.bsv-live.de/ohne-spiel-buxtehuder-sv-hat-den-klassenerhalt-sicher/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.bsv-live.de/wp-content/uploads/2026/05/Jubel-BSV.jpg" alt=""
@@ -2493,6 +2704,8 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     </a>
     
     <a href="https://www.scdhfk-handball.de/2026/05/18/save-the-date-sc-dhfk-sommerfest-am-pfingstmontag-25-05/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2513,12 +2726,42 @@ The post Löwen contra el campeón alemán – “Tenemos que ser apasionados”
     
 </div>
 
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
+
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

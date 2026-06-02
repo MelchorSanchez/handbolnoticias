@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">Suiza</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">Suiza</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">Suiza</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-legionaerinnen-uebersicht-mykola-bilyk-holt-silber-in-der-ehf-european-league" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5960.jpg" alt=""
@@ -566,6 +581,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://handnews.fr/2026/sui-lucerne-sacre-champion-pour-la-1ere-fois-avec-kevin-bonnefoi/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/05/Screenshot_2026-05-31-15-26-44-643_com.facebook.katana-edit-300x200.jpg" alt=""
@@ -587,6 +604,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.sport.es/es/noticias/deportes/balonmano/sergi-franco-capitan-bm-granollers-130470146" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/5636c34c-106f-425b-8590-f0d415ab58b3_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -607,12 +626,42 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     
 </div>
 
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
+
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

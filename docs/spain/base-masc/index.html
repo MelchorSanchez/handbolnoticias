@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">Base Masculino</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">Base Masculino</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">Base Masculino</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
     
     <a href="https://www.muchodeporte.com/deporte-andaluz/cierre-por-todo-alto-a-la-copa-de-andalucia-de-balonmano-base-2026-2026-06-02/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://d3ikwi7vygxzy7.cloudfront.net/articulos/articulos-362910.jpg" alt=""
@@ -566,6 +581,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://fandaluzabm.org/portada/cierre-por-todo-alto-a-la-copa-de-andalucia-de-balonmano-base-2026/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -587,6 +604,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.heraldo.es/noticias/deportes/balonmano/2026/05/31/dominicos-zaragoza-gana-campeonato-espana-cadete-masculino-2025013.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes.heraldo.es/files/image_1920_1080/uploads/imagenes/2026/05/31/6a1c5b75585329-19619898.jpeg" alt=""
@@ -608,6 +627,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.cartv.es/aragondeporte/nuestro-deporte/el-balonmano-dominicos-campeon-de-espana-cadete-masculino" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cartv.es/thumbs/fullwidthtablet/2026-05/dominicostitulo.png" alt=""
@@ -629,6 +650,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.rfebm.com/cdecadetebm-masculino-sigue-en-directo-el-campeonato/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/HGRU9CWbAAA5YRM-150x150.webp" alt=""
@@ -651,6 +674,8 @@ La entrada #CDECadeteBM Masculino | Sigue en directo el Campeonato se publicó p
     </a>
     
     <a href="https://fandaluzabm.org/noticias/cuenta-atras-para-la-iii-copa-de-andalucia-de-balonmano-base/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -672,6 +697,8 @@ La entrada #CDECadeteBM Masculino | Sigue en directo el Campeonato se publicó p
     </a>
     
     <a href="https://www.rfebm.com/palma-del-rio-busca-campeon-del-campeonato-de-espana-cadete-masculino/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/HGRU9CWbAAA5YRM-150x150.webp" alt=""
@@ -694,6 +721,8 @@ La entrada Palma del Río busca campeón del Campeonato de España Cadete Mascul
     </a>
     
     <a href="https://fandaluzabm.org/noticias/bm-veleta-autocares-gonzalez-y-balonmano-utrera-ascienden-a-division-de-honor-juvenil/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -715,6 +744,8 @@ La entrada Palma del Río busca campeón del Campeonato de España Cadete Mascul
     </a>
     
     <a href="https://www.rfebm.com/cdeinfantilbm-femenino-sigue-en-directo-la-fase-final/" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/1080x1350_InfantilMasc_FaseFinal3-150x150.webp" alt=""
@@ -737,6 +768,8 @@ La entrada Otro éxito de la base azulgrana con la conquista Infantil Masculina 
     </a>
     
     <a href="https://www.rfebm.com/cdejuvenilbm-masculino-sigue-la-fase-final/" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/1080x1350_JuvenilMasc_FaseFinal2-150x150.webp" alt=""
@@ -759,6 +792,8 @@ La entrada El Barça, campeón de España juvenil masculino se publicó primero 
     </a>
     
     <a href="https://www.elcomercio.es/deportes/balonmano/atletica-avilesina-bosco-cierran-acuerdo-impulsar-balonmano-aviles-20260508152121-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-08"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s2.ppllstatics.com/elcomercio/www/multimedia/2026/05/08/balonmano-bosco-atletica-RTjeB9TtNMNEZOHWJ2hSYbN-1200x840@El%20Comercio.jpg" alt=""
@@ -782,6 +817,8 @@ La entrada El Barça, campeón de España juvenil masculino se publicó primero 
     </a>
     
     <a href="https://fandaluzabm.org/malaga/las-finales-de-copa-trops-delegacion-broche-al-curso-en-alhaurin-de-la-torre/" target="_blank" rel="noopener"
+       data-date="2026-05-06"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -804,12 +841,42 @@ La entrada El Barça, campeón de España juvenil masculino se publicó primero 
     
 </div>
 
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
+
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

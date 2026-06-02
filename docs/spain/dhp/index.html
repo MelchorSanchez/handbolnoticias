@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">División Honor Plata</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">División Honor Plata</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">División Honor Plata</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
     
     <a href="https://bmbenidorm.com/diego-perez-continuara-una-temporada-mas-en-el-balonmano-servigroup-benidorm/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -565,6 +580,8 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="https://cadenaser.com/comunitat-valenciana/2026/06/01/el-viveros-herol-nava-ultimo-escollo-de-agustinos-para-alcanzar-la-liga-asobal-radio-alicante/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/PDGEAO4T3RDQBL66JCQVOIPZ7E.jpg?auth=d4c35822a76f521cf5f5cf096c0959b3110d410d715e098ef7e82657c21de032&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -584,6 +601,8 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="https://clubbalonmanopuentegenil.es/liga-nexus-energia-asobal-el-cajasol-angel-ximenez-logra-la-permanencia-a-pesar-de-caer-en-cangas-32-30/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -603,6 +622,8 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="https://cadenaser.com/aragon/2026/05/31/triste-derrota-en-alicante-en-la-despedida-del-bada-huesca-de-la-asobal-radio-huesca/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/WMILR5YYTBBEFEN7CA75DZAUOE.jpg?auth=d9f3a25968e8ae3ac6430cb847f74fa9e8a582799ab569ca8cf5159cb23cb2c7&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -622,6 +643,8 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="https://www.bmsinfin.com/2026/05/29/comunicado-oficial-fabrizio-casanova-experiencia-y-talento-para-el-lateral-izquierdo-del-blendio-sinfin-santander/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -641,6 +664,8 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="https://www.mibalonmano.com/ubu-san-pablo-burgos-anuncia-seis-bajas-temporada-26-27" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/cefdd772-e658-4b42-92bdf02641ac68da@UBUSanPabloBurgos.jpg" alt=""
@@ -660,6 +685,8 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="https://cadenaser.com/aragon/2026/05/29/jose-nolasco-reconoce-que-asimilar-el-descenso-va-a-costar-radio-huesca/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/TUSKKIVXFFCM5IXHVIFQUWRVOU.jpg?auth=7bca7bc20efbf4be73060eedeefb35dd66e1ff9fa33c3ea17c741a9781d849f5&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -679,6 +706,8 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="https://cadenaser.com/aragon/2026/05/28/gabor-decsi-expresa-el-sentimiento-del-vestuario-del-bada-huesca-estamos-muy-tocados-del-animo-radio-huesca/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/UKKNTM2BKRHTBPA5U23J54J234.jpg?auth=2c894af0c7466f04d6da15396a6be1d06c0e1b5aab8581a19f5a79932369a96b&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -698,6 +727,8 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="https://bmbenidorm.com/renovacion-ramiro-martinez-continuara-una-temporada-mas-en-el-balonmano-servigroup-benidorm/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -718,6 +749,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://www.diariodenavarra.es/noticias/deportes/balonmano/2026/05/27/luzia-zamora-extremo-replasa-beti-onak-ander-martin-meta-anaitasuna-mejores-temporada-822395-45.html" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes.diariodenavarra.es/files/og_thumbnail/uploads/2026/05/27/6a1706b095d2f.jpeg" alt=""
@@ -737,6 +770,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://www.bmsinfin.com/2026/05/27/comunicado-oficial-marcos-vinicius-refuerza-la-primera-linea-del-blendio-sinfin-santander/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -756,6 +791,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://as.com/masdeporte/alberto-serradilla-especialista-en-ascensos-a-la-asobal-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/OOMJBU3CVZA2ZJI6KPKIQMOLAA.jpg?auth=c2335142bde96f231742c2c5d57b3d9dfa1a536dea166122fbf59bd0df02e4ed" alt=""
@@ -777,6 +814,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://www.diariodenavarra.es/noticias/deportes/balonmano/2026/05/26/emotiva-despedida-pablo-itoiz-anaitasuna-sido-sera-siempre-mi-casa-822250-45.html" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes.diariodenavarra.es/files/og_thumbnail/uploads/2026/05/26/6a15b42294693.jpeg" alt=""
@@ -796,6 +835,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://www.mibalonmano.com/anaitasuna-anuncia-ocho-bajas-para-la-temporada-26-27" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/7d736313-ffcf-4cc@Anaitasuna.jpg" alt=""
@@ -815,6 +856,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://cadenaser.com/aragon/2026/05/26/bada-amplia-su-apoyo-al-bm-huesca-por-dos-temporadas-radio-huesca/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/Z7LKL7BCMZB77HC3XP3KCQO2WU.jpg?auth=2270504e4d22ac02c74203b0bc2dcbeed7e0d76eeacafcd7fca276d62e8c569b&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -834,6 +877,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://fandaluzabm.org/noticias/trops-malaga-fundacion-unicaja-campeones-de-primera-andaluza-senior/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -853,6 +898,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://www.diariodenavarra.es/noticias/deportes/balonmano/2026/05/26/anaitasuna-reestructura-8-bajas-proximo-proyecto-ascenso-asobal-nuevo-objetivo-822197-45.html" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes.diariodenavarra.es/files/og_thumbnail/uploads/2026/05/26/6a1558d6594c4.jpeg" alt=""
@@ -872,6 +919,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://clubbalonmanopuentegenil.es/liga-nexus-energia-un-explosivo-gol-sobre-la-bocina-de-dani-serrano-acerca-la-permanencia-al-cajasol-angel-ximenez-28-27/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -891,6 +940,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://handnews.fr/2026/lms-chema-marquez-va-quitter-saint-raphael-pour-rentrer-en-espagne/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2022/03/FN9Yk49XoAA1DA9-300x200.jpg" alt=""
@@ -912,6 +963,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://www.mibalonmano.com/jose-nolasco-seguira-al-frente-de-bada-huesca-en-division-honor-plata" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/1779705978681@BadaHuesca.jpg" alt=""
@@ -931,6 +984,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://cadenaser.com/aragon/2026/05/25/jose-nolasco-demuestra-su-compromiso-con-el-bada-huesca-y-seguira-dirigiendo-al-equipo-en-division-de-honor-plata-radio-huesca/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/4RG3QNIRTNGCTORA2EW3WPVZII.JPG?auth=cc4cd55a861e77e5788704fcd9815f6fb9310d0665ad3a48b6166fdaec2dd2bb&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -950,6 +1005,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://www.marca.com/balonmano/liga-asobal/2026/05/24/fertiberia-vuelve-liga-asobal-sufrida-final-agustinos.html" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/24/6a12f6489641c.jpeg" alt=""
@@ -969,6 +1026,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260524/1004187238/18-17-fertiberia-vuelve-asobal-sufrida-final-agustinos.html" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_150_155/files/fp/uploads/2026/05/24/6a12f6d8a52df.r_d.780-694-976.jpeg" alt=""
@@ -988,6 +1047,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://www.mibalonmano.com/fertiberia-puerto-sagunto-ascenso-liga-asobal-agustinos-alicante-jugara-promocion" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/DSC07178-1@BMPuertoSagunto.jpg" alt=""
@@ -1007,6 +1068,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://cadenaser.com/comunitat-valenciana/2026/05/24/agustinos-cae-por-la-minima-en-la-final-por-el-ascenso-a-asobal-ante-puerto-de-sagunto-radio-alicante/" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/LDP5BQ3SHZCDPLZDTRQVVDKK4M.png?auth=927c58e1a74692063c49f965b9a35dc1368abbfdb5e59556c7c1f2cce52cae6f&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -1026,6 +1089,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://www.mibalonmano.com/agustinos-alicante-fertiberia-puerto-sagunto-jugaran-ascenso-asobal-final-playoff" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1043,6 +1108,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://www.mibalonmano.com/play-off-ascenso-puerto-sagunto-decide-segundo-ascenso-liga-asobal-plaza-promocion" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1060,6 +1127,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://www.mibalonmano.com/bada-huesca-segundo-descenso-liga-nexus-energia-asobal-25-26" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1077,6 +1146,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://as.com/masdeporte/los-segundos-puestos-de-liga-y-de-descenso-en-juego-este-viernes-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/MVSWYN6PPZEULDJM3EMTCQC3FA.jpg?auth=c6bacff760334ca7c045d349d6ae3885c9e111e672527e53e7e524c7a308ef0a" alt=""
@@ -1098,6 +1169,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://fandaluzabm.org/noticias/el-cadeba-alevin-corona-a-sus-campeones/" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1117,6 +1190,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://www.bmsinfin.com/2026/05/20/comunicado-oficial-carlos-fernandez-primera-incorporacion-del-blendio-sinfin-santander/" target="_blank" rel="noopener"
+       data-date="2026-05-20"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1136,6 +1211,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://betionak.eus/las-cadetes-jugaran-la-fase-sector-en-zaragoza/" target="_blank" rel="noopener"
+       data-date="2026-05-19"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1155,6 +1232,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://as.com/masdeporte/antonio-garcia-llegara-a-sevilla-con-urios-y-chema-marquez-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/QLQPEMFOYVC65DAE227TYAH6TM.jpg?auth=7169855bc7b45acb43fa2a95562e16ba249a30d6b43a8699b609c80fbffb9964" alt=""
@@ -1176,6 +1255,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://bmbenidorm.com/el-club-balonmano-benidorm-anuncia-tres-bajas-de-cara-a-la-temporada-2026-27/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1196,6 +1277,8 @@ La entrada El Club Balonmano Benidorm anuncia tres bajas de cara a la temporada 
     </a>
     
     <a href="https://www.marca.com/balonmano/liga-asobal/2026/05/15/exinternacional-antonio-garcia-liderara-proin-sevilla-debut-asobal.html" target="_blank" rel="noopener"
+       data-date="2026-05-15"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/15/6a074fdf4a6ef.jpeg" alt=""
@@ -1215,6 +1298,8 @@ La entrada El Club Balonmano Benidorm anuncia tres bajas de cara a la temporada 
     </a>
     
     <a href="https://clubbalonmanopuentegenil.es/liga-nexus-energia-asobal-el-cajasol-angel-ximenez-muere-en-la-orilla-de-huerta-del-rey-25-23/" target="_blank" rel="noopener"
+       data-date="2026-05-10"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1234,6 +1319,8 @@ La entrada El Club Balonmano Benidorm anuncia tres bajas de cara a la temporada 
     </a>
     
     <a href="https://bmbenidorm.com/el-balonmano-servigroup-benidorm-cierra-el-ano-con-derrota/" target="_blank" rel="noopener"
+       data-date="2026-05-10"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1254,6 +1341,8 @@ La entrada El Balonmano Servigroup Benidorm cierra el año con derrota se public
     </a>
     
     <a href="https://clubbalonmanopuentegenil.es/liga-nexus-energia-asobal-con-todo-a-valladolid/" target="_blank" rel="noopener"
+       data-date="2026-05-08"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1273,6 +1362,8 @@ La entrada El Balonmano Servigroup Benidorm cierra el año con derrota se public
     </a>
     
     <a href="https://www.bmsinfin.com/2026/05/08/el-blendio-sinfin-santander-cierra-la-temporada-en-burgos/" target="_blank" rel="noopener"
+       data-date="2026-05-08"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1292,6 +1383,8 @@ La entrada El Balonmano Servigroup Benidorm cierra el año con derrota se public
     </a>
     
     <a href="https://bmbenidorm.com/el-balonmano-servigroup-benidorm-cierra-la-temporada-en-pontevedra/" target="_blank" rel="noopener"
+       data-date="2026-05-08"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1312,6 +1405,8 @@ La entrada El Balonmano Servigroup Benidorm cierra la temporada en Pontevedra se
     </a>
     
     <a href="https://bmbenidorm.com/juan-carlos-sempere-dejara-el-balonmano-benidorm-tras-el-ultimo-partido-de-la-temporada/" target="_blank" rel="noopener"
+       data-date="2026-05-07"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1332,6 +1427,8 @@ La entrada Juan Carlos Sempere dejará el Balonmano Benidorm tras el último par
     </a>
     
     <a href="https://www.bmsinfin.com/2026/05/06/basualdo-el-capi-renueva-en-la-albericia/" target="_blank" rel="noopener"
+       data-date="2026-05-06"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1351,6 +1448,8 @@ La entrada Juan Carlos Sempere dejará el Balonmano Benidorm tras el último par
     </a>
     
     <a href="https://bmbenidorm.com/el-balonmano-servigroup-benidorm-se-despide-de-su-aficion-con-un-empate/" target="_blank" rel="noopener"
+       data-date="2026-05-04"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1372,12 +1471,42 @@ La entrada El Balonmano Servigroup Benidorm se despide de su afición con un emp
     
 </div>
 
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
+
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

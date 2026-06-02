@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Buscar noticias — HandbolNoticias{% endblock %}
+{% block meta_description %}Busca noticias de balonmano por jugador, equipo, competición o cualquier término.{% endblock %}
+{% block canonical_url %}https://handbolnoticias.com/search/{% endblock %}
+{% block extra_head %}
+<link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/_pagefind/pagefind-ui.js"></script>
+<style>
+    :root {
+        --pagefind-ui-scale: 1;
+        --pagefind-ui-primary: #003DA5;
+        --pagefind-ui-text: #1f2937;
+        --pagefind-ui-background: #ffffff;
+        --pagefind-ui-border: #e5e7eb;
+        --pagefind-ui-tag: #eff6ff;
+        --pagefind-ui-border-width: 1px;
+        --pagefind-ui-border-radius: 8px;
+        --pagefind-ui-font: inherit;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+<div data-pagefind-ignore>
+    <nav class="text-sm text-gray-500 mb-6">
+        <a href="/" class="hover:text-hb-blue">Inicio</a>
+        <span class="mx-2">›</span>
+        <span class="text-gray-800 font-medium">Buscar</span>
+    </nav>
+
+    <h1 class="text-2xl font-bold mb-2 text-gray-900">Buscar noticias</h1>
+    <p class="text-sm text-gray-500 mb-6">Busca por jugador, equipo, competición o cualquier término.</p>
+
+    <div id="search"></div>
+
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+        new PagefindUI({
+            element: "#search",
+            showSubResults: true,
+            showImages: false,
+            translations: {
+                placeholder: "Buscar noticias...",
+                zero_results: "No se encontraron resultados para [SEARCH_TERM]",
+                many_results: "[COUNT] resultados para [SEARCH_TERM]",
+                one_result: "1 resultado para [SEARCH_TERM]",
+                alt_search: "No hay resultados para [SEARCH_TERM]. Intenta buscar [DIFFERENT_TERM]",
+                search_suggestion: "Busca [DIFFERENT_TERM]",
+                searching: "Buscando [SEARCH_TERM]...",
+            }
+        });
+    });
+    </script>
+</div>
+
+{% endblock %}

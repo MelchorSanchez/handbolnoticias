@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">Primera Nacional masc.</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">Primera Nacional masc.</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">Primera Nacional masc.</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
     
     <a href="https://cbmelche.es/mario-ortiz-compaginara-la-direccion-tecnica-del-cbm-elche-y-el-banquillo-del-senior-masculino/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -566,6 +581,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.diariodeleon.es/deportes/260526/2086276/sariegos-homenajea-equipo-balonmano-subir-1a-nacional.html" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes.diariodeleon.es/files/og_thumbnail/uploads/2026/05/27/6a163a11c0418.jpeg" alt=""
@@ -585,6 +602,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://cadenaser.com/canarias/2026/05/26/javi-aragon-prolonga-su-vinculacion-con-el-balonmano-lanzarote-ciudad-de-arrecife-ser-lanzarote/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/T4L4F3R7UJDLTNCDAYD3AUFLDU.JPG?auth=e8828c274d5d5e6532ba082b85a1daf58c9fca83a807df98944d0d44b1c73fa6&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -604,6 +623,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.cathandbol.cat/catalanes/lliga-catalana/item/13227-resum-fases-estatal-2026.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/077d0b2e205c32e083020249451e4bb4_M.jpg" alt=""
@@ -623,6 +644,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.cathandbol.cat/femeni/lliga-catalana-fem/item/13226-2026-05-25-10-28-51.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/c3ac0a293a94f2d491f782b143a7dd04_M.jpg" alt=""
@@ -642,6 +665,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://cadenaser.com/castillayleon/2026/05/25/el-balonmano-sariegos-consigue-el-ascenso-a-primera-nacional-radio-leon/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/AKU22G2NMFCXZLXJGHHPRV7DGM.jpeg?auth=012ec3d12fcc702697559c3eb67afa6ebbc47141bc63fcbd8ea43b0eaacdc597&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -661,6 +686,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.cathandbol.cat/femeni/lliga-catalana-fem/item/13218-joventut-mataró-i-sant-cugat-viatgen-a-buscar-la-plata.html" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/37565be3bb413ca1ae7888ad75da4204_M.jpg" alt=""
@@ -680,6 +707,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.elcomercio.es/deportes/balonmano/horizonte-atletica-refuerza-cuerpo-tecnico-juan-muniz-20260521212224-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s3.ppllstatics.com/elcomercio/www/multimedia/2026/05/21/staff-horizonte-RpeCYntOAaMSNKxWJww7M2N-1200x840@El%20Comercio.jpg" alt=""
@@ -701,6 +730,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://fnavarrabm.com/2026/05/19/inicio-entrenamientos-balonmano-playa-cesa26-calella-infantil-y-cadete-masculino-y-femenino/" target="_blank" rel="noopener"
+       data-date="2026-05-19"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://fnavarrabm.com/wp-content/uploads/2026/05/Captura-de-Pantalla-2026-05-19-a-las-13.05.40-1140x480_c.png" alt=""
@@ -720,6 +751,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.balonmano.info/bera-bera-gana-porrino-semifinal-liga-guerreras-iberdrola-20261210163/" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/etxeberria-400x240.jpeg" alt=""
@@ -739,6 +772,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.cathandbol.cat/catalanes/1a-catalana/item/13211-resum-1acath.html" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/278b90bd352c6279f8f54571ea28dbc3_M.jpg" alt=""
@@ -758,6 +793,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.elnortedecastilla.es/deportes/balonmano/aula-consuma-desproposito-lanzarote-roza-descenso-20260516231046-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s1.ppllstatics.com/elnortedecastilla/www/multimedia/2026/05/16/1510676395-R71yqodRf9u362yoKZ2FzJN-1200x840@El%20Norte.jpg" alt=""
@@ -779,6 +816,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.elnortedecastilla.es/deportes/balonmano/caja-rural-aula-juega-lanzarote-derrota-deja-20260515131234-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-15"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s2.ppllstatics.com/elnortedecastilla/www/multimedia/2026/05/15/1510676504-R7gcxsGp55sKXRb172D3xWK-1200x840@El%20Norte.jpg" alt=""
@@ -800,6 +839,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.elcomercio.es/gijon/cincuenta-anos-gesta-grupo-covadonga-balonmano-dia-20260509185653-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-09"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s2.ppllstatics.com/elcomercio/www/multimedia/2026/05/09/217424185-kMuH--1200x840@El%20Comercio.jpg" alt=""
@@ -821,6 +862,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://fandaluzabm.org/portada/la-liga-led-cierra-su-quinta-edicion-con-cordoba-bm-y-cbm-carboneras-como-equipos-campeones/" target="_blank" rel="noopener"
+       data-date="2026-05-06"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -842,12 +885,42 @@ La entra</p>
     
 </div>
 
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
+
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

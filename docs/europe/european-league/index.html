@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">European League Masc</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">European League Masc</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">European League Masc</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
     
     <a href="https://thw-handball.de/bundesliga/2026/06/pflichtspiel-nummer-50-thw-kiel-kehrt-am-mittwoch-bei-gwd-minden-zurueck-in-den-liga-alltag/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -564,6 +579,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.marca.com/balonmano/2026/06/01/melsungen-parrondo-logra-kiel-primer-titulo-europeo.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/06/01/6a1cb298e8164.jpeg" alt=""
@@ -583,6 +600,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.handball-planet.com/mt-melsungen-claim-first-trophy-in-club-history/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -602,6 +621,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="http://www.ihf.info/media-center/news/mt-melsungen-slay-giants-secure-first-ever-trophy" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -626,6 +647,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://thw-handball.de/european-league/2026/05/silber-fuer-die-zebras-finale-abwehrschlacht-findet-in-der-mt-melsungen-ihren-ehf-european-league-sieger/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -645,6 +668,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-legionaerinnen-uebersicht-mykola-bilyk-holt-silber-in-der-ehf-european-league" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5960.jpg" alt=""
@@ -666,6 +691,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://handbollskanalen.se/el-herrar/melsungen-europeiska-mastare-efter-rysare-mot-kiel/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -685,6 +712,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.mibalonmano.com/mt-melsungen-campeon-ehf-european-league-25-26-nebojsa-simic-mvp" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/csm_Simic_HH_HF_36384fcdee@MTMelsungen-Kassler.jpg" alt=""
@@ -704,6 +733,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.handball-planet.com/thw-kiel-and-mt-melsungen-for-the-ehf-european-league-title/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -723,6 +754,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://handbollskanalen.se/el-herrar/play-melsungen-till-historisk-final-besegrade-flensburg/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -742,6 +775,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://handbollskanalen.se/el-herrar/play-johansson-och-wolff-bakom-kiels-finalavancemang/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -761,6 +796,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://thw-handball.de/european-league/2026/05/mt-melsungen-ist-nach-klarem-erfolg-gegen-titelverteidiger-flensburg-finalgegner-der-zebras/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -780,6 +817,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.mibalonmano.com/thw-kiel-jugara-final-ehf-european-league-andy-wolff-heroe" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/HJj7di8WIAICX3s@EHF.jpg" alt=""
@@ -799,6 +838,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.mibalonmano.com/mt-melsungen-desarbola-flensburg-handewitt-jugara-final-ehf-european-league-26-ante-kiel" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/20260530-elm-main-12@EHF-kolektiff.jpg" alt=""
@@ -818,6 +859,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.mibalonmano.com/tres-alemanes-un-frances-luchan-titulo-final-four-ehf-european-league-2026" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/HIv2tLoW8AAALv5@EHF.jpg" alt=""
@@ -837,6 +880,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="http://www.ihf.info/media-center/news/carbon-copy-line-provide-drama-high-octane-ehf-finals-men" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -861,6 +906,8 @@ Hamburg will host the third consecutive edition of the EHF Finals Men, after Ger
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-hurichbolic-leiten-ehf-european-league-halbfinale" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5974.jpg" alt=""
@@ -882,6 +929,8 @@ Hamburg will host the third consecutive edition of the EHF Finals Men, after Ger
     </a>
     
     <a href="https://thw-handball.de/european-league/2026/05/das-finale-vor-dem-finale-thw-kiel-trifft-am-samstag-bei-den-winamax-ehf-finals-erneut-auf-montpellier-hb/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -901,6 +950,8 @@ Hamburg will host the third consecutive edition of the EHF Finals Men, after Ger
     </a>
     
     <a href="https://thw-handball.de/european-league/2026/05/youngster-und-schwere-gegner-der-lange-weg-des-thw-kiel-zu-den-winamax-ehf-finals-in-hamburg/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -920,6 +971,8 @@ Hamburg will host the third consecutive edition of the EHF Finals Men, after Ger
     </a>
     
     <a href="https://thw-handball.de/european-league/2026/05/fan-infos-zu-den-winamax-ehf-finals-kiel-traegt-am-wochenende-in-hamburg-weiss/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -939,6 +992,8 @@ Hamburg will host the third consecutive edition of the EHF Finals Men, after Ger
     </a>
     
     <a href="https://cadenaser.com/galicia/2026/05/25/el-guardes-derriba-la-puerta-y-gana-su-primer-titulo-europeo-ser-baixo-mino/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/W2K3SRA2X5ASFJELSILRVKQQ2U.jpeg?auth=912a28b94b5889b64237640825ebc800968f7a5b5b915c2b6683787448bfb001&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -958,6 +1013,8 @@ Hamburg will host the third consecutive edition of the EHF Finals Men, after Ger
     </a>
     
     <a href="https://www.ffhandball.fr/actualite/lactualite-du-hand/entretien-du-lundi/entretien-du-lundi-erick-mathe_duplicated/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -978,6 +1035,8 @@ Té</p>
     </a>
     
     <a href="https://thw-handball.de/bundesliga/2026/05/zebras-ganz-souveraen-thw-kiel-holt-klaren-start-ziel-sieg-beim-bergischen-hc/" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -997,6 +1056,8 @@ Té</p>
     </a>
     
     <a href="https://thw-handball.de/bundesliga/2026/05/thw-kiel-startet-am-sonntag-in-duesseldorf-beim-bergischen-hc-in-den-saison-endspurt/" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1016,6 +1077,8 @@ Té</p>
     </a>
     
     <a href="https://as.com/masdeporte/polideportivo/el-guardes-asalta-michalovce-y-roza-su-primer-titulo-europeo-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/MTE63USWHFF5RNDQ4UY4RQVDKU.jpg?auth=fdd341a092152d10319c2aa56f315acc91094d0d76455090f1edb8f36bf6ce58" alt=""
@@ -1037,6 +1100,8 @@ Té</p>
     </a>
     
     <a href="https://as.com/masdeporte/el-guardes-suena-con-el-primer-titulo-europeo-para-galicia-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/QQGZQ5HCKVHWNDWUVZB2EXSTYI.jpg?auth=2fba2a3846f57f5afdc3ab09f8a966872596f199ce134efa9de567f82436d6eb" alt=""
@@ -1058,6 +1123,8 @@ Té</p>
     </a>
     
     <a href="https://thw-handball.de/european-league/2026/05/zusaetzliche-plaetze-in-der-weissen-wand-ehf-startet-ticketverkauf-fuer-den-kieler-fanblock/" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1078,12 +1145,42 @@ Té</p>
     
 </div>
 
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
+
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

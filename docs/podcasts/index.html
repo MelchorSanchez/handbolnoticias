@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -113,6 +114,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -120,6 +122,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -635,24 +638,6 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     <!-- Episodes grid -->
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
         
-        <a href="https://www.cope.es/podcasts/de-rosca/episodios/rosca-capitulo-593-01-20260601_3375471.html" target="_blank" rel="noopener"
-           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
-            <!-- Thumbnail -->
-            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
-                
-                <img src="https://imagenes.cope.es/images/logo-rss.png" alt="De Rosca, capítulo 593 (01-06-2026)"
-                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                     loading="lazy" onerror="this.style.display='none'">
-                
-                
-            </div>
-            <!-- Info -->
-            <div class="p-2 flex flex-col flex-1">
-                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">De Rosca, capítulo 593 (01-06-2026)</p>
-                <p class="text-xs text-gray-400 mt-1">1 Jun 2026</p>
-            </div>
-        </a>
-        
         <a href="https://www.cope.es/podcasts/de-rosca/episodios/rosca-capitulo-592-25-20260525_3370992.html" target="_blank" rel="noopener"
            class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
             <!-- Thumbnail -->
@@ -722,6 +707,24 @@ document.getElementById('menu-btn').addEventListener('click', function() {
             <div class="p-2 flex flex-col flex-1">
                 <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">De Rosca, capítulo 589 (04-05-2026)</p>
                 <p class="text-xs text-gray-400 mt-1">4 May 2026</p>
+            </div>
+        </a>
+        
+        <a href="https://www.cope.es/podcasts/de-rosca/episodios/rosca-capitulo-588-27-20260427_3353242.html" target="_blank" rel="noopener"
+           class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+            <!-- Thumbnail -->
+            <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                
+                <img src="https://imagenes.cope.es/images/logo-rss.png" alt="De Rosca, capítulo 588 (27-04-2026)"
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                     loading="lazy" onerror="this.style.display='none'">
+                
+                
+            </div>
+            <!-- Info -->
+            <div class="p-2 flex flex-col flex-1">
+                <p class="text-xs font-medium text-gray-800 line-clamp-3 leading-tight flex-1">De Rosca, capítulo 588 (27-04-2026)</p>
+                <p class="text-xs text-gray-400 mt-1">27 Apr 2026</p>
             </div>
         </a>
         
@@ -873,7 +876,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
     <p>Actualizado:  ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>

@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,53 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">General</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">General</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">General</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
+    
+    <a href="https://handnews.fr/2026/nor-magnus-andersson-va-relever-le-defi-de-la-selection-norvegienne/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://handnews.fr/wp-content/uploads/2016/05/Andersson-Goppingen-300x177.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Noruega | Magnus Andersson asumirá el desafío de la selección noruega</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Magnus Andersson, anunciado como el futuro seleccionador de Noruega, se prepara para abrir un nuevo capítulo en su rica carrera. Un nombre muy conocido por los aficionados al balonmano francés, ya que el técnico sueco se enfrentó durante mucho tiempo a los Bleus en la era Barjots con el gran equipo sueco.  Allá</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Handnews-fr</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-02</span>
+                
+            </div>
+        </div>
+    </a>
     
     <a href="https://handnews.fr/2026/brest-sacre-champion-de-france/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/05/Ana-GROS-Brest-Handball-Credit-Mylene-CASADO-300x200.jpg" alt=""
@@ -566,6 +604,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://handnews.fr/2026/n1-franck-bulleux-sest-eteint-a-lage-de-66-ans/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2024/03/Franck-Bulleux-Martigues-credits-Guillaume-Boitiaux-300x190.jpg" alt=""
@@ -587,6 +627,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.ffhandball.fr/actualite/lactualite-federale/territoires/hand-a-4-a-lassaut-des-city-stades/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -607,6 +649,8 @@ La publicación MANO A LAS 4 – ASALTO A LOS ESTADIOS DE LA CIUDAD apareció po
     </a>
     
     <a href="https://www.ffhandball.fr/actualite/lactualite-federale/edf-u20f-le-sprint-final-est-lance/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -626,6 +670,8 @@ La publicación MANO A LAS 4 – ASALTO A LOS ESTADIOS DE LA CIUDAD apareció po
     </a>
     
     <a href="https://www.ffhandball.fr/actualite/lactualite-du-hand/pratiques-deux-tournois-presque-pour-tous-les-ages/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -645,6 +691,8 @@ La publicación MANO A LAS 4 – ASALTO A LOS ESTADIOS DE LA CIUDAD apareció po
     </a>
     
     <a href="https://www.ffhandball.fr/actualite/equipe-de-france/beach-handball/beach-handball-edf-u17f-a-fond-dans-le-sujet/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -665,6 +713,8 @@ El post Balonmano Playa – EdF U17F – En profundidad en el tema apareció por
     </a>
     
     <a href="https://www.ffhandball.fr/actualite/equipe-de-france/beach-handball/beach-handball-tour-en-rodage-a-vesseaux/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -685,6 +735,8 @@ La publicación Balonmano Playa – EdFM – Corriendo en Vesseaux apareció por
     </a>
     
     <a href="https://www.ffhandball.fr/actualite/equipe-de-france/finale-championnat-de-france-hand-fauteuil-double-gagnant-pour-lus-ledonienne/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -705,6 +757,8 @@ La final posterior al campeonato</p>
     </a>
     
     <a href="https://www.ffhandball.fr/actualite/equipe-de-france/colloque-medical-trois-questions-a/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -725,6 +779,8 @@ El post Congreso médico – Aparecen tres preguntas para Gérard Juin</p>
     </a>
     
     <a href="https://metz-handball.com/2026/05/25/metz-dijon-la-coupe-de-france-reste-en-moselle/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=metz-dijon-la-coupe-de-france-reste-en-moselle" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -744,6 +800,8 @@ El post Congreso médico – Aparecen tres preguntas para Gérard Juin</p>
     </a>
     
     <a href="https://www.ffhandball.fr/actualite/lactualite-du-hand/entretien-du-lundi/entretien-du-lundi-erick-mathe_duplicated/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -764,6 +822,8 @@ Té</p>
     </a>
     
     <a href="https://handnews.fr/2026/cdf-f-sarah-bouktit-je-la-savoure-encore-plus/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/01/Sarah-Bouktit-Metz-hb-Credit-Mylene-CASADO-1-300x199.jpg" alt=""
@@ -785,6 +845,8 @@ Té</p>
     </a>
     
     <a href="https://www.ffhandball.fr/actualite/competitions/coupe-de-france-indoor/narfem-metz-handball-pour-une-quatorzieme/" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -805,6 +867,8 @@ El post NatFem –</p>
     </a>
     
     <a href="https://www.ffhandball.fr/actualite/competitions/coupe-de-france-indoor/handfauteuil-us-ledonienne-fait-la-passe-de-deux/" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -825,6 +889,8 @@ El puesto HandArmchair – L’US Ledonienne fa</p>
     </a>
     
     <a href="https://metz-handball.com/2026/05/23/lavant-match-metz-dijon-a-une-marche-dun-exploit-historique/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=lavant-match-metz-dijon-a-une-marche-dun-exploit-historique" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -844,6 +910,8 @@ El puesto HandArmchair – L’US Ledonienne fa</p>
     </a>
     
     <a href="http://www.ihf.info/media-center/news/ferraris-alexandre-dumas-and-handball-how-does-dusjhebaev-feel-his-dream-job" target="_blank" rel="noopener"
+       data-date="2026-05-14"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="http://www.ihf.info/sites/default/files/inline-images/talant800.png" alt=""
@@ -871,12 +939,42 @@ Since 1985, France men’s senior national team had only four coaches: Daniel Co
     
 </div>
 
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
+
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

@@ -1,4 +1,5 @@
 import logging
+import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -298,6 +299,14 @@ def render_all(conn):
         (section_dir / "index.html").write_text(html, encoding="utf-8")
     logger.info("Rendered %d section pages", len(sections_data))
 
+    search_tmpl = env.get_template("search.html")
+    search_dir = OUTPUT_DIR / "search"
+    search_dir.mkdir(parents=True, exist_ok=True)
+    (search_dir / "index.html").write_text(
+        search_tmpl.render(**base_ctx), encoding="utf-8"
+    )
+    logger.info("Rendered search.html")
+
     sitemap = _render_sitemap(list(sections_data.keys()))
     (OUTPUT_DIR / "sitemap.xml").write_text(sitemap, encoding="utf-8")
     ROOT_DIR = OUTPUT_DIR.parent
@@ -308,3 +317,26 @@ def render_all(conn):
     (OUTPUT_DIR / "robots.txt").write_text(robots, encoding="utf-8")
     (ROOT_DIR / "robots.txt").write_text(robots, encoding="utf-8")
     logger.info("Rendered robots.txt")
+
+    _run_pagefind()
+
+
+PAGEFIND_BIN = Path("/tmp/pagefind")
+
+
+def _run_pagefind():
+    bin_path = PAGEFIND_BIN
+    if not bin_path.exists():
+        logger.warning("pagefind binary not found at %s, skipping search index", bin_path)
+        return
+    try:
+        result = subprocess.run(
+            [str(bin_path), "--site", str(OUTPUT_DIR), "--output-path", str(OUTPUT_DIR / "_pagefind")],
+            capture_output=True, text=True, timeout=120,
+        )
+        if result.returncode == 0:
+            logger.info("Pagefind index built")
+        else:
+            logger.warning("pagefind exited %d: %s", result.returncode, result.stderr[:200])
+    except Exception as e:
+        logger.warning("pagefind failed: %s", e)

@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,15 +536,85 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<div class="flex items-center justify-between mb-6">
+<div class="flex items-center justify-between mb-4">
     <h1 class="text-2xl font-bold text-gray-900">Todas las Noticias</h1>
     <span class="text-sm text-gray-400">Últimos 7 días</span>
 </div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Esta semana</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
+    
+    <a href="https://www.balonmano.info/ona-vegue-campeona-bundesliga-blomberg-lippe-20264610414/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.balonmano.info/wp-content/uploads/2026/06/260531_HSGBlombergLippe_BorussiaDortmund_Peters_1943-400x240.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El detalle de Ona que explica el título histórico de Blomberg-Lippe</p>
+            
+            <div class="flex items-center flex-wrap gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BalonmanoInfo</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-02</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.balonmano.info/ane-valero-ficha-elda-prestigio-20260210424/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.balonmano.info/wp-content/uploads/2026/06/ane-valero-400x240.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Elda Prestigio ya tiene nueva extremo izquierda: Ane Valero llega para agitar la banda</p>
+            
+            <div class="flex items-center flex-wrap gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BalonmanoInfo</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-02</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://handnews.fr/2026/nor-magnus-andersson-va-relever-le-defi-de-la-selection-norvegienne/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://handnews.fr/wp-content/uploads/2016/05/Andersson-Goppingen-300x177.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Noruega | Magnus Andersson asumirá el desafío de la selección noruega</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Magnus Andersson, anunciado como el futuro seleccionador de Noruega, se prepara para abrir un nuevo capítulo en su rica carrera. Un nombre muy conocido por los aficionados al balonmano francés, ya que el técnico sueco se enfrentó durante mucho tiempo a los Bleus en la era Barjots con el gran equipo sueco.  Allá</p>
+            
+            <div class="flex items-center flex-wrap gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Handnews-fr</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-02</span>
+                
+            </div>
+        </div>
+    </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/barca-liga-perfecta-record-goleador-130882908" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/89d7d277-1d7b-4b0b-9f64-3d45f9aafa4f_16-9-discover-aspect-ratio_default_0_x1051y393.webp" alt=""
@@ -561,6 +634,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.mibalonmano.com/fertiberia-puerto-sagunto-confirma-tres-bajas-temporada-26-27" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/715198293_1847186475709794n@FertiberiaPuertoSagunto.jpg" alt=""
@@ -580,6 +654,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.mibalonmano.com/david-balaguer-entra-all-star-team-starligue-francesa-25-26" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/2026-06-02-trophees-lnh-2026-equipes-types-devoilees-1026@LNH.jpg" alt=""
@@ -599,6 +674,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://fnavarrabm.com/2026/06/02/galeria-de-la-fiesta-del-balonmano-celebrada-en-noain/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://fnavarrabm.com/wp-content/uploads/2026/05/CARTEL-FIESTA-DE-BALONMANO-1140x480_c.jpeg" alt=""
@@ -617,7 +693,70 @@ document.getElementById('menu-btn').addEventListener('click', function() {
         </div>
     </a>
     
+    <a href="https://handbollskanalen.se/landslag-ungdom/har-ar-sveriges-trupp-till-u20-em-fyra-masterskapsdebutanter-far-chansen/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Aquí está la plantilla de Suecia para la CE sub-20: cuatro debutantes en el campeonato tienen la oportunidad</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Suecia viaja al EC U20 de este verano en Rumanía con grandes expectativas. Después del oro en la Eurocopa de 2024 y de la semifinal del Mundial Sub-19 del año pasado, el capitán de la selección nacional, Toni Johansson, ha presentado la selección sueca para el campeonato. La añada sueca nacida en 2006 y 2007 ha cosechado éxitos en los últimos años.</p>
+            
+            <div class="flex items-center flex-wrap gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Handbollskanalen</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-02</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://metz-handball.com/2026/06/02/metz-handball-strasbourg-une-derniere-danse-avant-le-grand-reve/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=metz-handball-strasbourg-une-derniere-danse-avant-le-grand-reve" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Balonmano Metz – Estrasburgo.  Un último baile antes del gran sueño.</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Una página pasa, otra quizá espera ser escrita con letras de oro. Antes de dirigirse a Budapest para un encuentro con la historia, el público de la Arena vivió una última tarde rica de emociones, recuerdos, promesas, marcada por una victoria final contra Stra</p>
+            
+            <div class="flex items-center flex-wrap gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MetzHandball-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-02</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.elnortedecastilla.es/segovia/promocion-obligara-nava-elegir-cinco-extranjeros-20260602104343-nt.html" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://s2.ppllstatics.com/elnortedecastilla/www/multimedia/2026/06/02/1512551045-RAtr7JmRT6QiUYbkqDL4pMN-1200x840@El%20Norte.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">La promoción obligará al Nava a elegir a cinco extranjeros</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Los dos porteros, dos extremos, el máximo goleador, un central y el especialista defensivo tienen plaza foránea</p>
+            
+            <div class="flex items-center flex-wrap gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">ElNorteCastilla-dep</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-02</span>
+                
+            </div>
+        </div>
+    </a>
+    
     <a href="https://www.latribunadeciudadreal.es/noticia/z2fcf28c2-7e2a-4797-a37540e3efa6e06a/202605/los-titanes-en-la-fiesta-del-balonmano-inclusivo" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.latribunadeciudadreal.es/media/IMG/2026/1A6EC472-320B-4352-AE4C4E40F20E2CFF.JPG" alt=""
@@ -639,6 +778,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://cbmelche.es/mario-ortiz-compaginara-la-direccion-tecnica-del-cbm-elche-y-el-banquillo-del-senior-masculino/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -660,6 +800,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.za49.es/deportes/heroes-ascenso-seguira-defendiendo-colores-zamora_1_5903993.html" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -679,6 +820,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://bmbenidorm.com/diego-perez-continuara-una-temporada-mas-en-el-balonmano-servigroup-benidorm/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -699,6 +841,7 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="https://handnews.fr/2026/lms-trois-nantais-rubens-pierre-meilleur-gardien-lequipe-type-de-starligue-devoilee/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/04/Tremblay-Montpellier-PIERRE-Rubens-LSL-le-04.04.2026-2618-300x200.jpg" alt=""
@@ -720,6 +863,7 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="https://www.handball-planet.com/rk-partizan-new-old-serbian-champions/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -739,6 +883,7 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="https://www.laopiniondezamora.es/deportes/2026/06/02/alvaro-fernandez-lalo-continuara-temporada-130920878.html" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -758,6 +903,7 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="https://www.vfl-gummersbach.de/akademieleiter-joerg-bohrmann-verlaesst-vfl-gummersbach-nach-sechs-jahren/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -777,6 +923,7 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="https://zprp.pl/archiwa/279939" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -796,6 +943,7 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="https://www.zamora24horas.com/deportes/balonmano-zamora-mantiene-bloque-ascenso-renovacion-lalo" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -815,6 +963,7 @@ La entrada Diego Pérez continuará una temporada más en el Balonmano Servigrou
     </a>
     
     <a href="http://www.ihf.info/media-center/news/madagascar-do-double-high-scoring-2026-mens-ihf-trophy-africa-zone-vii" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -839,6 +988,7 @@ Hosts Madagascar produced a memorable double at the 2026 Men&#39;s IHF Trophy �
     </a>
     
     <a href="https://alicanteplaza.es/alicanteplaza/deportesalicante/el-balonmano-inclusivo-triunfa-en-elche-con-la-celebracion-de-la-i-torrellano-cup" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://d31u1w5651ly23.cloudfront.net/articulos/articulos-1862532.jpg" alt=""
@@ -860,6 +1010,7 @@ Hosts Madagascar produced a memorable double at the 2026 Men&#39;s IHF Trophy �
     </a>
     
     <a href="https://www.muchodeporte.com/deporte-andaluz/cierre-por-todo-alto-a-la-copa-de-andalucia-de-balonmano-base-2026-2026-06-02/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://d3ikwi7vygxzy7.cloudfront.net/articulos/articulos-362910.jpg" alt=""
@@ -881,6 +1032,7 @@ Hosts Madagascar produced a memorable double at the 2026 Men&#39;s IHF Trophy �
     </a>
     
     <a href="https://www.muchodeporte.com/club-muchodeporte/club-balonmano-puente-genil/salvado-2026-06-02/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://d3ikwi7vygxzy7.cloudfront.net/articulos/articulos-359677.jpg" alt=""
@@ -902,6 +1054,7 @@ Hosts Madagascar produced a memorable double at the 2026 Men&#39;s IHF Trophy �
     </a>
     
     <a href="https://www.panamsports.org/noticias-deportivas/comienza-el-campamento-de-handball-femenino-panam-sports-en-santiago-de-chile/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.panamsports.org/wp-content/uploads/2026/06/Stgo-2023-Balonmano-FemeninoCH7I0524-scaled-e1780330714556.jpg" alt=""
@@ -923,6 +1076,7 @@ Hosts Madagascar produced a memorable double at the 2026 Men&#39;s IHF Trophy �
     </a>
     
     <a href="https://valderec.es/francisco-canizares-celebra-el-final-de-una-temporada-historica-para-el-balonmano-caserio/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://valderec.es/wp-content/uploads/2026/06/IMG_20260601_203219-850x560.jpg" alt=""
@@ -944,6 +1098,7 @@ Hosts Madagascar produced a memorable double at the 2026 Men&#39;s IHF Trophy �
     </a>
     
     <a href="https://www.radiofarodelnoroeste.es/secciones/deportes/item/38454-clavijo-destaca-el-regreso-del-rocasa-gran-canaria-a-lo-mas-alto-del-balonmano-femenino-espanol" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.radiofarodelnoroeste.es/media/k2/items/cache/bf10643f40fe3e2935cc6225e925dc8e_M.jpg" alt=""
@@ -965,6 +1120,7 @@ Hosts Madagascar produced a memorable double at the 2026 Men&#39;s IHF Trophy �
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/ein-letztes-mal-hoelle-nord" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/0/3/csm_20260407-IAJ18377_1777c68ed9.jpg" alt=""
@@ -984,6 +1140,7 @@ Hosts Madagascar produced a memorable double at the 2026 Men&#39;s IHF Trophy �
     </a>
     
     <a href="https://handbollskanalen.se/handbollsligan-dam/premaromgangen-spikad-i-handbollsligan-dam-gott-om-intressanta-matcher/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1003,6 +1160,7 @@ Hosts Madagascar produced a memorable double at the 2026 Men&#39;s IHF Trophy �
     </a>
     
     <a href="https://handbollskanalen.se/handbollsligan-herr/handbollsligan-herr-sa-spelas-premiaromgangen-2026-27-toppmote-direkt/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1022,6 +1180,7 @@ Hosts Madagascar produced a memorable double at the 2026 Men&#39;s IHF Trophy �
     </a>
     
     <a href="https://www.die-recken.de/letzte-auswaertsaufgabe-der-saison-fuehrt-die-recken-nach-mannheim/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1041,6 +1200,7 @@ Hosts Madagascar produced a memorable double at the 2026 Men&#39;s IHF Trophy �
     </a>
     
     <a href="https://www.elnortedecastilla.es/deportes/balonmano/juan-ignacio-hernandez-espero-inmensa-mayoria-jugadoras-20260602064927-nt.html" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s3.ppllstatics.com/elnortedecastilla/www/multimedia/2026/06/01/JIHernandez-RijHW5mE6Yk90zt8Qa7o7NN-1200x840@El%20Norte.jpg" alt=""
@@ -1062,6 +1222,7 @@ Hosts Madagascar produced a memorable double at the 2026 Men&#39;s IHF Trophy �
     </a>
     
     <a href="https://www.lne.es/deportes/deporte-astur/2026/06/02/mejores-norte-torneo-balonmano-playa-130910388.html" target="_blank" rel="noopener"
+       data-date="2026-06-02"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/23e628b8-9775-445e-8ef9-5d0a581f1be4_16-9-discover-aspect-ratio_default_0_x1204y812.jpg" alt=""
@@ -1083,6 +1244,7 @@ Hosts Madagascar produced a memorable double at the 2026 Men&#39;s IHF Trophy �
     </a>
     
     <a href="https://www.lanzadigital.com/provincia/ciudad-real/el-caserio-festeja-un-sueno-que-crece-apasiona-a-ciudad-real-y-le-lleva-a-seguir-haciendo-historia/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.lanzadigital.com/wp-content/uploads/2026/06/Gala-Caserio-ER-1-de-1-31.jpg" alt=""
@@ -1105,6 +1267,7 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://www.balonmano.info/el-aula-valladolid-infantil-campeon-espana-2026-20261510409/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/06/cavidel-aula-400x240.jpeg" alt=""
@@ -1126,6 +1289,7 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://handnews.fr/2026/ldc-m-limbroglio-melsungen-pour-la-ligue-des-champions/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/05/Capture-decran-2026-05-31-195831-300x186.png" alt=""
@@ -1147,6 +1311,7 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://handnews.fr/2026/proligue-terrain-aux-normes-budget-dau-moins-1-million-deuros-quelles-sont-les-conditions-pour-monter-en-deuxieme-division/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2025/09/IMG_7729-300x200.jpeg" alt=""
@@ -1168,6 +1333,7 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://www.farodevigo.es/deportes-morrazo/2026/06/01/balonman-cangas-frigorificos-morrazo-heroico-130910666.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/191fe67a-7b84-4c43-bf5d-1093da907231_16-9-aspect-ratio_default_0_x1044y464.jpg" alt=""
@@ -1189,6 +1355,7 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://www.diariovasco.com/buruntzaldea/andoain/fin-temporada-club-balonmano-leizaran-20260602211401-nt.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s2.ppllstatics.com/diariovasco/www/multimedia/2026/06/02/218609114--1200x840.jpg" alt=""
@@ -1210,6 +1377,7 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://eldiariocantabria.publico.es/articulo/deportes/bathco-balonmano-torrelavega-cierra-liga-fiesta-goles-record-emotivas-despedidas/20260601190627193776.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1229,6 +1397,7 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://www.ffhandball.fr/actualite/lactualite-du-hand/entretien-du-lundi/entretien-du-lundi-eamandine-leynaud-01062026/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1248,6 +1417,7 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://gog.dk/bjerre-saetter-ord-paa-bronzesejr-og-scoringsrekord/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1267,6 +1437,7 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://www.rhein-neckar-loewen.de/letztes-heimspiel-gewinnen-fans-noch-einmal-begeistern-971886" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1287,6 +1458,7 @@ La publicación “Gana el último partido en casa: vuelve a inspirar a los afic
     </a>
     
     <a href="https://www.rfebm.com/convocatoria-de-los-hispanos-promesas-para-los-amistosos-ante-francia-y-eslovaquia/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/06/1440x400_FotoPrincipal_web_HispanosPromesas-150x150.webp" alt=""
@@ -1309,6 +1481,7 @@ La entrada Convocatoria de los Hispanos Promesas para los amistosos ante Francia
     </a>
     
     <a href="https://www.tribunavalladolid.com/noticias/446941/valladolid-reunira-a-mas-de-300-jugadores-en-el-xi-encuentro-internacional-de-balonmano-veterano" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.tribunavalladolid.com/uploads/imagenes/images/2026/6/01/446941/20260601163408_caratula.jpg" alt=""
@@ -1330,6 +1503,7 @@ La entrada Convocatoria de los Hispanos Promesas para los amistosos ante Francia
     </a>
     
     <a href="https://gwd-minden.de/wir-empfangen-den-thw-kiel-zum-letzten-heimspiel-der-saison/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://gwd-minden.de/wp-content/uploads/2026/06/20260601_Vorbericht_GWD-THW_Web.jpg" alt=""
@@ -1351,6 +1525,7 @@ La entrada Convocatoria de los Hispanos Promesas para los amistosos ante Francia
     </a>
     
     <a href="https://thw-handball.de/bundesliga/2026/06/pflichtspiel-nummer-50-thw-kiel-kehrt-am-mittwoch-bei-gwd-minden-zurueck-in-den-liga-alltag/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1370,6 +1545,7 @@ La entrada Convocatoria de los Hispanos Promesas para los amistosos ante Francia
     </a>
     
     <a href="https://www.lanzadigital.com/provincia/manzanares/ruben-marchan-gana-la-liga-europea-ehf-con-el-melsungen/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.lanzadigital.com/wp-content/uploads/2026/06/ruben-marchan.jpg" alt=""
@@ -1395,6 +1571,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://balonmanoremudas.es/las-reinas-de-la-liga-guerreras-iberdrola-reciben-el-homenaje-del-ayuntamiento-de-telde-y-del-gobierno-de-canarias-en-una-emotiva-jornada/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1414,6 +1591,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://zprp.pl/archiwa/279935" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1433,6 +1611,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://handnews.fr/2026/d2f-saint-gregoire-sacree-champion-de-france-de-d2f/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/06/HB-Clermont-Auvergne-HB-vs-SGRMHD2-finale-victoire-187-300x169.jpg" alt=""
@@ -1454,6 +1633,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://handnews.fr/2026/ec-m-baptiste-damatrin-victime-dinsultes-a-caractere-raciste-en-finale-deuropean-cup/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2024/03/AJ1A0407-300x200.jpg" alt=""
@@ -1475,6 +1655,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-titel-in-drei-nachwuchs-kategorien-vergeben" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5983.jpeg" alt=""
@@ -1496,6 +1677,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://www.teamesbjerg.dk/2026/06/01/hjemmebanen-skal-vaere-tungen-paa-vaegtskaalen/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1515,6 +1697,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://www.marca.com/balonmano/2026/06/01/melsungen-parrondo-logra-kiel-primer-titulo-europeo.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/06/01/6a1cb298e8164.jpeg" alt=""
@@ -1534,6 +1717,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://www.mibalonmano.com/barcelona-balonmano-record-goles-anotados-temporada-liga-asobal" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/2026-05-22_FCBHANDBOLvsTORRELAVEGA_144e@FCBarcelona-VictorSalgado.jpg" alt=""
@@ -1553,6 +1737,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://www.mibalonmano.com/oriol-rey-campeon-ehf-european-cup-25-26-grk-ohrid" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/712455030_1587699546693193_n@GRKOhrid.jpg" alt=""
@@ -1572,6 +1757,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260601/1004190253/silvia-navarro-efectiva-retirada-me-triste-corazon-lleno.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/files/fp/uploads/2026/06/01/6a1dbcbe0e7d8.r_d.1500-1000-1496.jpeg" alt=""
@@ -1593,6 +1779,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://www.mibalonmano.com/gonzalo-perez-arce-maximo-goleador-liga-asobal-25-26-mejor-record-goleador-dos-decadas" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/649775782_1856986114605@AbancaAdemarLeon-AMProducciones.jpg" alt=""
@@ -1612,6 +1799,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://cadenaser.com/comunitat-valenciana/2026/06/01/el-viveros-herol-nava-ultimo-escollo-de-agustinos-para-alcanzar-la-liga-asobal-radio-alicante/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/PDGEAO4T3RDQBL66JCQVOIPZ7E.jpg?auth=d4c35822a76f521cf5f5cf096c0959b3110d410d715e098ef7e82657c21de032&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -1631,6 +1819,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://cadenaser.com/galicia/2026/06/01/el-cangas-sigue-siendo-de-asobal-radio-vigo/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/VSSU32HXPJEBRLFZIGSMB4PI2A.jpg?auth=2d08948907d1693a96a2df0839a69a2f7132a7ad362e717f00ff5d61143efe54&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -1650,6 +1839,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="https://www.mibalonmano.com/pau-guitart-no-evita-descenso-hsg-krefeld-niederrhein-bundesliga" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/632565759_1502811751847433_n@HSGKrefeld.jpg" alt=""
@@ -1668,7 +1858,28 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
         </div>
     </a>
     
+    <a href="https://www.cathandbol.cat/base/cadet/item/13233-campionat-españa-cadet-masculí.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.cathandbol.cat/media/k2/items/cache/df4daa7c387f80cb0de58d664bca4b7f_M.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Barça plata y el Granollers bronce en el estatal cadete</p>
+            
+            <div class="flex items-center flex-wrap gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CatHandbol</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-01</span>
+                
+            </div>
+        </div>
+    </a>
+    
     <a href="https://gog.dk/gogs-talentfabrik-leverer-igen-fire-hold-fire-medaljer/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1688,6 +1899,7 @@ En un apasionante duelo en el que tuvieron gran peso las defensas y l</p>
     </a>
     
     <a href="http://www.ihf.info/media-center/news/italys-new-era-under-bob-hanning-victory-loves-preparation" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="http://www.ihf.info/sites/default/files/inline-images/hanning.jpg" alt=""
@@ -1714,6 +1926,7 @@ Only days after Italy concluded its campaign at the 2025 IHF Men’s World Champ
     </a>
     
     <a href="https://bmgranollers.cat/el-fraikin-bm-granollers-tanca-la-temporada-amb-una-victoria-i-certifica-europa/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1733,6 +1946,7 @@ Only days after Italy concluded its campaign at the 2025 IHF Men’s World Champ
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-auftakt-zum-finalevent-im-junior-handball-schulcup-2026" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5982.jpg" alt=""
@@ -1754,6 +1968,7 @@ Only days after Italy concluded its campaign at the 2025 IHF Men’s World Champ
     </a>
     
     <a href="https://fandaluzabm.org/portada/cierre-por-todo-alto-a-la-copa-de-andalucia-de-balonmano-base-2026/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1775,6 +1990,7 @@ Only days after Italy concluded its campaign at the 2025 IHF Men’s World Champ
     </a>
     
     <a href="https://www.handball-planet.com/celje-pl-claim-27th-slovenian-championship-title-after-stunning-play-off-final-win/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1794,6 +2010,7 @@ Only days after Italy concluded its campaign at the 2025 IHF Men’s World Champ
     </a>
     
     <a href="https://clubbalonmanopuentegenil.es/liga-nexus-energia-asobal-el-cajasol-angel-ximenez-logra-la-permanencia-a-pesar-de-caer-en-cangas-32-30/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1813,6 +2030,7 @@ Only days after Italy concluded its campaign at the 2025 IHF Men’s World Champ
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-nationalteamspieler-elias-kofler-unterzeichnet-vier-jahres-vertrag-in-hamburg" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5981.jpg" alt=""
@@ -1834,6 +2052,7 @@ Only days after Italy concluded its campaign at the 2025 IHF Men’s World Champ
     </a>
     
     <a href="https://www.vfl-gummersbach.de/grosses-fanfest-zum-saisonfinale-rund-um-den-letzten-heimspieltag/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1853,6 +2072,7 @@ Only days after Italy concluded its campaign at the 2025 IHF Men’s World Champ
     </a>
     
     <a href="https://eldeporteconquense.com/noticias/balonmano-noticias/cuenca-vuelve-a-convertirse-en-la-capital-del-balonmano-inclusivo-con-mas-de-medio-centenar-de-participantes-en-el-sargal/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://eldeporteconquense.com/wp-content/uploads/2026/05/Torneo-Inclusivo-0-8.jpg" alt=""
@@ -1874,6 +2094,7 @@ Only days after Italy concluded its campaign at the 2025 IHF Men’s World Champ
     </a>
     
     <a href="https://www.rhein-neckar-loewen.de/timmermeister-fehlt-den-loewen-im-saisonendspurt-971876" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1894,6 +2115,7 @@ La publicación Timmermeister no está en los Leones en el último tramo de la t
     </a>
     
     <a href="http://www.ihf.info/media-center/news/sydney-uni-and-uq-secure-title-again-australian-handball-club-championships" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1918,6 +2140,7 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="https://handbollskanalen.se/el-herrar/european-league-klappat-och-klart-axel-mansson-vann-skytteligan/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1937,6 +2160,7 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="https://handbollskanalen.se/ovriga-europa/avslojar-amelia-lundback-klar-for-csm-slatina/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1956,6 +2180,7 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="https://www.handball-planet.com/mt-melsungen-claim-first-trophy-in-club-history/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1975,6 +2200,7 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="https://www.vfl-gummersbach.de/gummersbach-gastiert-beim-neuen-deutschen-meister-in-magdeburg/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1994,6 +2220,7 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="https://www.handball-planet.com/hc-ohrid-finish-fairytale-season-with-ehf-cup-triumph/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2013,6 +2240,7 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="https://handbollskanalen.se/varlden/proffskollen-herr-15-poang-av-joelsson-mot-fuchse-berlin/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2032,6 +2260,7 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="https://handnews.fr/2026/hon-ferencvaros-en-difficulte-financiere-dans-la-tourmente/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/05/Capture-decran-2026-05-30-155144-300x196.png" alt=""
@@ -2053,6 +2282,7 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/noch-enttaeuscht" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/3/6/csm_20260531-IAJ30346_9bcbe38383.jpg" alt=""
@@ -2072,6 +2302,7 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="https://www.segre.com/es/deportes/260601/joana-bolling-nuevo-fichaje-del-lleida-handbol_1225368.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes.segre.com/files/og_thumbnail/uploads/2026/06/01/6a1cfeec75ee8.webp" alt=""
@@ -2093,6 +2324,7 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="https://handbollskanalen.se/varlden/proffskollen-dam-lindqvist-hjalte-for-ikast/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2112,6 +2344,7 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="https://teldeactualidad.com/art/181506/clavijo-pena-elogian-rocasa-devolver-canarias-cima-balonmano-femenino" target="_blank" rel="noopener"
+       data-date="2026-06-01"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://teldeactualidad.com/upload/images/06_2026/3197_rocasa-recepcion-institucional.jpg" alt=""
@@ -2133,6 +2366,7 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="https://www.noticiasdegipuzkoa.eus/balonmano/2026/05/31/super-amara-bera-bera-pierde-rocasa-liga-guerreras-iberdrola-11140423.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticosgn-cdn.deia.eus/clip/1dded969-564e-4ba8-b8f4-a8715f61bba0_16-9-aspect-ratio_default_0.jpg" alt=""
@@ -2154,6 +2388,7 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-mga-fivers-2-steigen-in-die-wha-challenge-auf" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/4369.jpg" alt=""
@@ -2175,6 +2410,7 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="http://www.ihf.info/media-center/news/mt-melsungen-slay-giants-secure-first-ever-trophy" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2199,6 +2435,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://balonmanoremudas.es/el-rocasa-gran-canaria-se-corona-campeon-de-la-liga-guerreras-iberdrola/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2218,6 +2455,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://thw-handball.de/european-league/2026/05/silber-fuer-die-zebras-finale-abwehrschlacht-findet-in-der-mt-melsungen-ihren-ehf-european-league-sieger/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2237,6 +2475,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-legionaerinnen-uebersicht-mykola-bilyk-holt-silber-in-der-ehf-european-league" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5960.jpg" alt=""
@@ -2258,6 +2497,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://berabera.com/es/secciones/balonmano/noticias/13971-super-amara-bera-bera-no-evita-el-titulo-de-rocasa-26-23" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://berabera.com//images/Balonmano/2025-26/Amores_rocasa_baja.png" alt=""
@@ -2279,6 +2519,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://as.com/masdeporte/el-rocasa-conquista-su-segunda-liga-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/7R2VE3WZ2RPQFN32X4LL4ODZXE.jpg?auth=d22004ce10a8fe3abc4423c68188dda661cc3b39c4bb5234c65cd3227652091b" alt=""
@@ -2300,6 +2541,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.elnortedecastilla.es/segovia/nava-suspende-primera-convocatoria-seguir-asobal-20260531213341-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s1.ppllstatics.com/elnortedecastilla/www/multimedia/2026/05/31/1512496255-RX9Vq9961WPCpbZrkGh4U9H-1200x840@El%20Norte.jpg" alt=""
@@ -2321,6 +2563,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-hypo-noe-verteidigt-erfolgreich-den-titel" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5980.jpg" alt=""
@@ -2342,6 +2585,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://hsg-blomberg-lippe.de/2026/05/31/hsg-wird-deutscher-meister/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2361,6 +2605,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://handnews.fr/2026/proligue-1-2-retour-ivry-affrontera-caen-en-finale/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2025/12/72A3125-300x200.jpg" alt=""
@@ -2382,6 +2627,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://handbollskanalen.se/danmark-herrar/landins-straffraddning-sakrade-finalsegern/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2401,6 +2647,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://gog.dk/gog-vinder-foerste-bronzekamp-over-mors-thy/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2420,6 +2667,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.bsv-live.de/sieg-in-zwickau-bsv-springt-noch-auf-platz-7/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.bsv-live.de/wp-content/uploads/2026/05/Vorbericht_Nachbericht-8.png" alt=""
@@ -2441,6 +2689,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://zprp.pl/archiwa/279913" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2460,6 +2709,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://handbollskanalen.se/el-herrar/melsungen-europeiska-mastare-efter-rysare-mot-kiel/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2479,6 +2729,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/bronze-fuer-die-sg" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/c/d/csm_20260531-IAJ38983_9e3f143487.jpg" alt=""
@@ -2498,6 +2749,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.heraldo.es/noticias/deportes/balonmano/2026/05/31/dominicos-zaragoza-gana-campeonato-espana-cadete-masculino-2025013.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes.heraldo.es/files/image_1920_1080/uploads/imagenes/2026/05/31/6a1c5b75585329-19619898.jpeg" alt=""
@@ -2519,6 +2771,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://handnews.fr/2026/el-m-melsungen-soffre-le-premier-titre-europeen-de-son-histoire/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/05/Screenshot_2026-05-31-22-02-43-161_com.facebook.katana-edit-300x227.jpg" alt=""
@@ -2540,6 +2793,7 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="https://www.lanzadigital.com/deportes/balonmano/division-de-honor-masculina-balonmano/el-granollers-asegura-la-tercera-plaza-a-costa-de-un-caserio-que-siempre-fue-a-remolque/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.lanzadigital.com/wp-content/uploads/2026/05/BM-Caserio-La-Nava-_-Clara-Manzano-216-1299x730.jpg.webp" alt=""
@@ -2565,6 +2819,7 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.nrk.no/sport/storhamar-ble-sluttspillmester-_-slo-sola-igjen-etter-sjokkapning-1.17903177" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://gfx.nrk.no/8otbd-AJkUqdtAz3ahlRew6Ycbaf1K9LM7LUNpfvxrqA.jpg" alt=""
@@ -2587,6 +2842,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://handnews.fr/2026/el-m-montpellier-echoue-au-pied-du-podium/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2025/12/IMG_9428-300x200.jpg" alt=""
@@ -2608,6 +2864,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://handnews.fr/2026/brest-sacre-champion-de-france/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/05/Ana-GROS-Brest-Handball-Credit-Mylene-CASADO-300x200.jpg" alt=""
@@ -2629,6 +2886,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://handnews.fr/2026/pol-industria-kielce-sacre-pour-la-21eme-fois-de-son-histoire/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/05/73538b57-3e70-ad84-dac6-a5258924af4c-300x200.jpeg" alt=""
@@ -2650,6 +2908,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://gog.dk/gog-skriver-kontrakt-med-stort-playmaker-talent/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2669,6 +2928,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.handball-planet.com/industria-kielce-reclaim-polish-crown-with-dominant-win-over-wisla-plock/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2688,6 +2948,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.elnortedecastilla.es/deportes/balonmano/aula-despide-elite-trece-anos-despues-20260530220908-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s3.ppllstatics.com/elnortedecastilla/www/multimedia/2026/05/30/1512454623-Rl3Pgi7x4IrTCDCD8hUphIM-1200x840@El%20Norte.jpg" alt=""
@@ -2709,6 +2970,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://handnews.fr/2026/hon-veszprem-remporte-la-finale-aller-avec-14-buts-de-hugo-descat/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/05/PR0_8265-300x200.jpg" alt=""
@@ -2730,6 +2992,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.noticiasdealava.eus/deportes/2026/05/31/homenaje-fiesta-balonmano-iv-memorial-gure-auzune-pedro-amurrio-11138310.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticosgn-cdn.deia.eus/clip/91b002b2-3488-4909-8363-ae2bf9dc5883_16-9-aspect-ratio_default_0.jpg" alt=""
@@ -2751,6 +3014,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://handnews.fr/2026/sui-lucerne-sacre-champion-pour-la-1ere-fois-avec-kevin-bonnefoi/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/05/Screenshot_2026-05-31-15-26-44-643_com.facebook.katana-edit-300x200.jpg" alt=""
@@ -2772,6 +3036,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.mibalonmano.com/industria-kielce-campeon-liga-polaca-alex-dujshebaev-estelar-10-goles" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/3bdb83fa-99fc-294a-5c97-fd253f0b379c@IndustriaKielce.jpg" alt=""
@@ -2791,6 +3056,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.mibalonmano.com/ultima-jornada-liga-asobal-decide-plazas-europeas-promocion-descenso" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/DSC07426sww@BMPuenteGenil.jpg" alt=""
@@ -2810,6 +3076,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.marca.com/balonmano/2026/05/31/rocasa-vence-telde-super-amara-bera-bera-conquista-segundo-cetro-liguero.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/31/6a1c9482e30d9.jpeg" alt=""
@@ -2829,6 +3096,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.marca.com/balonmano/liga-asobal/2026/05/31/barca-cierra-liga-pleno-victorias-nava-jugara-promocion-descenso.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/31/6a1c8ab624445.jpeg" alt=""
@@ -2848,6 +3116,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189887/melsungen-aleman-proclama-campeon-liga-europea-ehf-costa-kiel.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/uploads/2026/05/31/6a1c81e21e17a.jpeg" alt=""
@@ -2867,6 +3136,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189872/38-29-granollers-acaba-tercero-clasifica-europa.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_221/uploads/2026/05/20/6a0e08e4c6c42.jpeg" alt=""
@@ -2886,6 +3156,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189871/record-goleador-historico-barca-liga-asobal-2025-2026.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_221/uploads/2026/02/11/698caa6f49a07.jpeg" alt=""
@@ -2905,6 +3176,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189849/28-41-barca-firma-pleno-puntos-liga-asobal.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_150_155/files/fp/uploads/2026/04/09/69d80236363f8.r_d.1474-767-523.jpeg" alt=""
@@ -2924,6 +3196,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189330/logrono-rioja-barca-directo-liga-asobal-balonmano-vivo.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_150_155/uploads/2026/05/22/6a10b876191a6.jpeg" alt=""
@@ -2943,6 +3216,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.mibalonmano.com/mt-melsungen-campeon-ehf-european-league-25-26-nebojsa-simic-mvp" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/csm_Simic_HH_HF_36384fcdee@MTMelsungen-Kassler.jpg" alt=""
@@ -2962,6 +3236,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.mibalonmano.com/asi-finaliza-liga-nexus-energia-asobal-25-26-puestos-europeos-descensos-promocion" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/2026-05-22_FCBHANDBOLvsTORRELAVEGA_117@FCBarcelona-VictorSalgado.jpg" alt=""
@@ -2981,6 +3256,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.cdbidasoa.eus/2026/05/31/victoria-para-cerrar-la-temporada-liguera-30-36/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cdbidasoa.eus/wp-content/uploads/2026/05/dsc7334-juan-alberto-lillo-960x720.jpg" alt=""
@@ -3000,6 +3276,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://balonmanotorrelavega.com/2026/05/31/bm-torrelavega-guadalajara-cronica-5/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYwIiBoZWlnaHQ9IjE3MDciIHZpZXdCb3g9IjAgMCAyNTYwIDE3MDciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjZmQ0ZGIiLz48L3N2Zz4=" alt=""
@@ -3019,6 +3296,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.marca.com/balonmano/balonmano-femenino/2026/05/31/remudas-vence-telde-bera-bera-conquista-segunda-liga.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/06/01/6a1cb75f0e082.jpeg" alt=""
@@ -3038,6 +3316,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189922/26-23-rocasa-vuelve-coronarse-campeon-liga-femenina-siete-anos.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/uploads/2026/05/31/6a1c98039f58b.jpeg" alt=""
@@ -3057,6 +3336,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.cathandbol.cat/elit/lliga-asobal/item/13238-2026-05-31-22-25-57.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/ce124d9ec5af0d86432db50661a61149_XL.jpg" alt=""
@@ -3076,6 +3356,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.balonmano.info/teresa-alvarez-descenso-20265810399/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/teresa-alvarez-400x240.jpg" alt=""
@@ -3097,6 +3378,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://cadenaser.com/aragon/2026/05/31/triste-derrota-en-alicante-en-la-despedida-del-bada-huesca-de-la-asobal-radio-huesca/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/WMILR5YYTBBEFEN7CA75DZAUOE.jpg?auth=d9f3a25968e8ae3ac6430cb847f74fa9e8a582799ab569ca8cf5159cb23cb2c7&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -3116,6 +3398,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://cadenaser.com/castillayleon/2026/05/31/el-villa-de-aranda-o-una-gran-familia-que-se-queda-en-asobal-radio-aranda/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/DPM3Q4YJ4FBKHNZZSLST4GDGH4.jpeg?auth=c54aaa902f1c661f3f19fcc7a02891d6950f0f55a15da7e75b0cfbca3aad6953&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -3135,6 +3418,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/barca-supera-barrera-1-200-130867900" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/418f3f9f-b31e-4436-bba6-c2d608167d13_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -3154,6 +3438,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://zprp.pl/archiwa/279908" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3173,6 +3458,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://zprp.pl/archiwa/279931" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3192,6 +3478,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://handnews.fr/2026/n1-franck-bulleux-sest-eteint-a-lage-de-66-ans/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2024/03/Franck-Bulleux-Martigues-credits-Guillaume-Boitiaux-300x190.jpg" alt=""
@@ -3213,6 +3500,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.handball-planet.com/thw-kiel-and-mt-melsungen-for-the-ehf-european-league-title/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3232,6 +3520,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://handbollskanalen.se/el-herrar/play-melsungen-till-historisk-final-besegrade-flensburg/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3251,6 +3540,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://handbollskanalen.se/el-herrar/play-johansson-och-wolff-bakom-kiels-finalavancemang/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3270,6 +3560,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://kolstad-handball.no/2026/05/31/kolstad-elite-camp-2025/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3289,6 +3580,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-wha-all-star-team-patricia-mihalics-zum-mvp-gewaehlt" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5979.jpg" alt=""
@@ -3310,6 +3602,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.cartv.es/aragondeporte/nuestro-deporte/el-balonmano-dominicos-campeon-de-espana-cadete-masculino" target="_blank" rel="noopener"
+       data-date="2026-05-31"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cartv.es/thumbs/fullwidthtablet/2026-05/dominicostitulo.png" alt=""
@@ -3331,6 +3624,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.diariodeleon.es/deportes/260530/2086731/ademar-cae-visita-aranda.html" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes.diariodeleon.es/files/og_thumbnail/uploads/2026/05/30/6a1b475e1428c.jpeg" alt=""
@@ -3352,6 +3646,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-euro-quali-oesterreich-empfaengt-norwegen-im-maerz-in-der-steffl-arena" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5976.jpg" alt=""
@@ -3373,6 +3668,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-bregenz-schwaz-und-graz-bleiben-in-der-hla-meisterliga" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5978.jpg" alt=""
@@ -3394,6 +3690,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-hla-challenge-atzgersdorf-steigt-in-die-meisterliga-auf" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5977.jpg" alt=""
@@ -3415,6 +3712,7 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.rfebm.com/ligaguerrerasiberdrola-sigue-en-directo-la-jornada-de-la-competicion-liguera/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/foto_1585035_201077_c47oydvr90_HI7A7238-150x150.webp" alt=""
@@ -3437,6 +3735,7 @@ La entrada Caja Rural Aula Valladolid no logra la permanecia pese </p>
     </a>
     
     <a href="https://www.rfebm.com/cd-iplacea-campeon-por-partida-doble/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/bannerrr-150x150.webp" alt=""
@@ -3459,6 +3758,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://www.die-recken.de/rueckraumspieler-schliesst-sich-dauerhaft-der-sg-bbm-bietigheim-an/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3478,6 +3778,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://gog.dk/foerste-bronzekamp-venter-i-arena-svendborg/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3497,6 +3798,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://thw-handball.de/european-league/2026/05/mt-melsungen-ist-nach-klarem-erfolg-gegen-titelverteidiger-flensburg-finalgegner-der-zebras/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3516,6 +3818,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://www.teamesbjerg.dk/2026/05/30/manglende-skarphed-betyder-tredje-og-afgoerende-kamp-om-guldet/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3535,6 +3838,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://www.ehh.no/2026/05/30/sesongavslutning-med-samhold-glede-og-lagand/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3554,6 +3858,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://as.com/masdeporte/el-bera-bera-piensa-en-remontar-la-final-al-rocasa-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/CQPNBE3U6BALHPSQEUNBNX4I4A.jpg?auth=82eb69bce10a4dce9ff161f73cdef819b08955cd018c59b700d69077fcadbef7" alt=""
@@ -3575,6 +3880,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://handnews.fr/2026/el-melsungen-surclasse-flensburg-et-rejoint-kiel-en-finale/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2022/08/AT3W2313-300x200.jpg" alt=""
@@ -3596,6 +3902,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://www.sg-flensburg-handewitt.de/news/artikel/samstag" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://sg-flensburg-handewitt.de/fileadmin/_processed_/c/c/csm_20260530-IAJ35393_ae825b6673.jpg" alt=""
@@ -3615,6 +3922,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://metz-handball.com/2026/05/30/metz-strasbourg-votre-programme-danimations/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=metz-strasbourg-votre-programme-danimations" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3634,6 +3942,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://thw-handball.de/spielbericht/2026/05/der-traum-lebt-weiter-wir-sind-kiel-steht-nach-krimi-gegen-montpellier-im-finale/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3653,6 +3962,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://handnews.fr/2026/el-m-montpellier-defait-par-le-thw-kiel/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2025/04/imago1060936832-300x168.webp" alt=""
@@ -3674,6 +3984,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://handbollskanalen.se/damallsvenskan/karra-hf-varvar-elin-akesson-klar-for-damallsvenska-toppklubben/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3693,6 +4004,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://www.spiegel.de/sport/handball-thw-kiel-die-gruende-fuer-die-krise-und-wege-zurueck-an-die-spitze-a-64a60d5a-5f6e-44a1-8155-12bfe396d3ce#ref=rss" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cdn.prod.www.spiegel.de/images/2d0a0a9d-6f40-4ee3-b4ed-4ec8af122fad_w520_r2.08_fpx52_fpy47.jpg" alt=""
@@ -3714,6 +4026,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260530/1004189182/gonzalo.html" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/files/fp/uploads/2025/11/16/69190e7d1801a.r_d.496-294-4490.jpeg" alt=""
@@ -3733,6 +4046,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://balonmanotorrelavega.com/2026/05/30/bm-torrelavega-guadalajara-previa-7/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYwIiBoZWlnaHQ9IjE3MDciIHZpZXdCb3g9IjAgMCAyNTYwIDE3MDciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjZmQ0ZGIiLz48L3N2Zz4=" alt=""
@@ -3752,6 +4066,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260530/1004189428/barca-pleno-cierre-liga-asobal.html" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/files/fp/uploads/2026/05/06/69fbaeb90c608.r_d.1085-680-1998.jpeg" alt=""
@@ -3771,6 +4086,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260530/1004189393/ensayo-general-copa-horneo-alicante-descendido-huesca.html" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_221/files/fp/uploads/2026/04/11/69da82e5c61b3.r_d.1021-803-2192.jpeg" alt=""
@@ -3790,6 +4106,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://www.mibalonmano.com/thw-kiel-jugara-final-ehf-european-league-andy-wolff-heroe" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/HJj7di8WIAICX3s@EHF.jpg" alt=""
@@ -3809,6 +4126,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://www.mibalonmano.com/mt-melsungen-desarbola-flensburg-handewitt-jugara-final-ehf-european-league-26-ante-kiel" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/20260530-elm-main-12@EHF-kolektiff.jpg" alt=""
@@ -3828,6 +4146,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://www.mibalonmano.com/barcelona-balonmano-viaja-logrono-petar-cikusa-recuperado-pleno-victorias" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/BAR-A_GRANOLLERS-69@FCBarcelona-JoanVidal.jpg" alt=""
@@ -3847,6 +4166,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://www.balonmano.info/aula-valladolid-elda-play-down-descenso-oro-20260010396/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/aula-elda-400x240.jpg" alt=""
@@ -3868,6 +4188,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://cadenaser.com/castillayleon/2026/05/30/el-ademar-cierra-con-derrota-en-aranda-una-triste-campana-35-33-radio-leon/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/FNB4XW7ZTREG7MCOM3UYB5MCWY.jpeg?auth=652487a5136532dbd85b175d8d16113614bca2f3782efff7d06059c03edcf278&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -3887,6 +4208,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://balonmanoremudas.es/el-rocasa-gran-canaria-recibe-al-super-amara-bera-bera-en-el-pabellon-antonio-moreno-con-el-titulo-de-liga-en-juego/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3906,6 +4228,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://handbollskanalen.se/norge/ligatiteln-sakrad-jeppsson-nu-utsedd-till-arets-spelare-i-norge/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3925,6 +4248,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://handbollskanalen.se/handbollsligan-dam/zubonja-lamnar-kungalv-klar-for-onnered-visat-att-hon-kan-ta-stort-ansvar/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3944,6 +4268,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://metz-handball.com/2026/05/30/lavant-match-metz-strasbourg-lemotion-plus-que-le-frisson/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=lavant-match-metz-strasbourg-lemotion-plus-que-le-frisson" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3963,6 +4288,7 @@ La entrada Cd Iplacea, campeón por partida doble se publicó primero en RFEBM.<
     </a>
     
     <a href="https://www.ffhandball.fr/actualite/lactualite-federale/territoires/hand-a-4-a-lassaut-des-city-stades/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -3983,6 +4309,7 @@ La publicación MANO A LAS 4 – ASALTO A LOS ESTADIOS DE LA CIUDAD apareció po
     </a>
     
     <a href="https://thw-handball.de/weitere/2026/05/vom-jung-zebra-zum-u19-weltmeister-profi-handballer-rasmus-ankermann-zu-gast-bei-auf-der-platte/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -4002,6 +4329,7 @@ La publicación MANO A LAS 4 – ASALTO A LOS ESTADIOS DE LA CIUDAD apareció po
     </a>
     
     <a href="https://www.handball-planet.com/61062-2/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -4022,6 +4350,7 @@ Th</p>
     </a>
     
     <a href="https://handnews.fr/2026/lms-j28-le-pauc-asphyxie-toulouse-dijon-et-istres-se-quittent-dos-a-dos/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/05/2026.05.29-PAUC_Toulouse-002-300x200.jpg" alt=""
@@ -4043,6 +4372,7 @@ Th</p>
     </a>
     
     <a href="https://handbollskanalen.se/handbollsligan-herr/3-punkter-efter-hk-malmo-ifk-kristianstad-finalhetsen-tack-for-showen-mansson-roganvovic-imponerande-ifk/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -4062,6 +4392,7 @@ Th</p>
     </a>
     
     <a href="https://handbollskanalen.se/handbollsligan-herr/extra-sm-guld-till-ifk-kristianstad-klubbens-tionde/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -4081,6 +4412,7 @@ Th</p>
     </a>
     
     <a href="https://handnews.fr/2026/lms-lourde-blessure-pour-mathieu-grebille/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2025/09/GREBILLE-Mathieu-Paris-Montpellier-Trophee-des-Champions-le-30-aout-2025-6149-300x200.jpg" alt=""
@@ -4102,6 +4434,7 @@ Th</p>
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-saisonabschluss-fuer-den-jahrgang-2008-der-frauen" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5625.jpeg" alt=""
@@ -4123,6 +4456,7 @@ Th</p>
     </a>
     
     <a href="https://clubbalonmanopuentegenil.es/liga-nexus-energia-asobal-a-por-la-ultima-batalla-en-cangas/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -4142,6 +4476,7 @@ Th</p>
     </a>
     
     <a href="https://todohandball.com/argentina/cual-es-el-grupo-de-la-muerte-de-la-libertadores-de-handball-2026/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -4161,6 +4496,7 @@ Th</p>
     </a>
     
     <a href="https://handnews.fr/2026/proligue-fin-de-saison-pour-le-gardien-de-pontault-combault-lorenzo-gustave/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2025/09/DSC1895-300x234.jpg" alt=""
@@ -4182,6 +4518,7 @@ Th</p>
     </a>
     
     <a href="https://www.bmsinfin.com/2026/05/29/comunicado-oficial-fabrizio-casanova-experiencia-y-talento-para-el-lateral-izquierdo-del-blendio-sinfin-santander/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -4201,6 +4538,7 @@ Th</p>
     </a>
     
     <a href="http://www.ihf.info/media-center/news/2026-ihf-beach-handball-global-tour-stage-2-teams-confirmed-and-match-schedule" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="http://www.ihf.info/sites/default/files/inline-images/bgt.png" alt=""
@@ -4228,6 +4566,7 @@ Płock, Poland is the</p>
     </a>
     
     <a href="https://berabera.com/es/secciones/balonmano/noticias/13969-podemos-ganar-a-rocasa-domingo-telde-18-45-h-local" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://berabera.com//images/Balonmano/2025-26/Imanol_rocsasa_final.jpg" alt=""
@@ -4249,6 +4588,7 @@ Płock, Poland is the</p>
     </a>
     
     <a href="https://handbollskanalen.se/herrallsvenskan/total-ombyggnad-i-drott-fem-tunga-ligatalanger-klara-pa-kort-tid/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -4268,6 +4608,7 @@ Płock, Poland is the</p>
     </a>
     
     <a href="https://www.balonmano.info/rebeca-lopez-despedida-balonmano-26-anos-20265410354/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/rebeca-lopez-400x240.jpg" alt=""
@@ -4289,6 +4630,7 @@ Płock, Poland is the</p>
     </a>
     
     <a href="https://www.balonmano.info/guerreras-universitarias-convocatoria-mundial-2026-20261010362/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2024/06/guerreras-campeonas_universitarias-400x240.jpg" alt=""
@@ -4310,6 +4652,7 @@ Płock, Poland is the</p>
     </a>
     
     <a href="https://www.balonmano.info/nathalia-baliana-ficha-cicar-lanzarote-20261010367/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/nathaliana-bailana-400x240.jpg" alt=""
@@ -4331,6 +4674,7 @@ Płock, Poland is the</p>
     </a>
     
     <a href="https://www.bmmalagacostadelsol.com/parte-medico-estitxu-berasategi.htm" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -4350,6 +4694,7 @@ Płock, Poland is the</p>
     </a>
     
     <a href="https://www.mibalonmano.com/gonzalo-perez-vargas-busca-hamburgo-primer-titulo-thw-kiel" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/imgthwdemage@THWKiel-SaschaKlahn.jpg" alt=""
@@ -4369,6 +4714,7 @@ Płock, Poland is the</p>
     </a>
     
     <a href="https://www.mibalonmano.com/ubu-san-pablo-burgos-anuncia-seis-bajas-temporada-26-27" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/cefdd772-e658-4b42-92bdf02641ac68da@UBUSanPabloBurgos.jpg" alt=""
@@ -4388,6 +4734,7 @@ Płock, Poland is the</p>
     </a>
     
     <a href="https://www.cdbidasoa.eus/2026/05/29/va-a-ser-un-partido-complicado/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cdbidasoa.eus/wp-content/uploads/2026/05/web-rdp-j30-liganexusasobal-cqnbid-960x720.jpg" alt=""
@@ -4406,149 +4753,42 @@ Płock, Poland is the</p>
         </div>
     </a>
     
-    <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-iker-romero-ist-trainer-der-saison-der-2.-deutschen-bundesliga" target="_blank" rel="noopener"
-       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
-        
-        <img src="https://www.oehb.at/files/img/5649.jpg" alt=""
-             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
-             onerror="this.style.display='none'">
-        
-        <div class="flex-1 min-w-0">
-            <p class="font-semibold leading-snug line-clamp-2">Iker Romero es el entrenador de la temporada de la 2ª Bundesliga alemana</p>
-            
-            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Los entrenadores y directores generales de la 2.ª HBL han elegido: Iker Romero del SG BBM Bietigheim es “Entrenador de la temporada 2025/26” de la 2.ª Bundesliga de balonmano. El premio será entregado al español de 45 años durante su último partido en casa contra el SG BBM Bietigheim el 30 de mayo de 202</p>
-            
-            <div class="flex items-center flex-wrap gap-2 mt-2">
-                <span class="text-xs font-medium text-gray-600">OEHB-Austria</span>
-                <span class="text-gray-300">·</span>
-                <span class="text-xs text-gray-400">2026-05-29</span>
-                
-            </div>
-        </div>
-    </a>
-    
-    <a href="https://www.mundodeportivo.com/balonmano/20260529/1004189067/hay-juego-ultima-jornada-liga-asobal.html" target="_blank" rel="noopener"
-       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
-        
-        <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/files/fp/uploads/2026/05/25/6a14a2b39204f.r_d.1759-610-2099.jpeg" alt=""
-             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
-             onerror="this.style.display='none'">
-        
-        <div class="flex-1 min-w-0">
-            <p class="font-semibold leading-snug line-clamp-2">¿Qué hay en juego en la última jornada de la Liga ASOBAL?</p>
-            
-            <div class="flex items-center flex-wrap gap-2 mt-2">
-                <span class="text-xs font-medium text-gray-600">MundoDeportivo-Balonmano</span>
-                <span class="text-gray-300">·</span>
-                <span class="text-xs text-gray-400">2026-05-29</span>
-                
-            </div>
-        </div>
-    </a>
-    
-    <a href="https://www.marca.com/balonmano/liga-asobal/2026/05/29/esto-joya-hispanos-marcos-fis-ficho-barca.html" target="_blank" rel="noopener"
-       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
-        
-        <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/27/bBo7I1g5op28vyY2b.jpeg" alt=""
-             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
-             onerror="this.style.display='none'">
-        
-        <div class="flex-1 min-w-0">
-            <p class="font-semibold leading-snug line-clamp-2">Por esto la joya de los &#39;Hispanos&#39; Marcos Fis fichó por el Barça</p>
-            
-            <div class="flex items-center flex-wrap gap-2 mt-2">
-                <span class="text-xs font-medium text-gray-600">Marca-Balonmano</span>
-                <span class="text-gray-300">·</span>
-                <span class="text-xs text-gray-400">2026-05-29</span>
-                
-            </div>
-        </div>
-    </a>
-    
-    <a href="https://www.marca.com/balonmano/liga-asobal/2026/05/29/frigorificos-puente-genil-final-permanencia-ultima-jornada.html" target="_blank" rel="noopener"
-       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
-        
-        <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/29/6a19a0f00a3a4.jpeg" alt=""
-             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
-             onerror="this.style.display='none'">
-        
-        <div class="flex-1 min-w-0">
-            <p class="font-semibold leading-snug line-clamp-2">Cangas-Puente Genil, una final por la permanencia en la última jornada</p>
-            
-            <div class="flex items-center flex-wrap gap-2 mt-2">
-                <span class="text-xs font-medium text-gray-600">Marca-Balonmano</span>
-                <span class="text-gray-300">·</span>
-                <span class="text-xs text-gray-400">2026-05-29</span>
-                
-            </div>
-        </div>
-    </a>
-    
-    <a href="https://www.mibalonmano.com/one-veszpem-golpea-primero-final-liga-hungara-excelso-hugo-descat-pick-szeged" target="_blank" rel="noopener"
-       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
-        
-        <img src="https://www.mibalonmano.com/uploads/images/posts/PR0_2727@OneVeszprem-PekaRoland.jpg" alt=""
-             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
-             onerror="this.style.display='none'">
-        
-        <div class="flex-1 min-w-0">
-            <p class="font-semibold leading-snug line-clamp-2">El Veszpem golpea primero en la final de la liga húngara con un excelso Hugo Descat</p>
-            
-            <div class="flex items-center flex-wrap gap-2 mt-2">
-                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
-                <span class="text-gray-300">·</span>
-                <span class="text-xs text-gray-400">2026-05-29</span>
-                
-            </div>
-        </div>
-    </a>
-    
-    <a href="https://www.mibalonmano.com/adrian-sanchez-sexto-fichaje-horneo-eon-alicante-2028" target="_blank" rel="noopener"
-       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
-        
-        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/aseon28@HorneoEONAlicante.jpg" alt=""
-             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
-             onerror="this.style.display='none'">
-        
-        <div class="flex-1 min-w-0">
-            <p class="font-semibold leading-snug line-clamp-2">Adrián Sanchez, sexto fichaje de Horneo EON Alicante</p>
-            
-            <div class="flex items-center flex-wrap gap-2 mt-2">
-                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
-                <span class="text-gray-300">·</span>
-                <span class="text-xs text-gray-400">2026-05-29</span>
-                
-            </div>
-        </div>
-    </a>
-    
-    <a href="https://www.mibalonmano.com/iker-romero-mejor-entrenador-temporada-25-26-bundesliga-2" target="_blank" rel="noopener"
-       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
-        
-        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/705327007_1842014854313124@SG-BBM-Bietigheim.jpg" alt=""
-             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
-             onerror="this.style.display='none'">
-        
-        <div class="flex-1 min-w-0">
-            <p class="font-semibold leading-snug line-clamp-2">Iker Romero elegido mejor entrenador del año en la Bundesliga 2</p>
-            
-            <div class="flex items-center flex-wrap gap-2 mt-2">
-                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
-                <span class="text-gray-300">·</span>
-                <span class="text-xs text-gray-400">2026-05-29</span>
-                
-            </div>
-        </div>
-    </a>
-    
 </div>
+
+<div id="no-results" class="hidden text-center py-10 text-gray-400">
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script>
+(function() {
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
 
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

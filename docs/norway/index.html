@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">Noruega</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">Noruega</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">Noruega</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
     
     <a href="https://www.nrk.no/sport/storhamar-ble-sluttspillmester-_-slo-sola-igjen-etter-sjokkapning-1.17903177" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://gfx.nrk.no/8otbd-AJkUqdtAz3ahlRew6Ycbaf1K9LM7LUNpfvxrqA.jpg" alt=""
@@ -567,6 +582,8 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://kolstad-handball.no/2026/05/31/kolstad-elite-camp-2025/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -586,6 +603,8 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.ehh.no/2026/05/30/sesongavslutning-med-samhold-glede-og-lagand/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -605,6 +624,8 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://handbollskanalen.se/norge/ligatiteln-sakrad-jeppsson-nu-utsedd-till-arets-spelare-i-norge/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -624,6 +645,8 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.ehh.no/2026/05/28/elverum-representert-pa-lk10-under-european-open/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -643,6 +666,8 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://kolstad-handball.no/2026/05/27/en-maktdemonstrasjon/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -662,6 +687,8 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://handbollskanalen.se/norge/jeppsson-13-malsskytt-kolstad-mastare-igen/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -681,6 +708,8 @@ Sola ganó todos sus partidos en casa en la temporada regular en su camino hacia
     </a>
     
     <a href="https://www.nrk.no/sport/kolstad-klar-for-mesterligaen-_-banket-drammen-i-sluttspillfinalen-1.17899101" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://gfx.nrk.no/yFvB8i_1FJevsKMMAlYviQD3-XClQ2vnZNRWYO2zcgrA.jpg" alt=""
@@ -704,6 +733,8 @@ Drammen quería mostrar un mejor equipo que en la derrota por 30-34 del pasado s
     </a>
     
     <a href="https://www.sola-hk.no/sola-jentene-klare-for-ny-finale-duell-mot-storhamar/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -723,6 +754,8 @@ Drammen quería mostrar un mejor equipo que en la derrota por 30-34 del pasado s
     </a>
     
     <a href="http://www.ihf.info/media-center/news/2026-ihf-mens-and-womens-beach-handball-world-championships-match-schedule" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="http://www.ihf.info/sites/default/files/inline-images/beach1234.png" alt=""
@@ -750,6 +783,8 @@ The two global events will be played side-b</p>
     </a>
     
     <a href="https://kolstad-handball.no/2026/05/26/jeppe-arets-spiller/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -769,6 +804,8 @@ The two global events will be played side-b</p>
     </a>
     
     <a href="https://kolstad-handball.no/2026/05/23/barnefodsel-dagen-for-kampen/" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -788,6 +825,8 @@ The two global events will be played side-b</p>
     </a>
     
     <a href="https://kolstad-handball.no/2026/05/22/ballstopper-og-super-golfer/" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -807,6 +846,8 @@ The two global events will be played side-b</p>
     </a>
     
     <a href="https://www.ehh.no/2026/05/22/elverum-handball-med-sine-forste-samarbeidspartnere-i-karlstad/" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -826,6 +867,8 @@ The two global events will be played side-b</p>
     </a>
     
     <a href="https://www.sola-hk.no/klar-for-finale-i-sluttspillet/" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -845,6 +888,8 @@ The two global events will be played side-b</p>
     </a>
     
     <a href="https://kolstad-handball.no/2026/05/22/duellen-pa-sidelinjen/" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -864,6 +909,8 @@ The two global events will be played side-b</p>
     </a>
     
     <a href="https://kolstad-handball.no/2026/05/21/pressemelding-rema-1000-og-kolstad-handball-forlenger-samarbeidet-til-2029/" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -883,6 +930,8 @@ The two global events will be played side-b</p>
     </a>
     
     <a href="https://kolstad-handball.no/2026/05/18/arets-viktigste-kamp-i-kolstad-arena-pa-lordag/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -902,6 +951,8 @@ The two global events will be played side-b</p>
     </a>
     
     <a href="http://www.ihf.info/media-center/news/media-accreditation-open-2027-ihf-mens-world-championship-draw" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -926,6 +977,8 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     </a>
     
     <a href="https://www.ehh.no/2026/05/14/elverum-handball-80-ar-mer-enn-bare-handball/" target="_blank" rel="noopener"
+       data-date="2026-05-14"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -945,6 +998,8 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     </a>
     
     <a href="https://www.ehh.no/2026/05/13/wall-of-fame/" target="_blank" rel="noopener"
+       data-date="2026-05-13"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -964,6 +1019,8 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     </a>
     
     <a href="https://www.ehh.no/2026/05/13/vare-vinnerlag/" target="_blank" rel="noopener"
+       data-date="2026-05-13"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -983,6 +1040,8 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     </a>
     
     <a href="https://www.ehh.no/2026/05/13/publikumsrekorder/" target="_blank" rel="noopener"
+       data-date="2026-05-13"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1002,6 +1061,8 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     </a>
     
     <a href="https://www.ehh.no/2026/05/13/var-historie/" target="_blank" rel="noopener"
+       data-date="2026-05-13"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1021,6 +1082,8 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     </a>
     
     <a href="https://www.ehh.no/2026/05/13/taigan/" target="_blank" rel="noopener"
+       data-date="2026-05-13"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1040,6 +1103,8 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     </a>
     
     <a href="https://www.ehh.no/2026/05/13/eventyret-startet-pa-graberg/" target="_blank" rel="noopener"
+       data-date="2026-05-13"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1059,6 +1124,8 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     </a>
     
     <a href="https://kolstad-handball.no/2026/05/12/velkommen-til-sluttspillfinale-og-folkefest/" target="_blank" rel="noopener"
+       data-date="2026-05-12"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1078,6 +1145,8 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     </a>
     
     <a href="https://www.ehh.no/2026/05/12/fra-elverum-til-ungdomslandslaget/" target="_blank" rel="noopener"
+       data-date="2026-05-12"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1097,6 +1166,8 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     </a>
     
     <a href="https://kolstad-handball.no/2026/05/11/meld-pa-ditt-lag-til-sluttspillfinalen-mot-drammen/" target="_blank" rel="noopener"
+       data-date="2026-05-11"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1116,6 +1187,8 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     </a>
     
     <a href="https://kolstad-handball.no/2026/05/11/sjelden-tronder-triumf/" target="_blank" rel="noopener"
+       data-date="2026-05-11"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1135,6 +1208,8 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     </a>
     
     <a href="https://www.sola-hk.no/klar-for-semfinale-i-sluttspillet/" target="_blank" rel="noopener"
+       data-date="2026-05-11"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1154,6 +1229,8 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     </a>
     
     <a href="https://www.sola-hk.no/angunn-gudmestad-tilbake-i-sola-drakt/" target="_blank" rel="noopener"
+       data-date="2026-05-05"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1174,12 +1251,42 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     
 </div>
 
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
+
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">Argentina</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">Argentina</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">Argentina</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
     
     <a href="https://balonmanotorrelavega.com/2026/05/31/bm-torrelavega-guadalajara-cronica-5/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYwIiBoZWlnaHQ9IjE3MDciIHZpZXdCb3g9IjAgMCAyNTYwIDE3MDciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjZmQ0ZGIiLz48L3N2Zz4=" alt=""
@@ -564,6 +579,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://todohandball.com/argentina/cual-es-el-grupo-de-la-muerte-de-la-libertadores-de-handball-2026/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -583,6 +600,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.bmsinfin.com/2026/05/29/comunicado-oficial-fabrizio-casanova-experiencia-y-talento-para-el-lateral-izquierdo-del-blendio-sinfin-santander/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -602,6 +621,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://todohandball.com/coscabal/se-definieron-los-grupos-de-la-libertadores-del-handball-femenino-2026/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -621,6 +642,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://todohandball.com/coscabal/se-sortearon-los-grupos-de-la-libertadores-del-handball-masculino-2026/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -640,6 +663,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://todohandball.com/argentina/la-federacion-sanluisena-de-handball-dejara-de-transmitir-regularmente-la-liga-provincial/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -659,6 +684,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://cadenaser.com/cantabria/2026/05/28/burgos-pierde-a-fabrizio-casanova-que-ficha-por-el-blendio-sinfin-radio-santander/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/63EFP2HVIJAVFETBYCJBOQDNH4.webp?auth=3577fd866951b6dd4066c746f1dec82cfbb5596f453222dca33d9057026c821a&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -678,6 +705,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://bmbenidorm.com/renovacion-ramiro-martinez-continuara-una-temporada-mas-en-el-balonmano-servigroup-benidorm/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -698,6 +727,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://todohandball.com/paraguay/ariana-portillo-y-jazmin-mendoza-hicieron-historia-campeonas-de-europa-con-atletico-guardes/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -719,6 +750,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://handballargentina.org/cah/2026/05/objetivo-odesur-y-mundial-en-marcha-para-los-gladiadores/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=objetivo-odesur-y-mundial-en-marcha-para-los-gladiadores" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -738,6 +771,8 @@ La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el B
     </a>
     
     <a href="https://handballargentina.org/cah/2026/05/san-rafael-corono-a-los-nuevos-campeones-nacionales-en-un-cierre-multitudinario/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=san-rafael-corono-a-los-nuevos-campeones-nacionales-en-un-cierre-multitudinario" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -758,6 +793,8 @@ The post San</p>
     </a>
     
     <a href="https://as.com/masdeporte/balonmano/israel-espana-partido-de-vuelta-del-playoff-de-clasificacion-para-el-mundial-2027-en-directo-en-vivo-f202605-d/" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/B4DLZRTJJ5MBPCXQKDT223R2FE.jpg?auth=f96d09c5efa6e16a1fc4243780fdb40df923babfb8d336df18f13d3afc552a85" alt=""
@@ -779,6 +816,8 @@ The post San</p>
     </a>
     
     <a href="https://handballargentina.org/cah/2026/05/rumbo-a-la-gloria-se-armaron-las-finales-en-mendoza/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rumbo-a-la-gloria-se-armaron-las-finales-en-mendoza" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -799,6 +838,8 @@ The post Rumbo a la glo</p>
     </a>
     
     <a href="https://handballargentina.org/cah/2026/05/los-juveniles-b-y-c-ya-tienen-sus-cruces-de-cuartos/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=los-juveniles-b-y-c-ya-tienen-sus-cruces-de-cuartos" target="_blank" rel="noopener"
+       data-date="2026-05-13"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -819,6 +860,8 @@ The post Los </p>
     </a>
     
     <a href="https://handballargentina.org/cah/2026/05/todo-listo-en-san-rafael-para-el-inicio-de-los-nacionales-juveniles/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=todo-listo-en-san-rafael-para-el-inicio-de-los-nacionales-juveniles" target="_blank" rel="noopener"
+       data-date="2026-05-10"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -839,6 +882,8 @@ The pos</p>
     </a>
     
     <a href="https://balonmanocaserio.com/un-tubos-aranda-mas-motivado-derrota-con-suficiencia-al-caserio/" target="_blank" rel="noopener"
+       data-date="2026-05-09"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -858,6 +903,8 @@ The pos</p>
     </a>
     
     <a href="https://fandaluzabm.org/portada/la-liga-led-cierra-su-quinta-edicion-con-cordoba-bm-y-cbm-carboneras-como-equipos-campeones/" target="_blank" rel="noopener"
+       data-date="2026-05-06"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -879,12 +926,42 @@ La entra</p>
     
 </div>
 
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
+
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

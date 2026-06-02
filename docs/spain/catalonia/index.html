@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">Cataluña</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">Cataluña</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">Cataluña</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/barca-liga-perfecta-record-goleador-130882908" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/89d7d277-1d7b-4b0b-9f64-3d45f9aafa4f_16-9-discover-aspect-ratio_default_0_x1051y393.webp" alt=""
@@ -563,7 +578,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
         </div>
     </a>
     
+    <a href="https://www.cathandbol.cat/base/cadet/item/13233-campionat-españa-cadet-masculí.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.cathandbol.cat/media/k2/items/cache/df4daa7c387f80cb0de58d664bca4b7f_M.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Barça plata y el Granollers bronce en el estatal cadete</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CatHandbol</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-01</span>
+                
+            </div>
+        </div>
+    </a>
+    
     <a href="https://bmgranollers.cat/el-fraikin-bm-granollers-tanca-la-temporada-amb-una-victoria-i-certifica-europa/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -583,6 +621,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.segre.com/es/deportes/260601/joana-bolling-nuevo-fichaje-del-lleida-handbol_1225368.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes.segre.com/files/og_thumbnail/uploads/2026/06/01/6a1cfeec75ee8.webp" alt=""
@@ -604,6 +644,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.lanzadigital.com/deportes/balonmano/division-de-honor-masculina-balonmano/el-granollers-asegura-la-tercera-plaza-a-costa-de-un-caserio-que-siempre-fue-a-remolque/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.lanzadigital.com/wp-content/uploads/2026/05/BM-Caserio-La-Nava-_-Clara-Manzano-216-1299x730.jpg.webp" alt=""
@@ -629,6 +671,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189872/38-29-granollers-acaba-tercero-clasifica-europa.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_221/uploads/2026/05/20/6a0e08e4c6c42.jpeg" alt=""
@@ -648,6 +692,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/elit/lliga-asobal/item/13238-2026-05-31-22-25-57.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/ce124d9ec5af0d86432db50661a61149_XL.jpg" alt=""
@@ -667,6 +713,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/barca-supera-barrera-1-200-130867900" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/418f3f9f-b31e-4436-bba6-c2d608167d13_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -686,6 +734,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://bmgranollers.cat/el-fraikin-bm-granollers-es-juga-europa-en-una-final-al-palau-davant-el-caserio-bm-ciudad-real/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -705,6 +755,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/base/infantil/item/13232-el-barça-infantil-campió-despanya.html" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/483cae0995ad93e0178a7b39760f4d65_M.jpg" alt=""
@@ -724,6 +776,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/base/infantil/item/13234-2026-05-30-11-42-11.html" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/8a80e20e1e41a36d18379379f2dfdcf0_M.jpg" alt=""
@@ -743,6 +797,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.eixdiari.cat/esports/doc/122058/el-cadet-femeni-del-handbol-ribes-entre-els-millors-vuit-equips-despanya.html" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -764,6 +820,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/femeni/lliga-catalana-argent-fem/item/13220-resum-lligacatargf.html" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/50134e5e8bbd29a9ac1776516fea792e_M.jpg" alt=""
@@ -783,6 +841,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/catalanes/copa-catalana/item/13214-la-copa-catalana-masculina-ja-té-el-top-4-definit.html" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/542ef1be1e8d76a78f3ad821b335e9db_XL.jpg" alt=""
@@ -802,6 +862,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/femeni/copa-cat-fem/item/13215-2026-05-14-16-08-49.html" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/45be1c59694378d7222674aaec12717f_M.jpg" alt=""
@@ -821,6 +883,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://fandaluzabm.org/noticias/trops-malaga-fundacion-unicaja-campeones-de-primera-andaluza-senior/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -840,6 +904,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://bmgranollers.cat/ona-vila-seguira-vinculada-al-kh-7-bm-granollers-una-temporada-mes/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -859,6 +925,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://handnews.fr/2026/lms-chema-marquez-va-quitter-saint-raphael-pour-rentrer-en-espagne/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2022/03/FN9Yk49XoAA1DA9-300x200.jpg" alt=""
@@ -880,6 +948,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/catalanes/1a-catalana/item/13225-resum-1acath.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/b8f81a0c19dd5347a435a52b9e196479_M.jpg" alt=""
@@ -899,6 +969,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/1a-estatal/item/13229-2026-05-08-21-31-17.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/ffa55321f12d8677a2742c2dccb63f2e_M.jpg" alt=""
@@ -918,6 +990,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/catalanes/lliga-catalana/item/13227-resum-fases-estatal-2026.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/077d0b2e205c32e083020249451e4bb4_M.jpg" alt=""
@@ -937,6 +1011,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/femeni/lliga-catalana-fem/item/13226-2026-05-25-10-28-51.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/c3ac0a293a94f2d491f782b143a7dd04_M.jpg" alt=""
@@ -956,6 +1032,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/catalanes/lliga-catalana-argent/item/13221-resum-lligacatagm.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/3657e91ecb99f3f82f0fdb6a8c9cc530_M.jpg" alt=""
@@ -975,6 +1053,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/catalanes/2a-catalana/item/13224-resum-2acath.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/4fdfbcdedbc0c7f1e12617a7f2187079_M.jpg" alt=""
@@ -994,6 +1074,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/femeni/1a-catalana-femenina/item/13223-resum-1acathfem.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/a793edaec515b4d6688a9ac68218e2fa_M.jpg" alt=""
@@ -1013,6 +1095,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/elit/lliga-asobal/item/13228-el-granollers-t.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/7532330f4d43f4daa4c909bf6ee3380d_M.jpg" alt=""
@@ -1032,6 +1116,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/catalanes/3a-catalana-nova/item/13222-resum-3acath.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/c89b2dd257a38d12754a2aa5ace6850a_M.jpg" alt=""
@@ -1051,6 +1137,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.rfebm.com/dhplatamasc-sigue-en-directo-la-fase-de-ascenso/" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/IMG_39272-150x150.webp" alt=""
@@ -1073,6 +1161,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/marcos-fis-ilusiona-barca-deja-130561333" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/99b5fcfa-a3a0-4d0b-84e4-bfcb582e21ef_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1092,6 +1182,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://as.com/masdeporte/cara-y-cruz-en-huesca-baja-el-bada-logrono-subcampeon-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/LS42EOOAXJCP5BH4BCOBWPU5FI.jpg?auth=0bc53d8863af4091d180a372f817642f261f29a3e7b4c65b757bfbcc6bafd40f" alt=""
@@ -1113,6 +1205,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.mibalonmano.com/jornada-clave-lucha-subcampeonato-asobal-bidasoa-granollers-decisivo" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1130,6 +1224,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.mibalonmano.com/fraikin-granolleres-renueva-dos-talentos-cesion-cajasol-sevilla-proin" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1147,6 +1243,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.cathandbol.cat/catalanes/lliga-catalana/item/13217-sant-martí-adrianenc-i-garbí-busquen-lascens-a-casa.html" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/7838f535a0f9eafe931b38cbd8460fe9_M.jpg" alt=""
@@ -1166,6 +1264,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/nielsen-despide-palau-brillante-actuacion-130557376" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/ea606a5e-3e89-422c-af97-f60bf0ceb725_16-9-discover-aspect-ratio_default_0_x1125y499.webp" alt=""
@@ -1185,6 +1285,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://bmgranollers.cat/pau-lopez-signa-el-seu-primer-contracte-professional-amb-el-fraikin-bm-granollers-fins-al-2029/" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1204,6 +1306,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://bmgranollers.cat/el-fraikin-bm-granollers-afronta-una-final-a-artaleku-davant-un-rival-directe/" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1223,6 +1327,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260521/1004186238/granollers-acogera-septiembre-cuarto-mundial-balonmano-silla-ruedas.html" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_100_103/files/fp/uploads/2026/05/21/6a0f3a02e5045.r_d.838-717-625.jpeg" alt=""
@@ -1242,6 +1348,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/deportes/balonmano/sergi-franco-capitan-bm-granollers-130470146" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/5636c34c-106f-425b-8590-f0d415ab58b3_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1261,6 +1369,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/barca-busca-29-29-emotiva-130506041" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/0d0eb24c-1af8-49b5-b00b-8c686ae119b0_16-9-discover-aspect-ratio_default_0_x1000y444.webp" alt=""
@@ -1280,6 +1390,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://fandaluzabm.org/noticias/el-cadeba-alevin-corona-a-sus-campeones/" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1299,6 +1411,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://bmgranollers.cat/gerard-roman-signa-el-seu-primer-contracte-professional-amb-el-fraikin-bm-granollers-fins-al-2030/" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1318,6 +1432,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://bmgranollers.cat/sergi-franco-tancara-la-seva-etapa-al-fraikin-bm-granollers/" target="_blank" rel="noopener"
+       data-date="2026-05-20"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1337,6 +1453,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260520/1004185906/baja-importantisima-fraikin-bm-granollers-11-anos-club.html" target="_blank" rel="noopener"
+       data-date="2026-05-20"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_100_103/files/fp/uploads/2025/11/19/691e020353287.r_d.2762-1476-181.jpeg" alt=""
@@ -1356,6 +1474,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://bmgranollers.cat/carla-gonzalez-renova-amb-el-kh-7-bm-granollers-fins-al-2028/" target="_blank" rel="noopener"
+       data-date="2026-05-19"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1375,6 +1495,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://fnavarrabm.com/2026/05/19/inicio-entrenamientos-balonmano-playa-cesa26-calella-infantil-y-cadete-masculino-y-femenino/" target="_blank" rel="noopener"
+       data-date="2026-05-19"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://fnavarrabm.com/wp-content/uploads/2026/05/Captura-de-Pantalla-2026-05-19-a-las-13.05.40-1140x480_c.png" alt=""
@@ -1394,6 +1516,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/triple-baja-barca-emil-nielsen-130402467" target="_blank" rel="noopener"
+       data-date="2026-05-19"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/aa55e954-4da6-402b-989e-a50a931e7cc2_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1413,6 +1537,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://bmgranollers.cat/robert-cuesta-sincorpora-al-cos-tecnic-del-fraikin-bm-granollers-com-a-segon-entrenador-per-a-les-proximes-dues-temporades/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1432,6 +1558,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://bmgranollers.cat/antonio-rama-dirigira-el-fraikin-fins-2029/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1451,6 +1579,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://bmgranollers.cat/el-juvenil-a-femeni-shan-proclamat-campiones-despanya/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1470,6 +1600,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.balonmano.info/kh7-bm-granollers-campeon-espana-juvenil-femenino-2025-26-20262010194/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/juvenil-campeon-espana-400x240.jpeg" alt=""
@@ -1489,6 +1621,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/barca-tendra-madrugar-copa-rey-130355688" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/e8001103-c9a6-4db2-a81a-9d35c73bfdb4_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1508,6 +1642,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.cathandbol.cat/base/juvenil/item/13219-granollers-or-i-sant-joan-despí-plata-a-lestatal-juvenil-femeni.html" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/7ca1263a39225c3a9ef2a150e92906fd_M.jpg" alt=""
@@ -1527,6 +1663,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.cathandbol.cat/femeni/lliga-catalana-argent-fem/item/13213-resum-lligacatargf.html" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/5e724994f9d843de4445c66c1198d08e_M.jpg" alt=""
@@ -1546,6 +1684,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.cathandbol.cat/catalanes/lliga-catalana-argent/item/13212-resum-lligacatagm.html" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/d656d6000c9e54248db6490823860c88_M.jpg" alt=""
@@ -1565,6 +1705,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/deportes/espana-estara-mundial-2027-segundo-130307089" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/6afa8ce3-60ee-4736-9da3-df02dcff4b34_16-9-discover-aspect-ratio_default_0_x649y225.webp" alt=""
@@ -1584,6 +1726,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/deportes/balonmano/israel-espana-horario-ver-clasificacion-mundial-balonmano-130263571" target="_blank" rel="noopener"
+       data-date="2026-05-15"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/b652fa43-562d-43dd-b4bb-a308c36884c3_16-9-discover-aspect-ratio_default_0_x1000y444.webp" alt=""
@@ -1603,6 +1747,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/miguel-angel-martin-bombardero-masia-130244871" target="_blank" rel="noopener"
+       data-date="2026-05-15"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/de30472e-05cf-4726-a4c9-77ee62f6993a_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1622,6 +1768,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/deportes/hispanos-acercan-mundial-2027-pudo-130247465" target="_blank" rel="noopener"
+       data-date="2026-05-15"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/4c10fc05-cef4-4604-8bcc-9337028d99a2_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1641,6 +1789,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/deportes/balonmano/siga-directo-hispanos-espana-israel-130132436" target="_blank" rel="noopener"
+       data-date="2026-05-15"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/f0d74038-9049-4978-aba3-e195b515caeb_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1660,6 +1810,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/deportes/poker-copa-reina-bera-bera-130200199" target="_blank" rel="noopener"
+       data-date="2026-05-14"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/94b5fa26-b208-4de0-a362-408c0f1afc86_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1679,6 +1831,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/deportes/hispanos-sentenciar-billete-mundial-130197173" target="_blank" rel="noopener"
+       data-date="2026-05-14"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/97603cf8-7ffe-4edf-a0f6-9ec493012999_16-9-discover-aspect-ratio_default_0_x357y178.webp" alt=""
@@ -1698,6 +1852,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://bmgranollers.cat/antonio-garcia-no-continuara-a-la-banqueta-del-fraikin-bm-granollers/" target="_blank" rel="noopener"
+       data-date="2026-05-14"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1717,6 +1873,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/aalborg-gran-monstruo-porteria-gloria-130145335" target="_blank" rel="noopener"
+       data-date="2026-05-12"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/52263f61-1498-44a7-81d9-6b48515dc87d_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1736,6 +1894,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/juega-final-four-champions-league-130116277" target="_blank" rel="noopener"
+       data-date="2026-05-12"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/24fcee1f-5085-45c3-9bb3-834a137a7427_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1755,6 +1915,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/queda-final-four-champions-league-130115831" target="_blank" rel="noopener"
+       data-date="2026-05-12"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/ca114379-d294-4752-aeeb-ddc6f436eb74_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1774,6 +1936,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/siga-directo-sorteo-final-four-130131292" target="_blank" rel="noopener"
+       data-date="2026-05-12"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/3a5c37d5-ceff-4a17-974c-2d92055ed094_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1793,6 +1957,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://cbmelche.es/granollers-telde-el-legado-de-joaquin-rocamora/" target="_blank" rel="noopener"
+       data-date="2026-05-04"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1813,12 +1979,42 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     
 </div>
 
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
+
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

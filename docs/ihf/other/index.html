@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">Otras IHF</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">Otras IHF</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">Otras IHF</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
     
     <a href="http://www.ihf.info/media-center/news/madagascar-do-double-high-scoring-2026-mens-ihf-trophy-africa-zone-vii" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -569,6 +584,8 @@ Hosts Madagascar produced a memorable double at the 2026 Men&#39;s IHF Trophy �
     </a>
     
     <a href="http://www.ihf.info/media-center/news/italys-new-era-under-bob-hanning-victory-loves-preparation" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="http://www.ihf.info/sites/default/files/inline-images/hanning.jpg" alt=""
@@ -595,6 +612,8 @@ Only days after Italy concluded its campaign at the 2025 IHF Men’s World Champ
     </a>
     
     <a href="http://www.ihf.info/media-center/news/sydney-uni-and-uq-secure-title-again-australian-handball-club-championships" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -619,6 +638,8 @@ Sydney Uni secured the title in the men’s competition at the 2026 Australian H
     </a>
     
     <a href="http://www.ihf.info/media-center/news/mt-melsungen-slay-giants-secure-first-ever-trophy" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -643,6 +664,8 @@ A dramatic weekend in Hamburg saw MT Melsungen clinch the title in the EHF Europ
     </a>
     
     <a href="http://www.ihf.info/media-center/news/2026-ihf-beach-handball-global-tour-stage-2-teams-confirmed-and-match-schedule" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="http://www.ihf.info/sites/default/files/inline-images/bgt.png" alt=""
@@ -670,6 +693,8 @@ Płock, Poland is the</p>
     </a>
     
     <a href="http://www.ihf.info/media-center/news/carbon-copy-line-provide-drama-high-octane-ehf-finals-men" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -694,6 +719,8 @@ Hamburg will host the third consecutive edition of the EHF Finals Men, after Ger
     </a>
     
     <a href="https://zprp.pl/archiwa/279890" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -713,6 +740,8 @@ Hamburg will host the third consecutive edition of the EHF Finals Men, after Ger
     </a>
     
     <a href="https://www.oehb.at/de/menu_main/boxnewsshow0-ihf-clean-sport-education-webinar-for-coaches-10.-juni-mit-monique-tijsterman" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.oehb.at/files/img/5975.jpg" alt=""
@@ -734,6 +763,8 @@ Hamburg will host the third consecutive edition of the EHF Finals Men, after Ger
     </a>
     
     <a href="http://www.ihf.info/media-center/news/ita-and-ihf-unite-clean-sport-education-webinar-coaches" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -758,6 +789,8 @@ The International Handball Federation (IHF) and the International Testing Agency
     </a>
     
     <a href="https://www.rfebm.com/confirmado-el-calendario-del-campeonato-del-mundo-de-balonmano-playa-masculino-y-femenino/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/2026-Beach-match-schedule-150x150.webp" alt=""
@@ -780,6 +813,8 @@ La entrada Confirmado el calendario del Campeonato del Mundo de Balonmano Playa 
     </a>
     
     <a href="http://www.ihf.info/media-center/news/2026-ihf-mens-and-womens-beach-handball-world-championships-match-schedule" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="http://www.ihf.info/sites/default/files/inline-images/beach1234.png" alt=""
@@ -807,6 +842,8 @@ The two global events will be played side-b</p>
     </a>
     
     <a href="http://www.ihf.info/media-center/news/south-america-steps-ihf-coaching-courses-land-chile-and-colombia" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="http://www.ihf.info/sites/default/files/inline-images/CHI80.jpg" alt=""
@@ -833,6 +870,8 @@ In the space of just a few weeks in April and May 2026, two IHF coaching courses
     </a>
     
     <a href="http://www.ihf.info/media-center/news/congratulations-eid-al-adha-3" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -857,6 +896,8 @@ Muslims worldwide celebrate the holy Eid al-Adha this week, also known as the Fe
     </a>
     
     <a href="http://www.ihf.info/media-center/news/unbeaten-cb-atletico-guardes-lift-maiden-ehf-european-cup-women-trophy" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -881,6 +922,8 @@ Spanish side CB Atlético Guardés won their maiden European trophy last weekend
     </a>
     
     <a href="http://www.ihf.info/media-center/news/our-time-inside-greeces-historic-qualification-2027-ihf-mens-world-championship" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="http://www.ihf.info/sites/default/files/inline-images/toskas8002.jpg" alt=""
@@ -907,6 +950,8 @@ Fri, 05/22/2026 - 11:00
     </a>
     
     <a href="http://www.ihf.info/media-center/news/wurth-extends-partnership-ihf-mens-and-womens-world-championships" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -931,6 +976,8 @@ The Würth Group is continuing its long-term commitment to international handbal
     </a>
     
     <a href="http://www.ihf.info/media-center/news/angola-senegal-norway-and-sweden-beach-handball-women-join-forces-good-west" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="http://www.ihf.info/sites/default/files/inline-images/nordi800.jpg" alt=""
@@ -957,6 +1004,8 @@ The 2026 edition of the ‘Nordic Beach Week’ took place last month (5 to 13 A
     </a>
     
     <a href="http://www.ihf.info/media-center/news/perfect-peoples-republic-china-secure-title-inaugural-ahf-asian-womens-under-16" target="_blank" rel="noopener"
+       data-date="2026-05-19"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -981,6 +1030,8 @@ Six teams lined up at the start of the inaugural edition of the AHF Asian Women�
     </a>
     
     <a href="http://www.ihf.info/media-center/news/line-updates-2026-ihf-womens-junior-and-youth-world-championships" target="_blank" rel="noopener"
+       data-date="2026-05-19"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="http://www.ihf.info/sites/default/files/inline-images/Women%27s%20Junior%20WCh%202026%20DRAW%20%281%29.png" alt=""
@@ -1008,6 +1059,8 @@ The 25th I</p>
     </a>
     
     <a href="http://www.ihf.info/media-center/news/ihf-celebrates-world-fair-play-day" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1032,6 +1085,8 @@ Sport is about how one competes, how one treats their opponents, and what values
     </a>
     
     <a href="http://www.ihf.info/media-center/news/media-accreditation-open-2027-ihf-mens-world-championship-draw" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1056,6 +1111,8 @@ Media accreditation is now open for the preliminary round draw of the 30th IHF M
     </a>
     
     <a href="http://www.ihf.info/media-center/news/greece-and-faroe-islands-make-history-10-european-sides-punch-tickets-germany" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1081,6 +1138,8 @@ The final 10 places reserved for Europe for the 2027 IHF Men’s World Champions
     </a>
     
     <a href="http://www.ihf.info/media-center/news/all-time-comeback-sees-dijon-take-maiden-ehf-european-league-women-title" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1105,6 +1164,8 @@ JDA Bourgogne Dijon Handball became the second French team in history to win the
     </a>
     
     <a href="http://www.ihf.info/media-center/news/fiery-clashes-provide-huge-drama-race-germany-2027-heats" target="_blank" rel="noopener"
+       data-date="2026-05-15"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1129,6 +1190,8 @@ Six of the first 10 clashes in the European Qualification Phase 3 for the 2027 I
     </a>
     
     <a href="http://www.ihf.info/media-center/news/ferraris-alexandre-dumas-and-handball-how-does-dusjhebaev-feel-his-dream-job" target="_blank" rel="noopener"
+       data-date="2026-05-14"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="http://www.ihf.info/sites/default/files/inline-images/talant800.png" alt=""
@@ -1156,12 +1219,42 @@ Since 1985, France men’s senior national team had only four coaches: Daniel Co
     
 </div>
 
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
+
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

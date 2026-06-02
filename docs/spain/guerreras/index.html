@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,51 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">Liga Guerreras Iberdrola</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">Liga Guerreras Iberdrola</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">Liga Guerreras Iberdrola</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
+    
+    <a href="https://www.balonmano.info/ane-valero-ficha-elda-prestigio-20260210424/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.balonmano.info/wp-content/uploads/2026/06/ane-valero-400x240.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Elda Prestigio ya tiene nueva extremo izquierda: Ane Valero llega para agitar la banda</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BalonmanoInfo</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-02</span>
+                
+            </div>
+        </div>
+    </a>
     
     <a href="https://www.radiofarodelnoroeste.es/secciones/deportes/item/38454-clavijo-destaca-el-regreso-del-rocasa-gran-canaria-a-lo-mas-alto-del-balonmano-femenino-espanol" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.radiofarodelnoroeste.es/media/k2/items/cache/bf10643f40fe3e2935cc6225e925dc8e_M.jpg" alt=""
@@ -566,6 +602,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://balonmanoremudas.es/las-reinas-de-la-liga-guerreras-iberdrola-reciben-el-homenaje-del-ayuntamiento-de-telde-y-del-gobierno-de-canarias-en-una-emotiva-jornada/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -585,6 +623,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260601/1004190253/silvia-navarro-efectiva-retirada-me-triste-corazon-lleno.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/files/fp/uploads/2026/06/01/6a1dbcbe0e7d8.r_d.1500-1000-1496.jpeg" alt=""
@@ -605,7 +645,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
         </div>
     </a>
     
+    <a href="https://www.cathandbol.cat/base/cadet/item/13233-campionat-españa-cadet-masculí.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.cathandbol.cat/media/k2/items/cache/df4daa7c387f80cb0de58d664bca4b7f_M.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Barça plata y el Granollers bronce en el estatal cadete</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CatHandbol</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-01</span>
+                
+            </div>
+        </div>
+    </a>
+    
     <a href="https://teldeactualidad.com/art/181506/clavijo-pena-elogian-rocasa-devolver-canarias-cima-balonmano-femenino" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://teldeactualidad.com/upload/images/06_2026/3197_rocasa-recepcion-institucional.jpg" alt=""
@@ -627,6 +690,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.noticiasdegipuzkoa.eus/balonmano/2026/05/31/super-amara-bera-bera-pierde-rocasa-liga-guerreras-iberdrola-11140423.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticosgn-cdn.deia.eus/clip/1dded969-564e-4ba8-b8f4-a8715f61bba0_16-9-aspect-ratio_default_0.jpg" alt=""
@@ -648,6 +713,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://balonmanoremudas.es/el-rocasa-gran-canaria-se-corona-campeon-de-la-liga-guerreras-iberdrola/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -667,6 +734,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://berabera.com/es/secciones/balonmano/noticias/13971-super-amara-bera-bera-no-evita-el-titulo-de-rocasa-26-23" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://berabera.com//images/Balonmano/2025-26/Amores_rocasa_baja.png" alt=""
@@ -688,6 +757,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://as.com/masdeporte/el-rocasa-conquista-su-segunda-liga-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/7R2VE3WZ2RPQFN32X4LL4ODZXE.jpg?auth=d22004ce10a8fe3abc4423c68188dda661cc3b39c4bb5234c65cd3227652091b" alt=""
@@ -709,6 +780,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.elnortedecastilla.es/deportes/balonmano/aula-despide-elite-trece-anos-despues-20260530220908-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s3.ppllstatics.com/elnortedecastilla/www/multimedia/2026/05/30/1512454623-Rl3Pgi7x4IrTCDCD8hUphIM-1200x840@El%20Norte.jpg" alt=""
@@ -730,6 +803,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.marca.com/balonmano/2026/05/31/rocasa-vence-telde-super-amara-bera-bera-conquista-segundo-cetro-liguero.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/31/6a1c9482e30d9.jpeg" alt=""
@@ -749,6 +824,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189872/38-29-granollers-acaba-tercero-clasifica-europa.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_221/uploads/2026/05/20/6a0e08e4c6c42.jpeg" alt=""
@@ -768,6 +845,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.marca.com/balonmano/balonmano-femenino/2026/05/31/remudas-vence-telde-bera-bera-conquista-segunda-liga.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/06/01/6a1cb75f0e082.jpeg" alt=""
@@ -787,6 +866,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189922/26-23-rocasa-vuelve-coronarse-campeon-liga-femenina-siete-anos.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/uploads/2026/05/31/6a1c98039f58b.jpeg" alt=""
@@ -806,6 +887,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.cathandbol.cat/elit/lliga-asobal/item/13238-2026-05-31-22-25-57.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/ce124d9ec5af0d86432db50661a61149_XL.jpg" alt=""
@@ -825,6 +908,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.balonmano.info/teresa-alvarez-descenso-20265810399/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/teresa-alvarez-400x240.jpg" alt=""
@@ -846,6 +931,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.rfebm.com/ligaguerrerasiberdrola-sigue-en-directo-la-jornada-de-la-competicion-liguera/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/foto_1585035_201077_c47oydvr90_HI7A7238-150x150.webp" alt=""
@@ -868,6 +955,8 @@ La entrada Caja Rural Aula Valladolid no logra la permanecia pese </p>
     </a>
     
     <a href="https://as.com/masdeporte/el-bera-bera-piensa-en-remontar-la-final-al-rocasa-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/CQPNBE3U6BALHPSQEUNBNX4I4A.jpg?auth=82eb69bce10a4dce9ff161f73cdef819b08955cd018c59b700d69077fcadbef7" alt=""
@@ -889,6 +978,8 @@ La entrada Caja Rural Aula Valladolid no logra la permanecia pese </p>
     </a>
     
     <a href="https://www.balonmano.info/aula-valladolid-elda-play-down-descenso-oro-20260010396/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/aula-elda-400x240.jpg" alt=""
@@ -910,6 +1001,8 @@ La entrada Caja Rural Aula Valladolid no logra la permanecia pese </p>
     </a>
     
     <a href="https://balonmanoremudas.es/el-rocasa-gran-canaria-recibe-al-super-amara-bera-bera-en-el-pabellon-antonio-moreno-con-el-titulo-de-liga-en-juego/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -929,6 +1022,8 @@ La entrada Caja Rural Aula Valladolid no logra la permanecia pese </p>
     </a>
     
     <a href="https://berabera.com/es/secciones/balonmano/noticias/13969-podemos-ganar-a-rocasa-domingo-telde-18-45-h-local" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://berabera.com//images/Balonmano/2025-26/Imanol_rocsasa_final.jpg" alt=""
@@ -950,6 +1045,8 @@ La entrada Caja Rural Aula Valladolid no logra la permanecia pese </p>
     </a>
     
     <a href="https://www.bmmalagacostadelsol.com/parte-medico-estitxu-berasategi.htm" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -969,6 +1066,8 @@ La entrada Caja Rural Aula Valladolid no logra la permanecia pese </p>
     </a>
     
     <a href="https://www.rfebm.com/rocasa-quiere-ganar-la-liga-ante-su-aficion/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/foto_1585035_201077_aqcd2tpaw0_HI7A7308-150x150.webp" alt=""
@@ -991,6 +1090,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://handnews.fr/2026/proligue-caen-se-rapproche-de-la-finale-pau-billere-prend-lavantage-face-a-ivry/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/05/28052026-_JJL3315-300x180.jpg" alt=""
@@ -1012,6 +1113,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://todohandball.com/espana/rocasa-gran-canaria-gano-el-primer-partido-de-la-final-de-la-liga-guerreras-iberdrola/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1031,6 +1134,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://www.elnortedecastilla.es/deportes/balonmano/aula-agarra-ultimo-salvavidas-resignado-suerte-20260528135208-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s3.ppllstatics.com/elnortedecastilla/www/multimedia/2026/05/28/AULAEldaPD-R99QRslGOcZqmeEeCi2R15J-1200x840@El%20Norte.jpg" alt=""
@@ -1052,6 +1157,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://cbmelche.es/alberto-rodriguez-sera-el-ayudante-de-entrenador-de-alberto-zabalegui/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1073,6 +1180,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://berabera.com/es/secciones/balonmano/noticias/13960-rocasa-maniata-a-super-amara-bera-bera-en-gasca-19-23" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://berabera.com//images/Balonmano/2025-26/Amores_rocasa_navarro.jpg" alt=""
@@ -1094,6 +1203,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://balonmanoremudas.es/un-sobresaliente-rocasa-gran-canaria-asalta-el-gasca-en-la-final-de-la-liga-guerreras-iberdrola/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1113,6 +1224,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://as.com/masdeporte/silvia-navarro-lidera-el-zarpazo-del-rocasa-en-san-sebastian-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/ZVWN4QTOCFDCZH76XGM3HZQWK4.jpg?auth=e6fb35b96ad70a96039ecddaf34d044c5d2b2835d251d19d2540baebbae49cbe" alt=""
@@ -1134,6 +1247,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://www.balonmano.info/este-equipo-puede-perder-su-ascenso-a-division-de-honor-si-no-aparecen-500-000-e-20263310329/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/ascenso-400x240.jpg" alt=""
@@ -1155,6 +1270,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://www.balonmano.info/aileen-ripa-ficha-sporting-la-rioja-20260410335/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2025/08/aileen-ripa-400x240.jpg" alt=""
@@ -1174,6 +1291,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://todohandball.com/paraguay/ariana-portillo-y-jazmin-mendoza-hicieron-historia-campeonas-de-europa-con-atletico-guardes/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1195,6 +1314,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://www.handball-planet.com/masters-handball-world-cup-2026-breaks-all-records-in-omis-and-makarska/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1214,6 +1335,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://cbmelche.es/alberto-zabalegui-asume-las-riendas-del-senior-femenino/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1233,6 +1356,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://www.marca.com/balonmano/balonmano-femenino/2026/05/27/arranca-san-sebastian-pelea-titulo-liga-guerreras-iberdrola.html" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/27/6a16c9e325b11.jpeg" alt=""
@@ -1252,6 +1377,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://www.marca.com/balonmano/balonmano-femenino/2026/05/27/remudas-sorprende-campeon-bera-bera-acaricia-liga-guerreras.html" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/27/6a174eac307c6.jpeg" alt=""
@@ -1271,6 +1398,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260527/1004188491/19-23-gesta-rocasa-silvia-navarro-47-anos-bera-bera-liga-victoria.html" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_221/files/fp/uploads/2026/05/27/6a1736d0af7d9.r_d.1391-1100-1684.jpeg" alt=""
@@ -1290,6 +1419,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://www.balonmano.info/y-silvia-navarro-dijo-por-aqui-no-20262010341/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2024/10/silvia-navarro-400x240.jpg" alt=""
@@ -1311,6 +1442,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://cadenaser.com/galicia/2026/05/27/a-guarda-se-echa-a-la-calle-para-recibir-a-las-reinas-de-europa-radio-galicia/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/73VYFBTE5FFD3I77P4XFCLJXRY.jpg?auth=1067a6ab31d0479df57b2fb3fbdec8ac10447dd28c3cb4aebe09e549ee93050d&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -1332,6 +1465,8 @@ La entrada Rocasa quiere ganar la Liga ante su afición se publicó primero en R
     </a>
     
     <a href="https://www.rfebm.com/maria-zaldua-guerrera-iberdrola-de-las-semifinales-del-play-off/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2025/09/BB19E5BB-33EA-43DD-8E95-75A7482692C1-150x150.webp" alt=""
@@ -1354,6 +1489,8 @@ La entrada María Zaldua, Guerrera Iberdrola de las semifinales del play-off se 
     </a>
     
     <a href="https://www.rfebm.com/ligaguerrerasiberdrola-sigue-en-directo-el-primer-partido-de-la-final/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/foto_1581876_209166_d1ksk6lhi4_WhatsApp-Image-2026-05-16-at-19.34.26-91-150x150.webp" alt=""
@@ -1376,6 +1513,8 @@ La entrada #LigaGuerrerasIberdrola | Sigue en directo el primer partido de la fi
     </a>
     
     <a href="https://as.com/masdeporte/bera-bera-rocasa-la-ultima-final-de-silvia-navarro-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/D2VUWWIQH5FBTE6LT5XBKBREX4.jpg?auth=da1f6fee5f89dee33cb51dde556e24548179926cfcc324784c0a43d16b0f7662" alt=""
@@ -1397,6 +1536,8 @@ La entrada #LigaGuerrerasIberdrola | Sigue en directo el primer partido de la fi
     </a>
     
     <a href="https://www.rfebm.com/bera-bera-y-rocasa-abren-en-el-gasca-una-final-con-el-titulo-en-juego/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/foto_1492615_201077_b273kulvuw_HI7A9249-150x150.webp" alt=""
@@ -1419,6 +1560,8 @@ La entrada Bera Bera y Rocasa abren en el Gasca una final con el título en jueg
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260526/1004187975/super-amara-bera-bera-busca-doblete-rocasa-gran-canaria.html" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/files/fp/uploads/2026/05/10/6a008f57da3bd.r_d.1196-996-1756.jpeg" alt=""
@@ -1438,6 +1581,8 @@ La entrada Bera Bera y Rocasa abren en el Gasca una final con el título en jueg
     </a>
     
     <a href="https://cadenaser.com/canarias/2026/05/26/javi-aragon-prolonga-su-vinculacion-con-el-balonmano-lanzarote-ciudad-de-arrecife-ser-lanzarote/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/T4L4F3R7UJDLTNCDAYD3AUFLDU.JPG?auth=e8828c274d5d5e6532ba082b85a1daf58c9fca83a807df98944d0d44b1c73fa6&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -1457,6 +1602,8 @@ La entrada Bera Bera y Rocasa abren en el Gasca una final con el título en jueg
     </a>
     
     <a href="https://balonmanoremudas.es/el-rocasa-gran-canaria-se-cita-con-la-historia-en-el-primer-capitulo-de-una-final-con-aroma-a-clasico-ante-el-super-amara-bera-bera/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1476,6 +1623,8 @@ La entrada Bera Bera y Rocasa abren en el Gasca una final con el título en jueg
     </a>
     
     <a href="https://www.cathandbol.cat/1a-estatal/item/13229-2026-05-08-21-31-17.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/ffa55321f12d8677a2742c2dccb63f2e_M.jpg" alt=""
@@ -1495,6 +1644,8 @@ La entrada Bera Bera y Rocasa abren en el Gasca una final con el título en jueg
     </a>
     
     <a href="https://cadenaser.com/galicia/2026/05/25/el-guardes-derriba-la-puerta-y-gana-su-primer-titulo-europeo-ser-baixo-mino/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/W2K3SRA2X5ASFJELSILRVKQQ2U.jpeg?auth=912a28b94b5889b64237640825ebc800968f7a5b5b915c2b6683787448bfb001&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -1514,6 +1665,8 @@ La entrada Bera Bera y Rocasa abren en el Gasca una final con el título en jueg
     </a>
     
     <a href="http://www.ihf.info/media-center/news/unbeaten-cb-atletico-guardes-lift-maiden-ehf-european-cup-women-trophy" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1538,6 +1691,8 @@ Spanish side CB Atlético Guardés won their maiden European trophy last weekend
     </a>
     
     <a href="https://as.com/masdeporte/balonmano/guardes-hace-trizas-al-michalovce-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/WHV4BSCM6ZFOLJO7FJ5KTCHTSY.jpg?auth=2d6006272a90337d1cdd45c7854a002ae2b0e68586c4c8b9a5d1ed63688b56b8" alt=""
@@ -1559,6 +1714,8 @@ Spanish side CB Atlético Guardés won their maiden European trophy last weekend
     </a>
     
     <a href="https://www.elnortedecastilla.es/deportes/balonmano/vida-insuficiente-aula-cultural-20260523230420-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s3.ppllstatics.com/elnortedecastilla/www/multimedia/2026/05/23/1510873035-R6J35vaziwiobkJT6mA4McL-1200x840@El%20Norte.jpg" alt=""
@@ -1580,6 +1737,8 @@ Spanish side CB Atlético Guardés won their maiden European trophy last weekend
     </a>
     
     <a href="https://www.bmmalagacostadelsol.com/el-costa-del-sol-malaga-despide-la-temporada-en-telde-21-18.htm" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1599,6 +1758,8 @@ Spanish side CB Atlético Guardés won their maiden European trophy last weekend
     </a>
     
     <a href="https://balonmanoremudas.es/el-rocasa-gran-canaria-supera-al-costa-del-sol-malaga-para-acceder-a-una-historica-final-de-liga-guerreras-iberdrola/" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1618,6 +1779,8 @@ Spanish side CB Atlético Guardés won their maiden European trophy last weekend
     </a>
     
     <a href="https://www.marca.com/balonmano/balonmano-femenino/2026/05/24/primer-titulo-europeo-atletico-guardes.html" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/24/6a135dfee3a0f.jpeg" alt=""
@@ -1637,6 +1800,8 @@ Spanish side CB Atlético Guardés won their maiden European trophy last weekend
     </a>
     
     <a href="https://www.marca.com/balonmano/balonmano-femenino/2026/05/24/bera-bera-remudas-citan-final-liga-guerreras.html" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/24/6a1304f225693.jpeg" alt=""
@@ -1656,6 +1821,8 @@ Spanish side CB Atlético Guardés won their maiden European trophy last weekend
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260524/1004187417/29-24-guardes-conquista-copa-europea.html" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_221/files/fp/uploads/2026/05/24/6a13600b8233c.r_d.1068-1381-2806.jpeg" alt=""
@@ -1675,6 +1842,8 @@ Spanish side CB Atlético Guardés won their maiden European trophy last weekend
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260524/1004187263/21-18-rocasa-elimina-costa-sol-cita-final-liga-super-amara-bera-bera.html" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_150_155/uploads/2026/05/24/6a130d234e4ee.jpeg" alt=""
@@ -1694,6 +1863,8 @@ Spanish side CB Atlético Guardés won their maiden European trophy last weekend
     </a>
     
     <a href="https://www.balonmano.info/final-liga-guerreras-iberdrola-20263410294/" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2025/09/larissa-da-silva-400x240.jpg" alt=""
@@ -1713,6 +1884,8 @@ Spanish side CB Atlético Guardés won their maiden European trophy last weekend
     </a>
     
     <a href="https://www.balonmano.info/rocasa-elimina-malaga-final-bera-bera-20262310291/" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/rocasa-finalista-400x240.jpeg" alt=""
@@ -1732,6 +1905,8 @@ Spanish side CB Atlético Guardés won their maiden European trophy last weekend
     </a>
     
     <a href="https://www.balonmano.info/guardes-campeon-ehf-european-cup-20262510297/" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/atletico-400x240.jpeg" alt=""
@@ -1751,6 +1926,8 @@ Spanish side CB Atlético Guardés won their maiden European trophy last weekend
     </a>
     
     <a href="https://www.rfebm.com/ligaguerrerasiberdrola-sigue-las-semifinales-y-el-play-down/" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/foto_1581876_209166_ertlab7a5d_WhatsApp-Image-2026-05-16-at-19.34.26-10-150x150.webp" alt=""
@@ -1773,6 +1950,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://as.com/masdeporte/el-atletico-guardes-a-un-60-minutos-de-la-gloria-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/WS5WF3G5IBCN5B5RQYGMBMDUFA.JPG?auth=c420cda72d4d4924754a80fb9252e03f9f593beb20d4d2e52dc3f37bbc8b6f54" alt=""
@@ -1794,6 +1973,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.bmmalagacostadelsol.com/el-costa-del-sol-malaga-busca-la-hazana-en-telde-1300.htm" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1813,6 +1994,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/claves-vuelta-semifinales-liga-guerreras-iberdrola-20260010249/" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/silvia-navarro-400x240.jpeg" alt=""
@@ -1834,6 +2017,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/bera-bera-porrino-semifinal-dhf-20260010289/" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/mica-rodrigues-400x240.jpg" alt=""
@@ -1853,6 +2038,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/marcos-fis-ilusiona-barca-deja-130561333" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/99b5fcfa-a3a0-4d0b-84e4-bfcb582e21ef_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1872,6 +2059,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://balonmanoremudas.es/el-antonio-moreno-decidira-el-pulso-por-la-final-entre-el-rocasa-gran-canaria-y-el-costa-del-sol-malaga/" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1891,6 +2080,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/mecalia-atletico-guardes-michalovce-final-ehf-european-cup-20265610244/" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/guardes-ehf-ec-400x240.jpeg" alt=""
@@ -1910,6 +2101,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.elnortedecastilla.es/deportes/balonmano/aula-juega-permanencia-carta-solo-sirve-ganar-20260521195826-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s1.ppllstatics.com/elnortedecastilla/www/multimedia/2026/05/21/morveAULA-Ry3UpuChXFoVS2uPoil7i2I-1200x840@El%20Norte.jpg" alt=""
@@ -1931,6 +2124,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.marca.com/balonmano/balonmano-femenino/2026/05/21/guerrera-mireya-gonzalez-anuncia-retirada-historial-leyenda.html" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/21/6a0ef8e0492cd.jpeg" alt=""
@@ -1952,6 +2147,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/darly-zoqbi-retirada-internacional-balonmano-guerreras-20260010230/" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/darly-400x240.jpg" alt=""
@@ -1973,6 +2170,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.sport.es/es/noticias/deportes/balonmano/sergi-franco-capitan-bm-granollers-130470146" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/5636c34c-106f-425b-8590-f0d415ab58b3_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1992,6 +2191,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://fandaluzabm.org/noticias/el-cadeba-alevin-corona-a-sus-campeones/" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2011,6 +2212,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/mireya-gonzalez-retirada-balonmano-20265310215/" target="_blank" rel="noopener"
+       data-date="2026-05-20"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/hq720-400x240.jpg" alt=""
@@ -2032,6 +2235,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://bmgranollers.cat/carla-gonzalez-renova-amb-el-kh-7-bm-granollers-fins-al-2028/" target="_blank" rel="noopener"
+       data-date="2026-05-19"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2051,6 +2256,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/edurne-donderis-ficha-replasa-beti-onak-20260210191/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/edurne-beti-400x240.jpg" alt=""
@@ -2072,6 +2279,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://as.com/masdeporte/polideportivo/el-guardes-asalta-michalovce-y-roza-su-primer-titulo-europeo-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/MTE63USWHFF5RNDQ4UY4RQVDKU.jpg?auth=fdd341a092152d10319c2aa56f315acc91094d0d76455090f1edb8f36bf6ce58" alt=""
@@ -2093,6 +2302,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.marca.com/balonmano/balonmano-femenino/2026/05/17/atletico-guardes-encarrila-ehf-european-cup.html" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/17/6a09ebcf85727.jpeg" alt=""
@@ -2112,6 +2323,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.marca.com/balonmano/balonmano-femenino/2026/05/17/bera-bera-remudas-apuntan-final-liga-guerreras.html" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/17/6a09d54e87d93.jpeg" alt=""
@@ -2131,6 +2344,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/bera-bera-gana-porrino-semifinal-liga-guerreras-iberdrola-20261210163/" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/etxeberria-400x240.jpeg" alt=""
@@ -2150,6 +2365,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmanoporrino.com/porrino-cae-con-la-cabeza-alta-en-una-semifinal-de-maxima-exigencia/" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmanoporrino.com/wp-content/uploads/2026/05/2M6A8415-Mediana.jpeg" alt=""
@@ -2169,6 +2386,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.elnortedecastilla.es/deportes/balonmano/aula-consuma-desproposito-lanzarote-roza-descenso-20260516231046-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s1.ppllstatics.com/elnortedecastilla/www/multimedia/2026/05/16/1510676395-R71yqodRf9u362yoKZ2FzJN-1200x840@El%20Norte.jpg" alt=""
@@ -2190,6 +2409,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.bmmalagacostadelsol.com/el-costa-del-sol-malaga-obligado-a-remontar-23-27.htm" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2209,6 +2430,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://balonmanoremudas.es/el-rocasa-gran-canaria-cobra-ventaja-en-las-semifinales-tras-un-gran-partido-en-malaga/" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2228,6 +2451,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://as.com/masdeporte/el-guardes-suena-con-el-primer-titulo-europeo-para-galicia-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/QQGZQ5HCKVHWNDWUVZB2EXSTYI.jpg?auth=2fba2a3846f57f5afdc3ab09f8a966872596f199ce134efa9de567f82436d6eb" alt=""
@@ -2249,6 +2474,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/rocasa-vence-malaga-toma-ventaja-semifinales-liga-guerreras-20260010159/" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/maria-guerra-400x240.jpg" alt=""
@@ -2268,6 +2495,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/morvedre-gana-elda-permanencia-liga-guerreras-20260010153/" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/morvedre-celebra-400x240.jpg" alt=""
@@ -2287,6 +2516,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/zonzamas-vence-aula-valladolid-permanencia-20260010150/" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/pauli-fernandez-400x240.jpeg" alt=""
@@ -2306,6 +2537,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.bmmalagacostadelsol.com/el-costa-del-sol-malaga-inicia-el-camino-hacia-la-final-1900.htm" target="_blank" rel="noopener"
+       data-date="2026-05-15"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2325,6 +2558,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/balonmano-pozuelo-campana-socios-2026-2027-20261610137/" target="_blank" rel="noopener"
+       data-date="2026-05-15"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/pozuelo-400x240.jpeg" alt=""
@@ -2344,6 +2579,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://balonmanoremudas.es/el-rocasa-gran-canaria-afronta-en-malaga-el-primer-asalto-hacia-la-gran-final-de-la-liga-guerreras-iberdrola/" target="_blank" rel="noopener"
+       data-date="2026-05-15"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2363,6 +2600,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.sport.es/es/noticias/deportes/poker-copa-reina-bera-bera-130200199" target="_blank" rel="noopener"
+       data-date="2026-05-14"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/94b5fa26-b208-4de0-a362-408c0f1afc86_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -2382,6 +2621,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/siete-ideal-copa-reina-balonmano-2026-20263110091/" target="_blank" rel="noopener"
+       data-date="2026-05-11"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/illumbe-400x240.jpg" alt=""
@@ -2401,6 +2642,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/elba-alvarez-mvp-copa-reina-2026-bera-bera-20263210089/" target="_blank" rel="noopener"
+       data-date="2026-05-11"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/elba-alvarez-400x240.jpg" alt=""
@@ -2420,6 +2663,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.marca.com/balonmano/balonmano-femenino/2026/05/10/bera-bera-mantiene-hegemonia-copa-reina-vencer-atl-guardes.html" target="_blank" rel="noopener"
+       data-date="2026-05-10"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/10/6a00918d1d7ec.jpeg" alt=""
@@ -2439,6 +2684,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/sede-copa-reina-2026-27-20263210069/" target="_blank" rel="noopener"
+       data-date="2026-05-10"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/copa-reina-2026-400x240.jpg" alt=""
@@ -2458,6 +2705,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://www.balonmano.info/bera-bera-gana-copa-reina-guardes-2026-20262710063/" target="_blank" rel="noopener"
+       data-date="2026-05-10"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/campeonas-copa-reina-2026-400x240.jpg" alt=""
@@ -2477,6 +2726,8 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
     </a>
     
     <a href="https://balonmanatleticoguardes.com/al-guardes-se-le-vuelve-a-escapar-la-copa-y-se-centra-ahora-en-europa-26-21/" target="_blank" rel="noopener"
+       data-date="2026-05-10"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://balonmanatleticoguardes.com/wp-content/uploads/2026/05/IMG_7690.jpg" alt=""
@@ -2495,52 +2746,44 @@ La entrada Super Amara Bera Bera y Rocasa Gran Canaria, rumbo a la gran final de
         </div>
     </a>
     
-    <a href="https://www.marca.com/balonmano/2026/05/09/bera-bera-guardes-jugaran-copa-reina.html" target="_blank" rel="noopener"
-       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
-        
-        <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/09/69ff93c900a2e.jpeg" alt=""
-             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
-             onerror="this.style.display='none'">
-        
-        <div class="flex-1 min-w-0">
-            <p class="font-semibold leading-snug line-clamp-2">El Bera Bera defenderá título en casa ante el Atlético Guardés</p>
-            
-            <div class="flex items-center gap-2 mt-2">
-                <span class="text-xs font-medium text-gray-600">Marca-Balonmano</span>
-                <span class="text-gray-300">·</span>
-                <span class="text-xs text-gray-400">2026-05-09</span>
-                
-            </div>
-        </div>
-    </a>
-    
-    <a href="https://balonmanatleticoguardes.com/el-guardes-se-mete-en-su-segunda-final-copera-contra-viento-y-marea-20-24/" target="_blank" rel="noopener"
-       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
-        
-        <img src="https://balonmanatleticoguardes.com/wp-content/uploads/2026/05/JLR0396.jpg" alt=""
-             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
-             onerror="this.style.display='none'">
-        
-        <div class="flex-1 min-w-0">
-            <p class="font-semibold leading-snug line-clamp-2">El Guardés se mete en su segunda final copera contra viento y marea (20-24)</p>
-            
-            <div class="flex items-center gap-2 mt-2">
-                <span class="text-xs font-medium text-gray-600">Guardes-web</span>
-                <span class="text-gray-300">·</span>
-                <span class="text-xs text-gray-400">2026-05-09</span>
-                
-            </div>
-        </div>
-    </a>
-    
 </div>
+
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
 
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">Base Femenino</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">Base Femenino</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">Base Femenino</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
     
     <a href="https://www.muchodeporte.com/deporte-andaluz/cierre-por-todo-alto-a-la-copa-de-andalucia-de-balonmano-base-2026-2026-06-02/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://d3ikwi7vygxzy7.cloudfront.net/articulos/articulos-362910.jpg" alt=""
@@ -566,6 +581,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.balonmano.info/el-aula-valladolid-infantil-campeon-espana-2026-20261510409/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/06/cavidel-aula-400x240.jpeg" alt=""
@@ -587,6 +604,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://fandaluzabm.org/portada/cierre-por-todo-alto-a-la-copa-de-andalucia-de-balonmano-base-2026/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -608,6 +627,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://berabera.com/es/secciones/balonmano/noticias/13968-kopako-finalak-seniorrak-zarautzen-infantilak-zumaian" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://berabera.com/" alt=""
@@ -631,6 +652,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.cathandbol.cat/base/infantil/item/13234-2026-05-30-11-42-11.html" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/8a80e20e1e41a36d18379379f2dfdcf0_M.jpg" alt=""
@@ -650,6 +673,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.rfebm.com/cdeinfantilbm-femenino-sigue-en-directo-el-campeonato/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/banner_-150x150.webp" alt=""
@@ -672,6 +697,8 @@ La entrada #CDEInfantilBM femenino | Sigue en directo el campeonato se publicó 
     </a>
     
     <a href="https://fandaluzabm.org/noticias/cuenta-atras-para-la-iii-copa-de-andalucia-de-balonmano-base/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -693,6 +720,8 @@ La entrada #CDEInfantilBM femenino | Sigue en directo el campeonato se publicó 
     </a>
     
     <a href="https://www.eixdiari.cat/esports/doc/122058/el-cadet-femeni-del-handbol-ribes-entre-els-millors-vuit-equips-despanya.html" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -714,6 +743,8 @@ La entrada #CDEInfantilBM femenino | Sigue en directo el campeonato se publicó 
     </a>
     
     <a href="https://www.rfebm.com/sagunto-sera-el-escenario-la-fase-final-del-campeonato-de-espana-infantil-femenina/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/banner_-150x150.webp" alt=""
@@ -736,6 +767,8 @@ La entrada Sagunto será el escenario de la fase final del Campeonato de España
     </a>
     
     <a href="https://www.rfebm.com/definida-la-fase-final-del-campeonato-de-espana-cadete-femenina/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/1080x1350_SorteoCadeteFemenino_FaseFinal-1-150x150.webp" alt=""
@@ -758,6 +791,8 @@ La entrada Definida la fase final del Campeonato de España Cadete Femenina se p
     </a>
     
     <a href="https://www.rfebm.com/cambio-en-la-parrilla-de-selecciones-clasificadas-a-los-campeonatos-del-mundo-junior-y-juvenil-femeninos/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/JAO_4441-copia-150x150.webp" alt=""
@@ -780,6 +815,8 @@ La entrada Cambio en la parrilla de selecciones clasificadas a los campeonatos d
     </a>
     
     <a href="https://bmgranollers.cat/el-juvenil-a-femeni-shan-proclamat-campiones-despanya/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -799,6 +836,8 @@ La entrada Cambio en la parrilla de selecciones clasificadas a los campeonatos d
     </a>
     
     <a href="https://www.balonmano.info/kh7-bm-granollers-campeon-espana-juvenil-femenino-2025-26-20262010194/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.balonmano.info/wp-content/uploads/2026/05/juvenil-campeon-espana-400x240.jpeg" alt=""
@@ -818,6 +857,8 @@ La entrada Cambio en la parrilla de selecciones clasificadas a los campeonatos d
     </a>
     
     <a href="https://www.cathandbol.cat/base/juvenil/item/13219-granollers-or-i-sant-joan-despí-plata-a-lestatal-juvenil-femeni.html" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/7ca1263a39225c3a9ef2a150e92906fd_M.jpg" alt=""
@@ -837,6 +878,8 @@ La entrada Cambio en la parrilla de selecciones clasificadas a los campeonatos d
     </a>
     
     <a href="https://handballargentina.org/cah/2026/05/argentina-al-grupo-d-del-mundial-juvenil-femenino/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=argentina-al-grupo-d-del-mundial-juvenil-femenino" target="_blank" rel="noopener"
+       data-date="2026-05-08"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -857,6 +900,8 @@ The post Argent</p>
     </a>
     
     <a href="https://fandaluzabm.org/malaga/las-finales-de-copa-trops-delegacion-broche-al-curso-en-alhaurin-de-la-torre/" target="_blank" rel="noopener"
+       data-date="2026-05-06"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -879,12 +924,42 @@ The post Argent</p>
     
 </div>
 
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
+
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

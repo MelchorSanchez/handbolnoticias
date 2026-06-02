@@ -25,10 +25,11 @@
         .text-europe-green { color: #2E7D32; }
         .border-europe-green { border-color: #2E7D32; }
     </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
-<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40">
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
 
     <!-- ── Barra principal ── -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
@@ -293,6 +294,7 @@
                 </div>
             </div>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
     </div>
 
@@ -300,6 +302,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
         <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
         <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
@@ -533,18 +536,30 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
     
 
-<nav class="text-sm text-gray-500 mb-6">
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
     <a href="/" class="hover:text-hb-blue">Inicio</a>
     <span class="mx-2">›</span>
     <span class="text-gray-800 font-medium">ASOBAL</span>
 </nav>
 
-<h1 class="text-2xl font-bold mb-6 text-gray-900">ASOBAL</h1>
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">ASOBAL</h1>
+</div>
 
 
-<div class="space-y-3">
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/barca-liga-perfecta-record-goleador-130882908" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/89d7d277-1d7b-4b0b-9f64-3d45f9aafa4f_16-9-discover-aspect-ratio_default_0_x1051y393.webp" alt=""
@@ -564,6 +579,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.mibalonmano.com/fertiberia-puerto-sagunto-confirma-tres-bajas-temporada-26-27" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/715198293_1847186475709794n@FertiberiaPuertoSagunto.jpg" alt=""
@@ -583,6 +600,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.muchodeporte.com/club-muchodeporte/club-balonmano-puente-genil/salvado-2026-06-02/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://d3ikwi7vygxzy7.cloudfront.net/articulos/articulos-359677.jpg" alt=""
@@ -604,6 +623,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://valderec.es/francisco-canizares-celebra-el-final-de-una-temporada-historica-para-el-balonmano-caserio/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://valderec.es/wp-content/uploads/2026/06/IMG_20260601_203219-850x560.jpg" alt=""
@@ -625,6 +646,8 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </a>
     
     <a href="https://www.lanzadigital.com/provincia/ciudad-real/el-caserio-festeja-un-sueno-que-crece-apasiona-a-ciudad-real-y-le-lleva-a-seguir-haciendo-historia/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.lanzadigital.com/wp-content/uploads/2026/06/Gala-Caserio-ER-1-de-1-31.jpg" alt=""
@@ -647,6 +670,8 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://www.farodevigo.es/deportes-morrazo/2026/06/01/balonman-cangas-frigorificos-morrazo-heroico-130910666.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/191fe67a-7b84-4c43-bf5d-1093da907231_16-9-aspect-ratio_default_0_x1044y464.jpg" alt=""
@@ -668,6 +693,8 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://www.mibalonmano.com/barcelona-balonmano-record-goles-anotados-temporada-liga-asobal" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/2026-05-22_FCBHANDBOLvsTORRELAVEGA_144e@FCBarcelona-VictorSalgado.jpg" alt=""
@@ -687,6 +714,8 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://www.mibalonmano.com/gonzalo-perez-arce-maximo-goleador-liga-asobal-25-26-mejor-record-goleador-dos-decadas" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/649775782_1856986114605@AbancaAdemarLeon-AMProducciones.jpg" alt=""
@@ -706,6 +735,8 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://cadenaser.com/comunitat-valenciana/2026/06/01/el-viveros-herol-nava-ultimo-escollo-de-agustinos-para-alcanzar-la-liga-asobal-radio-alicante/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/PDGEAO4T3RDQBL66JCQVOIPZ7E.jpg?auth=d4c35822a76f521cf5f5cf096c0959b3110d410d715e098ef7e82657c21de032&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -725,6 +756,8 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://cadenaser.com/galicia/2026/06/01/el-cangas-sigue-siendo-de-asobal-radio-vigo/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/VSSU32HXPJEBRLFZIGSMB4PI2A.jpg?auth=2d08948907d1693a96a2df0839a69a2f7132a7ad362e717f00ff5d61143efe54&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -743,7 +776,30 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
         </div>
     </a>
     
+    <a href="https://www.cathandbol.cat/base/cadet/item/13233-campionat-españa-cadet-masculí.html" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.cathandbol.cat/media/k2/items/cache/df4daa7c387f80cb0de58d664bca4b7f_M.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Barça plata y el Granollers bronce en el estatal cadete</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CatHandbol</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-01</span>
+                
+            </div>
+        </div>
+    </a>
+    
     <a href="https://bmgranollers.cat/el-fraikin-bm-granollers-tanca-la-temporada-amb-una-victoria-i-certifica-europa/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -763,6 +819,8 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://clubbalonmanopuentegenil.es/liga-nexus-energia-asobal-el-cajasol-angel-ximenez-logra-la-permanencia-a-pesar-de-caer-en-cangas-32-30/" target="_blank" rel="noopener"
+       data-date="2026-06-01"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -782,6 +840,8 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://www.elnortedecastilla.es/segovia/nava-suspende-primera-convocatoria-seguir-asobal-20260531213341-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s1.ppllstatics.com/elnortedecastilla/www/multimedia/2026/05/31/1512496255-RX9Vq9961WPCpbZrkGh4U9H-1200x840@El%20Norte.jpg" alt=""
@@ -803,6 +863,8 @@ La emocionante pasión con la que se vive el balonmano en Ciudad Real no es sól
     </a>
     
     <a href="https://www.lanzadigital.com/deportes/balonmano/division-de-honor-masculina-balonmano/el-granollers-asegura-la-tercera-plaza-a-costa-de-un-caserio-que-siempre-fue-a-remolque/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.lanzadigital.com/wp-content/uploads/2026/05/BM-Caserio-La-Nava-_-Clara-Manzano-216-1299x730.jpg.webp" alt=""
@@ -828,6 +890,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.mibalonmano.com/ultima-jornada-liga-asobal-decide-plazas-europeas-promocion-descenso" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/DSC07426sww@BMPuenteGenil.jpg" alt=""
@@ -847,6 +911,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.marca.com/balonmano/liga-asobal/2026/05/31/barca-cierra-liga-pleno-victorias-nava-jugara-promocion-descenso.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/31/6a1c8ab624445.jpeg" alt=""
@@ -866,6 +932,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189872/38-29-granollers-acaba-tercero-clasifica-europa.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_221/uploads/2026/05/20/6a0e08e4c6c42.jpeg" alt=""
@@ -885,6 +953,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189871/record-goleador-historico-barca-liga-asobal-2025-2026.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_221/uploads/2026/02/11/698caa6f49a07.jpeg" alt=""
@@ -904,6 +974,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189849/28-41-barca-firma-pleno-puntos-liga-asobal.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_150_155/files/fp/uploads/2026/04/09/69d80236363f8.r_d.1474-767-523.jpeg" alt=""
@@ -923,6 +995,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189330/logrono-rioja-barca-directo-liga-asobal-balonmano-vivo.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_150_155/uploads/2026/05/22/6a10b876191a6.jpeg" alt=""
@@ -942,6 +1016,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.mibalonmano.com/asi-finaliza-liga-nexus-energia-asobal-25-26-puestos-europeos-descensos-promocion" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/2026-05-22_FCBHANDBOLvsTORRELAVEGA_117@FCBarcelona-VictorSalgado.jpg" alt=""
@@ -961,6 +1037,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cdbidasoa.eus/2026/05/31/victoria-para-cerrar-la-temporada-liguera-30-36/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cdbidasoa.eus/wp-content/uploads/2026/05/dsc7334-juan-alberto-lillo-960x720.jpg" alt=""
@@ -980,6 +1058,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://balonmanotorrelavega.com/2026/05/31/bm-torrelavega-guadalajara-cronica-5/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYwIiBoZWlnaHQ9IjE3MDciIHZpZXdCb3g9IjAgMCAyNTYwIDE3MDciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjZmQ0ZGIiLz48L3N2Zz4=" alt=""
@@ -999,6 +1079,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cathandbol.cat/elit/lliga-asobal/item/13238-2026-05-31-22-25-57.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/ce124d9ec5af0d86432db50661a61149_XL.jpg" alt=""
@@ -1018,6 +1100,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://cadenaser.com/aragon/2026/05/31/triste-derrota-en-alicante-en-la-despedida-del-bada-huesca-de-la-asobal-radio-huesca/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/WMILR5YYTBBEFEN7CA75DZAUOE.jpg?auth=d9f3a25968e8ae3ac6430cb847f74fa9e8a582799ab569ca8cf5159cb23cb2c7&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -1037,6 +1121,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://cadenaser.com/castillayleon/2026/05/31/el-villa-de-aranda-o-una-gran-familia-que-se-queda-en-asobal-radio-aranda/" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/DPM3Q4YJ4FBKHNZZSLST4GDGH4.jpeg?auth=c54aaa902f1c661f3f19fcc7a02891d6950f0f55a15da7e75b0cfbca3aad6953&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -1056,6 +1142,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/barca-supera-barrera-1-200-130867900" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/418f3f9f-b31e-4436-bba6-c2d608167d13_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -1075,6 +1163,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.diariodeleon.es/deportes/260530/2086731/ademar-cae-visita-aranda.html" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes.diariodeleon.es/files/og_thumbnail/uploads/2026/05/30/6a1b475e1428c.jpeg" alt=""
@@ -1096,6 +1186,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260530/1004189182/gonzalo.html" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/files/fp/uploads/2025/11/16/69190e7d1801a.r_d.496-294-4490.jpeg" alt=""
@@ -1115,6 +1207,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://balonmanotorrelavega.com/2026/05/30/bm-torrelavega-guadalajara-previa-7/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYwIiBoZWlnaHQ9IjE3MDciIHZpZXdCb3g9IjAgMCAyNTYwIDE3MDciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjZmQ0ZGIiLz48L3N2Zz4=" alt=""
@@ -1134,6 +1228,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260530/1004189428/barca-pleno-cierre-liga-asobal.html" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/files/fp/uploads/2026/05/06/69fbaeb90c608.r_d.1085-680-1998.jpeg" alt=""
@@ -1153,6 +1249,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260530/1004189393/ensayo-general-copa-horneo-alicante-descendido-huesca.html" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_221/files/fp/uploads/2026/04/11/69da82e5c61b3.r_d.1021-803-2192.jpeg" alt=""
@@ -1172,6 +1270,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.mibalonmano.com/barcelona-balonmano-viaja-logrono-petar-cikusa-recuperado-pleno-victorias" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/BAR-A_GRANOLLERS-69@FCBarcelona-JoanVidal.jpg" alt=""
@@ -1191,6 +1291,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://cadenaser.com/castillayleon/2026/05/30/el-ademar-cierra-con-derrota-en-aranda-una-triste-campana-35-33-radio-leon/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/FNB4XW7ZTREG7MCOM3UYB5MCWY.jpeg?auth=652487a5136532dbd85b175d8d16113614bca2f3782efff7d06059c03edcf278&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -1210,6 +1312,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://clubbalonmanopuentegenil.es/liga-nexus-energia-asobal-a-por-la-ultima-batalla-en-cangas/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1229,6 +1333,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.cdbidasoa.eus/2026/05/29/va-a-ser-un-partido-complicado/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cdbidasoa.eus/wp-content/uploads/2026/05/web-rdp-j30-liganexusasobal-cqnbid-960x720.jpg" alt=""
@@ -1248,6 +1354,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260529/1004189067/hay-juego-ultima-jornada-liga-asobal.html" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/files/fp/uploads/2026/05/25/6a14a2b39204f.r_d.1759-610-2099.jpeg" alt=""
@@ -1267,6 +1375,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.marca.com/balonmano/liga-asobal/2026/05/29/esto-joya-hispanos-marcos-fis-ficho-barca.html" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/27/bBo7I1g5op28vyY2b.jpeg" alt=""
@@ -1286,6 +1396,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.marca.com/balonmano/liga-asobal/2026/05/29/frigorificos-puente-genil-final-permanencia-ultima-jornada.html" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/29/6a19a0f00a3a4.jpeg" alt=""
@@ -1305,6 +1417,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.mibalonmano.com/adrian-sanchez-sexto-fichaje-horneo-eon-alicante-2028" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/aseon28@HorneoEONAlicante.jpg" alt=""
@@ -1324,6 +1438,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.mundodeportivo.com/horarios/20260530/1004189213/horario-canal-ver-tv-dicorpebal-logrono-rioja-barca-liga-asobal-balonmano.html" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_221/uploads/2026/05/22/6a10b876191a6.jpeg" alt=""
@@ -1343,6 +1459,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://cadenaser.com/castillayleon/2026/05/29/el-ademar-despide-en-aranda-una-temporada-para-olvidar-radio-leon/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/NGIMEBS2MJFZPB66CIIXUJNRRU.jpeg?auth=76907302e885eb54da2e6a4abd9775b61cab1745098100df0f8feed5687207a5&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -1362,6 +1480,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://cadenaser.com/aragon/2026/05/29/jose-nolasco-reconoce-que-asimilar-el-descenso-va-a-costar-radio-huesca/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/TUSKKIVXFFCM5IXHVIFQUWRVOU.jpg?auth=7bca7bc20efbf4be73060eedeefb35dd66e1ff9fa33c3ea17c741a9781d849f5&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -1381,6 +1501,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://cadenaser.com/galicia/2026/05/29/o-gatanal-ante-una-final-por-la-permanencia-radio-vigo/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/7VFGK3NKQJJLJGVUGVQH56GRXY.jpg?auth=38e78ae01c08e0fa0a51162ce5af7ec00d41b5d62e1414c019234e80dbf5b1a5&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -1402,6 +1524,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://bmgranollers.cat/el-fraikin-bm-granollers-es-juga-europa-en-una-final-al-palau-davant-el-caserio-bm-ciudad-real/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1421,6 +1545,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.elnortedecastilla.es/deportes/balonmano/recoletas-atletico-echa-primer-candado-temporada-derbi-20260529132007-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s2.ppllstatics.com/elnortedecastilla/www/multimedia/2026/05/29/NavaReco-Rly8fmxAlE7tlcIRjIznDFI-1200x840@El%20Norte.jpg" alt=""
@@ -1442,6 +1568,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.elnortedecastilla.es/segovia/nava-esquiva-descenso-directo-falta-asalto-final-20260522233221-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s2.ppllstatics.com/elnortedecastilla/www/multimedia/2026/05/22/navaprimera-Rqhagw5BsKHlHVPg5JHqBMI-1200x840@El%20Norte.jpg" alt=""
@@ -1465,6 +1593,8 @@ Y aunque el técnico del Balonmano Caserío, Santi Urdiales, intervenía en los 
     </a>
     
     <a href="https://www.rfebm.com/europa-y-la-salvacion-en-juego-en-la-ultima-jornada-de-division-de-honor-masculina/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/IMG_7063-Haimar-Marcos-150x150.webp" alt=""
@@ -1487,6 +1617,8 @@ La entrada Europa y la salvación en juego en la última jornada de División de
     </a>
     
     <a href="https://eldecanodeguadalajara.com/index.php/news/18985/el-sanicentro-balonmano-guadalajara-baja-el-tel%C3%B3n-de-la-temporada-entre-despedidas-y-un-%C3%BAltimo-desaf%C3%ADo-en-torrelavega/" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://eldecanodeguadalajara.com/uploads/images/news_18985_1780040564_social.jpg" alt=""
@@ -1508,6 +1640,8 @@ La entrada Europa y la salvación en juego en la última jornada de División de
     </a>
     
     <a href="https://as.com/masdeporte/miguel-angel-velasco-el-entrenador-del-ano-en-la-asobal-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/4IDJ2Q3CDNARHB63DLQSKT2CUQ.jpg?auth=72f91f848a845022577c9355dec61fa43f12158c0d61dfa2ebefbc31e19209ab" alt=""
@@ -1529,6 +1663,8 @@ La entrada Europa y la salvación en juego en la última jornada de División de
     </a>
     
     <a href="https://www.lanzadigital.com/deportes/balonmano/division-de-honor-masculina-balonmano/balonmano-caserio-ya-cultiva-tierra-de-sonadores/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.lanzadigital.com/wp-content/uploads/2026/05/Caserio-Cangas-_-Clara-Manzano-136.jpg" alt=""
@@ -1554,6 +1690,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.mibalonmano.com/joao-magalhaes-cedido-irudek-bidasoa-irun-proxima-temporada" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/web-fichaje-j542@CDBidasoa.jpg" alt=""
@@ -1573,6 +1711,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://balonmanotorrelavega.com/2026/05/28/bm-torrelavega-fichaje-diego-dorado/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYwIiBoZWlnaHQ9IjE3MDYiIHZpZXdCb3g9IjAgMCAyNTYwIDE3MDYiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjZmQ0ZGIiLz48L3N2Zz4=" alt=""
@@ -1592,6 +1732,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.mibalonmano.com/nemanja-jovic-novena-renovacion-tubos-aranda-villa-aranda-26-27" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/IMG_3063@TubosArandaVilladeAranda.jpg" alt=""
@@ -1611,6 +1753,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.cathandbol.cat/base/infantil/item/13232-el-barça-infantil-campió-despanya.html" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/483cae0995ad93e0178a7b39760f4d65_M.jpg" alt=""
@@ -1630,6 +1774,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://cadenaser.com/comunitat-valenciana/2026/05/28/el-horneo-prepara-la-copa-frente-al-huesca-su-ultimo-rival-en-la-liga-asobal-y-adversario-en-el-torneo-del-ko-radio-alicante/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/GBL2WP6NQ5HL3BHSKF2PA3JOGM.jpg?auth=4432be8773b78e19b23bc4d5b66bfad2ce6202f76e2da296a46570bd16746711&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -1649,6 +1795,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.cdbidasoa.eus/2026/05/28/joao-magalhaes-se-une-al-club-deportivo-bidasoa/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cdbidasoa.eus/wp-content/uploads/2026/05/web-fichaje-joao-magalhaes-960x720.jpg" alt=""
@@ -1668,6 +1816,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260527/1004188118/ian-barrufet.html" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/files/fp/uploads/2025/10/22/68f8fd269e965.r_d.1959-1011-1147.jpeg" alt=""
@@ -1687,6 +1837,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260527/1004188267/perla-cantera-barca-nuevo-equipo-liga-asobal.html" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/files/fp/uploads/2026/05/27/6a16bbf909955.r_d.365-192-6244.jpeg" alt=""
@@ -1706,6 +1858,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.mibalonmano.com/caserio-ciudad-real-intenta-retener-aitor-albizu" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/704869047_18425498509126203@CaserioCiudadReal.jpg" alt=""
@@ -1725,6 +1879,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.mibalonmano.com/frigorificos-morrazo-cangas-confirma-tres-bajas-proxima-temporada" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/uploads/images/posts/708557660_18555448939067127__n.@BalonmanCangas.jpg" alt=""
@@ -1744,6 +1900,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.mibalonmano.com/rebi-cuenca-oficializa-fichaje-extremo-jan-blas-hasta-2028" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/640-385-rebi-@REBICuenca.jpg" alt=""
@@ -1763,6 +1921,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://balonmanotorrelavega.com/2026/05/27/bm-torrelavega-balance-cantera/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDQ4IiBoZWlnaHQ9IjEzNjYiIHZpZXdCb3g9IjAgMCAyMDQ4IDEzNjYiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjZmQ0ZGIiLz48L3N2Zz4=" alt=""
@@ -1782,6 +1942,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://as.com/masdeporte/alberto-serradilla-especialista-en-ascensos-a-la-asobal-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/OOMJBU3CVZA2ZJI6KPKIQMOLAA.jpg?auth=c2335142bde96f231742c2c5d57b3d9dfa1a536dea166122fbf59bd0df02e4ed" alt=""
@@ -1803,6 +1965,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://cadenaser.com/rioja/2026/05/26/el-ciudad-de-logrono-celebra-su-clasificacion-para-europa-es-el-mejor-vestuario-al-que-he-dirigido-en-mi-carrera-radio-rioja/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/6GNVWCST75ETLBNVB5N75M2UDY.jpeg?auth=a7ef11ae2745543056b4190d1e9f3a52924962ab4db013e0d5483b7edf5bae24&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -1822,6 +1986,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://bmgranollers.cat/ona-vila-seguira-vinculada-al-kh-7-bm-granollers-una-temporada-mes/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1841,6 +2007,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.diariodenavarra.es/noticias/deportes/balonmano/2026/05/26/anaitasuna-reestructura-8-bajas-proximo-proyecto-ascenso-asobal-nuevo-objetivo-822197-45.html" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes.diariodenavarra.es/files/og_thumbnail/uploads/2026/05/26/6a1558d6594c4.jpeg" alt=""
@@ -1860,6 +2028,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://clubbalonmanopuentegenil.es/liga-nexus-energia-un-explosivo-gol-sobre-la-bocina-de-dani-serrano-acerca-la-permanencia-al-cajasol-angel-ximenez-28-27/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -1879,6 +2049,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://handnews.fr/2026/lms-chema-marquez-va-quitter-saint-raphael-pour-rentrer-en-espagne/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2022/03/FN9Yk49XoAA1DA9-300x200.jpg" alt=""
@@ -1900,6 +2072,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.mibalonmano.com/movimientos-clubes-liga-nexus-energia-asobal-mayo-2026-fichajes" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/IMG_2878@TubosArandaVilladeAranda.jpg" alt=""
@@ -1919,6 +2093,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.mibalonmano.com/horneo-eon-alicante-ficha-extremo-daniel-reinante-hasta-2029" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/509BCCFC-5A38-4F3F-91D4-70662B04CCDC@EONALicante.jpg" alt=""
@@ -1938,6 +2114,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.cathandbol.cat/1a-estatal/item/13229-2026-05-08-21-31-17.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/ffa55321f12d8677a2742c2dccb63f2e_M.jpg" alt=""
@@ -1957,6 +2135,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.cathandbol.cat/elit/lliga-asobal/item/13228-el-granollers-t.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cathandbol.cat/media/k2/items/cache/7532330f4d43f4daa4c909bf6ee3380d_M.jpg" alt=""
@@ -1976,6 +2156,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://balonmanotorrelavega.com/2026/05/25/bm-torrelavega-baja-marcos-garate/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTIwIiBoZWlnaHQ9IjEwODAiIHZpZXdCb3g9IjAgMCAxOTIwIDEwODAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjZmQ0ZGIiLz48L3N2Zz4=" alt=""
@@ -1995,6 +2177,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://balonmanotorrelavega.com/2026/05/25/bm-torrelavega-baja-sergio-alonso/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTIwIiBoZWlnaHQ9IjEwODAiIHZpZXdCb3g9IjAgMCAxOTIwIDEwODAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjZmQ0ZGIiLz48L3N2Zz4=" alt=""
@@ -2014,6 +2198,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260525/1004187726/barbaridad-marcos-fis-apunta-jugada-temporada-ocurrio-5.html" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_100_103/files/fp/uploads/2026/05/25/6a149aa445252.r_d.1517-1511-333.jpeg" alt=""
@@ -2035,6 +2221,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://cadenaser.com/comunitat-valenciana/2026/05/25/el-horneo-alicante-ficha-al-joven-extremo-daniel-reinante-hasta-2029-radio-alicante/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/TM4K7MMIMBFUXF2Z5SRDI4VWG4.JPEG?auth=5d1f7eea1e535564d975ba5c055b73ad05a466cea2b3700c445919b9105e989b&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -2054,6 +2242,8 @@ Este jueves, a través de sus redes sociales, ha informado de las fechas en las 
     </a>
     
     <a href="https://www.rfebm.com/el-presidente-blazquez-recibe-al-embajador-de-la-liga-de-estados-arabes/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/20260526.30-150x150.webp" alt=""
@@ -2076,6 +2266,8 @@ La entrada El presidente Blázquez recibe al embajador de la Liga de Estados Ár
     </a>
     
     <a href="https://www.elnortedecastilla.es/deportes/balonmano/vida-insuficiente-aula-cultural-20260523230420-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s3.ppllstatics.com/elnortedecastilla/www/multimedia/2026/05/23/1510873035-R6J35vaziwiobkJT6mA4McL-1200x840@El%20Norte.jpg" alt=""
@@ -2097,6 +2289,8 @@ La entrada El presidente Blázquez recibe al embajador de la Liga de Estados Ár
     </a>
     
     <a href="https://www.marca.com/balonmano/liga-asobal/2026/05/24/fertiberia-vuelve-liga-asobal-sufrida-final-agustinos.html" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/24/6a12f6489641c.jpeg" alt=""
@@ -2116,6 +2310,8 @@ La entrada El presidente Blázquez recibe al embajador de la Liga de Estados Ár
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260524/1004187238/18-17-fertiberia-vuelve-asobal-sufrida-final-agustinos.html" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_150_155/files/fp/uploads/2026/05/24/6a12f6d8a52df.r_d.780-694-976.jpeg" alt=""
@@ -2135,6 +2331,8 @@ La entrada El presidente Blázquez recibe al embajador de la Liga de Estados Ár
     </a>
     
     <a href="https://www.mibalonmano.com/fertiberia-puerto-sagunto-ascenso-liga-asobal-agustinos-alicante-jugara-promocion" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/DSC07178-1@BMPuertoSagunto.jpg" alt=""
@@ -2154,6 +2352,8 @@ La entrada El presidente Blázquez recibe al embajador de la Liga de Estados Ár
     </a>
     
     <a href="https://www.mibalonmano.com/chema-marquez-ficha-cajasol-sevilla-proin-26-27" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/705698815_18051018881757548@BMProin.jpg" alt=""
@@ -2173,6 +2373,8 @@ La entrada El presidente Blázquez recibe al embajador de la Liga de Estados Ár
     </a>
     
     <a href="https://cadenaser.com/comunitat-valenciana/2026/05/24/agustinos-cae-por-la-minima-en-la-final-por-el-ascenso-a-asobal-ante-puerto-de-sagunto-radio-alicante/" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://cadenaser.com/resizer/v2/LDP5BQ3SHZCDPLZDTRQVVDKK4M.png?auth=927c58e1a74692063c49f965b9a35dc1368abbfdb5e59556c7c1f2cce52cae6f&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
@@ -2192,6 +2394,8 @@ La entrada El presidente Blázquez recibe al embajador de la Liga de Estados Ár
     </a>
     
     <a href="https://www.elnortedecastilla.es/deportes/balonmano/recoletas-valladolid-asalta-primera-vez-leon-20260523231036-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://s2.ppllstatics.com/elnortedecastilla/www/multimedia/2026/05/23/_DSC5710-RHA0DsPwdoo6IEh82orhpBM-1200x840@El%20Norte.jpg" alt=""
@@ -2213,6 +2417,8 @@ La entrada El presidente Blázquez recibe al embajador de la Liga de Estados Ár
     </a>
     
     <a href="https://www.rfebm.com/dhplatamasc-sigue-en-directo-la-fase-de-ascenso/" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/IMG_39272-150x150.webp" alt=""
@@ -2235,6 +2441,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260523/1004186791/increible-decision-ex-barca-luchar-champions-jugar-segunda.html" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/files/fp/uploads/2025/09/26/68d6427e5a807.r_d.542-427-0.jpeg" alt=""
@@ -2254,6 +2462,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260523/1004186764/decidido-subcampeon-descenso-liga-asobal-exhibicion-marcos-fis.html" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_449_221/files/fp/uploads/2026/05/23/6a10d414ece4d.r_d.1574-831-1496.jpeg" alt=""
@@ -2273,6 +2483,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.mibalonmano.com/agustinos-alicante-fertiberia-puerto-sagunto-jugaran-ascenso-asobal-final-playoff" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2290,6 +2502,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.mibalonmano.com/fertiberia-puerto-sagunto-jugara-la-final-por-el-ascenso-tras-superar-a-anaitasuna" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2307,6 +2521,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.mibalonmano.com/alfonso-rodriguez-quinto-fichaje-cajasol-sevilla-proin-para-la-26-27" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2324,6 +2540,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.mibalonmano.com/play-off-ascenso-puerto-sagunto-decide-segundo-ascenso-liga-asobal-plaza-promocion" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -2341,6 +2559,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.sport.es/es/noticias/barca/balonmano/marcos-fis-ilusiona-barca-deja-130561333" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://estaticos-cdn.prensaiberica.es/clip/99b5fcfa-a3a0-4d0b-84e4-bfcb582e21ef_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
@@ -2360,6 +2580,8 @@ La entrada Dani Martínez conduce al ascenso a Fertiberia Puerto Sagunto se publ
     </a>
     
     <a href="https://www.rfebm.com/el-bada-huesca-desciende-tras-15-temporadas-y-el-logrono-asegura-el-subcampeonato-en-dhm/" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/05/HH3qj4uWIAcTwOl-150x150.webp" alt=""
@@ -2382,6 +2604,8 @@ La entrada El Bada Huesca desciende tras 15 temporadas y el Logroño asegura el 
     </a>
     
     <a href="https://www.cdbidasoa.eus/2026/05/23/nuevo-cruel-final-en-casa-31-32/" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.cdbidasoa.eus/wp-content/uploads/2026/05/img-7078-960x720.jpg" alt=""
@@ -2401,6 +2625,8 @@ La entrada El Bada Huesca desciende tras 15 temporadas y el Logroño asegura el 
     </a>
     
     <a href="https://as.com/masdeporte/cara-y-cruz-en-huesca-baja-el-bada-logrono-subcampeon-f202605-n/" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://img.asmedia.epimg.net/resizer/v2/LS42EOOAXJCP5BH4BCOBWPU5FI.jpg?auth=0bc53d8863af4091d180a372f817642f261f29a3e7b4c65b757bfbcc6bafd40f" alt=""
@@ -2422,6 +2648,8 @@ La entrada El Bada Huesca desciende tras 15 temporadas y el Logroño asegura el 
     </a>
     
     <a href="https://www.marca.com/balonmano/liga-asobal/2026/05/22/barca-da-homenaje-copa-incluida-logrono-desciende-bada-huesca.html" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/22/6a10cb82cbc71.jpeg" alt=""
@@ -2441,6 +2669,8 @@ La entrada El Bada Huesca desciende tras 15 temporadas y el Logroño asegura el 
     </a>
     
     <a href="https://www.marca.com/balonmano/liga-asobal/2026/05/22/presion-congreso-gobierno-ayudas-incumplidas-asobal.html" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/05/22/6a0f9932581d8.jpeg" alt=""
@@ -2460,6 +2690,8 @@ La entrada El Bada Huesca desciende tras 15 temporadas y el Logroño asegura el 
     </a>
     
     <a href="https://www.mundodeportivo.com/balonmano/20260522/1004186741/detallazo-capitan-dika-mem-recibir-barca-trofeo-campeon-liga-asobal.html" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://imagenes2.mundodeportivo.com/files/image_100_103/files/fp/uploads/2026/05/22/6a10c1a99ca84.r_d.1511-1116-333.jpeg" alt=""
@@ -2478,33 +2710,44 @@ La entrada El Bada Huesca desciende tras 15 temporadas y el Logroño asegura el 
         </div>
     </a>
     
-    <a href="https://www.mundodeportivo.com/balonmano/20260522/1004186723/barca.html" target="_blank" rel="noopener"
-       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
-        
-        <img src="https://imagenes2.mundodeportivo.com/files/image_100_103/files/fp/uploads/2026/05/22/6a10b879f3ca1.r_d.1194-748-413.jpeg" alt=""
-             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
-             onerror="this.style.display='none'">
-        
-        <div class="flex-1 min-w-0">
-            <p class="font-semibold leading-snug line-clamp-2">36-24: Recital para el recuerdo de Emil Nielsen en su despedida del Palau</p>
-            
-            <div class="flex items-center gap-2 mt-2">
-                <span class="text-xs font-medium text-gray-600">MundoDeportivo-Balonmano</span>
-                <span class="text-gray-300">·</span>
-                <span class="text-xs text-gray-400">2026-05-22</span>
-                
-            </div>
-        </div>
-    </a>
-    
 </div>
+
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
 
 
 
 </main>
 
-<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8">
-    <p>Actualizado: 02/06/2026 a las 10:53 UTC ·
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 02/06/2026 a las 13:23 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>
