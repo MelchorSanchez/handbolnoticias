@@ -219,6 +219,29 @@ sources:
     team_keywords: [ademar, recoletas, aula valladolid, cleba, ubu san pablo]
     filter_title_only: true
 
+  - name: LaOpinionZamora
+    section: spain
+    type: rss
+    url: https://www.laopiniondezamora.es/rss
+    max_items: 20
+    filter_keywords: [balonmano, handball]
+    team_keywords: [zamora, caja rural]
+
+  - name: ZA49
+    section: spain
+    type: rss
+    url: https://www.za49.es/feed/all
+    max_items: 20
+    filter_keywords: [balonmano, handball]
+
+  - name: ElDiarioCantabria
+    section: spain
+    type: rss
+    url: https://eldiariocantabria.publico.es/rss/
+    max_items: 20
+    filter_keywords: [balonmano, handball]
+    team_keywords: [torrelavega, bathco, cueto]
+
   - name: LanzaCiudadReal
     section: spain
     type: rss
