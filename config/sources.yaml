@@ -39,6 +39,28 @@ sources:
     url: https://feeds.as.com/mrss-s/pages/as/site/as.com/section/masdeporte/subsection/balonmano/
     max_items: 20
 
+  - name: Relevo-balonmano
+    section: spain
+    type: scrape
+    url: https://www.relevo.com/balonmano/
+    max_items: 20
+    selectors:
+      articles: "article"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  - name: CadenaSER-balonmano
+    section: spain
+    type: scrape
+    url: https://cadenaser.com/tag/balonmano/a/
+    max_items: 20
+    selectors:
+      articles: "article"
+      title: "h2, h3, h4"
+      link: "a[href]"
+      image: "img"
+
   - name: ElPais-dep
     section: spain
     type: rss
@@ -222,6 +244,37 @@ sources:
     max_items: 20
     filter_keywords: [handbol, handball, balonmano]
     team_keywords: [granollers, bordils, gavà, terrassa, nou barris]
+    filter_title_only: true
+
+  - name: Sport-balonmano
+    section: spain/catalonia
+    type: scrape
+    url: https://www.sport.es/es/deportes/balonmano/
+    max_items: 20
+    selectors:
+      articles: "article"
+      title: "h2, h3"
+      link: "a[href]"
+      image: "img"
+
+  - name: EixDiari-handbol
+    section: spain/catalonia
+    type: rss
+    url: https://www.eixdiari.cat/serveis/rss/rss.aspx?section=esports
+    max_items: 15
+    filter_keywords: [handbol, handball, balonmano]
+    team_keywords: [ribes, vilanova]
+    filter_title_only: true
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # ESPAÑA — Prensa regional: Valencia / Alicante
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: EonAlicante
+    section: spain
+    type: rss
+    url: https://eonalicante.com/feed/
+    max_items: 10
+    filter_keywords: [balonmano, handball]
     filter_title_only: true
 
   # ══════════════════════════════════════════════════════════════════════════
