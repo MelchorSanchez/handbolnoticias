@@ -849,6 +849,8 @@ sources:
     max_items: 10
     exclude_keywords:
       - elvebris
+      - testsak
+      - nyhetsbrev
 
   - name: SolaHK-web
     section: norway
