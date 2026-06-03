@@ -562,3 +562,116 @@ rules:
     keywords: ["handball czech", "hazená", "svaz házené", "česká házená",
                "balonmano república checa", "balonmano checo", "handball tschechien",
                "dhb tschechien", "karvina handball", "dukla prague handball"]
+
+  - section: chile
+    tags: [chile, handball-chile]
+    keywords: ["handball chile", "balonmano chile", "handball chileno",
+               "selección chilena de balonmano", "federación chilena de balonmano",
+               "balonmano chileno", "chile handball team"]
+
+  - section: egypt
+    tags: [egypt, handball-egypt]
+    keywords: ["handball egypt", "handball egipto", "balonmano egipto",
+               "handball ägypten", "egypt national handball", "egyptian handball",
+               "al ahly handball", "zamalek handball", "smouha handball",
+               "egipto balonmano", "handball al-ahly"]
+
+  - section: angola
+    tags: [angola, handball-angola]
+    keywords: ["handball angola", "balonmano angola", "angola handball",
+               "petro de luanda", "petro luanda handball"]
+
+  - section: tunisia
+    tags: [tunisia, handball-tunisia]
+    keywords: ["handball tunisie", "handball túnez", "balonmano túnez",
+               "handball tunisien", "handball tunisia",
+               "espérance tunis handball", "esperance handball",
+               "club africain handball", "étoile sportive handball"]
+
+  - section: qatar
+    tags: [qatar, handball-qatar]
+    keywords: ["handball qatar", "balonmano qatar", "handball katar",
+               "qatari handball", "al sadd handball", "al rayyan handball",
+               "al duhail handball", "qatar handball team",
+               "balonmano katar", "handball al-sadd"]
+
+  - section: kuwait
+    tags: [kuwait, handball-kuwait]
+    keywords: ["handball kuwait", "balonmano kuwait", "kuwait handball",
+               "kuwait national handball"]
+
+  - section: uae
+    tags: [uae, handball-uae]
+    keywords: ["handball uae", "handball emirates", "handball emirats",
+               "balonmano emiratos", "united arab emirates handball",
+               "uae handball", "emiratos handball", "dubai handball",
+               "handball emiratos arabes"]
+
+  # ─── Regional catch-alls ───────────────────────────────────────────
+  - section: africa
+    keywords: ["handball africa", "handball africain", "handball africano",
+               "balonmano africa", "balonmano africano", "african handball",
+               "african championship handball", "afrohandball",
+               "confederation africaine de handball",
+               "handball maroc", "handball nigeria", "handball senegal",
+               "handball algerie", "handball cameroun", "handball ghana",
+               "handball kenya", "handball mozambique", "handball guinea",
+               "handball ivory coast", "handball cote d'ivoire",
+               "handball cape verde", "handball cabo verde",
+               "handball congo", "handball namibia", "handball guinea",
+               "balonmano marruecos", "balonmano nigeria", "balonmano argelia",
+               "balonmano senegal", "balonmano camerun", "balonmano ghana",
+               "morocco handball", "nigeria handball", "senegal handball",
+               "algeria handball", "cameroon handball"]
+
+  - section: asia
+    keywords: ["asian handball championship", "asian games handball",
+               "handball asia continental", "asian handball federation",
+               "handball korea", "handball corea", "handball south korea",
+               "handball korea du sud", "handball china", "handball iran",
+               "handball bahrain", "handball saudi", "handball saudi arabia",
+               "handball india", "handball indonesia", "handball australia",
+               "handball oceania", "handball new zealand", "handball philippine",
+               "balonmano corea", "balonmano china", "balonmano iran",
+               "balonmano australia", "south korea handball", "china handball",
+               "handball ksa", "korean handball"]
+
+  - section: northamerica
+    keywords: ["handball canada", "handball mexico", "handball cuba",
+               "handball puerto rico", "handball greenland",
+               "handball north america", "north american handball",
+               "balonmano canada", "balonmano mexico", "balonmano cuba",
+               "balonmano puerto rico", "balonmano norteamerica",
+               "norte america balonmano", "canada handball team",
+               "mexico handball team"]
+
+  - section: southamerica
+    keywords: ["handball sudamerica", "handball sudamericano",
+               "handball south america", "south american handball",
+               "handball venezuela", "handball colombia", "handball peru",
+               "handball bolivia", "handball ecuador", "handball paraguay",
+               "balonmano sudamerica", "balonmano suramerica",
+               "balonmano venezuela", "balonmano colombia", "balonmano peru",
+               "balonmano bolivia", "balonmano ecuador",
+               "venezuela handball", "colombia handball", "peru handball",
+               "south america handball championship"]
+
+  - section: europe/other-countries
+    keywords: ["handball belgium", "handball belgique", "handball belgien",
+               "handball belgie", "balonmano belgica",
+               "handball netherlands", "handball nederland", "handball pays-bas",
+               "balonmano holanda", "balonmano países bajos",
+               "handball russia", "handball russland", "balonmano rusia",
+               "handball russie", "cska handball", "motor handball",
+               "handball ukraine", "balonmano ucrania", "motor zaporizhzhia",
+               "handball belarus", "balonmano bielorrusia",
+               "handball lithuania", "balonmano lituania",
+               "handball latvia", "balonmano letonia",
+               "handball estonia", "balonmano estonia",
+               "handball finland", "handball finlande", "balonmano finlandia",
+               "handball luxembourg", "handball ireland", "balonmano irlanda",
+               "handball bosnia", "handball bosnie", "balonmano bosnia",
+               "handball montenegro", "balonmano montenegro",
+               "handball georgia", "balonmano georgia handball",
+               "handball bulgaria", "balonmano bulgaria",
+               "handball moldova", "handball kosovo", "handball albania"]

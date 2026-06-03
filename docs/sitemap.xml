@@ -25,6 +25,7 @@
   <url><loc>https://handbolnoticias.com/europe/euro-men/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
   <url><loc>https://handbolnoticias.com/europe/euro-women/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
   <url><loc>https://handbolnoticias.com/europe/other/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
+  <url><loc>https://handbolnoticias.com/europe/other-countries/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
   <url><loc>https://handbolnoticias.com/ihf/world-men/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
   <url><loc>https://handbolnoticias.com/ihf/world-women/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
   <url><loc>https://handbolnoticias.com/ihf/other/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
@@ -64,4 +65,15 @@
   <url><loc>https://handbolnoticias.com/turkey/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
   <url><loc>https://handbolnoticias.com/czech-republic/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
   <url><loc>https://handbolnoticias.com/usa/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
+  <url><loc>https://handbolnoticias.com/chile/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
+  <url><loc>https://handbolnoticias.com/egypt/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
+  <url><loc>https://handbolnoticias.com/angola/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
+  <url><loc>https://handbolnoticias.com/tunisia/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
+  <url><loc>https://handbolnoticias.com/qatar/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
+  <url><loc>https://handbolnoticias.com/kuwait/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
+  <url><loc>https://handbolnoticias.com/uae/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
+  <url><loc>https://handbolnoticias.com/africa/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
+  <url><loc>https://handbolnoticias.com/asia/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
+  <url><loc>https://handbolnoticias.com/northamerica/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
+  <url><loc>https://handbolnoticias.com/southamerica/</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-06-03</lastmod></url>
 </urlset>

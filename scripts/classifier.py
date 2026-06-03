@@ -296,6 +296,36 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text="", sourc
         sections = [sec for sec in sections if sec != "europe/other"]
         s = set(sections)
 
+    # Rule 3c: regional catch-alls suppressed by specific country sections
+    _AFRICA_SPECIFIC = frozenset({"egypt", "angola", "tunisia"})
+    _ASIA_SPECIFIC = frozenset({"japan", "qatar", "kuwait", "uae"})
+    _SOUTHAMERICA_SPECIFIC = frozenset({"argentina", "brazil", "uruguay", "paraguay", "chile"})
+    _NORTHAMERICA_SPECIFIC = frozenset({"usa"})
+    _EUROPE_COUNTRY_SPECIFIC = frozenset({
+        "denmark", "sweden", "norway", "portugal", "austria", "switzerland",
+        "iceland", "faroe-islands", "hungary", "poland", "croatia", "serbia",
+        "slovakia", "slovenia", "romania", "greece", "italy", "north-macedonia",
+        "turkey", "czech-republic",
+        "germany", "germany/bundesliga", "germany/bundesliga2",
+        "germany/bundesliga-fem", "germany/bundesliga2-fem",
+        "france", "france/starligue", "france/pro-d2", "france/d1f", "france/d2f",
+    })
+    if "africa" in s and s & _AFRICA_SPECIFIC:
+        sections = [sec for sec in sections if sec != "africa"]
+        s = set(sections)
+    if "asia" in s and s & _ASIA_SPECIFIC:
+        sections = [sec for sec in sections if sec != "asia"]
+        s = set(sections)
+    if "southamerica" in s and s & _SOUTHAMERICA_SPECIFIC:
+        sections = [sec for sec in sections if sec != "southamerica"]
+        s = set(sections)
+    if "northamerica" in s and s & _NORTHAMERICA_SPECIFIC:
+        sections = [sec for sec in sections if sec != "northamerica"]
+        s = set(sections)
+    if "europe/other-countries" in s and s & _EUROPE_COUNTRY_SPECIFIC:
+        sections = [sec for sec in sections if sec != "europe/other-countries"]
+        s = set(sections)
+
     # Rule 3b: EHF gendered-pair resolution.
     # When a section was keyword-matched (gender ambiguous) AND the opposing-gender
     # version was team-matched (gender precise), trust the team signal.
@@ -355,7 +385,10 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text="", sourc
         "portugal", "denmark", "sweden", "norway", "austria", "switzerland",
         "iceland", "faroe-islands", "hungary", "poland", "croatia", "serbia",
         "slovakia", "slovenia", "romania", "greece", "italy", "north-macedonia",
-        "argentina", "brazil", "japan", "turkey", "czech-republic",
+        "argentina", "brazil", "uruguay", "paraguay", "chile",
+        "japan", "turkey", "czech-republic",
+        "egypt", "angola", "tunisia", "qatar", "kuwait", "uae",
+        "africa", "asia", "northamerica", "southamerica", "europe/other-countries",
     })
     # All European club competitions are suppressed when only matched by team name
     # and a domestic section is also present. Keyword-matched European sections are
