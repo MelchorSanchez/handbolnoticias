@@ -73,6 +73,7 @@ SECTION_DESCRIPTIONS = {
     "japan":                      "Noticias de balonmano en Japón: selección y clubs japoneses.",
     "turkey":                     "Noticias de balonmano en Turquía: selección y handball turco.",
     "czech-republic":             "Noticias de balonmano en República Checa: selección y clubs checos.",
+    "usa":                        "Noticias de balonmano en Estados Unidos: selección y clubs estadounidenses.",
 }
 
 SECTIONS = {
@@ -171,6 +172,7 @@ SECTIONS = {
             "japan":          "Japón",
             "turkey":         "Turquía",
             "czech-republic": "República Checa",
+            "usa":            "EE.UU.",
         },
     },
 }
@@ -181,7 +183,7 @@ for _group in SECTIONS.values():
     for _slug, _label in _group["subsections"].items():
         SECTION_LABELS[_slug] = _label
 
-# Structured Internacional dropdown (IHF + Alemania + Francia + rest)
+# Structured Internacional dropdown (IHF + Alemania + Francia + regional groups)
 INTL_MENU = [
     {"type": "header", "label": "IHF"},
     {"type": "link",   "slug": "ihf/world-men",   "label": "Mundial Masc"},
@@ -204,18 +206,39 @@ INTL_MENU = [
     {"type": "link",   "slug": "france/d2f",         "label": "D2F"},
     {"type": "link",   "slug": "france",             "label": "General"},
     {"type": "separator"},
-    {"type": "header", "label": "Otros países"},
-] + [
-    {"type": "link", "slug": slug, "label": label}
-    for slug, label in SECTIONS["international"]["subsections"].items()
-    if slug not in ("argentina", "brazil", "uruguay", "paraguay")
-] + [
+    {"type": "header", "label": "Europa"},
+    {"type": "link", "slug": "denmark",         "label": "Dinamarca"},
+    {"type": "link", "slug": "sweden",          "label": "Suecia"},
+    {"type": "link", "slug": "norway",          "label": "Noruega"},
+    {"type": "link", "slug": "portugal",        "label": "Portugal"},
+    {"type": "link", "slug": "austria",         "label": "Austria"},
+    {"type": "link", "slug": "switzerland",     "label": "Suiza"},
+    {"type": "link", "slug": "iceland",         "label": "Islandia"},
+    {"type": "link", "slug": "faroe-islands",   "label": "Islas Feroe"},
+    {"type": "link", "slug": "hungary",         "label": "Hungría"},
+    {"type": "link", "slug": "poland",          "label": "Polonia"},
+    {"type": "link", "slug": "croatia",         "label": "Croacia"},
+    {"type": "link", "slug": "serbia",          "label": "Serbia"},
+    {"type": "link", "slug": "slovakia",        "label": "Eslovaquia"},
+    {"type": "link", "slug": "slovenia",        "label": "Eslovenia"},
+    {"type": "link", "slug": "romania",         "label": "Rumania"},
+    {"type": "link", "slug": "greece",          "label": "Grecia"},
+    {"type": "link", "slug": "italy",           "label": "Italia"},
+    {"type": "link", "slug": "north-macedonia", "label": "Macedonia del Norte"},
+    {"type": "link", "slug": "turkey",          "label": "Turquía"},
+    {"type": "link", "slug": "czech-republic",  "label": "República Checa"},
     {"type": "separator"},
     {"type": "header", "label": "Sudamérica"},
     {"type": "link", "slug": "argentina", "label": "Argentina"},
     {"type": "link", "slug": "brazil",    "label": "Brasil"},
     {"type": "link", "slug": "uruguay",   "label": "Uruguay"},
     {"type": "link", "slug": "paraguay",  "label": "Paraguay"},
+    {"type": "separator"},
+    {"type": "header", "label": "Asia"},
+    {"type": "link", "slug": "japan",     "label": "Japón"},
+    {"type": "separator"},
+    {"type": "header", "label": "NorteAmérica"},
+    {"type": "link", "slug": "usa",       "label": "EE.UU."},
 ]
 
 
