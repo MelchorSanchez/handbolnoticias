@@ -33,6 +33,10 @@ SHOWS = [
         "type": "youtube",
         "color": "orange",
         "description": "Contenido de balonmano en YouTube",
+        "pinned_spotify_episodes": [
+            {"url": "https://open.spotify.com/episode/4mCrZfofNKV4LpvoP8lFlF", "published": "2025-11-07"},
+            {"url": "https://open.spotify.com/episode/2ijnKF8MV7OK4yL5765aUW", "published": "2025-09-30"},
+        ],
     },
     {
         "id": "jimvic",
@@ -72,6 +76,32 @@ _NS = {
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0"}
 TIMEOUT = 15
+
+
+def _fetch_pinned_spotify(pin):  # type: (dict) -> dict
+    """Fetch metadata for a pinned Spotify episode via oEmbed (title + thumbnail)."""
+    ep_url = pin["url"]
+    try:
+        resp = httpx.get(
+            f"https://open.spotify.com/oembed?url={ep_url}&format=json",
+            headers=HEADERS, timeout=TIMEOUT,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        published_str = pin.get("published", "")
+        published = (
+            datetime.strptime(published_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+            if published_str else datetime.now(timezone.utc)
+        )
+        return {
+            "title": data.get("title", ""),
+            "url": ep_url,
+            "published": published,
+            "thumbnail": data.get("thumbnail_url", ""),
+            "type": "podcast",
+        }
+    except Exception:
+        return None
 
 
 def _fetch_pinned_video(pin):  # type: (dict) -> dict
@@ -160,6 +190,20 @@ def _fetch_youtube(show):  # type: (dict) -> list
                 seen_video_ids.add(pin_id)
             if len(episodes) >= 5:
                 break
+
+    # Merge pinned Spotify episodes, sort all by date desc, keep 5
+    pinned_spotify = show.get("pinned_spotify_episodes", [])
+    if pinned_spotify:
+        seen_urls = {ep["url"] for ep in episodes}
+        for pin in pinned_spotify:
+            if pin["url"] in seen_urls:
+                continue
+            ep = _fetch_pinned_spotify(pin)
+            if ep:
+                episodes.append(ep)
+        episodes.sort(key=lambda e: e["published"], reverse=True)
+        episodes = episodes[:5]
+
     return episodes
 
 
