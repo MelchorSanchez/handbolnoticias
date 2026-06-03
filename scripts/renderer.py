@@ -68,6 +68,8 @@ SECTION_DESCRIPTIONS = {
     "north-macedonia":            "Noticias de balonmano en Macedonia del Norte.",
     "argentina":                  "Noticias de balonmano en Argentina: selección y clubs argentinos.",
     "brazil":                     "Noticias de balonmano en Brasil: selección y clubs brasileños.",
+    "uruguay":                    "Noticias de balonmano en Uruguay: selección y clubs uruguayos.",
+    "paraguay":                   "Noticias de balonmano en Paraguay: selección y clubs paraguayos.",
     "japan":                      "Noticias de balonmano en Japón: selección y clubs japoneses.",
     "turkey":                     "Noticias de balonmano en Turquía: selección y handball turco.",
     "czech-republic":             "Noticias de balonmano en República Checa: selección y clubs checos.",
@@ -164,6 +166,8 @@ SECTIONS = {
             "north-macedonia": "Macedonia del Norte",
             "argentina":      "Argentina",
             "brazil":         "Brasil",
+            "uruguay":        "Uruguay",
+            "paraguay":       "Paraguay",
             "japan":          "Japón",
             "turkey":         "Turquía",
             "czech-republic": "República Checa",
@@ -204,6 +208,14 @@ INTL_MENU = [
 ] + [
     {"type": "link", "slug": slug, "label": label}
     for slug, label in SECTIONS["international"]["subsections"].items()
+    if slug not in ("argentina", "brazil", "uruguay", "paraguay")
+] + [
+    {"type": "separator"},
+    {"type": "header", "label": "Sudamérica"},
+    {"type": "link", "slug": "argentina", "label": "Argentina"},
+    {"type": "link", "slug": "brazil",    "label": "Brasil"},
+    {"type": "link", "slug": "uruguay",   "label": "Uruguay"},
+    {"type": "link", "slug": "paraguay",  "label": "Paraguay"},
 ]
 
 
