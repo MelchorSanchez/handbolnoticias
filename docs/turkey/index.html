@@ -547,18 +547,100 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 </div>
 
 
-<div class="text-center py-16 text-gray-400" data-pagefind-ignore>
-    <div class="text-5xl mb-4">🤾</div>
-    <p>No hay noticias recientes en esta sección.</p>
-    <p class="text-sm mt-2">Se actualizan diariamente.</p>
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
 </div>
+
+<div class="space-y-3" id="articles-list">
+    
+    <a href="https://www.marca.com/balonmano/2026/06/03/ruben-garabaya-suplira-roy-sanchez-banquillo-besiktas.html" target="_blank" rel="noopener"
+       data-date="2026-06-03"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/06/03/6a1f6e00462a7.jpeg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Rubén Garabaya suplirá a Roy Sánchez en el banquillo del Besiktas</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Marca-Balonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-03</span>
+                
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/besiktas-oficializa-salida-oliver-roy-fichaje-ruben-garabaya-entrenador" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/ruben-garabaya-arenas-besiktas-hentbol-takimimizin-basantrenoru-oldu@Besiktas.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Besiktas oficializa la salida de Oliver Roy y el fichaje de Rubén Garabaya</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-02</span>
+                
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
+                
+            </div>
+        </div>
+    </a>
+    
+</div>
+
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
 
 
 
 </main>
 
 <footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
-    <p>Actualizado: 03/06/2026 a las 08:41 UTC ·
+    <p>Actualizado: 03/06/2026 a las 08:45 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>
