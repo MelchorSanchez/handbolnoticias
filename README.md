@@ -2,7 +2,7 @@
 
 **Agregador de noticias de balonmano en español.**
 
-🌐 [handbolnoticias.pages.dev](https://handbolnoticias.pages.dev)
+🌐 [handbolnoticias.com](https://handbolnoticias.com)
 
 ---
 
