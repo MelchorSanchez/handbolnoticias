@@ -217,10 +217,13 @@ def _clean_cdata(text: str) -> str:
     return re.sub(r"<!\[CDATA\[(.*?)]]>", r"\1", text, flags=re.DOTALL).strip()
 
 
-def _passes_filter(source: dict, title: str, summary: str) -> bool:
+def _passes_filter(source: dict, title: str, summary: str, url: str = "") -> bool:
     """Return False to skip articles that don't pass source-level filters."""
     min_len = source.get("min_title_length", 0)
     if min_len and len(title) < min_len:
+        return False
+    exclude_url = source.get("exclude_url_patterns", [])
+    if exclude_url and any(p.lower() in url.lower() for p in exclude_url):
         return False
     # filter_title_only: only check the title, not the RSS description/summary.
     # Use for general-press sources whose RSS descriptions include boilerplate handball
@@ -257,7 +260,7 @@ def fetch_rss(source: dict) -> list:
             summary_html = entry.get("summary", "") or ""
             summary_text = BeautifulSoup(summary_html, "lxml").get_text()[:500]
             title = _clean_cdata(entry.get("title", "").strip())
-            if not _passes_filter(source, title, summary_text):
+            if not _passes_filter(source, title, summary_text, url):
                 continue
             raw_tags = [t.get("term", "") for t in getattr(entry, "tags", []) if t.get("term")]
             articles.append({
