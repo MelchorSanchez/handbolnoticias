@@ -6,7 +6,10 @@
       "WebFetch(domain:www.montpellierhandball.com)",
       "WebFetch(domain:www.sg-flensburg-handewitt.de)",
       "WebFetch(domain:hbcnantes.com)",
-      "WebFetch(domain:bmbenidorm.com)"
+      "WebFetch(domain:bmbenidorm.com)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }
