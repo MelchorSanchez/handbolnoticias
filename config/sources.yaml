@@ -911,6 +911,7 @@ sources:
     type: scrape
     url: https://www.hceivissa.com/noticias/
     max_items: 15
+    exclude_keywords: [resultados, resultats, jornada]
     selectors:
       articles: "article, .post, .entry"
       title: "h2, h3, h4, a"

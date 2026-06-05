@@ -25,6 +25,7 @@ logger = logging.getLogger(__name__)
 
 _DETAIL_DATE_SELECTORS = [
     "time[datetime]",
+    "meta[property='article:published_time']",
     "span.artdate",
     "span.span-date",
     ".itemDateCreated",
@@ -32,16 +33,16 @@ _DETAIL_DATE_SELECTORS = [
     ".lte-post-date",
 ]
 
-_DETAIL_DATE_SOURCES = {"BalonmanoInfo", "MiBalonmano", "CatHandbol", "Porrino-web", "PallamanoItalia"}
+_DETAIL_DATE_SOURCES = {"BalonmanoInfo", "MiBalonmano", "CatHandbol", "Porrino-web", "PallamanoItalia", "HCEivissa-web"}
 
 
 def _fix_detail_dates(conn):
     """For newly inserted articles without real dates, fetch the detail page."""
     rows = conn.execute("""
         SELECT id, url, source_name FROM articles
-        WHERE source_name IN ('BalonmanoInfo','MiBalonmano','CatHandbol','MundoDeportivo-Balonmano')
+        WHERE source_name IN ('BalonmanoInfo','MiBalonmano','CatHandbol','MundoDeportivo-Balonmano','HCEivissa-web','CeskaTelevize-Hazena','PlzenskyDenik-Hazena','MBL-Handbolti')
           AND substr(published, 1, 10) = substr(fetched_at, 1, 10)
-          AND fetched_at > datetime('now', '-2 hours')
+          AND fetched_at > datetime('now', '-24 hours')
     """).fetchall()
     if not rows:
         return
@@ -56,7 +57,7 @@ def _fix_detail_dates(conn):
             for sel in _DETAIL_DATE_SELECTORS:
                 el = soup.select_one(sel)
                 if el:
-                    dt_attr = el.get("datetime", "").strip()
+                    dt_attr = (el.get("datetime") or el.get("content") or "").strip()
                     text = dt_attr if dt_attr else el.get_text().strip()
                     if text:
                         real_date = _parse_date_text(text)
