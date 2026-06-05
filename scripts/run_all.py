@@ -40,9 +40,9 @@ def _fix_detail_dates(conn):
     """For newly inserted articles without real dates, fetch the detail page."""
     rows = conn.execute("""
         SELECT id, url, source_name FROM articles
-        WHERE source_name IN ('BalonmanoInfo','MiBalonmano','CatHandbol','MundoDeportivo-Balonmano','HCEivissa-web','CeskaTelevize-Hazena','PlzenskyDenik-Hazena','MBL-Handbolti')
+        WHERE source_name IN ('BalonmanoInfo','MiBalonmano','CatHandbol','MundoDeportivo-Balonmano','HCEivissa-web','CeskaTelevize-Hazena','PlzenskyDenik-Hazena','MBL-Handbolti','NTVSpor-Hentbol','AjansSpor-Hentbol')
           AND substr(published, 1, 10) = substr(fetched_at, 1, 10)
-          AND fetched_at > datetime('now', '-24 hours')
+          AND fetched_at > datetime('now', '-48 hours')
     """).fetchall()
     if not rows:
         return
