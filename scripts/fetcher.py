@@ -225,6 +225,9 @@ def _passes_filter(source: dict, title: str, summary: str, url: str = "") -> boo
     exclude_url = source.get("exclude_url_patterns", [])
     if exclude_url and any(p.lower() in url.lower() for p in exclude_url):
         return False
+    include_url = source.get("include_url_patterns", [])
+    if include_url and not any(p.lower() in url.lower() for p in include_url):
+        return False
     # filter_title_only: only check the title, not the RSS description/summary.
     # Use for general-press sources whose RSS descriptions include boilerplate handball
     # mentions in sidebars/footers, which would otherwise pass non-handball articles.
