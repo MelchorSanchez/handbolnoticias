@@ -510,18 +510,654 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 </div>
 
 
-<div class="text-center py-16 text-gray-400" data-pagefind-ignore>
-    <div class="text-5xl mb-4">🤾</div>
-    <p>No hay noticias recientes en esta sección.</p>
-    <p class="text-sm mt-2">Se actualizan diariamente.</p>
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
 </div>
+
+<div class="space-y-3" id="articles-list">
+    
+    <a href="https://plzensky.denik.cz/hazena/talent-bude-odvracet-mecbol-karvine-finale-se-stehuje-do-plzne-20260426.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/72/e7/karvina-plzen-hazena-hcb-talent-tym-plzenskeho-kraje-51_denik-210-3x2.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://plzensky.denik.cz/hazena/finale-extraliga-stehuje-plzen-talent-odvracet-mecbol-karvina-mistr-20260429.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/46/07/finale-se-stehuje-do-plzne-hazenkari-talentu-budou-odvracet-mecbol_denik-210-3x2.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://plzensky.denik.cz/hazena/foto-talent-plzen-veri-obrat-karvina-pomoc-oranzove-peklo-20260501.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/46/24/karvina-plzen-hazena-hcb-talent-tym-plzenskeho-kraje-ko_denik-210-3x2.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://plzensky.denik.cz/hazena/video-hazenkari-talentu-odvratili-korunovaci-mistra-v-plzni-se-hraje-podruhe-202.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/46/4d/plzen-hazena-extraliga-finale-3-zapas-talent-plzen-x-hcb-karvina-22_denik-210-3x2.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">play_fill</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://plzensky.denik.cz/hazena/foto-video-talent-plzen-karvina-extraliga-finale-rozhodne-paty-zapas-202605.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/46/93/dsc-2747w_denik-210-3x2.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">play_fill</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://plzensky.denik.cz/hazena/prvni-chycena-sedmicka-me-nastartovala-usmal-se-brankar-talentu-20260505.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/46/ad/dsc-2738w-d2605037paa56_denik-210-3x2.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">play_fill</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://plzensky.denik.cz/hazena/karvina-finale-extraliga-rozhodnout-mistr-zlomi-talent-plzen-serii-vitezstvi-202.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/46/d5/plzen-hazena-extraliga-finale-3-zapas-talent-plzen-x-hcb-karvina-36_denik-210-3x2.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">play_fill</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.denik.cz/fotbal-zajimavosti/ms-fotbal-2026-mexiko-fifa-valka-fanousci-vstup-zdarma-vstupenky.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/1/c4/vista-aerea-nocturna-del-estadio-azteca_denik-300-16x9.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.denik.cz/fotbal-zajimavosti/ms-fotbal-2026-statistiky-kuriozity-rekordy-nej-slavia-praha-hugo-sochurek-real.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/1/2d/650a68901212_denik-300-16x9.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://breclavsky.denik.cz/fotbal-divize/zarez-ve-ctvrte-lize-valachovic-zuril-to-jsem-zazil-jen-na-vysehrade-a-zizkove-2.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/68/71/uhersky-brod-fotbal-4-moravskoslezska-liga-sk-e-24-kolo-tj-sokol-lanzhot-valach_denik-300-16x9.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://prazsky.denik.cz/fotbal_region/fotbal-patrik-schick-vestec-fs-optimum-sparta-praha-leverkusen-hubinek.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/63/b2/zima-2001-prvni-turnaj-v-ricanech-1_denik-300-16x9.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://plzensky.denik.cz/hazena/posledni-zapas-talent-plzen-mladik-blaha-loucit-titulem-karvina-finale-20.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/46/56/posledni-zapas-talentovane-mladika-za-plzen-chci-se-loucit-titulem-rika-blaha_denik-210-3x2.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">play_fill</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://plzensky.denik.cz/hazena/foto-plzen-slavila-v-karvine-desaty-titul-a-zase-u-toho-byl-petr-stochl-20260509.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/72/bf/karvina-plzen-hazena-extraliga-finale-2026_denik-210-3x2.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://plzensky.denik.cz/hazena/fandila-cela-talent-plzen-drzeli-palce-rodice-deti-manzelky-i-spoluhraci-20260.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/46/22/fandi-cela-plzen-hazenkarum-drzeli-palce-rodice-deti-manzelky-i-spoluhraci_denik-210-3x2.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://plzensky.denik.cz/hazena/sedm-titulu-a-dost-hazenkar-sindelar-se-loucil-s-bohatou-karierou-20260517.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://g.denik.cz/46/b7/sedm-titulu-a-dost-hazenkar-sindelar-ukoncil-bohatou-karieru_denik-630-16x9.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PlzenskyDenik-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://ceskatelevize.cz/vse-o-ct/kontakty/" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Contactos</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://poplatky.ceskatelevize.cz/domacnost" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">tarifas de televisión</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://ceskatelevize.cz/vse-o-ct/" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Todo sobre la TC</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://eshop.ceskatelevize.cz/" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">tienda electrónica</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://teletext.ceskatelevize.cz/" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Teletexto</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://ct24.ceskatelevize.cz/pocasi" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Clima</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://ceskatelevize.cz/tv-program/" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">programa de televisión</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://ceskatelevize.cz/zive/" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Transmisión en vivo</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://edu.ceskatelevize.cz/" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://art.ceskatelevize.cz/" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://sport.ceskatelevize.cz" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://decko.ceskatelevize.cz" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://ct24.ceskatelevize.cz" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://ceskatelevize.cz/ivysilani/" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://ceskatelevize.cz/" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2"></p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CeskaTelevize-Hazena</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+</div>
+
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
 
 
 
 </main>
 
 <footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
-    <p>Actualizado: 05/06/2026 a las 09:43 UTC ·
+    <p>Actualizado: 05/06/2026 a las 10:07 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>

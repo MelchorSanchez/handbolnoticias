@@ -906,6 +906,17 @@ sources:
       link: "a[href]"
       image: "img"
 
+  - name: HCEivissa-web
+    section: spain/dhp
+    type: scrape
+    url: https://www.hceivissa.com/noticias/
+    max_items: 15
+    selectors:
+      articles: "article, .post, .entry"
+      title: "h2, h3, h4, a"
+      link: "a[href]"
+      image: "img"
+
   # ══════════════════════════════════════════════════════════════════════════
   # FEDERACIONES NACIONALES — RSS confirmados
   # ══════════════════════════════════════════════════════════════════════════
@@ -939,7 +950,6 @@ sources:
     type: scrape
     url: https://sport.ceskatelevize.cz/rubrika/hazena-8
     max_items: 15
-    filter_keywords: [hazena, hazenkar, hazenkarky, hazenkarsky]
     selectors:
       articles: "article, .article, .news-item, li"
       title: "h2, h3, h4, a"
@@ -951,7 +961,6 @@ sources:
     type: scrape
     url: https://plzensky.denik.cz/hazena/
     max_items: 15
-    filter_keywords: [hazena, hazenkar, hazenkarky, hazenkarsky]
     selectors:
       articles: "article, .article, .item"
       title: "h2, h3, h4, a"
