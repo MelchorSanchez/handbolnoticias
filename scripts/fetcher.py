@@ -328,7 +328,7 @@ def fetch_scrape(source: dict) -> list:
             if not href:
                 continue
             title_text = _clean_cdata(title_el.get_text().strip())
-            if not _passes_filter(source, title_text, ""):
+            if not _passes_filter(source, title_text, "", href):
                 continue
             img_el = item.select_one(sel.get("image", "img"))
             image_url = img_el.get("src") if img_el else None
@@ -357,6 +357,82 @@ def fetch_scrape(source: dict) -> list:
         return articles
     except Exception as exc:
         logger.error("Scrape error %s: %s", source["name"], exc)
+        return []
+
+
+def _find_nextjs_articles(obj, results=None):
+    """Recursively find all Article_Out objects in __NEXT_DATA__ JSON."""
+    if results is None:
+        results = []
+    if isinstance(obj, dict):
+        if obj.get("__typename") == "Article_Out" and "slug" in obj and "title" in obj:
+            results.append(obj)
+        else:
+            for v in obj.values():
+                _find_nextjs_articles(v, results)
+    elif isinstance(obj, list):
+        for item in obj:
+            _find_nextjs_articles(item, results)
+    return results
+
+
+def fetch_nextjs(source: dict) -> list:
+    """Fetch articles from a Next.js page by extracting __NEXT_DATA__ JSON."""
+    try:
+        resp = httpx.get(source["url"], headers=HEADERS, timeout=TIMEOUT, follow_redirects=True)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "lxml")
+        script = soup.find("script", id="__NEXT_DATA__")
+        if not script:
+            logger.warning("No __NEXT_DATA__ found for %s", source["name"])
+            return []
+        import json as _json
+        data = _json.loads(script.string)
+        raw_articles = _find_nextjs_articles(data)
+        seen_ids = set()
+        articles = []
+        base = urlparse(source["url"])
+        base_url = f"{base.scheme}://{base.netloc}"
+        for item in raw_articles:
+            art_id = item.get("id")
+            slug = item.get("slug", "")
+            if not art_id or not slug or art_id in seen_ids:
+                continue
+            seen_ids.add(art_id)
+            section_path = (item.get("mainSection") or {}).get("path", "")
+            url = f"{base_url}/clanek/{section_path}/{slug}-{art_id}" if section_path else f"{base_url}/clanek/{slug}-{art_id}"
+            title_obj = item.get("title", {})
+            title_text = (title_obj.get("main") if isinstance(title_obj, dict) else title_obj) or ""
+            if not _passes_filter(source, title_text, "", url):
+                continue
+            pub = item.get("publication") or {}
+            ts = pub.get("firstPublished") or pub.get("datePublished") or item.get("dateUpdated")
+            if ts:
+                published = datetime.fromtimestamp(ts, tz=timezone.utc).isoformat()
+            else:
+                published = _now()
+            preview_image = item.get("previewImage") or {}
+            image_url = preview_image.get("src") if isinstance(preview_image, dict) else None
+            perex_raw = item.get("perex") or ""
+            perex = perex_raw.get("text", "") if isinstance(perex_raw, dict) else (perex_raw or "")
+            articles.append({
+                "id": _article_id(url),
+                "url": url,
+                "title": title_text,
+                "title_orig": title_text,
+                "summary": perex[:500],
+                "image_url": image_url,
+                "source_name": source["name"],
+                "section": source["section"],
+                "published": published,
+                "fetched_at": _now(),
+                "is_manual": 0,
+            })
+            if len(articles) >= source.get("max_items", 15):
+                break
+        return articles
+    except Exception as exc:
+        logger.error("Next.js scrape error %s: %s", source["name"], exc)
         return []
 
 
@@ -431,6 +507,8 @@ def fetch_all(sources: list) -> list:
             articles.extend(fetch_rss(source))
         elif source["type"] == "scrape":
             articles.extend(fetch_scrape(source))
+        elif source["type"] == "nextjs":
+            articles.extend(fetch_nextjs(source))
         elif source["type"] == "instagram":
             articles.extend(fetch_instagram(source))
     articles.extend(fetch_manual_links())
