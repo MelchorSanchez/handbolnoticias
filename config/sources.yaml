@@ -947,6 +947,37 @@ sources:
     url: https://www.mbl.is/feeds/handbolti/
     max_items: 15
 
+  # ══════════════════════════════════════════════════════════════════════════
+  # TURQUÍA
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: AjansSpor-Hentbol
+    section: turkey
+    type: scrape
+    url: https://ajansspor.com/arama?ara=hentbol
+    max_items: 15
+    filter_keywords: [hentbol]
+    include_url_patterns: ["/haber/"]
+    selectors:
+      articles: "article"
+      title: "h2"
+      link: "a[href]"
+      image: "img"
+
+  - name: NTVSpor-Hentbol
+    section: turkey
+    type: scrape
+    url: https://www.ntvspor.net/hentbol
+    max_items: 10
+    include_url_patterns: ["/hentbol/"]
+    selectors:
+      articles: ".single-banner"
+      title: "p"
+      link: "a[href]"
+      image: "img"
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # REPÚBLICA CHECA
+  # ══════════════════════════════════════════════════════════════════════════
   - name: CeskaTelevize-Hazena
     section: czech-republic
     type: nextjs
