@@ -147,7 +147,7 @@ def _text(article):
     ).lower()
 
 
-def _matches_rule(rule, text, tags):
+def _matches_rule(rule, text, tags, source_name=""):
     excludes = [e.lower() for e in rule.get("exclude", [])]
 
     # Tag match (RSS tags — very specific, bypass require_any)
@@ -165,6 +165,11 @@ def _matches_rule(rule, text, tags):
 
     require_any = [r.lower() for r in rule.get("require_any", [])]
     if require_any and not any(r in text for r in require_any):
+        return False
+
+    # Source filter: if rule specifies sources, article source must match
+    rule_sources = [s.lower() for s in rule.get("sources", [])]
+    if rule_sources and source_name.lower() not in rule_sources:
         return False
 
     return True
@@ -459,9 +464,10 @@ def classify(article):
     tags = _extract_tags(article)
     rules = _load_rules()
 
+    source_name = article.get("source_name", "")
     keyword_sections = []
     for rule in rules:
-        if _matches_rule(rule, text, tags):
+        if _matches_rule(rule, text, tags, source_name):
             sec = rule["section"]
             if sec not in keyword_sections:
                 keyword_sections.append(sec)

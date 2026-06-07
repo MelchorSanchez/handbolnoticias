@@ -180,6 +180,28 @@ rules:
       - "liga de campeones femenina"
       - "final four femenina"
       - "ehf cl women"
+      - "ldc | metz"
+      - "ldc | brest"
+      - "ldc | győr"
+      - "ldc | gyor"
+      - "ldc | bucarest"
+      - "ldc | csm"
+      - "ldc | vipers"
+      - "ldc | esbjerg"
+      - "ldc | odense"
+      - "ldc | nykobing"
+      - "ldc | thüringer"
+      - "ldc | thuringer"
+      - "ldc | buducnost"
+      - "ldc | kastamonu"
+      - "ldc dames"
+      - "finale ldc"
+
+  - section: europe/champions-women
+    tags: []
+    sources: [handnews-fr]
+    keywords:
+      - "ldc |"
 
   - section: europe/champions
     tags: [ehf-champions-league, champions-league-handball, ehf-cl]
