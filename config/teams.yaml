@@ -1739,3 +1739,40 @@ teams:
     - Eskibel
     - Santutxu
     - Hondarribia
+
+  # ── Qatar ────────────────────────────────────────────────────────
+  qatar:
+    - Al-Rayyan
+    - Al Rayyan
+    - Al Duhail
+    - Al Garafah
+    - Al Wakra
+    - Al Arabi
+    - Al-Khour
+    - Al Khour
+    - Al Sadd
+    - Al Shamal
+    - Al Ahli
+    - Qatar SC
+    - Al Khor
+
+  # ── Corea del Sur ────────────────────────────────────────────────
+  south-korea:
+    - Incheon City
+    - SK Hawks
+    - Hanam
+    - Doosan
+    - Chungnam Athletic
+    - Sangmu
+
+  # ── Angola ───────────────────────────────────────────────────────
+  angola:
+    []
+
+  # ── Kuwait ───────────────────────────────────────────────────────
+  kuwait:
+    []
+
+  # ── Emiratos Árabes Unidos ───────────────────────────────────────
+  uae:
+    []
