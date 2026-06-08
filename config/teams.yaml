@@ -1767,12 +1767,33 @@ teams:
 
   # ── Angola ───────────────────────────────────────────────────────
   angola:
-    []
+    - GD Perola Baia Farta
+    - Electro Lobito
+    - Primeiro Agosto
+    - Mandjesport
+    - Atlético Petróleos de Luanda
+    - Sporting Luanda
+    - Escolinha de Andebol do São João/Huambo
+    - Porto Lobito
+    - Benga FC
 
   # ── Kuwait ───────────────────────────────────────────────────────
   kuwait:
-    []
+    - Kazma
+    - Burgan SC
+    - Al Kuwait SC
+    - Al Arabi (Kuwait)
+    - Al Salibikhaet
+    - Al-Nasar
+    - Al Salmiyah
+    - Al-Qadsia SC
 
   # ── Emiratos Árabes Unidos ───────────────────────────────────────
   uae:
-    []
+    - Al Sharjah
+    - Al Nasr (EAU)
+    - Al Wasl
+    - Shabab Al Ahli Dubai
+    - Dibba Al Hisn
+    - Mulaiha
+    - Al Wahda
