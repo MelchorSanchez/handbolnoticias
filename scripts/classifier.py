@@ -481,6 +481,11 @@ def classify(article):
 
     sections = keyword_sections + team_sections
 
+    # "Proffskollen" is a Swedish-only column about Swedish players abroad — always sweden only
+    if re.search(r'\bproffskollen\b', text, re.I):
+        sections = ["sweden"]
+        return sections
+
     # If a Catalan-only competition hashtag is present, drop any Spanish national sections
     # that crept in via team-name matching (e.g. a B-team from a national-level club).
     if _CATALAN_ONLY.search(text):
