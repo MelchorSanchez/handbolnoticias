@@ -55,6 +55,13 @@ SHOWS = [
         "type": "podcast",
         "color": "purple",
         "description": "El podcast de balonmano de COPE",
+        "pinned_episodes": [
+            {
+                "title": "De Rosca, capítulo 594 (08-06-2026)",
+                "url": "https://www.cope.es/podcasts/de-rosca/episodios/rosca-capitulo-594-08-20260608_3379954.html",
+                "published": "2026-06-08",
+            },
+        ],
     },
     {
         "id": "the-spin",
@@ -220,6 +227,7 @@ def _fetch_podcast(show):  # type: (dict) -> list
     if img_el is not None:
         chan_img = img_el.text or ""
     episodes = []
+    seen_urls = set()
     for item in channel.findall("item")[:5]:
         title_el = item.find("title")
         link_el = item.find("link")
@@ -229,9 +237,18 @@ def _fetch_podcast(show):  # type: (dict) -> list
         title = (title_el.text or "").strip() if title_el is not None else ""
         link = (link_el.text or "").strip() if link_el is not None else ""
         published = _parse_date(pub_el.text if pub_el is not None else "")
+        seen_urls.add(link)
         episodes.append({"title": title, "url": link, "published": published,
                          "thumbnail": thumb, "type": "podcast"})
-    return episodes
+    # Merge manually pinned episodes not yet in RSS
+    for pin in show.get("pinned_episodes", []):
+        if pin["url"] in seen_urls:
+            continue
+        published = datetime.strptime(pin["published"], "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        episodes.append({"title": pin["title"], "url": pin["url"],
+                         "published": published, "thumbnail": chan_img, "type": "podcast"})
+    episodes.sort(key=lambda e: e["published"], reverse=True)
+    return episodes[:5]
 
 
 def fetch_shows():  # type: () -> list
