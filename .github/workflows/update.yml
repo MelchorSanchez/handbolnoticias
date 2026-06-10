@@ -46,7 +46,7 @@ jobs:
         run: |
           git config user.name "HandbolNoticias Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/ data/articles.db -f
+          git add docs/ data/articles.db sitemap.xml -f
           if git diff --staged --quiet; then
             echo "No hay cambios nuevos"
           else
