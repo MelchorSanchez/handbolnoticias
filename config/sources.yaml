@@ -793,7 +793,7 @@ sources:
     max_items: 10
 
   - name: Elche-web
-    section: spain/guerreras
+    section: spain/other-spain
     type: rss
     url: https://cbmelche.es/feed/
     max_items: 10
