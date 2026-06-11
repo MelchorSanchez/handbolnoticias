@@ -72,6 +72,15 @@ SHOWS = [
         "color": "green",
         "description": "Análisis del balonmano internacional",
     },
+    {
+        "id": "handball-mastermind",
+        "name": "Handball Mastermind",
+        "channel_url": "https://www.youtube.com/playlist?list=PL6FkWVdzEY0WTvRODGTCwJtj8nVWhkfIJ",
+        "rss": "https://www.youtube.com/feeds/videos.xml?playlist_id=PL6FkWVdzEY0WTvRODGTCwJtj8nVWhkfIJ",
+        "type": "youtube",
+        "color": "blue",
+        "description": "Entrevistas en profundidad con los mejores entrenadores y jugadores del mundo",
+    },
 ]
 
 _NS = {
