@@ -282,7 +282,7 @@ sources:
     filter_title_only: true
 
   - name: Sport-balonmano
-    section: spain/catalonia
+    section: spain/asobal
     type: scrape
     url: https://www.sport.es/es/deportes/balonmano/
     max_items: 20
