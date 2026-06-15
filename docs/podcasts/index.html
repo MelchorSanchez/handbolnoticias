@@ -47,7 +47,15 @@
         <a href="/" class="hidden md:block absolute left-1/2 -translate-x-1/2 text-2xl font-black tracking-tight text-white whitespace-nowrap">HandbolNoticias</a>
         <div class="hidden md:block flex-1"></div>
         <div class="hidden md:flex items-center gap-5 text-sm font-medium flex-shrink-0">
-            <a href="/all/" class="hover:text-orange-300 py-4 font-semibold">Todas ▸</a>
+            <!-- Todas -->
+            <div class="relative group">
+                <button class="hover:text-orange-300 py-4 font-semibold">Todas ▾</button>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-44 z-50 py-1">
+                    <a href="/all/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm font-medium">Todas las noticias</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <a href="/fichajes/" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-700 text-sm">Fichajes</a>
+                </div>
+            </div>
 
             <!-- España -->
             <div class="relative group">
@@ -113,7 +121,6 @@
                     
                 </div>
             </div>
-            <a href="/fichajes/" class="hover:text-orange-300 py-4 font-semibold">Fichajes ▸</a>
             <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
             <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
         </div>
@@ -122,7 +129,7 @@
     <!-- ── Menú móvil (oculto por defecto) ── -->
     <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
         <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
-        <a href="/fichajes/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Fichajes ▸</a>
+        <a href="/fichajes/" class="block px-6 py-2 border-b border-blue-800 text-orange-300">Fichajes</a>
         <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
         <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
 
@@ -476,7 +483,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
             <!-- Thumbnail -->
             <div class="relative w-full aspect-video bg-gray-100 overflow-hidden">
                 
-                <img src="https://image-cdn-fa.spotifycdn.com/image/ab67656300005f1f021dae0f11e04c4d887f07cf" alt="Djordje Cikusa (y un ratito su hermano Petar) en Liftados"
+                <img src="https://image-cdn-ak.spotifycdn.com/image/ab67656300005f1f021dae0f11e04c4d887f07cf" alt="Djordje Cikusa (y un ratito su hermano Petar) en Liftados"
                      class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                      loading="lazy" onerror="this.style.display='none'">
                 

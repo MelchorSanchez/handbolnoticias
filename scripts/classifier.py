@@ -68,6 +68,39 @@ _SPECIFIC_EHF = frozenset({
     "europe/euro-men", "europe/euro-women",
 })
 
+# handnews.fr uses structured URL slugs that reliably identify the competition.
+# Ordered: most-specific patterns first.
+_HANDNEWS_URL_RULES = [
+    ("/ldc-m-", "europe/champions"),
+    ("/ldc-f-", "europe/champions-women"),
+    ("/el-m-", "europe/european-league"),
+    ("/el-f-", "europe/european-league-women"),
+    ("/lms-", "france/starligue"),
+    ("/proligue-", "france/pro-d2"),
+    ("/lbe-", "france/d1f"),
+    ("/ldc-", "europe/champions-women"),   # plain ldc- = women's CL
+    ("/all-", "germany/bundesliga"),
+    ("/esp-", "spain/asobal"),
+    ("/hon-", "hungary"),
+    ("/nor-", "norway"),
+    ("/pol-", "poland"),
+    ("/sui-", "switzerland"),
+    ("/rom-", "romania"),
+    ("/dan-", "denmark"),
+    ("/ihf-", "ihf/other"),
+    ("/ehf-", "europe/other"),
+]
+
+
+def _handnews_section(url):
+    """Return section from handnews.fr URL slug pattern, or None."""
+    if "handnews.fr" not in url:
+        return None
+    for slug_prefix, section in _HANDNEWS_URL_RULES:
+        if slug_prefix in url:
+            return section
+    return None
+
 _EUROPE_CLUB = frozenset({
     "europe/champions", "europe/champions-women",
     "europe/european-league", "europe/european-league-women",
@@ -479,7 +512,9 @@ def classify(article):
     rules = _load_rules()
 
     source_name = article.get("source_name", "")
-    keyword_sections = []
+    url = article.get("url", "")
+    url_sec = _handnews_section(url)
+    keyword_sections = [url_sec] if url_sec else []
     for rule in rules:
         if _matches_rule(rule, text, tags, source_name):
             sec = rule["section"]
