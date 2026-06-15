@@ -38,7 +38,7 @@ sources:
     type: rss
     url: https://feeds.as.com/mrss-s/pages/as/site/as.com/section/masdeporte/subsection/balonmano/
     max_items: 20
-    exclude_url_patterns: ["/futbol/", "/videos/futbol", "/baloncesto/", "/tenis/", "/ciclismo/", "/golf/"]
+    exclude_url_patterns: ["/futbol/", "/videos/", "/baloncesto/", "/tenis/", "/ciclismo/", "/golf/"]
 
   - name: Relevo-balonmano
     section: spain/asobal
