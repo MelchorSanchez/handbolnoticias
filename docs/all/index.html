@@ -519,10 +519,52 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
     <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
     <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-semana">Esta semana</button>
-    <button onclick="filterFichajes(this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-orange-500 hover:text-white transition" id="btn-fichajes">Fichajes</button>
+    <a href="/fichajes/" class="px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-700 hover:bg-orange-500 hover:text-white transition">Fichajes →</a>
 </div>
 
 <div class="space-y-3" id="articles-list">
+    
+    <a href="https://hsg-blomberg-lippe.de/2026/06/15/nele-wegener-kehrt-zurueck-nach-westfalen/" target="_blank" rel="noopener"
+       data-date="2026-06-15"
+       data-sections="germany/bundesliga-fem|"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">¡Nele Wegener regresa a Westfalia!</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El post ¡Nele Wegener regresa a Westfalia! apareció por primera vez en HSG Blomberg-Lippe Bundesliga GmbH.</p>
+            
+            <div class="flex items-center flex-wrap gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BlombergLippe-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-15</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://handbollskanalen.se/cl-herrar/emil-nielsen-bast-i-champions-league-vann-malvaktsligan/" target="_blank" rel="noopener"
+       data-date="2026-06-15"
+       data-sections="spain/asobal|sweden|spain/catalonia"
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Emil Nielsen, el mejor de la liga de Campeones: ganó la liga de porteros</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El Barcelona ganó la Liga de Campeones y Emil Nielsen fue una de las principales razones. El portero de la selección danesa terminó la temporada con el porcentaje de salvamentos más alto del torneo. Cuando se resume la temporada de la Liga de Campeones, el Barcelona está en la cima del trono y Emil Nielsen es el mejor portero.</p>
+            
+            <div class="flex items-center flex-wrap gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Handbollskanalen</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-15</span>
+                
+            </div>
+        </div>
+    </a>
     
     <a href="https://www.balonmano.info/elche-campana-abonos-2026-2027-20265210714/" target="_blank" rel="noopener"
        data-date="2026-06-15"
@@ -547,7 +589,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     
     <a href="https://handnews.fr/2026/ldc-m-aleix-gomez-ecrit-lhistoire-gidsel-meilleur-buteur-3-chiffres-du-final4-2026/" target="_blank" rel="noopener"
        data-date="2026-06-15"
-       data-sections="europe/other|spain/asobal|spain/catalonia"
+       data-sections="europe/champions|spain/asobal|spain/catalonia"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/06/DSC00307_2560px-300x169.jpg" alt=""
@@ -564,13 +606,15 @@ document.getElementById('menu-btn').addEventListener('click', function() {
                 <span class="text-gray-300">·</span>
                 <span class="text-xs text-gray-400">2026-06-15</span>
                 
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
+                
             </div>
         </div>
     </a>
     
     <a href="https://www.rfebm.com/jornadas-de-tecnificacion-de-la-generacion-2010-2011-femenina-en-burgos/" target="_blank" rel="noopener"
        data-date="2026-06-15"
-       data-sections="argentina|"
+       data-sections="spain/base-fem|"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://www.rfebm.com/wp-content/uploads/2026/06/IMG_4807-150x150.webp" alt=""
@@ -587,6 +631,8 @@ La entrada Jornadas de tecnificación de la generación 2010/2011 femenina en Bu
                 <span class="text-xs font-medium text-gray-600">RFEBM</span>
                 <span class="text-gray-300">·</span>
                 <span class="text-xs text-gray-400">2026-06-15</span>
+                
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
                 
             </div>
         </div>
@@ -658,7 +704,7 @@ la p</p>
     
     <a href="https://todohandball.com/mercado-de-pases/mateo-palacios-continuara-su-carrera-en-espana/" target="_blank" rel="noopener"
        data-date="2026-06-15"
-       data-sections="argentina|"
+       data-sections="spain/primera-nacional-masc|fichajes"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
@@ -673,13 +719,15 @@ la p</p>
                 <span class="text-gray-300">·</span>
                 <span class="text-xs text-gray-400">2026-06-15</span>
                 
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
+                
             </div>
         </div>
     </a>
     
     <a href="https://handnews.fr/2026/ldc-m-gog-conserve-sa-couronne-europeenne-chez-les-jeunes-a-cologne/" target="_blank" rel="noopener"
        data-date="2026-06-15"
-       data-sections="germany/bundesliga|italy"
+       data-sections="europe/champions|italy"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/06/yct_final-fu-chse-berlin-vs-gog_c6a36c67b5c8_sg-300x188.jpg" alt=""
@@ -696,13 +744,15 @@ la p</p>
                 <span class="text-gray-300">·</span>
                 <span class="text-xs text-gray-400">2026-06-15</span>
                 
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
+                
             </div>
         </div>
     </a>
     
     <a href="https://handnews.fr/2026/ldc-m-quel-montant-de-prime-pour-le-vainqueur-du-final4/" target="_blank" rel="noopener"
        data-date="2026-06-15"
-       data-sections="europe/other|italy"
+       data-sections="europe/champions|italy"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/06/DSC00397_2560px-300x169.jpg" alt=""
@@ -719,13 +769,15 @@ la p</p>
                 <span class="text-gray-300">·</span>
                 <span class="text-xs text-gray-400">2026-06-15</span>
                 
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
+                
             </div>
         </div>
     </a>
     
     <a href="https://handnews.fr/2026/ldc-m-le-top-buts-du-final4-2026/" target="_blank" rel="noopener"
        data-date="2026-06-15"
-       data-sections="italy|"
+       data-sections="europe/champions|"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/06/DSC00051-300x169.jpg" alt=""
@@ -741,6 +793,8 @@ la p</p>
                 <span class="text-xs font-medium text-gray-600">Handnews-fr</span>
                 <span class="text-gray-300">·</span>
                 <span class="text-xs text-gray-400">2026-06-15</span>
+                
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
                 
             </div>
         </div>
@@ -958,7 +1012,7 @@ la p</p>
     
     <a href="https://handnews.fr/2026/ldc-m-domen-makuc-est-elu-mvp-du-final-4/" target="_blank" rel="noopener"
        data-date="2026-06-15"
-       data-sections="france|"
+       data-sections="europe/champions|"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/06/DSC00344-300x169.jpg" alt=""
@@ -974,6 +1028,8 @@ la p</p>
                 <span class="text-xs font-medium text-gray-600">Handnews-fr</span>
                 <span class="text-gray-300">·</span>
                 <span class="text-xs text-gray-400">2026-06-15</span>
+                
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
                 
             </div>
         </div>
@@ -2067,7 +2123,7 @@ Este fue el último partido del veterano en Magdeburgo. Había un gran ambiente 
     
     <a href="https://handnews.fr/2026/ldc-m-magdebourg-soffre-la-petite-finale-face-a-aalborg/" target="_blank" rel="noopener"
        data-date="2026-06-14"
-       data-sections="denmark|"
+       data-sections="europe/champions|"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/06/DSC09924-300x169.jpg" alt=""
@@ -2083,6 +2139,8 @@ Este fue el último partido del veterano en Magdeburgo. Había un gran ambiente 
                 <span class="text-xs font-medium text-gray-600">Handnews-fr</span>
                 <span class="text-gray-300">·</span>
                 <span class="text-xs text-gray-400">2026-06-14</span>
+                
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
                 
             </div>
         </div>
@@ -3184,7 +3242,7 @@ La entrada Viveros Herol Nava certifica su continuidad en la DHM se publicó pri
     
     <a href="https://handnews.fr/2026/ldc-m-t-nguessan-apres-la-victoire-du-barca-on-sest-fait-peur/" target="_blank" rel="noopener"
        data-date="2026-06-13"
-       data-sections="spain/asobal|denmark|spain/catalonia"
+       data-sections="europe/champions|denmark|spain/catalonia"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/06/DSC09981-300x169.jpg" alt=""
@@ -3200,6 +3258,8 @@ La entrada Viveros Herol Nava certifica su continuidad en la DHM se publicó pri
                 <span class="text-xs font-medium text-gray-600">Handnews-fr</span>
                 <span class="text-gray-300">·</span>
                 <span class="text-xs text-gray-400">2026-06-13</span>
+                
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
                 
             </div>
         </div>
@@ -3318,7 +3378,7 @@ La entrada Viveros Herol Nava certifica su continuidad en la DHM se publicó pri
     
     <a href="https://handnews.fr/2026/ldc-m-barcelone-se-defait-daalborg-au-bout-de-la-prolongation/" target="_blank" rel="noopener"
        data-date="2026-06-13"
-       data-sections="denmark|"
+       data-sections="europe/champions|"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/06/DSC09797-300x169.jpg" alt=""
@@ -3335,13 +3395,15 @@ La entrada Viveros Herol Nava certifica su continuidad en la DHM se publicó pri
                 <span class="text-gray-300">·</span>
                 <span class="text-xs text-gray-400">2026-06-13</span>
                 
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
+                
             </div>
         </div>
     </a>
     
     <a href="https://handnews.fr/2026/ldc-m-serguey-hernandez-je-me-considere-en-partie-responsable-de-cette-defaite/" target="_blank" rel="noopener"
        data-date="2026-06-13"
-       data-sections="germany/bundesliga|"
+       data-sections="europe/champions|"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2025/06/Sergey-Hernandez-SCMagdeburg-gael_drd_-300x200.jpg" alt=""
@@ -3357,6 +3419,8 @@ La entrada Viveros Herol Nava certifica su continuidad en la DHM se publicó pri
                 <span class="text-xs font-medium text-gray-600">Handnews-fr</span>
                 <span class="text-gray-300">·</span>
                 <span class="text-xs text-gray-400">2026-06-13</span>
+                
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
                 
             </div>
         </div>
@@ -3561,7 +3625,7 @@ La entrada Viveros Herol Nava certifica su continuidad en la DHM se publicó pri
     
     <a href="https://handnews.fr/2026/ldc-m-berlin-fait-chuter-magdeburg-et-file-en-finale/" target="_blank" rel="noopener"
        data-date="2026-06-13"
-       data-sections="germany/bundesliga|"
+       data-sections="europe/champions|"
        class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
         
         <img src="https://handnews.fr/wp-content/uploads/2026/06/DSC09906_2560-300x204.jpg" alt=""
@@ -3577,6 +3641,8 @@ La entrada Viveros Herol Nava certifica su continuidad en la DHM se publicó pri
                 <span class="text-xs font-medium text-gray-600">Handnews-fr</span>
                 <span class="text-gray-300">·</span>
                 <span class="text-xs text-gray-400">2026-06-13</span>
+                
+                <span class="text-xs bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">Manual</span>
                 
             </div>
         </div>
@@ -4858,44 +4924,6 @@ The second stage of the 2026 IHF Beach Handball Global Tour (BHGT) will take pla
         </div>
     </a>
     
-    <a href="https://www.mibalonmano.com/barcelona-balonmano-equipo-mas-en-forma-la-final-four-ehf-champions-league-25-26" target="_blank" rel="noopener"
-       data-date="2026-06-12"
-       data-sections="spain/asobal|"
-       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
-        
-        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
-        
-        <div class="flex-1 min-w-0">
-            <p class="font-semibold leading-snug line-clamp-2">El Barça llega a Final Four siendo el equipo más en forma. 52 victorias consecutivas</p>
-            
-            <div class="flex items-center flex-wrap gap-2 mt-2">
-                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
-                <span class="text-gray-300">·</span>
-                <span class="text-xs text-gray-400">2026-06-12</span>
-                
-            </div>
-        </div>
-    </a>
-    
-    <a href="https://www.mibalonmano.com/liga-asobal-presenta-candidatos-mejor-portero-defensor-temporada-25-26" target="_blank" rel="noopener"
-       data-date="2026-06-12"
-       data-sections="spain/asobal|"
-       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
-        
-        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
-        
-        <div class="flex-1 min-w-0">
-            <p class="font-semibold leading-snug line-clamp-2">La Liga Asobal presenta sus candidatos a mejor portero y defensor del año</p>
-            
-            <div class="flex items-center flex-wrap gap-2 mt-2">
-                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
-                <span class="text-gray-300">·</span>
-                <span class="text-xs text-gray-400">2026-06-12</span>
-                
-            </div>
-        </div>
-    </a>
-    
 </div>
 
 <div id="no-results" class="hidden text-center py-10 text-gray-400">
@@ -4904,44 +4932,24 @@ The second stage of the 2026 IHF Beach Handball Global Tour (BHGT) will take pla
 
 <script>
 (function() {
-    function setActiveBtn(btn, colorClass) {
-        document.querySelectorAll('.date-btn').forEach(function(b) {
-            b.classList.remove('bg-hb-blue', 'bg-orange-500', 'text-white');
-            b.classList.add('bg-gray-100', 'text-gray-700');
-        });
-        btn.classList.remove('bg-gray-100', 'text-gray-700');
-        btn.classList.add(colorClass || 'bg-hb-blue', 'text-white');
-    }
-
     function filterByDate(days, btn) {
         var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
         var cards = document.querySelectorAll('#articles-list [data-date]');
         var visible = 0;
         cards.forEach(function(el) {
-            el.removeAttribute('data-hidden-fichajes');
             var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
             el.style.display = show ? '' : 'none';
             if (show) visible++;
         });
         document.getElementById('no-results').classList.toggle('hidden', visible > 0);
-        setActiveBtn(btn);
-    }
-
-    function filterFichajes(btn) {
-        var cards = document.querySelectorAll('#articles-list [data-sections]');
-        var visible = 0;
-        cards.forEach(function(el) {
-            var secs = el.dataset.sections || '';
-            var show = secs.split('|').some(function(s) { return s.trim() === 'fichajes'; });
-            el.style.display = show ? '' : 'none';
-            if (show) visible++;
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
         });
-        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
-        setActiveBtn(btn, 'bg-orange-500');
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
     }
-
     window.filterByDate = filterByDate;
-    window.filterFichajes = filterFichajes;
 })();
 </script>
 
@@ -4951,7 +4959,7 @@ The second stage of the 2026 IHF Beach Handball Global Tour (BHGT) will take pla
 </main>
 
 <footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
-    <p>Actualizado: 15/06/2026 a las 14:20 UTC ·
+    <p>Actualizado: 15/06/2026 a las 15:16 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>
