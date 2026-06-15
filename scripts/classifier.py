@@ -49,16 +49,15 @@ _PRIORITY_GROUPS = [
 # Specific EHF sections suppress the catch-all europe/other
 # Transfer detection — positive and negative keywords
 _TRANSFER_POS = re.compile(
-    r'\b(ficha(?:je|jes)?|firma(?:do|r)?|renueva|renov[aá]|traspa[sz]|'
+    r'\b(ficha(?:je|jes)?|renueva|renov[aá](?:ci[oó]n)?|traspa[sz]o|'
     r'se incorpora|jugará en|refuerza|primer contrato|contrato hasta|'
-    r'continuará|seguirá|prolonga|extiende|'
-    r'signs?|joins?|extends?|renews?|verpflichtet|verlängert|'
-    r'signe|prolonge|rejoint|recrute|engage)\b',
+    r'signs?|verpflichtet|signe|prolonge)\b',
     re.IGNORECASE,
 )
 _TRANSFER_NEG = re.compile(
     r'\b(rumor|rumores|podría|interesa en|en la [oó]rbita|pourrait|'
-    r'linked with|could join|interested in|cerca de)\b',
+    r'linked with|could join|interested in|cerca de|'
+    r'forces|partnership|partenariat|sponsoring)\b',
     re.IGNORECASE,
 )
 
