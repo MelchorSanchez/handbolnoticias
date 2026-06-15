@@ -47,6 +47,21 @@ _PRIORITY_GROUPS = [
 ]
 
 # Specific EHF sections suppress the catch-all europe/other
+# Transfer detection — positive and negative keywords
+_TRANSFER_POS = re.compile(
+    r'\b(ficha(?:je|jes)?|firma(?:do|r)?|renueva|renov[aá]|traspa[sz]|'
+    r'se incorpora|jugará en|refuerza|primer contrato|contrato hasta|'
+    r'continuará|seguirá|prolonga|extiende|'
+    r'signs?|joins?|extends?|renews?|verpflichtet|verlängert|'
+    r'signe|prolonge|rejoint|recrute|engage)\b',
+    re.IGNORECASE,
+)
+_TRANSFER_NEG = re.compile(
+    r'\b(rumor|rumores|podría|interesa en|en la [oó]rbita|pourrait|'
+    r'linked with|could join|interested in|cerca de)\b',
+    re.IGNORECASE,
+)
+
 _SPECIFIC_EHF = frozenset({
     "europe/champions", "europe/champions-women",
     "europe/european-league", "europe/european-league-women",
@@ -508,5 +523,13 @@ def classify(article):
     if territorial_team_only and not non_territorial_spanish:
         sections = [sec for sec in sections if sec not in territorial_team_only]
 
-    return _apply_priority_rules(sections, kw_set, text,
-                                 source_section=source_section)
+    sections = _apply_priority_rules(sections, kw_set, text,
+                                     source_section=source_section)
+
+    # Transfer detection: add fichajes as extra section if title matches
+    title = article.get("title_orig") or article.get("title") or ""
+    if _TRANSFER_POS.search(title) and not _TRANSFER_NEG.search(title):
+        if "fichajes" not in sections:
+            sections.append("fichajes")
+
+    return sections

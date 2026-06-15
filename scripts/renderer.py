@@ -86,6 +86,14 @@ SECTION_DESCRIPTIONS = {
     "northamerica":               "Noticias de balonmano en Norteamérica: Canadá, México y otros países.",
     "southamerica":               "Noticias de balonmano en Sudamérica: competiciones y selecciones sudamericanas.",
     "europe/other-countries":     "Noticias de balonmano en otros países europeos sin sección propia.",
+    "fichajes":                   "Fichajes y traspasos de balonmano: rumores y confirmados de todas las ligas.",
+}
+
+SECTION_EXTERNAL_LINKS = {
+    "fichajes": [
+        {"label": "Tabla de fichajes 26/27 — MiBalonmano", "url": "https://www.mibalonmano.com/fichajes/tabla-fichajes/26-27"},
+        {"label": "Fichajes Handball — Liftados",           "url": "https://www.liftados.com/fichajes-handball"},
+    ],
 }
 
 SECTIONS = {
@@ -207,6 +215,13 @@ SECTIONS = {
             "northamerica":   "Otras NorteAmérica",
             "southamerica":   "Otras Sudamérica",
             "europe/other-countries": "Otros Europa",
+        },
+    },
+    "fichajes": {
+        "label": "Fichajes",
+        "color": "orange",
+        "subsections": {
+            "fichajes": "Todos los fichajes",
         },
     },
 }
@@ -389,6 +404,7 @@ def render_all(conn):
             section_label=data["label"],
             section_description=description,
             articles=data["articles"],
+            section_external_links=SECTION_EXTERNAL_LINKS.get(slug, []),
         )
         (section_dir / "index.html").write_text(html, encoding="utf-8")
     logger.info("Rendered %d section pages", len(sections_data))

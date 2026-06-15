@@ -1,0 +1,2132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos los fichajes — HandbolNoticias</title>
+    <meta name="description" content="Fichajes y traspasos de balonmano: rumores y confirmados de todas las ligas.">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="canonical" href="https://handbolnoticias.com/fichajes/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="HandbolNoticias">
+    <meta property="og:title" content="Todos los fichajes — HandbolNoticias">
+    <meta property="og:description" content="Fichajes y traspasos de balonmano: rumores y confirmados de todas las ligas.">
+    <meta property="og:url" content="https://handbolnoticias.com/fichajes/">
+    <meta property="og:image" content="https://handbolnoticias.com/assets/logo.png">
+    <meta name="twitter:card" content="summary">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-hb-blue  { background-color: #003DA5; }
+        .text-hb-blue { color: #003DA5; }
+        .text-hb-orange { color: #FF6B00; }
+        .border-hb-orange { border-color: #FF6B00; }
+        .text-spain-red { color: #CC0000; }
+        .border-spain-red { border-color: #CC0000; }
+        .text-europe-green { color: #2E7D32; }
+        .border-europe-green { border-color: #2E7D32; }
+    </style>
+    
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+
+<nav class="bg-hb-blue text-white shadow-lg sticky top-0 z-40" data-pagefind-ignore>
+
+    <!-- ── Barra principal ── -->
+    <div class="max-w-7xl mx-auto px-4 flex items-center h-16 md:h-20 relative">
+
+        <!-- MÓVIL: logo + título + hamburguesa -->
+        <div class="flex md:hidden items-center w-full gap-3">
+            <img src="/assets/logo.png" alt="" class="h-10 w-auto flex-shrink-0">
+            <a href="/" class="text-lg font-black tracking-tight text-white">HandbolNoticias</a>
+            <div class="flex-1"></div>
+            <button id="menu-btn" aria-label="Menú" class="text-white text-2xl px-2 leading-none focus:outline-none">☰</button>
+        </div>
+
+        <!-- ESCRITORIO: logo izq + título centrado + nav der -->
+        <img src="/assets/logo.png" alt="" class="hidden md:block h-45 w-auto flex-shrink-0 mt-6">
+        <a href="/" class="hidden md:block absolute left-1/2 -translate-x-1/2 text-2xl font-black tracking-tight text-white whitespace-nowrap">HandbolNoticias</a>
+        <div class="hidden md:block flex-1"></div>
+        <div class="hidden md:flex items-center gap-5 text-sm font-medium flex-shrink-0">
+            <a href="/all/" class="hover:text-orange-300 py-4 font-semibold">Todas ▸</a>
+
+            <!-- España -->
+            <div class="relative group">
+                <button class="hover:text-orange-300 py-4">España ▾</button>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-52 z-50 py-1">
+                    <a href="/spain/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-medium">España Otros</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Masculino</div>
+                    <a href="/spain/asobal/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">ASOBAL</a>
+                    <a href="/spain/dhp/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">División Honor Plata</a>
+                    <a href="/spain/primera-nacional-masc/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Primera Nacional</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Femenino</div>
+                    <a href="/spain/guerreras/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Liga Guerreras Iberdrola</a>
+                    <a href="/spain/dho-fem/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">División Honor Oro</a>
+                    <a href="/spain/dhp-fem/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">División Honor Plata</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Selección</div>
+                    <a href="/spain/seleccion-masc/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Selección Masculina</a>
+                    <a href="/spain/seleccion-fem/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Selección Femenina</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Base</div>
+                    <a href="/spain/base-masc/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Base Masculino</a>
+                    <a href="/spain/base-fem/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Base Femenino</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Territorial</div>
+                    <a href="/spain/catalonia/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Cataluña</a>
+                    <a href="/spain/navarra/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Navarra</a>
+                    <a href="/spain/euskadi/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Euskadi</a>
+                </div>
+            </div>
+
+            <!-- Europa EHF -->
+            <div class="relative group">
+                <button class="hover:text-orange-300 py-4">Europa ▾</button>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-56 z-50 py-1">
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Club Masc</div>
+                    <a href="/europe/champions/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Champions League Masc</a>
+                    <a href="/europe/european-league/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European League Masc</a>
+                    <a href="/europe/cup-men/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European Cup Masc</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Club Fem</div>
+                    <a href="/europe/champions-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Champions League Fem</a>
+                    <a href="/europe/european-league-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European League Fem</a>
+                    <a href="/europe/cup-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European Cup Fem</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Selecciones</div>
+                    <a href="/europe/euro-men/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">EHF EURO Masc</a>
+                    <a href="/europe/euro-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">EHF EURO Fem</a>
+                    <a href="/europe/other/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Otras EHF</a>
+                    <div class="border-t mx-3 my-1"></div>
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">IHF</div>
+                    <a href="/ihf/world-men/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Mundial Masc</a>
+                    <a href="/ihf/world-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Mundial Fem</a>
+                    <a href="/ihf/other/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Otras IHF</a>
+                </div>
+            </div>
+
+            <!-- Internacional -->
+            <div class="relative group">
+                <button class="hover:text-orange-300 py-4">Internacional ▾</button>
+                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-52 z-50 py-1 max-h-[32rem] overflow-y-auto">
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">IHF</div>
+                    
+                    
+                    
+                    <a href="/ihf/world-men/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Mundial Masc</a>
+                    
+                    
+                    
+                    <a href="/ihf/world-women/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Mundial Fem</a>
+                    
+                    
+                    
+                    <a href="/ihf/other/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Otras IHF</a>
+                    
+                    
+                    
+                    <div class="border-t mx-3 my-1"></div>
+                    
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Alemania Masc</div>
+                    
+                    
+                    
+                    <a href="/germany/bundesliga/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Daikin HBL</a>
+                    
+                    
+                    
+                    <a href="/germany/bundesliga2/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">2. Bundesliga</a>
+                    
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Alemania Fem</div>
+                    
+                    
+                    
+                    <a href="/germany/bundesliga-fem/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Alsco HBF</a>
+                    
+                    
+                    
+                    <a href="/germany/bundesliga2-fem/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">2. Bundesliga Fem</a>
+                    
+                    
+                    
+                    <a href="/germany/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">General</a>
+                    
+                    
+                    
+                    <div class="border-t mx-3 my-1"></div>
+                    
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Francia Masc</div>
+                    
+                    
+                    
+                    <a href="/france/starligue/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Liqui Moly Starligue</a>
+                    
+                    
+                    
+                    <a href="/france/pro-d2/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">ProLigue</a>
+                    
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Francia Fem</div>
+                    
+                    
+                    
+                    <a href="/france/d1f/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Ligue Butagaz Énergie</a>
+                    
+                    
+                    
+                    <a href="/france/d2f/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">D2F</a>
+                    
+                    
+                    
+                    <a href="/france/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">General</a>
+                    
+                    
+                    
+                    <div class="border-t mx-3 my-1"></div>
+                    
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Europa</div>
+                    
+                    
+                    
+                    <a href="/denmark/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Dinamarca</a>
+                    
+                    
+                    
+                    <a href="/sweden/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Suecia</a>
+                    
+                    
+                    
+                    <a href="/norway/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Noruega</a>
+                    
+                    
+                    
+                    <a href="/portugal/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Portugal</a>
+                    
+                    
+                    
+                    <a href="/austria/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Austria</a>
+                    
+                    
+                    
+                    <a href="/switzerland/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Suiza</a>
+                    
+                    
+                    
+                    <a href="/iceland/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Islandia</a>
+                    
+                    
+                    
+                    <a href="/faroe-islands/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Islas Feroe</a>
+                    
+                    
+                    
+                    <a href="/hungary/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Hungría</a>
+                    
+                    
+                    
+                    <a href="/poland/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Polonia</a>
+                    
+                    
+                    
+                    <a href="/croatia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Croacia</a>
+                    
+                    
+                    
+                    <a href="/serbia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Serbia</a>
+                    
+                    
+                    
+                    <a href="/slovakia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Eslovaquia</a>
+                    
+                    
+                    
+                    <a href="/slovenia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Eslovenia</a>
+                    
+                    
+                    
+                    <a href="/romania/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Rumania</a>
+                    
+                    
+                    
+                    <a href="/greece/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Grecia</a>
+                    
+                    
+                    
+                    <a href="/italy/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Italia</a>
+                    
+                    
+                    
+                    <a href="/north-macedonia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Macedonia del Norte</a>
+                    
+                    
+                    
+                    <a href="/turkey/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Turquía</a>
+                    
+                    
+                    
+                    <a href="/czech-republic/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">República Checa</a>
+                    
+                    
+                    
+                    <a href="/europe/other-countries/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Otros Europa</a>
+                    
+                    
+                    
+                    <div class="border-t mx-3 my-1"></div>
+                    
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">África</div>
+                    
+                    
+                    
+                    <a href="/egypt/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Egipto</a>
+                    
+                    
+                    
+                    <a href="/angola/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Angola</a>
+                    
+                    
+                    
+                    <a href="/tunisia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Túnez</a>
+                    
+                    
+                    
+                    <a href="/africa/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Otras África</a>
+                    
+                    
+                    
+                    <div class="border-t mx-3 my-1"></div>
+                    
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Sudamérica</div>
+                    
+                    
+                    
+                    <a href="/argentina/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Argentina</a>
+                    
+                    
+                    
+                    <a href="/brazil/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Brasil</a>
+                    
+                    
+                    
+                    <a href="/uruguay/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Uruguay</a>
+                    
+                    
+                    
+                    <a href="/paraguay/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Paraguay</a>
+                    
+                    
+                    
+                    <a href="/chile/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Chile</a>
+                    
+                    
+                    
+                    <a href="/southamerica/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Otras Sudamérica</a>
+                    
+                    
+                    
+                    <div class="border-t mx-3 my-1"></div>
+                    
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Asia</div>
+                    
+                    
+                    
+                    <a href="/japan/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Japón</a>
+                    
+                    
+                    
+                    <a href="/qatar/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Qatar</a>
+                    
+                    
+                    
+                    <a href="/kuwait/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Kuwait</a>
+                    
+                    
+                    
+                    <a href="/uae/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Emiratos Árabes</a>
+                    
+                    
+                    
+                    <a href="/asia/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Otras Asia</a>
+                    
+                    
+                    
+                    <div class="border-t mx-3 my-1"></div>
+                    
+                    
+                    
+                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">NorteAmérica</div>
+                    
+                    
+                    
+                    <a href="/usa/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">EE.UU.</a>
+                    
+                    
+                    
+                    <a href="/northamerica/" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-sm">Otras NorteAmérica</a>
+                    
+                    
+                </div>
+            </div>
+            <a href="/podcasts/" class="hover:text-orange-300 py-4 font-semibold">Podcasts ▸</a>
+            <a href="/search/" class="hover:text-orange-300 py-4" title="Buscar noticias">🔍</a>
+        </div>
+    </div>
+
+    <!-- ── Menú móvil (oculto por defecto) ── -->
+    <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 overflow-y-auto max-h-[80vh] text-sm">
+        <a href="/all/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Todas las noticias ▸</a>
+        <a href="/podcasts/" class="block px-4 py-3 border-b border-blue-800 font-semibold">Podcasts y Vídeos ▸</a>
+        <a href="/search/" class="block px-4 py-3 border-b border-blue-800 font-semibold">🔍 Buscar noticias</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España</div>
+        <a href="/spain/" class="block px-6 py-2 border-b border-blue-800 font-medium">España Otros</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España — Masculino</div>
+        <a href="/spain/asobal/" class="block px-6 py-2 border-b border-blue-800">ASOBAL</a>
+        <a href="/spain/dhp/" class="block px-6 py-2 border-b border-blue-800">División Honor Plata</a>
+        <a href="/spain/primera-nacional-masc/" class="block px-6 py-2 border-b border-blue-800">Primera Nacional</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España — Femenino</div>
+        <a href="/spain/guerreras/" class="block px-6 py-2 border-b border-blue-800">Liga Guerreras Iberdrola</a>
+        <a href="/spain/dho-fem/" class="block px-6 py-2 border-b border-blue-800">División Honor Oro</a>
+        <a href="/spain/dhp-fem/" class="block px-6 py-2 border-b border-blue-800">División Honor Plata</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España — Selección</div>
+        <a href="/spain/seleccion-masc/" class="block px-6 py-2 border-b border-blue-800">Selección Masculina</a>
+        <a href="/spain/seleccion-fem/" class="block px-6 py-2 border-b border-blue-800">Selección Femenina</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">España — Base y Territorial</div>
+        <a href="/spain/base-masc/" class="block px-6 py-2 border-b border-blue-800">Base Masculino</a>
+        <a href="/spain/base-fem/" class="block px-6 py-2 border-b border-blue-800">Base Femenino</a>
+        <a href="/spain/catalonia/" class="block px-6 py-2 border-b border-blue-800">Cataluña</a>
+        <a href="/spain/navarra/" class="block px-6 py-2 border-b border-blue-800">Navarra</a>
+        <a href="/spain/euskadi/" class="block px-6 py-2 border-b border-blue-800">Euskadi</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">Europa — Club Masc</div>
+        <a href="/europe/champions/" class="block px-6 py-2 border-b border-blue-800">Champions League Masc</a>
+        <a href="/europe/european-league/" class="block px-6 py-2 border-b border-blue-800">European League Masc</a>
+        <a href="/europe/cup-men/" class="block px-6 py-2 border-b border-blue-800">European Cup Masc</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">Europa — Club Fem</div>
+        <a href="/europe/champions-women/" class="block px-6 py-2 border-b border-blue-800">Champions League Fem</a>
+        <a href="/europe/european-league-women/" class="block px-6 py-2 border-b border-blue-800">European League Fem</a>
+        <a href="/europe/cup-women/" class="block px-6 py-2 border-b border-blue-800">European Cup Fem</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">Europa — Selecciones</div>
+        <a href="/europe/euro-men/" class="block px-6 py-2 border-b border-blue-800">EHF EURO Masc</a>
+        <a href="/europe/euro-women/" class="block px-6 py-2 border-b border-blue-800">EHF EURO Fem</a>
+        <a href="/europe/other/" class="block px-6 py-2 border-b border-blue-800">Otras EHF</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">IHF</div>
+        <a href="/ihf/world-men/" class="block px-6 py-2 border-b border-blue-800">Mundial Masc</a>
+        <a href="/ihf/world-women/" class="block px-6 py-2 border-b border-blue-800">Mundial Fem</a>
+        <a href="/ihf/other/" class="block px-6 py-2 border-b border-blue-800">Otras IHF</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">Europa — Otros países</div>
+        <a href="/denmark/" class="block px-6 py-2 border-b border-blue-800">Dinamarca</a>
+        <a href="/sweden/" class="block px-6 py-2 border-b border-blue-800">Suecia</a>
+        <a href="/norway/" class="block px-6 py-2 border-b border-blue-800">Noruega</a>
+        <a href="/portugal/" class="block px-6 py-2 border-b border-blue-800">Portugal</a>
+        <a href="/austria/" class="block px-6 py-2 border-b border-blue-800">Austria</a>
+        <a href="/switzerland/" class="block px-6 py-2 border-b border-blue-800">Suiza</a>
+        <a href="/iceland/" class="block px-6 py-2 border-b border-blue-800">Islandia</a>
+        <a href="/faroe-islands/" class="block px-6 py-2 border-b border-blue-800">Islas Feroe</a>
+        <a href="/hungary/" class="block px-6 py-2 border-b border-blue-800">Hungría</a>
+        <a href="/poland/" class="block px-6 py-2 border-b border-blue-800">Polonia</a>
+        <a href="/croatia/" class="block px-6 py-2 border-b border-blue-800">Croacia</a>
+        <a href="/serbia/" class="block px-6 py-2 border-b border-blue-800">Serbia</a>
+        <a href="/slovakia/" class="block px-6 py-2 border-b border-blue-800">Eslovaquia</a>
+        <a href="/slovenia/" class="block px-6 py-2 border-b border-blue-800">Eslovenia</a>
+        <a href="/romania/" class="block px-6 py-2 border-b border-blue-800">Rumania</a>
+        <a href="/greece/" class="block px-6 py-2 border-b border-blue-800">Grecia</a>
+        <a href="/italy/" class="block px-6 py-2 border-b border-blue-800">Italia</a>
+        <a href="/north-macedonia/" class="block px-6 py-2 border-b border-blue-800">Macedonia del Norte</a>
+        <a href="/turkey/" class="block px-6 py-2 border-b border-blue-800">Turquía</a>
+        <a href="/czech-republic/" class="block px-6 py-2 border-b border-blue-800">República Checa</a>
+        <a href="/europe/other-countries/" class="block px-6 py-2 border-b border-blue-800 italic text-blue-300">Otros Europa</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">África</div>
+        <a href="/egypt/" class="block px-6 py-2 border-b border-blue-800">Egipto</a>
+        <a href="/angola/" class="block px-6 py-2 border-b border-blue-800">Angola</a>
+        <a href="/tunisia/" class="block px-6 py-2 border-b border-blue-800">Túnez</a>
+        <a href="/africa/" class="block px-6 py-2 border-b border-blue-800 italic text-blue-300">Otras África</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">Sudamérica</div>
+        <a href="/argentina/" class="block px-6 py-2 border-b border-blue-800">Argentina</a>
+        <a href="/brazil/" class="block px-6 py-2 border-b border-blue-800">Brasil</a>
+        <a href="/uruguay/" class="block px-6 py-2 border-b border-blue-800">Uruguay</a>
+        <a href="/paraguay/" class="block px-6 py-2 border-b border-blue-800">Paraguay</a>
+        <a href="/chile/" class="block px-6 py-2 border-b border-blue-800">Chile</a>
+        <a href="/southamerica/" class="block px-6 py-2 border-b border-blue-800 italic text-blue-300">Otras Sudamérica</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">Asia</div>
+        <a href="/japan/" class="block px-6 py-2 border-b border-blue-800">Japón</a>
+        <a href="/qatar/" class="block px-6 py-2 border-b border-blue-800">Qatar</a>
+        <a href="/kuwait/" class="block px-6 py-2 border-b border-blue-800">Kuwait</a>
+        <a href="/uae/" class="block px-6 py-2 border-b border-blue-800">Emiratos Árabes</a>
+        <a href="/asia/" class="block px-6 py-2 border-b border-blue-800 italic text-blue-300">Otras Asia</a>
+
+        <div class="px-4 pt-3 pb-1 text-xs font-bold text-blue-300 uppercase tracking-wider">NorteAmérica</div>
+        <a href="/usa/" class="block px-6 py-2 border-b border-blue-800">EE.UU.</a>
+        <a href="/northamerica/" class="block px-6 py-2 border-b border-blue-800 italic text-blue-300">Otras NorteAmérica</a>
+    </div>
+</nav>
+
+<script>
+document.getElementById('menu-btn').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+});
+</script>
+
+<main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
+    
+
+<nav class="text-sm text-gray-500 mb-6" data-pagefind-ignore>
+    <a href="/" class="hover:text-hb-blue">Inicio</a>
+    <span class="mx-2">›</span>
+    <span class="text-gray-800 font-medium">Todos los fichajes</span>
+</nav>
+
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900">Todos los fichajes</h1>
+</div>
+
+
+<div class="mb-5 p-4 bg-orange-50 border border-orange-200 rounded-lg" data-pagefind-ignore>
+    <p class="text-sm font-semibold text-orange-800 mb-2">Listas completas de fichajes:</p>
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https://www.mibalonmano.com/fichajes/tabla-fichajes/26-27" target="_blank" rel="noopener"
+           class="text-sm text-orange-700 underline hover:text-orange-900">Tabla de fichajes 26/27 — MiBalonmano</a>
+        
+        <a href="https://www.liftados.com/fichajes-handball" target="_blank" rel="noopener"
+           class="text-sm text-orange-700 underline hover:text-orange-900">Fichajes Handball — Liftados</a>
+        
+    </div>
+</div>
+
+
+
+<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
+    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
+    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
+    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
+    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
+    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+</div>
+
+<div class="space-y-3" id="articles-list">
+    
+    <a href="https://todohandball.com/mercado-de-pases/mateo-palacios-continuara-su-carrera-en-espana/" target="_blank" rel="noopener"
+       data-date="2026-06-15"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Mateo Palacios continuará su carrera en España</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El primera línea argentino llega al Balonmano Soria tras una gran temporada en el CB Romo y buscará ser protagonista en la próxima campaña del handball español. El handball argentino sigue sumando representantes en Europa. El Balonmano Soria confirmó oficialmente el fichaje de Mateo Palacios, primer</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">TodoHandball</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-15</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://clubbalonmanopuentegenil.es/comunicado-oficial-fichaje-de-quim-rocas/" target="_blank" rel="noopener"
+       data-date="2026-06-15"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">COMUNICADO OFICIAL: Fichaje de Quim Rocas</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Foto de portada: Anze Malovrh / kolektiff El Club Balonmano Cajasol Ángel Ximénez Puente Genil desea anunciar el fichaje del</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">PuenteGenil-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-15</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://metz-handball.com/2026/06/15/metz-handball-association-recrute-ses-entraineurs-pour-la-saison-2026-2027/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=metz-handball-association-recrute-ses-entraineurs-pour-la-saison-2026-2027" target="_blank" rel="noopener"
+       data-date="2026-06-15"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">La Asociación de Balonmano de Metz contrata a sus entrenadores para la temporada 2026-2027</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">En el marco de la preparación para la temporada 2026-2027, la Asociación de Balonmano de Metz busca entrenadores y asistentes para varias categorías, desde la U9 hasta la Senior. Hay oportunidades disponibles dentro de los sectores de mujeres y hombres, tanto a nivel regional como departamental.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MetzHandball-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-15</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mundodeportivo.com/balonmano/20260614/1004194946/palmares-completo-champions-barca-seguira-siendo-anos-numero-1.html" target="_blank" rel="noopener"
+       data-date="2026-06-14"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/files/fp/uploads/2026/06/14/6a2e8f2206bc7.r_d.1562-797-1496.jpeg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Palmarés completo de la Champions: el Barça seguirá siendo muchos años el número 1</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MundoDeportivo-Balonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-14</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.marca.com/balonmano/liga-asobal/2026/06/13/nava-seguira-asobal-vencer-nuevo-agustinos.html" target="_blank" rel="noopener"
+       data-date="2026-06-13"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://objetos-xlk.estaticos-marca.com/uploads/2026/06/13/6a2dc1007a56b.jpeg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Nava seguirá en la Asobal tras vencer de nuevo al Agustinos</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Marca-Balonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-13</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mundodeportivo.com/balonmano/20260613/1004194764/41-28-nava-firma-permanencia-liga-asobal-goleada.html" target="_blank" rel="noopener"
+       data-date="2026-06-13"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://imagenes2.mundodeportivo.com/files/image_100_103/files/fp/uploads/2026/06/05/6a23114fc1749.r_d.797-487-634.jpeg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">41-28: El Nava firma su permanencia en Liga Asobal con una goleada</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MundoDeportivo-Balonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-13</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mundodeportivo.com/balonmano/20260613/1004194646/extremo-noruego-tollef-lindqvist-tercer-fichaje-frigorificos-morrazo.html" target="_blank" rel="noopener"
+       data-date="2026-06-13"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://imagenes2.mundodeportivo.com/files/image_100_103/files/fp/uploads/2026/06/13/6a2d6a84ea5ea.r_d.564-255-1001.jpeg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El extremo noruego Tollef Lindqvist, tercer fichaje del Frigoríficos del Morrazo</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MundoDeportivo-Balonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-13</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/tubos-aranda-villa-aranda-oficializa-fichaje-robert-rosell-2028" target="_blank" rel="noopener"
+       data-date="2026-06-13"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/IMG_4041@TubosArandaVillaArana.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Tubos Aranda Villa de Aranda oficializa el fichaje de Robert Rosell hasta 2028</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-13</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://as.com/masdeporte/rodrigo-salinas-fichaje-de-lujo-para-el-cajasol-sevilla-f202606-n/" target="_blank" rel="noopener"
+       data-date="2026-06-12"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://img.asmedia.epimg.net/resizer/v2/ANOPYAVG5FAGRNVDNOHBDBMZBA.JPG?auth=cd1076c513650a2b1bdcd194fb5a4d52b1ece235b86f7b4a0843b82f0a49f1e1" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Rodrigo Salinas, fichaje de lujo para el Cajasol Sevilla</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El chileno llega del Bidasoa para suplir al internacional Ángel Montoro, retirado. Se une a los refuerzos de calidad hispalenses, con Urios y Chema Márquez.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">AS-balonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-12</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://balonmanoremudas.es/el-rocasa-gran-canaria-refuerza-su-plantilla-con-la-incorporacion-de-la-lateral-catalana-alba-tort/" target="_blank" rel="noopener"
+       data-date="2026-06-12"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Rocasa Gran Canaria refuerza su plantilla con la incorporación de la lateral catalana, Alba Tort</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El Rocasa Gran Canaria continúa avanzando en la planificación de la próxima temporada con el fichaje de Alba Tort, que se convierte en la segunda incorporación del conjunto teldense de cara al próximo curso. La jugadora, que firma por dos temporadas, llega procedente del CICAR Lanzarote Ciudad de Ar</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Rocasa-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-12</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/fraikin-granollers-apuesta-dos-canteranos-extremo-derecho-26-27" target="_blank" rel="noopener"
+       data-date="2026-06-12"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/uploads/images/posts/Dcavrebsw21@FraikinGranollers.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Fraikin Granollers apuesta por dos canteranos para el extremo derecho y les firma su primer contrato</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-12</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/fraikin-granollers-ficha-quim-rocas-hasta-2030" target="_blank" rel="noopener"
+       data-date="2026-06-12"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/uploads/images/posts/QUimRocas2030.jpg-e1781169404841@FraikinGranollers.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Fraikin Granollers ficha a Quim Rocas hasta 2030</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-12</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://bmgranollers.cat/el-talent-de-la-pedrera-te-futur-bernat-povill-renova-fins-al-2028/" target="_blank" rel="noopener"
+       data-date="2026-06-11"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El talento de la cantera tiene futuro: Bernat Povill renueva hasta el 2028</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El BM Granollers anuncia que Bernat Povill ha formalizado su primer contrato profesional con el Fraikin BM Granollers, vinculándose al club hasta junio de 2028. Formado íntegramente en la base del BM Granollers, desde la categoría benjamina hasta llegar al primer equipo, el extremo derecho granolle</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Granollers-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-11</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.za49.es/deportes/rival-angel-nieto-balonmano-zamora-ficha-jugador-conoce-ambiente-grandes-tardes-pistacho_1_5915437.html" target="_blank" rel="noopener"
+       data-date="2026-06-11"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.za49.es/images/showid/8017540" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Del rival al Ángel Nieto: el Balonmano Zamora ficha a un jugador que ya conoce el ambiente de las grandes tardes pistacho</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Álvaro Carretero aterriza en el Ángel Nieto tras consolidarse en Salamanca y afrontará por primera vez el reto de competir en la División de Honor Plata.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">ZA49</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-11</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/recoletas-atletico-valladolid-oficializa-fichaje-sergio-sanchez-vidan-2028" target="_blank" rel="noopener"
+       data-date="2026-06-11"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/2933-Sergio_fichaje_Recoletas_portada2@RecoletasAtleticoValladolid.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Recoletas Atletico Valladolid confirma el fichaje de Sergio Sanchez hasta 2028</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-11</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/cajasol-sevilla-proin-ficha-a-rodrigo-salinas" target="_blank" rel="noopener"
+       data-date="2026-06-11"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/uploads/images/posts/722430741_18053525882757@BMProinSevilla.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Cajasol Sevilla Proin ficha al lateral chileno Rodrigo Salinas</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-11</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="http://www.ihf.info/media-center/news/global-female-experts-join-forces-new-ihf-womens-handball-working-group" target="_blank" rel="noopener"
+       data-date="2026-06-11"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="http://www.ihf.info/sites/default/files/inline-images/IHF%20Women%27s%20group_800x500.png" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Global female experts join forces in new IHF Women’s Handball Working Group</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Global female experts join forces in new IHF Women’s Handball Working Group
+11 Jun. 2026
+
+gn.editor
+Thu, 06/11/2026 - 11:19
+The International Handball Federation has established a new Women’s Handball Working Group, bringing together leading female voices from across all areas of the game to drive i</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">IHF-news</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-11</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.bmmalagacostadelsol.com/maria-brasil-segundo-fichaje-del-costa-del-sol-malaga-26-27.htm" target="_blank" rel="noopener"
+       data-date="2026-06-11"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">María Brasil, segundo fichaje del Costa del Sol Málaga 26/27</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">La primera línea, de 25 años e internacional por Brasil, firma por una temporada por las panteras procedente del Replasa Beti-Onak María Grasielly Pereira Brasil (Recife, 2001) es el segundo fichaje del Costa del Sol Málaga para la temporada 2026/27. La internacional brasileña, de 25 años y 1.70 met</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CostaSolMalaga-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-11</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.balonmano.info/paula-millaruelo-laura-ballart-fichan-granollers-2029-20261210640/" target="_blank" rel="noopener"
+       data-date="2026-06-10"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.balonmano.info/wp-content/uploads/2026/02/granollers-celebra-400x240.jpeg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El KH-7 BM Granollers ficha a Paula Millaruelo y Laura Ballart hasta 2029</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BalonmanoInfo</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-10</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mundodeportivo.com/balonmano/20260610/1004193542/mt-melsungen-da-golpe-ficha-tecnico-fuechse-campeon-bundesliga.html" target="_blank" rel="noopener"
+       data-date="2026-06-10"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://imagenes2.mundodeportivo.com/files/image_449_464/uploads/2026/06/10/6a298186ad5b3.jpeg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El MT Melsungen da el golpe y ficha al técnico del Füchse campeón de la Bundesliga</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MundoDeportivo-Balonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-10</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/psg-handball-renueva-mikkel-moller-lovkvist-hasta-2029" target="_blank" rel="noopener"
+       data-date="2026-06-10"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/uploads/images/posts/Capture_d_écran_2026-06-09_161312_qt6tvo@PSGHandball.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">PSG Handball renueva a Mikkel Lovkvist hasta 2029</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-10</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://handnews.fr/2026/lms-mikkel-lovkvist-prolonge-avec-le-psg-handball/" target="_blank" rel="noopener"
+       data-date="2026-06-10"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://handnews.fr/wp-content/uploads/2026/05/72A8587-300x200.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">LMS | Mikkel Lovkvist renueva con el PSG Balonmano</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El Paris Saint-Germain hace una serie de anuncios. 24 horas después de la prórroga de Yahia Omar, el club capitalino formalizó la de Mikkel Lovkvist hasta junio de 2029, confirmando así su deseo de estabilizar su plantilla en torno a jóvenes talentos. Llegó a París en el verano de 2025 desde</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Handnews-fr</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-10</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.bmmalagacostadelsol.com/ida-wall-primer-fichaje-del-costa-del-sol-malaga-2026-27.htm" target="_blank" rel="noopener"
+       data-date="2026-06-09"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Ida Wall, primer fichaje del Costa del Sol Málaga 2026/27</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">La portera, de 21 años e internacional por Suecia, firma por una temporada por las panteras procedente del Fjellhammer Idrettslag noruego Ida Wall Bakken (Oslo, 2004) es el primer fichaje del Costa del Sol Málaga para el proyecto 2026/2027. La jugadora, de 21 años y 1.80 metros, llega a un acuerdo c</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CostaSolMalaga-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-09</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://handnews.fr/2026/lms-sanad-signe-son-retour-a-lusam/" target="_blank" rel="noopener"
+       data-date="2026-06-09"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://handnews.fr/wp-content/uploads/2026/04/2026.04.19-Istres_USAM-005-300x200.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">LMS | Sanad firma su regreso a la USAM</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Un año después de celebrar su salida del Gard, Mohammad Sanad regresa al USAM Nîmes para la próxima temporada. A sus 35 años, el hombre con 1.510 goles en el USAM Nîmes volverá a vestir la camiseta verde en el Parnasse la próxima temporada. De hecho, la USAM lo ha hecho oficial en sus redes sociales.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Handnews-fr</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-09</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/frigorificos-morrazo-cangas-ficha-extremo-hugo-vila-2028" target="_blank" rel="noopener"
+       data-date="2026-06-09"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/721601524_18558699154067@BalonmanCangas.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Frigorificos del Morrazo Cangas ficha al extremo Hugo Vila hasta 2028</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-09</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/yahia-omar-renueva-hasta-2030-con-psg-handball" target="_blank" rel="noopener"
+       data-date="2026-06-09"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/_S3O6137_1_fltyra@PSGHandball.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Yahia Omar renueva hasta 2030 con PSG Handball</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-09</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.heraldo.es/noticias/deportes/2026/06/08/balonmano-huesca-cadete-firma-una-meritoria-sexta-plaza-minicopa-espana-2027344.html" target="_blank" rel="noopener"
+       data-date="2026-06-08"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://imagenes.heraldo.es/files/image_1920_1080/uploads/imagenes/2026/06/08/6a26f644ac0064-89171698.jpeg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Balonmano Huesca cadete firma una meritoria sexta plaza en la Minicopa de España</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Los canteranos disputaron el torneo este fin de semana de forma paralela a la Copa del Rey en la que ha participado el Bada Huesca.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">HeraldoAragon-dep</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-08</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/melsungen-salida-garcia-parrondo-2027-psg-fichaje-jaron-siewert" target="_blank" rel="noopener"
+       data-date="2026-06-08"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/uploads/images/posts/csm_Unterschrift_Siewert_97b4@MTMelsungen.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Melsungen confirma la salida de García Parrondo en 2027 y ficha a Jaron Siewert</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-08</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/luka-krivokapic-continuara-fraikin-granollers-temporada-26-27" target="_blank" rel="noopener"
+       data-date="2026-06-08"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/DGC_DGC_7892_003-scaled@FraikinGranollers.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Luka Krivokapic seguirá en Fraikin Granollers el 26/27</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-08</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.za49.es/deportes/lesion-freno-mejor-momento-pero-no-futuro-david-gallego-seguira-balonmano-zamora_1_5910814.html" target="_blank" rel="noopener"
+       data-date="2026-06-08"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.za49.es/images/showid/8012562" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">La lesión frenó su mejor momento, pero no su futuro: David Gallego seguirá en el Balonmano Zamora</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El canterano zamorano, recientemente operado de una grave lesión de rodilla tras lograr el ascenso a División de Honor Plata, continuará una temporada más en el club de su vida mientras trabaja para regresar a las pistas.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">ZA49</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-08</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.hceivissa.com/eugenio-tilves-renueva-una-temporada-mas-con-el-handbol-club-eivissa/" target="_blank" rel="noopener"
+       data-date="2026-06-07"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.hceivissa.com/wp-content/uploads/2026/06/d_26-27_GenoTilves.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Eugenio Tilves renueva una temporada más con el Handbol Club Eivissa</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">HCEivissa-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-07</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.balonmano.info/info/jugadoras/" target="_blank" rel="noopener"
+       data-date="2026-06-07"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Malena Guerisoli refuerza la primera línea del Zonzamas</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BalonmanoInfo</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-07</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://handnews.fr/2026/lms-matthieu-ong-rejoint-istres/" target="_blank" rel="noopener"
+       data-date="2026-06-06"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://handnews.fr/wp-content/uploads/2025/09/2025.09.28-PAUC_PSG-001-300x200.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">LMS | Matthieu Ong se incorpora a Istres</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Después de casi tres décadas en el PAUC, Matthieu Ong está pasando una página importante en su carrera al embarcarse en un nuevo desafío, siempre en Provenza. El niño del PAUC alza el vuelo… a los 33 años. Nacido en Clichy, comenzó en Aix-en-Provence en 1999, a la edad de 7 años. Matthieu Ong ha escalado todos</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Handnews-fr</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-06</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.rfebm.com/nava-prolonga-su-sueno-en-alicante-y-se-cita-con-el-barca-en-semifinales/" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.rfebm.com/wp-content/uploads/2026/06/20260605.54-150x150.webp" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Nava prolonga su sueño en Alicante… y se cita con el Barça en semifinales</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El conjunto dirigido por Carlos Villagrán doblega al REBI Cuenca y se clasifica para semifinales en su primera presencia en una fase final copera
+La entrada Nava prolonga su sueño en Alicante… y se cita con el Barça en semifinales se publicó primero en RFEBM.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">RFEBM</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.elcomercio.es/deportes/balonmano/tecnico-gijones-diego-dorado-ficha-balonmano-torrelavega-20260605184520-nt.html" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://s2.ppllstatics.com/elcomercio/www/multimedia/2026/06/05/diego-dorado-RX1khfB2rJiDL0dITficYIM-1200x840@El%20Comercio.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El técnico gijonés Diego Dorado ficha por el Balonmano Torrelavega: «Es una estructura muy profesionalizada»</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Deja atrás los últimos cinco años en el Gijón Jovellanos y refuerza la estructura como coordinador de cantera y entrenador de porteros del equipo cántabro</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">ElComercio-dep</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.balonmano.info/malena-guerisoli-ficha-zonzamas-lanzarote-20261610517/" target="_blank" rel="noopener"
+       data-date="2026-06-05"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.balonmano.info/wp-content/uploads/2026/06/malena-guerisoli-400x240.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Malena Guerisoli refuerza la primera línea del Zonzamas</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BalonmanoInfo</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-05</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/fraikin-granollers-ficha-joven-portero-ruben-cardenosa-2031" target="_blank" rel="noopener"
+       data-date="2026-06-04"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/RubenCardenosa.jpg-1-e1780587@BMgranollers.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Fraikin Granollers ficha al joven portero Rubén Cardeñosa hasta 2031</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-04</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://balonmanocaserio.com/emmanuel-ardito-un-fichaje-de-futuro-para-el-caserio/" target="_blank" rel="noopener"
+       data-date="2026-06-04"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Emmanuel Ardito, un fichaje de futuro para el Caserío</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Es un joven jugador argentino que procede del River Plate y que se desenvuelve como lateral derecho. Ya entrenó unas semanas con el Ademar a primeros de año y firma por tres temporadas El argentino Emmanuel Ardito será otra de las incorporaciones del Caserío para la próxima temporada. Se trata de un</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CaserioCR-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-04</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.balonmano.info/elena-blasco-ficha-elda-prestigio-portera-2026-2027-20262010483/" target="_blank" rel="noopener"
+       data-date="2026-06-03"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.balonmano.info/wp-content/uploads/2026/06/elena-blasco-400x240.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Elda Prestigio ficha una jugadora de 18 años y pertrecha portería con futuro</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BalonmanoInfo</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-03</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.balonmano.info/cecilia-colmenero-ficha-zonzamas-plus-car-lanzarote-20260810472/" target="_blank" rel="noopener"
+       data-date="2026-06-03"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.balonmano.info/wp-content/uploads/2026/06/ceci-colmenero-400x240.jpeg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Zonzamas ficha a una central de 156 goles para sostener su nuevo proyecto en la élite</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BalonmanoInfo</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-03</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.balonmano.info/amandine-balzinc-ficha-bera-bera-2028-20261010470/" target="_blank" rel="noopener"
+       data-date="2026-06-03"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.balonmano.info/wp-content/uploads/2026/05/balzinc-400x240.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Bera Bera ficha a Balzinc y deja cerrada una portería de enorme nivel hasta 2028</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BalonmanoInfo</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-03</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://bmbenidorm.com/diego-perez-continuara-una-temporada-mas-en-el-balonmano-servigroup-benidorm/" target="_blank" rel="noopener"
+       data-date="2026-06-02"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Diego Pérez continuará una temporada más en el Balonmano Servigroup Benidorm</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El Balonmano Servigroup Benidorm y Diego Pérez han alcanzado un acuerdo para que el central vallisoletano continúe formando parte de […]
+La entrada Diego Pérez continuará una temporada más en el Balonmano Servigroup Benidorm se publicó primero en Balonmano Benidorm.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Benidorm-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-06-02</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mundodeportivo.com/balonmano/20260531/1004189849/28-41-barca-firma-pleno-puntos-liga-asobal.html" target="_blank" rel="noopener"
+       data-date="2026-05-31"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://imagenes2.mundodeportivo.com/files/image_150_155/files/fp/uploads/2026/04/09/69d80236363f8.r_d.1474-767-523.jpeg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">28-41. El Barça firma el pleno de puntos en la Liga ASOBAL</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MundoDeportivo-Balonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-31</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://handnews.fr/2026/el-melsungen-surclasse-flensburg-et-rejoint-kiel-en-finale/" target="_blank" rel="noopener"
+       data-date="2026-05-30"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://handnews.fr/wp-content/uploads/2022/08/AT3W2313-300x200.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">EL | ¡Melsungen supera a Flensburg y se une a Kiel en la final!</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Mismo cartel que el año pasado, pero escenario muy diferente. Derrotado por el Flensburg en las semifinales de la Liga Europea la temporada pasada, el Melsungen se tomó esta vez con autoridad la revancha ante el doble campeón (37-30). En una reunión que inicialmente fue tensa, el MT gradualmente</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Handnews-fr</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-30</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/adrian-sanchez-sexto-fichaje-horneo-eon-alicante-2028" target="_blank" rel="noopener"
+       data-date="2026-05-29"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/aseon28@HorneoEONAlicante.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Adrián Sanchez, sexto fichaje de Horneo EON Alicante</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-29</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://balonmanotorrelavega.com/2026/05/28/bm-torrelavega-fichaje-diego-dorado/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYwIiBoZWlnaHQ9IjE3MDYiIHZpZXdCb3g9IjAgMCAyNTYwIDE3MDYiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjZmQ0ZGIiLz48L3N2Zz4=" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Bathco BM Torrelavega ficha a Diego Dorado como coordinador de cantera y entrenador de porteros</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Torrelavega-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-28</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://bmbenidorm.com/renovacion-ramiro-martinez-continuara-una-temporada-mas-en-el-balonmano-servigroup-benidorm/" target="_blank" rel="noopener"
+       data-date="2026-05-28"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">RENOVACIÓN | Ramiro Martínez continuará una temporada más en el Balonmano Servigroup Benidorm</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El Balonmano Servigroup Benidorm y Ramiro Martínez han alcanzado un acuerdo para que el internacional argentino siga formando parte de […]
+La entrada RENOVACIÓN | Ramiro Martínez continuará una temporada más en el Balonmano Servigroup Benidorm se publicó primero en Balonmano Benidorm.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Benidorm-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-28</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.balonmano.info/aileen-ripa-ficha-sporting-la-rioja-20260410335/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.balonmano.info/wp-content/uploads/2025/08/aileen-ripa-400x240.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">La lateral navarra Aileen Ripa jugará en el Sporting La Rioja</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BalonmanoInfo</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-27</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/rebi-cuenca-oficializa-fichaje-extremo-jan-blas-hasta-2028" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/640-385-rebi-@REBICuenca.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">REBI Cuenca oficializa el fichaje de Jan Blas hasta 2028</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-27</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.bmsinfin.com/2026/05/27/comunicado-oficial-marcos-vinicius-refuerza-la-primera-linea-del-blendio-sinfin-santander/" target="_blank" rel="noopener"
+       data-date="2026-05-27"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">COMUNICADO OFICIAL: Marcos Vinicius refuerza la primera línea del Blendio Sinfín Santander</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El Blendio Sinfín Santander continúa perfilando su plantilla de cara a la próxima temporada con la incorporación de Marcos Vinicius (26/06/2000), jugador brasileño con una amplia trayectoria en el balonmano nacional y que llega para aportar experiencia, solidez y versatilidad al conjunto dirigido po</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">BMSinfin-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-27</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/el-sc-magdeburgo-avanza-en-el-fichaje-de-thibaud-briet" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/VPH_8892@OneVeszprem-PekaRoland.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El SC Magdeburgo encarrila el fichaje de Thibaud Briet</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-26</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/one-veszprem-no-renueva-bjarki-elisson-apuesta-jugadores-hungaros" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/PR0_4186-2@OneVeszpem-PekaRoland.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El One Veszprem no renueva a Elisson y apuesta por jugadores húngaros</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-26</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://cadenaser.com/canarias/2026/05/26/javi-aragon-prolonga-su-vinculacion-con-el-balonmano-lanzarote-ciudad-de-arrecife-ser-lanzarote/" target="_blank" rel="noopener"
+       data-date="2026-05-26"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://cadenaser.com/resizer/v2/T4L4F3R7UJDLTNCDAYD3AUFLDU.JPG?auth=e8828c274d5d5e6532ba082b85a1daf58c9fca83a807df98944d0d44b1c73fa6&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Javi Aragón prolonga su vinculación con el Balonmano Lanzarote Ciudad de Arrecife</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CadenaSER-balonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-26</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/horneo-eon-alicante-ficha-extremo-daniel-reinante-hasta-2029" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/509BCCFC-5A38-4F3F-91D4-70662B04CCDC@EONALicante.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Horneo EON Alicante ficha a Daniel Reinante hasta 2029</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-25</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/jose-nolasco-seguira-al-frente-de-bada-huesca-en-division-honor-plata" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/1779705978681@BadaHuesca.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Jose Nolasco seguirá al frente de Bada Huesca en División Honor Plata</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-25</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://cadenaser.com/comunitat-valenciana/2026/05/25/el-horneo-alicante-ficha-al-joven-extremo-daniel-reinante-hasta-2029-radio-alicante/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://cadenaser.com/resizer/v2/TM4K7MMIMBFUXF2Z5SRDI4VWG4.JPEG?auth=5d1f7eea1e535564d975ba5c055b73ad05a466cea2b3700c445919b9105e989b&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Horneo Alicante ficha al joven extremo Daniel Reinante hasta 2029</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CadenaSER-balonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-25</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://cadenaser.com/aragon/2026/05/25/jose-nolasco-demuestra-su-compromiso-con-el-bada-huesca-y-seguira-dirigiendo-al-equipo-en-division-de-honor-plata-radio-huesca/" target="_blank" rel="noopener"
+       data-date="2026-05-25"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://cadenaser.com/resizer/v2/4RG3QNIRTNGCTORA2EW3WPVZII.JPG?auth=cc4cd55a861e77e5788704fcd9815f6fb9310d0665ad3a48b6166fdaec2dd2bb&amp;quality=70&amp;width=1200&amp;height=900&amp;smart=true" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">José Nolasco demuestra su compromiso con el Bada Huesca y seguirá dirigiendo al equipo en División de Honor Plata</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">CadenaSER-balonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-25</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/alemania-renueva-alfred-gislason-hasta-juegos-olimpicos-2028" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/706198615_1463545489136616_n@DHB.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Alemania renueva a Alfred Gislason hasta 2028</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-24</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/chema-marquez-ficha-cajasol-sevilla-proin-26-27" target="_blank" rel="noopener"
+       data-date="2026-05-24"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.mibalonmano.com/media/cache/400_filter_rela/uploads/images/posts/705698815_18051018881757548@BMProin.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Chema Márquez ficha por el Cajasol Sevilla Proin hasta 2028</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-24</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/alfonso-rodriguez-quinto-fichaje-cajasol-sevilla-proin-para-la-26-27" target="_blank" rel="noopener"
+       data-date="2026-05-23"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Alfonso Rodriguez, quinto fichaje del Cajasol Sevilla Proin para la 26/27</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-23</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.mibalonmano.com/fraikin-granolleres-renueva-dos-talentos-cesion-cajasol-sevilla-proin" target="_blank" rel="noopener"
+       data-date="2026-05-22"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Fraikin Granollers renueva a dos de sus talentos y los cede a Cajasol Sevilla Proin</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">MiBalonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-22</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.elcomercio.es/deportes/balonmano/horizonte-atletica-refuerza-cuerpo-tecnico-juan-muniz-20260521212224-nt.html" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://s3.ppllstatics.com/elcomercio/www/multimedia/2026/05/21/staff-horizonte-RpeCYntOAaMSNKxWJww7M2N-1200x840@El%20Comercio.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Horizonte Atlética refuerza el cuerpo técnico de Juan Muñiz</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El entrenador avilesino contará con Carlos Pulido y Avelino Solís como ayudantes y con Sergio Murcia como preparador físico</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">ElComercio-dep</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-21</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="http://www.ihf.info/media-center/news/wurth-extends-partnership-ihf-mens-and-womens-world-championships" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Würth Extends Partnership with the IHF for the men&#39;s and women&#39;s World Championships</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Würth Extends Partnership with the IHF for the men&#39;s and women&#39;s World Championships
+21 May. 2026
+
+gn.editor
+Thu, 05/21/2026 - 13:30
+The Würth Group is continuing its long-term commitment to international handball by extending its partnership with the IHF and its crown event, the IHF World Champions</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">IHF-news</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-21</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.sport.es/es/noticias/deportes/balonmano/sergi-franco-capitan-bm-granollers-130470146" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://estaticos-cdn.prensaiberica.es/clip/5636c34c-106f-425b-8590-f0d415ab58b3_16-9-discover-aspect-ratio_default_0_x600y225.webp" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Sergi Franco, capitán del BM Granollers, no seguirá y firma por el RTV Basel</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Sport-balonmano</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-21</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="http://www.ihf.info/media-center/news/angola-senegal-norway-and-sweden-beach-handball-women-join-forces-good-west" target="_blank" rel="noopener"
+       data-date="2026-05-21"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="http://www.ihf.info/sites/default/files/inline-images/nordi800.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Angola, Senegal, Norway and Sweden beach handball women join forces for good in West Africa</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Angola, Senegal, Norway and Sweden beach handball women join forces for good in West Africa
+21 May. 2026
+
+gn.editor
+Thu, 05/21/2026 - 07:21
+The 2026 edition of the ‘Nordic Beach Week’ took place last month (5 to 13 April) in Angola, with international cooperation, development, education and sustaina</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">IHF-news</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-21</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://bmgranollers.cat/carla-gonzalez-renova-amb-el-kh-7-bm-granollers-fins-al-2028/" target="_blank" rel="noopener"
+       data-date="2026-05-19"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Carla González renueva con el KH-7 BM Granollers hasta 2028</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">El Club BM Granollers comunica que el extremo derecho Carla González seguirá defendiendo la camiseta del KH-7 BM Granollers durante otras dos temporadas. El club y la jugadora han llegado a un acuerdo para ampliar su vinculación hasta junio de 2028. Carla González llegó al club en la temporada 2023/</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Granollers-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-19</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.scdhfk-handball.de/2026/05/19/zsl-betreibergesellschaft-mbh-verlaengert-sponsoring-und-praesentiert-heimspiel-gegen-melsungen/" target="_blank" rel="noopener"
+       data-date="2026-05-19"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">ZSL Operatorgesellschaft mbH amplía su patrocinio y presenta el partido en casa contra Melsungen</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">Una señal muy importante antes del que probablemente sea el partido más importante del año: ¡ZSL Operatorgesellschaft mbH sigue a bordo! SC DHfK Handball y QUARTERBACK Immobilien ARENA amplían su colaboración independientemente de la liga. En cumplimiento de la ampliación de contrato, la ZSL presenta el partido en casa contra</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">DHfKLeipzig-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-19</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.handball-planet.com/palic-joins-europes-beach-handball-map-with-ambitious-ebt-tournament/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Palić Joins Europe’s Beach Handball Map with Ambitious EBT Tournament</p>
+            
+            <p class="text-sm text-gray-500 mt-1 line-clamp-2">The beach handball season in Serbia and the region will reach one of its peaks during the summer months, with one of the most important tournaments set to take place in Palić from 17 to 19 July. In the beautiful surroundings of one of Serbia’s most attractive tourist destinations, beach handball tea</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">HandballPlanet</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-18</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.hceivissa.com/marc-ferre-renueva-con-el-handbol-club-eivissa-hasta-2028/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.hceivissa.com/wp-content/uploads/2026/05/d_26-27_MarcFerre.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Marc Ferré renueva con el Handbol Club Eivissa hasta 2028</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">HCEivissa-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-18</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://www.hceivissa.com/fer-gonzalez-seguira-un-ano-mas-en-plata/" target="_blank" rel="noopener"
+       data-date="2026-05-18"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="https://www.hceivissa.com/wp-content/uploads/2026/05/d_26-27-FerGonzalez.jpg" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Fer González seguirá un año más en plata.</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">HCEivissa-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-18</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://balonmanotorrelavega.com/2026/05/17/bm-torrelavega-baja-junior-scott/" target="_blank" rel="noopener"
+       data-date="2026-05-17"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTIwIiBoZWlnaHQ9IjEwODAiIHZpZXdCb3g9IjAgMCAxOTIwIDEwODAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjZmQ0ZGIiLz48L3N2Zz4=" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">Junior Scott no seguirá en el Bathco BM Torrelavega la próxima temporada</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Torrelavega-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-17</span>
+                
+            </div>
+        </div>
+    </a>
+    
+    <a href="https://balonmanotorrelavega.com/2026/05/16/bm-torrelavega-fichaje-mikael-lopes/" target="_blank" rel="noopener"
+       data-date="2026-05-16"
+       data-pagefind-body
+       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
+        
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYwIiBoZWlnaHQ9IjE3MDciIHZpZXdCb3g9IjAgMCAyNTYwIDE3MDciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjZmQ0ZGIiLz48L3N2Zz4=" alt=""
+             class="w-32 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
+             onerror="this.style.display='none'">
+        
+        <div class="flex-1 min-w-0">
+            <p class="font-semibold leading-snug line-clamp-2">El Bathco BM Torrelavega ficha al lateral brasileño Mikael Lopes</p>
+            
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs font-medium text-gray-600">Torrelavega-web</span>
+                <span class="text-gray-300">·</span>
+                <span class="text-xs text-gray-400">2026-05-16</span>
+                
+            </div>
+        </div>
+    </a>
+    
+</div>
+
+<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
+    <p>No hay noticias en este período.</p>
+</div>
+
+<script data-pagefind-ignore>
+(function() {
+    var active = document.getElementById('btn-todo');
+    function filterByDate(days, btn) {
+        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
+        var cards = document.querySelectorAll('#articles-list [data-date]');
+        var visible = 0;
+        cards.forEach(function(el) {
+            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        document.querySelectorAll('.date-btn').forEach(function(b) {
+            b.classList.remove('bg-hb-blue', 'text-white');
+            b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-hb-blue', 'text-white');
+        active = btn;
+    }
+    window.filterByDate = filterByDate;
+})();
+</script>
+
+
+
+
+</main>
+
+<footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
+    <p>Actualizado: 15/06/2026 a las 13:32 UTC ·
+       <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
+    </p>
+    <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>
+</footer>
+
+</body>
+</html>
