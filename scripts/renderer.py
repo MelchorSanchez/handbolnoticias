@@ -108,6 +108,15 @@ SECTIONS = {
             "spain/navarra":              "Navarra",
             "spain/euskadi":              "Euskadi",
         },
+        "article_priority": [
+            "spain/asobal", "spain/guerreras",
+            "spain/seleccion-masc", "spain/seleccion-fem",
+            "spain/dhp", "spain/dho-fem",
+            "spain/primera-nacional-masc", "spain/dhp-fem",
+            "spain/base-masc", "spain/base-fem",
+            "spain",
+            "spain/catalonia", "spain/navarra", "spain/euskadi",
+        ],
     },
     "europe": {
         "label": "Europa EHF",

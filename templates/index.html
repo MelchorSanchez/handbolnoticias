@@ -7,7 +7,7 @@
 {% for group_key, group in sections.items() %}
 {% set group_articles = [] %}
 {% set ns = namespace(seen_ids=[]) %}
-{% for slug in group.subsections.keys() %}
+{% for slug in (group.article_priority if group.article_priority is defined else group.subsections.keys()) %}
   {% if slug in sections_data and sections_data[slug].articles %}
     {% for a in sections_data[slug].articles %}
       {% if a.id not in ns.seen_ids %}
