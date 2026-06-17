@@ -51,6 +51,7 @@ _PRIORITY_GROUPS = [
 _TRANSFER_POS = re.compile(
     r'\b(ficha(?:je|jes)?|renueva|renov[aá](?:ci[oó]n)?|traspa[sz]o|'
     r'se incorpora|jugará en|refuerza|primer contrato|contrato hasta|'
+    r'cedi(?:do|da|ón)|cesi[oó]n|'
     r'signs?|verpflichtet|signe|prolonge)\b',
     re.IGNORECASE,
 )
