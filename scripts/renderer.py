@@ -7,8 +7,8 @@ from jinja2 import Environment, FileSystemLoader
 
 logger = logging.getLogger(__name__)
 
-TEMPLATES_DIR = Path(__file__).parent.parent / "templates"
-OUTPUT_DIR = Path(__file__).parent.parent / "docs"
+TEMPLATES_DIR = Path(__file__).resolve().parent.parent / "templates"
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "docs"
 BASE_URL = "https://handbolnoticias.com"
 
 SECTION_DESCRIPTIONS = {
@@ -463,3 +463,13 @@ def _run_pagefind():
             logger.warning("pagefind exited %d: %s", result.returncode, result.stderr[:200])
     except Exception as e:
         logger.warning("pagefind failed: %s", e)
+
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
+    from db import get_connection
+    conn = get_connection()
+    try:
+        render_all(conn)
+    finally:
+        conn.close()
