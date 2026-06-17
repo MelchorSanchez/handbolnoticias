@@ -483,6 +483,7 @@ sources:
     url: https://www.record.pt/rss/
     max_items: 20
     filter_keywords: [andebol, handball]
+    exclude_url_patterns: ["/multimedia/videos/"]
 
   # ══════════════════════════════════════════════════════════════════════════
   # INTERNACIONAL — Suecia

@@ -57,6 +57,11 @@ SHOWS = [
         "description": "El podcast de balonmano de COPE",
         "pinned_episodes": [
             {
+                "title": "De Rosca, capítulo 595 (16-06-2026)",
+                "url": "https://www.cope.es/podcasts/de-rosca/episodios/rosca-capitulo-595-16-20260616_3384866.html",
+                "published": "2026-06-16",
+            },
+            {
                 "title": "De Rosca, capítulo 594 (08-06-2026)",
                 "url": "https://www.cope.es/podcasts/de-rosca/episodios/rosca-capitulo-594-08-20260608_3379954.html",
                 "published": "2026-06-08",
