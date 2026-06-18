@@ -1,0 +1,4 @@
+# URLs excluidas permanentemente del pipeline
+# Una URL por línea. Las líneas que empiezan con # son comentarios.
+https://www.bsv-live.de/isi-doelle-hat-sich-getraut-glueckwunsch-frau-axmann/
+https://www.bsv-live.de/all-star-game-zum-abschied-von-dirk-leun/

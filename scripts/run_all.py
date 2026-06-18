@@ -23,6 +23,19 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+_BLACKLIST_PATH = Path(__file__).resolve().parent.parent / "config" / "url_blacklist.txt"
+
+def _load_blacklist() -> set:
+    if not _BLACKLIST_PATH.exists():
+        return set()
+    urls = set()
+    for line in _BLACKLIST_PATH.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            urls.add(line.rstrip("/"))
+    return urls
+
+
 _DETAIL_DATE_SELECTORS = [
     "time[datetime]",
     "meta[property='article:published_time']",
@@ -89,10 +102,14 @@ def main():
     # IHF source defaults are preserved as extra when classifier finds a more specific section
     _IHF_PRESERVE = {"ihf/other", "ihf/world-men", "ihf/world-women"}
 
+    blacklist = _load_blacklist()
+
     new_count = 0
     classified_count = 0
     dup_count = 0
     for article in articles:
+        if article.get("url", "").rstrip("/") in blacklist:
+            continue
         original_section = article["section"]
         sections = classify(article)
         if sections:
