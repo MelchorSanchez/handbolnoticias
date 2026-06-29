@@ -69,6 +69,16 @@ SHOWS = [
         ],
     },
     {
+        "id": "handballdeprimera",
+        "name": "Handball de Primera",
+        "channel_url": "https://www.youtube.com/@HandballdePrimera",
+        "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=UCwIrgtn8Xx1-YVz7B3Bp5bQ",
+        "type": "youtube",
+        "color": "teal",
+        "description": "Análisis semanal de la actualidad del balonmano",
+        "title_filter": "handball de primera #",
+    },
+    {
         "id": "the-spin",
         "name": "The Spin",
         "channel_url": "https://www.youtube.com/playlist?list=PL6FkWVdzEY0XqKtEWFdl1eKBOk_73ynWT",
