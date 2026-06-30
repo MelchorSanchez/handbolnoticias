@@ -519,78 +519,18 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 </div>
 
 
-<div class="flex gap-2 mb-4 flex-wrap" data-pagefind-ignore id="date-filter-bar">
-    <span class="text-sm text-gray-500 self-center mr-1">Filtrar:</span>
-    <button onclick="filterByDate(1,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Hoy</button>
-    <button onclick="filterByDate(3,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">3 días</button>
-    <button onclick="filterByDate(7,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition">Esta semana</button>
-    <button onclick="filterByDate(0,this)" class="date-btn px-3 py-1 rounded-full text-sm font-medium bg-hb-blue text-white transition" id="btn-todo">Todo</button>
+<div class="text-center py-16 text-gray-400" data-pagefind-ignore>
+    <div class="text-5xl mb-4">🤾</div>
+    <p>No hay noticias recientes en esta sección.</p>
+    <p class="text-sm mt-2">Se actualizan diariamente.</p>
 </div>
-
-<div class="space-y-3" id="articles-list">
-    
-    <a href="https://handballargentina.org/cah/2026/06/las-juniors-empataron-con-brasil-en-su-quinto-partido-del-mundial/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=las-juniors-empataron-con-brasil-en-su-quinto-partido-del-mundial" target="_blank" rel="noopener"
-       data-date="2026-06-30"
-       data-pagefind-body
-       class="flex gap-4 bg-white rounded-lg shadow-sm hover:shadow-md transition p-4 border border-gray-100">
-        
-        <div class="w-32 h-20 flex-shrink-0 bg-gray-100 rounded flex items-center justify-center text-3xl">🤾</div>
-        
-        <div class="flex-1 min-w-0">
-            <p class="font-semibold leading-snug line-clamp-2">Las Juniors empataron con Brasil en su quinto partido del Mundial</p>
-            
-            <p class="text-sm text-gray-500 mt-1 line-clamp-2">La Selección conducida por Martín Duhau igualó en 18 con Brasil en una nueva edición del clásico sudamericano, esta vez disputada en el marco de la Copa Presidente del Mundial. En la continuidad del torneo que se celebra en China, Argentina enfrentará a Islas Feroe el próximo jueves a las...
-The pos</p>
-            
-            <div class="flex items-center gap-2 mt-2">
-                <span class="text-xs font-medium text-gray-600">HandballArgentina-CAH</span>
-                <span class="text-gray-300">·</span>
-                <span class="text-xs text-gray-400">2026-06-30</span>
-                
-            </div>
-        </div>
-    </a>
-    
-</div>
-
-<div id="no-results" class="hidden text-center py-10 text-gray-400" data-pagefind-ignore>
-    <p>No hay noticias en este período.</p>
-</div>
-
-
-
-<script data-pagefind-ignore>
-(function() {
-    var active = document.getElementById('btn-todo');
-    function filterByDate(days, btn) {
-        var cutoff = days ? new Date(Date.now() - days * 864e5) : null;
-        var cards = document.querySelectorAll('#articles-list [data-date]');
-        var visible = 0;
-        cards.forEach(function(el) {
-            var show = !cutoff || !el.dataset.date || new Date(el.dataset.date) >= cutoff;
-            el.style.display = show ? '' : 'none';
-            if (show) visible++;
-        });
-        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
-        document.querySelectorAll('.date-btn').forEach(function(b) {
-            b.classList.remove('bg-hb-blue', 'text-white');
-            b.classList.add('bg-gray-100', 'text-gray-700');
-        });
-        btn.classList.remove('bg-gray-100', 'text-gray-700');
-        btn.classList.add('bg-hb-blue', 'text-white');
-        active = btn;
-    }
-    window.filterByDate = filterByDate;
-})();
-</script>
-
 
 
 
 </main>
 
 <footer class="bg-gray-800 text-gray-400 text-sm text-center py-6 mt-8" data-pagefind-ignore>
-    <p>Actualizado: 30/06/2026 a las 09:43 UTC ·
+    <p>Actualizado: 30/06/2026 a las 09:45 UTC ·
        <a href="https://github.com/MelchorSanchez/handbolnoticias" class="underline hover:text-white">GitHub</a>
     </p>
     <p class="mt-1 text-gray-500">HandbolNoticias — Agregador de noticias de balonmano</p>
