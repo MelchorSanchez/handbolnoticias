@@ -41,6 +41,8 @@ teams:
     - Cajasol Ángel Ximénez Puente Genil
     - Viveros Herol BM Nava
     - Cajasol Sevilla BM Proin
+    - Cajasol Sevilla BM Proin
+    - Fertiberia Puerto Sagunto
 
   # ── España — Liga Guerreras ───────────────────────────────────────
   spain/guerreras:
@@ -98,15 +100,16 @@ teams:
     - Pereda
     - Lleida
     - Puerto del Carmen
-    - Mislata
-    - Carballal
     - Zonzamas Plus Car Lanzarote
     - CICAR Lanzarote Ciudad de Arrecife
+    - Inversus Ucam Murcia
+    - Ucam Murcia
+    - Lauko Ermuko Errotabarri
+    - Errotabarri
 
   # ── España — División Honor Plata Masc ───────────────────────────
   spain/dhp:
-    - Cajasol Sevilla BM Proin
-    - Fertiberia Puerto Sagunto
+
     - UBU San Pablo Burgos
     - Fundación Agustinos Alicante
     - Helvetia Anaitasuna
@@ -127,6 +130,9 @@ teams:
     - BM Huesca
     - Bada Huesca
     - Sanicentro BM Guadalajara
+    - Amenabar Zarautz ZKE
+    - Dolmenes Antequera
+    - Caja Rural Zamora
 
   # ── España — Primera Nacional Masc ───────────────────────────
   spain/primera-nacional-masc:
@@ -148,7 +154,6 @@ teams:
     - Cañiza
     - Ourense
   #Grupo B
-    - Zamora
     - Torrelavega
     - Sanse
     - Lafuente Pereda
@@ -165,8 +170,8 @@ teams:
     - Astillero
     - Arroyo
     - Sariegos
+    - Balonmano Villafranca
   #Grupo C
-    - Zarautz
     - Romo
     - Eibar
     - Barakaldo
@@ -182,6 +187,7 @@ teams:
     - Usurbil
     - Trapagaran
     - Egia
+    - Erreka Kirol Elkartea
   #Grupo D
     - Granollers
     - La Roca
@@ -199,6 +205,9 @@ teams:
     - Esplugues
     - Palautordera Salicrú
     - Banyoles
+    - Garbi
+    - Garbi de Palafrigell
+    - Sant Marti Adrianenc
   #Grupo E
     - Sant Joan
     - Elda
@@ -217,7 +226,6 @@ teams:
     - Agustinos Alicante
     - Elche
   #Grupo F
-    - Dólmenes Antequera
     - Cantera Sur
     - Palma del Río
     - BM Bolaños
@@ -233,6 +241,8 @@ teams:
     - Mijas
     - Alarcos
     - Herencia
+    - Agrinova Vicar
+    - Agrinova Almeria
 
   # ── España — División Honor Plata Fem ───────────────────────────
   spain/dhp-fem:
@@ -250,8 +260,10 @@ teams:
     - Fuentes Carrionas
     - Romade
     - Perdomo
+    - Carballal
+    - Seis do Nadal
+    - Lobas Oviedo B
   #Grupo B
-    - Lauko Ermuko
     - Beti-Onak
     - Los Chelines
     - Bera Bera B
@@ -265,6 +277,7 @@ teams:
     - Malkaitz
     - Urdaneta
     - Sinfín
+    - Berango Eskubaloi Taldea
   #Grupo C
     - BM Marni
     - Onda
@@ -279,8 +292,12 @@ teams:
     - Almassora
     - Ribes
     - Morro Jable
+    - Mislata
+    - Joventut Mataro
+    - Handbol Sant Cugat
+    - Fundacion Balonmano Agustinos
+    - Agustinos
   #Grupo D
-    - UCAM Murcia
     - Montequinto
     - Ciudad Imperial
     - Caserío Ciudad Real
@@ -605,7 +622,7 @@ teams:
     - TuSEM Essen
     - HSG Krefeld Niederrhein
     - HC Oppenweiler/Backnang
-    
+
   # ── Alemania — Femenino ───────────────────────────────────────────
   germany/bundesliga-fem:
     - Borussia Dortmund Handball
@@ -1097,7 +1114,7 @@ teams:
     - Dugo Selo
 
   # ── Rumania ───────────────────────────────────────────────────────
-  romania: 
+  romania:
     - Dinamo București
     - CSM București
     - Rapid București
@@ -1145,7 +1162,7 @@ teams:
     - Radnički Kragujevac
     - ŽORK Jagodina
     - ŽRK Naisa Niš
-    - ŽRK Železničar 
+    - ŽRK Železničar
     - Radnički (Kragujevac)
     - Partizan
     - Vojvodina
@@ -1171,7 +1188,7 @@ teams:
     - Partizan
     - Zeleznicar
     - Medicinar Sabac
-    
+
   # ── Argentina ─────────────────────────────────────────────────────
   argentina:
     - Selección Argentina balonmano
@@ -1352,7 +1369,7 @@ teams:
     - Padova
     - Ferrara
     - Mezzocorona
-    
+
   # ── Grecia ────────────────────────────────────────────────────────
   greece:
     - Aris Thessaloniki
@@ -1518,7 +1535,7 @@ teams:
     - Handebol Taubaté (SP)
     - Atlético Rio Negro (AM)
     - Hand Torres (RS)
-    
+
   # ── Japon ────────────────────────────────────────────────────────
   japon:
     - Seleccion Japonesa Balonmano
@@ -1589,7 +1606,7 @@ teams:
     - Yenimahalle
 
   # ── Republica Checa ────────────────────────────────────────────────────────
-  czech-republic:    
+  czech-republic:
     - Karvina
     - Plzen
     - Dukla Prague
