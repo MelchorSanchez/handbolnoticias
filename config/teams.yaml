@@ -122,8 +122,6 @@ teams:
     - Cisne Colegio Los Sauces
     - BM Contazara Zaragoza
     - Base Oviedo
-    - BM Soria
-    - Trops Málaga
     - BM Alcobendas
     - Guadalajara
     - Guadalajara
@@ -171,6 +169,8 @@ teams:
     - Arroyo
     - Sariegos
     - Balonmano Villafranca
+    - BM Soria
+
   #Grupo C
     - Romo
     - Eibar
@@ -243,6 +243,7 @@ teams:
     - Herencia
     - Agrinova Vicar
     - Agrinova Almeria
+    - Trops Málaga
 
   # ── España — División Honor Plata Fem ───────────────────────────
   spain/dhp-fem:
