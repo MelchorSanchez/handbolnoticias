@@ -535,23 +535,6 @@ def classify(article):
 
     sections = keyword_sections + team_sections
 
-    # If the source is a non-Spanish foreign country, strip Spanish domestic sections
-    # that came only from team-name matching (not keyword-matched). This prevents
-    # short team names in the dhp-fem/dhp/asobal lists from falsely tagging Swedish,
-    # Icelandic, Norwegian, etc. articles.
-    _FOREIGN_COUNTRY_SOURCES = frozenset({
-        "sweden", "iceland", "norway", "denmark", "france", "germany",
-        "portugal", "croatia", "slovenia", "serbia", "hungary", "poland",
-        "romania", "greece", "turkey", "czech-republic", "austria",
-        "switzerland", "slovakia", "north-macedonia", "faroe-islands",
-    })
-    if source_section in _FOREIGN_COUNTRY_SOURCES:
-        kw_set_local = frozenset(keyword_sections)
-        sections = [
-            sec for sec in sections
-            if not sec.startswith("spain/") or sec in kw_set_local
-        ]
-
     # "Proffskollen" is a Swedish-only column about Swedish players abroad — always sweden only
     if re.search(r'\bproffskollen\b', text, re.I):
         sections = ["sweden"]
@@ -581,6 +564,21 @@ def classify(article):
 
     sections = _apply_priority_rules(sections, kw_set, text,
                                      source_section=source_section)
+
+    # If the source is a non-Spanish foreign country, strip Spanish domestic sections
+    # that came only from team-name matching. Prevents short team names in dhp-fem/dhp
+    # lists from falsely tagging Swedish, Icelandic, Norwegian, etc. articles.
+    _FOREIGN_COUNTRY_SOURCES = frozenset({
+        "sweden", "iceland", "norway", "denmark", "france", "germany",
+        "portugal", "croatia", "slovenia", "serbia", "hungary", "poland",
+        "romania", "greece", "turkey", "czech-republic", "austria",
+        "switzerland", "slovakia", "north-macedonia", "faroe-islands",
+    })
+    if source_section in _FOREIGN_COUNTRY_SOURCES:
+        sections = [
+            sec for sec in sections
+            if not sec.startswith("spain/") or sec in kw_set
+        ]
 
     # Transfer detection: add fichajes as extra section if title matches
     title = article.get("title_orig") or article.get("title") or ""
