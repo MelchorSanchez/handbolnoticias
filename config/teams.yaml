@@ -570,12 +570,10 @@ teams:
     - TBV Lemgo Lippe
     - TBV Lemgo
     - ThSV Eisenach
-    - SC DHfK Leipzig
     - HSG Wetzlar
     - HC Erlangen
     - TVB Stuttgart
     - Bergischer HC
-    - GWD Minden
     - HSV Hamburg Handball
     - HSV Handball
     - Magdeburgo
@@ -596,17 +594,16 @@ teams:
     - HC Erlangen
     - Bergischer HC
     - HSG Wetzlar
-    - GWD Minden
-    - SC DHfK Leipzig
+    - HBW Balingen-Weilstetten
+    - SG BBM Bietigheim
+    - SG BBM Bietigheim-Metterzimmern
+    - HBW Balingen-Weilstetten
 
   germany/bundesliga2:
     - TuS N-Lübbecke
     - Eulen Ludwigshafen
-    - HBW Balingen-Weilstetten
     - VfL Bad Schwartau
     - ASV Hamm-Westfalen
-    - SG BBM Bietigheim
-    - HBW Balingen-Weilstetten
     - HC Elbflorenz 2006
     - VfL Potsdam
     - HSG Nordhorn-Lingen
@@ -623,6 +620,10 @@ teams:
     - TuSEM Essen
     - HSG Krefeld Niederrhein
     - HC Oppenweiler/Backnang
+    - GWD Minden
+    - SC DHfK Leipzig
+    - SC DHfK Leipzig
+
 
   # ── Alemania — Femenino ───────────────────────────────────────────
   germany/bundesliga-fem:
@@ -650,13 +651,12 @@ teams:
     - FRISCH AUF Göppingen
     - Buxtehuder SV
     - SV Union Halle-Neustadt
-    - HB Ludwigsburg
+    - HC Leipzig Damen
+    - HC Leipzig
 
   germany/bundesliga2-fem:
     - TSV Bayer Leverkusen
     - VfL Oldenburg II
-    - HC Leipzig Damen
-    - HC Leipzig
     - TG Nürtingen
     - Füchse Berlin Frauen
     - HC Rödertal
@@ -672,6 +672,7 @@ teams:
     - Rostocker HC
     - SG 09 Kirchhof
     - TuS Lintfort
+    - HB Ludwigsburg
 
   germany:
     - DHB
@@ -686,7 +687,6 @@ teams:
     - Montpellier HB
     - Chambéry Savoie Mont Blanc
     - Dunkerque HB
-    - Istres Provence Handball
     - Limoges Saint-Etienne
     - USAM Nîmes
     - Saint-Raphaël Var
@@ -706,10 +706,14 @@ teams:
     - Aix
     - Cesson-Rennes
     - Nîmes
+    - USAM Nimes
     - Sélestat
     - Dunkerque
     - Chartres
-    - Istres
+    - Caen
+    - Saran
+    - Septors
+
 
   france/pro-d2:
     - Pays d'Aix Handball
@@ -717,9 +721,9 @@ teams:
     - Créteil Handball
     - Toulouse Handball
     - Sélestat
-    - Saran
     - Ivry
-    - Caen
+    - Istres
+    - Istres Provence Handball
     - Pontault
     - Pau Billère
     - Cherbourg
@@ -732,6 +736,9 @@ teams:
     - Saintes
     - Massy
     - Angers
+    - Draguignon
+    - Dijon
+    - Elite Val d’Oise
 
 
   # ── Francia — Femenino ────────────────────────────────────────────
