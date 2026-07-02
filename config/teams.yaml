@@ -769,13 +769,12 @@ teams:
     - Strasbourg Achenheim Truchtersheim Handball
     - Stella St-Maur Handball
     - Toulon Métropole Var Handball
-    - Sambre Avesnois Handball
-    - Havre Athletic Club Handball
+    - Handball Clermont Auvergne Métropole 63
+    - Saint-Grégoire Rennes Métropole Handbal
 
   france/d2f:
     - Issy Paris Hand
     - Dijon HB Féminin
-    - Handball Clermont Auvergne Métropole 63
     - Bouillargues Handball Nîmes Méditerranée
     - ASUL Vaulx-en-Velin
     - La Roche sur Yon Vendée Handball
@@ -784,6 +783,8 @@ teams:
     - Le Pouzin HB07
     - Club Athlétique Béglais Handball
     - Palente Besançon Handball
+    - Sambre Avesnois Handball
+    - Havre Athletic Club Handball
 
   france:
     - FFHB
