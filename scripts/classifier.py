@@ -568,13 +568,13 @@ def classify(article):
     # If the source is a non-Spanish foreign country, strip Spanish domestic sections
     # that came only from team-name matching. Prevents short team names in dhp-fem/dhp
     # lists from falsely tagging Swedish, Icelandic, Norwegian, etc. articles.
-    _FOREIGN_COUNTRY_SOURCES = frozenset({
+    _FOREIGN_COUNTRY_PREFIXES = frozenset({
         "sweden", "iceland", "norway", "denmark", "france", "germany",
         "portugal", "croatia", "slovenia", "serbia", "hungary", "poland",
         "romania", "greece", "turkey", "czech-republic", "austria",
         "switzerland", "slovakia", "north-macedonia", "faroe-islands",
     })
-    if source_section in _FOREIGN_COUNTRY_SOURCES:
+    if any(source_section == p or source_section.startswith(p + "/") for p in _FOREIGN_COUNTRY_PREFIXES):
         sections = [
             sec for sec in sections
             if not sec.startswith("spain/") or sec in kw_set
