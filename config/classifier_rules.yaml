@@ -302,8 +302,9 @@ rules:
     keywords: [selección femenina, seleccion femenina, selección española femenina,
                "las guerreras", seleccionadora, "selección nacional femenin",
                "seleccion nacional femenin", "equipo nacional femenin",
-               "guerreras de la arena"]
-    exclude: [masculina, juvenil, cadete, infantil, sub-18, sub-20, sub-21,
+               "guerreras de la arena", "guerreras júnior", "guerreras junior",
+               "guerreras promesas", "guerreras universitarias"]
+    exclude: [masculina, juvenil, cadete, infantil, sub-18, sub-21,
               liga guerreras iberdrola, asobal, "primera nacional", "division honor",
               "división honor"]
 
@@ -453,6 +454,8 @@ rules:
     tags: [d1f, ligue-butagaz, lfh]
     keywords: ["ligue butagaz", "d1f handball", "division 1 féminine handball",
                "1ère division féminine handball", "ligue féminine handball"]
+    exclude: ["edf u", "équipe de france", "equipe de france", bleuettes, "les bleues",
+              "edf u17", "edf u18", "edf u20"]
 
   - section: france/d2f
     tags: [d2f, division2-feminine]

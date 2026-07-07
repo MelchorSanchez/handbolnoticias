@@ -506,6 +506,25 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text="", sourc
                 sections = [sec for sec in sections if sec not in _GERMANY_CLUB_MASC]
             # If truly ambiguous, keep both
 
+    # Rule 5: Spanish national team sections (keyword-matched) suppress same-gender
+    # domestic club sections that come only from team-name matching.
+    # Prevents "las guerreras júnior" articles from inheriting spain/asobal just
+    # because a Barça or Granollers player is mentioned.
+    _SPAIN_SEL_MASC = frozenset({"spain/seleccion-masc"})
+    _SPAIN_SEL_FEM = frozenset({"spain/seleccion-fem"})
+    _SPAIN_CLUB_MASC_ALL = frozenset({"spain/asobal", "spain/dhp", "spain/primera-nacional-masc"})
+    _SPAIN_CLUB_FEM_ALL = frozenset({"spain/guerreras", "spain/dho-fem", "spain/dhp-fem"})
+    if s & _SPAIN_SEL_MASC & keyword_sections:
+        team_only = (s & _SPAIN_CLUB_MASC_ALL) - keyword_sections
+        if team_only:
+            sections = [sec for sec in sections if sec not in team_only]
+            s = set(sections)
+    if s & _SPAIN_SEL_FEM & keyword_sections:
+        team_only = (s & _SPAIN_CLUB_FEM_ALL) - keyword_sections
+        if team_only:
+            sections = [sec for sec in sections if sec not in team_only]
+            s = set(sections)
+
     return sections
 
 
