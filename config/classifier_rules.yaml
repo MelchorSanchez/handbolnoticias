@@ -292,9 +292,11 @@ rules:
     keywords: [selección masculina, seleccion masculina, selección española masculina,
                "los hispanos", hispanos, "selección nacional masculin", "seleccion nacional masculin",
                "equipo nacional masculin", "seleccion española masc",
-               "hispanos de la arena", "mundial universitario",
+               "hispanos de la arena", "hispanos juveniles de la arena", "hispanos juveniles",
+               "hispanos promesas", "hispanos universitarios",
+               "mundial universitario", "euro hand 4 all",
                "convocatoria españa balonmano", "convocatoria seleccion"]
-    exclude: [femenina, juvenil, cadete, infantil, sub-18, sub-20, sub-21,
+    exclude: [femenina, cadete, infantil, sub-18, sub-20, sub-21,
               "primera nacional", "division honor", "división honor"]
 
   - section: spain/seleccion-fem
@@ -303,8 +305,12 @@ rules:
                "las guerreras", seleccionadora, "selección nacional femenin",
                "seleccion nacional femenin", "equipo nacional femenin",
                "guerreras de la arena", "guerreras júnior", "guerreras junior",
-               "guerreras promesas", "guerreras universitarias"]
-    exclude: [masculina, juvenil, cadete, infantil, sub-18, sub-21,
+               "guerreras promesas", "guerreraspromesas", "guerreras universitarias",
+               "guerreras juveniles de la arena", "guerreras juveniles",
+               "selección promesas femenina", "seleccion promesas femenina",
+               "mundial junior femenin", "mundial júnior femenin",
+               "mundial universitario femenin", "yacbeachhandball"]
+    exclude: [masculina, cadete, infantil, sub-18, sub-21,
               liga guerreras iberdrola, asobal, "primera nacional", "division honor",
               "división honor"]
 
