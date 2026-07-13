@@ -656,6 +656,7 @@ sources:
     type: rss
     url: https://www.vfl-gummersbach.de/feed/
     max_items: 10
+    exclude_url_patterns: ["/akademie-rueckblick-", "/akademie-ruckblick-"]
 
   - name: Minden-web
     section: germany/bundesliga
