@@ -31,6 +31,9 @@ _COMMERCIAL_URL_FRAGMENTS = (
     "/billetterie", "/dauerkarte", "/fanshop", "/fan-shop",
     "/merchandise", "/tienda-oficial", "/shop/",
     "/sponsor", "/patrocin",
+    "/ticketverkauf", "/einzelticket", "/tickets/", "/ticket-",
+    "/entradas/", "/venta-entradas", "/compra-entradas",
+    "/billetes/", "/taquilla",
 )
 
 # Title keywords that signal commercial/promotional content — filtered for CLUB sources only
@@ -40,6 +43,9 @@ _CLUB_COMMERCIAL_TITLE_KWS = (
     "patrocinador", "patrocina ", "nuevo patrocinador", "acuerdo de patrocinio",
     "sponsor oficial", "esponsor", "naming rights",
     "abonnement", "abonnements",
+    "venta de entradas", "compra tus entradas", "entradas ya disponibles",
+    "ticketverkauf", "einzelticket", "tickets available", "buy tickets",
+    "billetterie ouverte", "billetes disponibles",
 )
 
 # URL fragments that signal base/youth routine reports — filtered for CLUB sources only
@@ -48,7 +54,18 @@ _CLUB_BASE_URL_FRAGMENTS = (
     "/pre-infantil/", "/benjamin/", "/base/resultados",
     "/akademie-rueckblick", "/akademie-ruckblick",
     "/wochenrueckblick", "/wochenruckblick",
-    "/nachwuchs-wochenende",
+    "/nachwuchs-wochenende", "/nachwuchs/",
+    "/jugend/", "/jugendarbeit",
+    "/resultados-base", "/base-masculina", "/base-femenina",
+    "/cronica-cadete", "/cronica-juvenil", "/cronica-infantil",
+)
+
+# Title keywords that signal routine base/results content — filtered for CLUB sources only
+_CLUB_BASE_TITLE_KWS = (
+    "rueckblick zum wochenende", "rückblick zum wochenende",
+    "nachwuchs-wochenende", "wochenendbericht",
+    "resultados del fin de semana", "resumen fin de semana",
+    "jornada de base", "jornada base",
 )
 
 
@@ -68,6 +85,10 @@ def _should_skip_article(article: dict) -> bool:
 
     # Club sources: base/youth routine report URL patterns
     if is_club and any(frag in url for frag in _CLUB_BASE_URL_FRAGMENTS):
+        return True
+
+    # Club sources: base/youth routine report title keywords
+    if is_club and any(kw in title for kw in _CLUB_BASE_TITLE_KWS):
         return True
 
     return False
