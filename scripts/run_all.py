@@ -34,6 +34,8 @@ _COMMERCIAL_URL_FRAGMENTS = (
     "/ticketverkauf", "/einzelticket", "/tickets/", "/ticket-",
     "/entradas/", "/venta-entradas", "/compra-entradas",
     "/billetes/", "/taquilla",
+    "/campus/", "/campus-balonmano", "/campus-handball",
+    "/summer-camp", "/verano-handball",
 )
 
 # Title keywords that signal commercial/promotional content — filtered for CLUB sources only
@@ -46,6 +48,12 @@ _CLUB_COMMERCIAL_TITLE_KWS = (
     "venta de entradas", "compra tus entradas", "entradas ya disponibles",
     "ticketverkauf", "einzelticket", "tickets available", "buy tickets",
     "billetterie ouverte", "billetes disponibles",
+    "campus de balonmano", "campus de handball", "campus de verano",
+    "campus handball", "summer camp", "handball camp",
+    "clinic de balonmano", "clínica de balonmano",
+    "jornada de puertas abiertas", "puertas abiertas",
+    "fiesta fin de temporada", "cena de gala", "gala de",
+    "inscripcion al campus", "inscripción al campus",
 )
 
 # URL fragments that signal base/youth routine reports — filtered for CLUB sources only
