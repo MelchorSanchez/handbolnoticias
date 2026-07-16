@@ -827,6 +827,7 @@ sources:
     type: rss
     url: https://metz-handball.com/feed/
     max_items: 10
+    exclude_url_patterns: ["/campagne-", "/abonnement", "/abonnements", "/billetterie", "/sponsor"]
 
   # ══════════════════════════════════════════════════════════════════════════
   # CLUBES EUROPEOS — Champions League / European League
