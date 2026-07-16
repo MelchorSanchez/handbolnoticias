@@ -56,24 +56,18 @@ _CLUB_COMMERCIAL_TITLE_KWS = (
     "inscripcion al campus", "inscripción al campus",
 )
 
-# URL fragments that signal base/youth routine reports — filtered for CLUB sources only
+# URL fragments that signal routine weekend result roundups — filtered for CLUB sources only
+# Keep narrow: only clearly routine report patterns, NOT general youth/base content
 _CLUB_BASE_URL_FRAGMENTS = (
-    "/cadete/", "/juvenil/", "/infantil/", "/alevín/", "/alevin/",
-    "/pre-infantil/", "/benjamin/", "/base/resultados",
     "/akademie-rueckblick", "/akademie-ruckblick",
     "/wochenrueckblick", "/wochenruckblick",
-    "/nachwuchs-wochenende", "/nachwuchs/",
-    "/jugend/", "/jugendarbeit",
-    "/resultados-base", "/base-masculina", "/base-femenina",
-    "/cronica-cadete", "/cronica-juvenil", "/cronica-infantil",
+    "/nachwuchs-wochenende",
 )
 
-# Title keywords that signal routine base/results content — filtered for CLUB sources only
+# Title keywords that signal routine weekend result roundups — filtered for CLUB sources only
 _CLUB_BASE_TITLE_KWS = (
     "rueckblick zum wochenende", "rückblick zum wochenende",
-    "nachwuchs-wochenende", "wochenendbericht",
-    "resultados del fin de semana", "resumen fin de semana",
-    "jornada de base", "jornada base",
+    "nachwuchs-wochenende", "wochenendbericht nachwuchs",
 )
 
 
