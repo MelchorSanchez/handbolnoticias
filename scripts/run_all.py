@@ -25,6 +25,54 @@ logger = logging.getLogger(__name__)
 
 _BLACKLIST_PATH = Path(__file__).resolve().parent.parent / "config" / "url_blacklist.txt"
 
+# URL fragments that signal commercial/non-editorial content — filtered for ALL sources
+_COMMERCIAL_URL_FRAGMENTS = (
+    "/abono", "/abonos", "/abonnement", "/campagne-abonnement",
+    "/billetterie", "/dauerkarte", "/fanshop", "/fan-shop",
+    "/merchandise", "/tienda-oficial", "/shop/",
+    "/sponsor", "/patrocin",
+)
+
+# Title keywords that signal commercial/promotional content — filtered for CLUB sources only
+_CLUB_COMMERCIAL_TITLE_KWS = (
+    "abono", "abonado", "abonados", "hazte abonado", "renueva tu abono",
+    "campaña de abonos", "campagne abonnement", "dauerkarte",
+    "patrocinador", "patrocina ", "nuevo patrocinador", "acuerdo de patrocinio",
+    "sponsor oficial", "esponsor", "naming rights",
+    "abonnement", "abonnements",
+)
+
+# URL fragments that signal base/youth routine reports — filtered for CLUB sources only
+_CLUB_BASE_URL_FRAGMENTS = (
+    "/cadete/", "/juvenil/", "/infantil/", "/alevín/", "/alevin/",
+    "/pre-infantil/", "/benjamin/", "/base/resultados",
+    "/akademie-rueckblick", "/akademie-ruckblick",
+    "/wochenrueckblick", "/wochenruckblick",
+    "/nachwuchs-wochenende",
+)
+
+
+def _should_skip_article(article: dict) -> bool:
+    """Return True if the article should be dropped before inserting."""
+    url = article.get("url", "").lower()
+    title = (article.get("title_orig") or article.get("title") or "").lower()
+    is_club = article.get("source_name", "").lower().endswith("-web")
+
+    # Global: commercial URL patterns
+    if any(frag in url for frag in _COMMERCIAL_URL_FRAGMENTS):
+        return True
+
+    # Club sources: commercial title keywords
+    if is_club and any(kw in title for kw in _CLUB_COMMERCIAL_TITLE_KWS):
+        return True
+
+    # Club sources: base/youth routine report URL patterns
+    if is_club and any(frag in url for frag in _CLUB_BASE_URL_FRAGMENTS):
+        return True
+
+    return False
+
+
 def _load_blacklist() -> set:
     if not _BLACKLIST_PATH.exists():
         return set()
@@ -107,8 +155,12 @@ def main():
     new_count = 0
     classified_count = 0
     dup_count = 0
+    skipped_commercial = 0
     for article in articles:
         if article.get("url", "").rstrip("/") in blacklist:
+            continue
+        if _should_skip_article(article):
+            skipped_commercial += 1
             continue
         original_section = article["section"]
         sections = classify(article)
@@ -139,6 +191,7 @@ def main():
         if insert_article(conn, article):
             new_count += 1
 
+    logger.info("Artículos comerciales/base omitidos: %d", skipped_commercial)
     logger.info("Artículos reclasificados: %d", classified_count)
     logger.info("Artículos duplicados omitidos: %d", dup_count)
     logger.info("Artículos nuevos insertados: %d", new_count)
