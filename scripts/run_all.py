@@ -54,6 +54,8 @@ _CLUB_COMMERCIAL_TITLE_KWS = (
     "jornada de puertas abiertas", "puertas abiertas",
     "fiesta fin de temporada", "cena de gala", "gala de",
     "inscripcion al campus", "inscripción al campus",
+    "asamblea general", "convocatoria de asamblea", "junta directiva",
+    "junta general", "hauptversammlung", "assemblée générale",
 )
 
 # URL fragments that signal routine weekend result roundups — filtered for CLUB sources only
