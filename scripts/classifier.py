@@ -384,6 +384,17 @@ def _apply_priority_rules(sections, keyword_sections=frozenset(), text="", sourc
         sections = [sec for sec in sections if sec != "europe/other-countries"]
         s = set(sections)
 
+    # Rule 3d: EHF Euro (national team) sections are incompatible with non-European countries.
+    # Argentina, Brazil, etc. never participate in the EHF European Championship.
+    _NON_EUROPEAN = (
+        _SOUTHAMERICA_SPECIFIC | _NORTHAMERICA_SPECIFIC | _AFRICA_SPECIFIC | _ASIA_SPECIFIC
+        | frozenset({"southamerica", "northamerica", "africa", "asia"})
+    )
+    _EHF_EURO = frozenset({"europe/euro-men", "europe/euro-women"})
+    if s & _NON_EUROPEAN and s & _EHF_EURO:
+        sections = [sec for sec in sections if sec not in _EHF_EURO]
+        s = set(sections)
+
     # Rule 3b: EHF gendered-pair resolution.
     # When a section was keyword-matched (gender ambiguous) AND the opposing-gender
     # version was team-matched (gender precise), trust the team signal.
