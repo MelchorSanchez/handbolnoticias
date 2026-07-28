@@ -139,6 +139,20 @@ rules:
       - "sub-21 europeo masculino"
       - "sub-19 europeo masculino"
       - "sub-17 europeo masculino"
+      - "europeo junior"
+      - "europeo júnior"
+      - "europeo sub-20"
+      - "europeo sub-21"
+      - "europeo sub-19"
+      - "europeo sub-17"
+      - "sub-20 europeo"
+      - "sub-21 europeo"
+      - "euro junior"
+      - "junior europeo"
+      - "campeonato de europa junior"
+      - "campeonato europeo junior"
+      - "oro europeo"
+      - "campeón de europa"
     exclude: [women, femenin, mujer, "world championship", "champions league"]
 
   - section: europe/euro-women
