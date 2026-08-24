@@ -1547,7 +1547,7 @@ teams:
     - Hand Torres (RS)
 
   # ── Japon ────────────────────────────────────────────────────────
-  japon:
+  japan:
     - Seleccion Japonesa Balonmano
     - Toyota Auto Body Brave Kings
     - Zeekstar Tokyo
@@ -1784,7 +1784,7 @@ teams:
     - Al Khor
 
   # ── Corea del Sur ────────────────────────────────────────────────
-  south-korea:
+  asia:
     - Incheon City
     - SK Hawks
     - Hanam
