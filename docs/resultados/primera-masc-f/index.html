@@ -26,6 +26,20 @@
         .border-europe-green { border-color: #2E7D32; }
     </style>
     
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var select = document.getElementById('jornada-select');
+    if (!select) return;
+    select.addEventListener('change', function() {
+        document.querySelectorAll('.jornada-section').forEach(function(el) {
+            el.style.display = (el.id === 'jornada-' + select.value) ? '' : 'none';
+        });
+    });
+});
+</script>
+
+
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
 
@@ -85,32 +99,6 @@
                     <a href="/spain/catalonia/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Cataluña</a>
                     <a href="/spain/navarra/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Navarra</a>
                     <a href="/spain/euskadi/" class="block px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm">Euskadi</a>
-                </div>
-            </div>
-
-            <!-- Europa EHF -->
-            <div class="relative group">
-                <button class="hover:text-orange-300 py-4">Europa ▾</button>
-                <div class="hidden group-hover:block absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-lg min-w-56 z-50 py-1">
-                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Club Masc</div>
-                    <a href="/europe/champions/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Champions League Masc</a>
-                    <a href="/europe/european-league/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European League Masc</a>
-                    <a href="/europe/cup-men/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European Cup Masc</a>
-                    <div class="border-t mx-3 my-1"></div>
-                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Club Fem</div>
-                    <a href="/europe/champions-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Champions League Fem</a>
-                    <a href="/europe/european-league-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European League Fem</a>
-                    <a href="/europe/cup-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">European Cup Fem</a>
-                    <div class="border-t mx-3 my-1"></div>
-                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">Selecciones</div>
-                    <a href="/europe/euro-men/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">EHF EURO Masc</a>
-                    <a href="/europe/euro-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">EHF EURO Fem</a>
-                    <a href="/europe/other/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Otras EHF</a>
-                    <div class="border-t mx-3 my-1"></div>
-                    <div class="px-3 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">IHF</div>
-                    <a href="/ihf/world-men/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Mundial Masc</a>
-                    <a href="/ihf/world-women/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Mundial Fem</a>
-                    <a href="/ihf/other/" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 text-sm">Otras IHF</a>
                 </div>
             </div>
 
@@ -264,8 +252,74 @@ document.getElementById('menu-btn').addEventListener('click', function() {
 
 
 
+<div class="mb-4">
+    <label for="jornada-select" class="text-sm font-medium text-gray-600 mr-2">Jornada:</label>
+    <select id="jornada-select" class="border border-gray-300 rounded-lg px-3 py-1.5 text-sm font-medium text-gray-800 bg-white">
+        
+        <option value="1" selected>Jornada 1</option>
+        
+        <option value="2" >Jornada 2</option>
+        
+        <option value="3" >Jornada 3</option>
+        
+        <option value="4" >Jornada 4</option>
+        
+        <option value="5" >Jornada 5</option>
+        
+        <option value="6" >Jornada 6</option>
+        
+        <option value="7" >Jornada 7</option>
+        
+        <option value="8" >Jornada 8</option>
+        
+        <option value="9" >Jornada 9</option>
+        
+        <option value="10" >Jornada 10</option>
+        
+        <option value="11" >Jornada 11</option>
+        
+        <option value="12" >Jornada 12</option>
+        
+        <option value="13" >Jornada 13</option>
+        
+        <option value="14" >Jornada 14</option>
+        
+        <option value="15" >Jornada 15</option>
+        
+        <option value="16" >Jornada 16</option>
+        
+        <option value="17" >Jornada 17</option>
+        
+        <option value="18" >Jornada 18</option>
+        
+        <option value="19" >Jornada 19</option>
+        
+        <option value="20" >Jornada 20</option>
+        
+        <option value="21" >Jornada 21</option>
+        
+        <option value="22" >Jornada 22</option>
+        
+        <option value="23" >Jornada 23</option>
+        
+        <option value="24" >Jornada 24</option>
+        
+        <option value="25" >Jornada 25</option>
+        
+        <option value="26" >Jornada 26</option>
+        
+        <option value="27" >Jornada 27</option>
+        
+        <option value="28" >Jornada 28</option>
+        
+        <option value="29" >Jornada 29</option>
+        
+        <option value="30" >Jornada 30</option>
+        
+    </select>
+</div>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-1" >
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 1</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -404,7 +458,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-2" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 2</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -543,7 +597,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-3" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 3</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -682,7 +736,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-4" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 4</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -821,7 +875,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-5" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 5</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -960,7 +1014,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-6" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 6</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -1099,7 +1153,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-7" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 7</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -1238,7 +1292,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-8" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 8</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -1377,7 +1431,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-9" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 9</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -1516,7 +1570,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-10" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 10</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -1655,7 +1709,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-11" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 11</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -1794,7 +1848,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-12" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 12</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -1933,7 +1987,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-13" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 13</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -2072,7 +2126,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-14" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 14</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -2233,7 +2287,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-15" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 15</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -2372,7 +2426,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-16" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 16</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -2511,7 +2565,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-17" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 17</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -2650,7 +2704,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-18" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 18</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -2789,7 +2843,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-19" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 19</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -2928,7 +2982,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-20" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 20</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -3067,7 +3121,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-21" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 21</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -3206,7 +3260,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-22" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 22</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -3345,7 +3399,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-23" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 23</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -3484,7 +3538,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-24" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 24</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -3623,7 +3677,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-25" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 25</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -3762,7 +3816,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-26" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 26</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -3901,7 +3955,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-27" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 27</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -4040,7 +4094,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-28" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 28</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -4179,7 +4233,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-29" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 29</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -4340,7 +4394,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="mb-6">
+<section class="jornada-section mb-6" id="jornada-30" style=&#34;display:none&#34;>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 30</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
