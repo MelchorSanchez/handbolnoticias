@@ -1,0 +1,104 @@
+competitions:
+  # ══════════════════════════════════════════════════════════════════════════
+  # ESPAÑA — Femenino
+  # ══════════════════════════════════════════════════════════════════════════
+  - slug: guerreras
+    name: Liga Guerreras Iberdrola
+    gender: fem
+    id: 1038107
+    id_categoria: 3018
+    id_competicion: 211439
+
+  - slug: oro-fem
+    name: División de Honor Oro Femenina
+    gender: fem
+    id: 1038105
+    id_categoria: 3019
+    id_competicion: 211440
+
+  - slug: plata-fem-a
+    name: División de Honor Plata Femenina - Grupo A
+    gender: fem
+    id: 1038401
+    id_categoria: 3020
+    id_competicion: 211441
+
+  - slug: plata-fem-b
+    name: División de Honor Plata Femenina - Grupo B
+    gender: fem
+    id: 1038402
+    id_categoria: 3020
+    id_competicion: 211441
+
+  - slug: plata-fem-c
+    name: División de Honor Plata Femenina - Grupo C
+    gender: fem
+    id: 1038403
+    id_categoria: 3020
+    id_competicion: 211441
+
+  - slug: plata-fem-d
+    name: División de Honor Plata Femenina - Grupo D
+    gender: fem
+    id: 1038404
+    id_categoria: 3020
+    id_competicion: 211441
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # ESPAÑA — Masculino
+  # ══════════════════════════════════════════════════════════════════════════
+  - slug: asobal
+    name: Liga ASOBAL
+    gender: masc
+    id: 1038747
+    id_categoria: 3015
+    id_competicion: 211753
+
+  - slug: plata-masc
+    name: División de Honor Plata Masculina
+    gender: masc
+    id: 1038106
+    id_categoria: 3016
+    id_competicion: 211437
+
+  - slug: primera-masc-a
+    name: Primera Nacional Masculina - Grupo A
+    gender: masc
+    id: 1038395
+    id_categoria: 3017
+    id_competicion: 211438
+
+  - slug: primera-masc-b
+    name: Primera Nacional Masculina - Grupo B
+    gender: masc
+    id: 1038396
+    id_categoria: 3017
+    id_competicion: 211438
+
+  - slug: primera-masc-c
+    name: Primera Nacional Masculina - Grupo C
+    gender: masc
+    id: 1038397
+    id_categoria: 3017
+    id_competicion: 211438
+
+  - slug: primera-masc-d
+    name: Primera Nacional Masculina - Grupo D
+    gender: masc
+    id: 1038398
+    id_categoria: 3017
+    id_competicion: 211438
+
+  - slug: primera-masc-e
+    name: Primera Nacional Masculina - Grupo E
+    gender: masc
+    id: 1038399
+    id_categoria: 3017
+    id_competicion: 211438
+
+  - slug: primera-masc-f
+    name: Primera Nacional Masculina - Grupo F
+    gender: masc
+    id: 1038400
+    id_categoria: 3017
+    id_competicion: 211438

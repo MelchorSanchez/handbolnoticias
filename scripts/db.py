@@ -15,6 +15,11 @@ def get_connection() -> sqlite3.Connection:
 
 def init_db():
     with get_connection() as conn:
+        # Migrate: rebuild standings if it still has the old position-based
+        # primary key (broke when several teams share position 0 pre-season).
+        cols = [row[1] for row in conn.execute("PRAGMA table_info(standings)").fetchall()]
+        if cols and "sort_order" not in cols:
+            conn.execute("DROP TABLE standings")
         conn.executescript("""
             CREATE TABLE IF NOT EXISTS articles (
                 id              TEXT PRIMARY KEY,
@@ -38,6 +43,38 @@ def init_db():
             );
             CREATE TABLE IF NOT EXISTS blocked_articles (
                 url TEXT PRIMARY KEY
+            );
+            CREATE TABLE IF NOT EXISTS matches (
+                match_id    TEXT PRIMARY KEY,
+                competition TEXT NOT NULL,
+                jornada     INTEGER NOT NULL,
+                home_team   TEXT NOT NULL,
+                away_team   TEXT NOT NULL,
+                home_crest  TEXT,
+                away_crest  TEXT,
+                home_score  INTEGER,
+                away_score  INTEGER,
+                status      TEXT NOT NULL,
+                match_date  TEXT,
+                venue       TEXT,
+                fetched_at  TEXT NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS standings (
+                competition TEXT NOT NULL,
+                position    INTEGER NOT NULL,
+                sort_order  INTEGER NOT NULL,
+                team        TEXT NOT NULL,
+                crest       TEXT,
+                points      INTEGER,
+                played      INTEGER,
+                won         INTEGER,
+                drawn       INTEGER,
+                lost        INTEGER,
+                gf          INTEGER,
+                gc          INTEGER,
+                diff        INTEGER,
+                fetched_at  TEXT NOT NULL,
+                PRIMARY KEY (competition, team)
             );
         """)
         # Migrate: add extra_sections if upgrading from old schema
@@ -138,6 +175,69 @@ def article_exists(conn: sqlite3.Connection, article_id: str) -> bool:
 def _title_words(title: str) -> frozenset:
     words = re.sub(r'[^\w\s]', ' ', title.lower()).split()
     return frozenset(w for w in words if len(w) > 3)
+
+
+def jornadas_a_refrescar(conn: sqlite3.Connection, competition: str, max_jornada: int) -> list:
+    """Jornadas 1..max_jornada sin partidos guardados, o con algún partido no 'Jugado'."""
+    rows = conn.execute(
+        "SELECT jornada, status FROM matches WHERE competition = ?", (competition,)
+    ).fetchall()
+    by_jornada = {}
+    for row in rows:
+        by_jornada.setdefault(row["jornada"], []).append(row["status"])
+    pendientes = []
+    for jornada in range(1, max_jornada + 1):
+        statuses = by_jornada.get(jornada)
+        if not statuses or any(s != "Jugado" for s in statuses):
+            pendientes.append(jornada)
+    return pendientes
+
+
+def upsert_match(conn: sqlite3.Connection, match: dict):
+    conn.execute("""
+        INSERT INTO matches
+            (match_id, competition, jornada, home_team, away_team,
+             home_crest, away_crest, home_score, away_score, status,
+             match_date, venue, fetched_at)
+        VALUES
+            (:match_id, :competition, :jornada, :home_team, :away_team,
+             :home_crest, :away_crest, :home_score, :away_score, :status,
+             :match_date, :venue, :fetched_at)
+        ON CONFLICT(match_id) DO UPDATE SET
+            home_team=excluded.home_team, away_team=excluded.away_team,
+            home_crest=excluded.home_crest, away_crest=excluded.away_crest,
+            home_score=excluded.home_score, away_score=excluded.away_score,
+            status=excluded.status, match_date=excluded.match_date,
+            venue=excluded.venue, fetched_at=excluded.fetched_at
+    """, match)
+
+
+def replace_standings(conn: sqlite3.Connection, competition: str, rows: list):
+    conn.execute("DELETE FROM standings WHERE competition = ?", (competition,))
+    for row in rows:
+        conn.execute("""
+            INSERT INTO standings
+                (competition, position, sort_order, team, crest, points, played, won, drawn, lost, gf, gc, diff, fetched_at)
+            VALUES
+                (:competition, :position, :sort_order, :team, :crest, :points, :played, :won, :drawn, :lost, :gf, :gc, :diff, :fetched_at)
+        """, row)
+
+
+def get_matches_by_jornada(conn: sqlite3.Connection, competition: str) -> dict:
+    rows = conn.execute("""
+        SELECT * FROM matches WHERE competition = ?
+        ORDER BY jornada, match_date IS NULL, match_date
+    """, (competition,)).fetchall()
+    out = {}
+    for row in rows:
+        out.setdefault(row["jornada"], []).append(row)
+    return out
+
+
+def get_standings(conn: sqlite3.Connection, competition: str) -> list:
+    return conn.execute("""
+        SELECT * FROM standings WHERE competition = ? ORDER BY position, sort_order
+    """, (competition,)).fetchall()
 
 
 def is_title_duplicate(conn: sqlite3.Connection, title: str) -> bool:

@@ -14,6 +14,7 @@ from fetcher import fetch_all, load_sources, _parse_date_text, _now, HEADERS, TI
 from renderer import render_all
 from translator import translate_article
 from podcasts import main as render_podcasts
+from results import main as render_results
 
 logging.basicConfig(
     level=logging.INFO,
@@ -253,6 +254,7 @@ def main():
     render_all(conn)
     conn.close()
     render_podcasts()
+    render_results()
     logger.info("=== Pipeline completado ===")
 
 

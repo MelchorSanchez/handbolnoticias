@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% set is_clasif = mode == "clasificaciones" %}
+{% set page_label = "Clasificación" if is_clasif else "Resultados y Calendario" %}
+{% block title %}{{ page_label }} — {{ competition.name }} — HandbolNoticias{% endblock %}
+{% block meta_description %}{{ page_label }} de {{ competition.name }}, con datos oficiales de la RFEBM.{% endblock %}
+{% block canonical_url %}https://handbolnoticias.com/{{ mode }}/{{ competition.slug }}/{% endblock %}
+{% block content %}
+
+<nav class="text-sm text-gray-500 mb-6">
+    <a href="/" class="hover:text-hb-blue">Inicio</a>
+    <span class="mx-2">›</span>
+    <a href="/{{ mode }}/" class="hover:text-hb-blue">{{ "Clasificaciones" if is_clasif else "Resultados y Calendario" }}</a>
+    <span class="mx-2">›</span>
+    <span class="text-gray-800 font-medium">{{ competition.name }}</span>
+</nav>
+
+<div class="flex border-b border-gray-200 mb-8">
+    <a href="/resultados/{{ competition.slug }}/" class="px-5 py-3 text-sm font-semibold border-b-2 {{ 'border-hb-blue text-hb-blue' if not is_clasif else 'border-transparent text-gray-500 hover:text-gray-700' }}">Resultados</a>
+    <a href="/clasificaciones/{{ competition.slug }}/" class="px-5 py-3 text-sm font-semibold border-b-2 {{ 'border-hb-blue text-hb-blue' if is_clasif else 'border-transparent text-gray-500 hover:text-gray-700' }}">Clasificaciones</a>
+</div>
+
+<h1 class="text-2xl font-bold mb-6 text-gray-900">{{ competition.name }}</h1>
+
+{% if is_clasif %}
+{% if standings %}
+<div class="overflow-x-auto bg-white rounded-lg border border-gray-100 shadow-sm">
+    <table class="w-full text-sm">
+        <thead>
+            <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wide">
+                <th class="px-3 py-2 text-left">#</th>
+                <th class="px-3 py-2 text-left">Equipo</th>
+                <th class="px-2 py-2 text-center">PT</th>
+                <th class="px-2 py-2 text-center">PJ</th>
+                <th class="px-2 py-2 text-center">PG</th>
+                <th class="px-2 py-2 text-center">PE</th>
+                <th class="px-2 py-2 text-center">PP</th>
+                <th class="px-2 py-2 text-center">GF</th>
+                <th class="px-2 py-2 text-center">GC</th>
+                <th class="px-2 py-2 text-center">DIF</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in standings %}
+            <tr class="border-t border-gray-100 hover:bg-gray-50">
+                <td class="px-3 py-2 text-gray-500">{{ row.position }}</td>
+                <td class="px-3 py-2 font-medium text-gray-800">
+                    <div class="flex items-center gap-2">
+                        {% if row.crest %}
+                        <img src="{{ row.crest }}" alt="" class="h-6 w-6 object-contain"
+                             onerror="this.onerror=null;this.src='https://balonmano.isquad.es/images/sinescudo.png';">
+                        {% endif %}
+                        <span>{{ row.team }}</span>
+                    </div>
+                </td>
+                <td class="px-2 py-2 text-center font-bold">{{ row.points }}</td>
+                <td class="px-2 py-2 text-center">{{ row.played }}</td>
+                <td class="px-2 py-2 text-center">{{ row.won }}</td>
+                <td class="px-2 py-2 text-center">{{ row.drawn }}</td>
+                <td class="px-2 py-2 text-center">{{ row.lost }}</td>
+                <td class="px-2 py-2 text-center">{{ row.gf }}</td>
+                <td class="px-2 py-2 text-center">{{ row.gc }}</td>
+                <td class="px-2 py-2 text-center">{{ row.diff }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="text-gray-400 italic text-sm">Todavía no hay clasificación disponible para esta competición.</p>
+{% endif %}
+
+{% else %}
+
+{% if matches_by_jornada %}
+{% for jornada, matches in matches_by_jornada.items() | sort %}
+<section class="mb-6">
+    <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada {{ jornada }}</h2>
+    <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
+        {% for m in matches %}
+        <div class="flex items-center gap-3 px-4 py-3 text-sm">
+            <div class="flex-1 flex items-center justify-end gap-2 min-w-0">
+                <span class="truncate text-right font-medium text-gray-800">{{ m.home_team }}</span>
+                {% if m.home_crest %}
+                <img src="{{ m.home_crest }}" alt="" class="h-6 w-6 object-contain flex-shrink-0"
+                     onerror="this.onerror=null;this.src='https://balonmano.isquad.es/images/sinescudo.png';">
+                {% endif %}
+            </div>
+            <div class="flex-shrink-0 text-center px-2">
+                {% if m.status == "Jugado" and m.home_score is not none and m.away_score is not none %}
+                <span class="font-bold text-gray-900">{{ m.home_score }} - {{ m.away_score }}</span>
+                {% elif m.match_date %}
+                <span class="text-xs text-gray-500 whitespace-nowrap">{{ m.match_date | matchdate }}</span>
+                {% else %}
+                <span class="text-xs text-gray-400 italic">{{ m.status }}</span>
+                {% endif %}
+            </div>
+            <div class="flex-1 flex items-center gap-2 min-w-0">
+                {% if m.away_crest %}
+                <img src="{{ m.away_crest }}" alt="" class="h-6 w-6 object-contain flex-shrink-0"
+                     onerror="this.onerror=null;this.src='https://balonmano.isquad.es/images/sinescudo.png';">
+                {% endif %}
+                <span class="truncate font-medium text-gray-800">{{ m.away_team }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endfor %}
+{% else %}
+<p class="text-gray-400 italic text-sm">Todavía no hay calendario disponible para esta competición.</p>
+{% endif %}
+{% endif %}
+
+{% endblock %}
