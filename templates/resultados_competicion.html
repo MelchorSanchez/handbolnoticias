@@ -75,13 +75,14 @@
 <div class="mb-4">
     <label for="jornada-select" class="text-sm font-medium text-gray-600 mr-2">Jornada:</label>
     <select id="jornada-select" class="border border-gray-300 rounded-lg px-3 py-1.5 text-sm font-medium text-gray-800 bg-white">
+        <option value="todas" selected>Todas</option>
         {% for jornada in matches_by_jornada.keys() | sort %}
-        <option value="{{ jornada }}" {{ "selected" if jornada == default_jornada else "" }}>Jornada {{ jornada }}</option>
+        <option value="{{ jornada }}">Jornada {{ jornada }}</option>
         {% endfor %}
     </select>
 </div>
 {% for jornada, matches in matches_by_jornada.items() | sort %}
-<section class="jornada-section mb-6" id="jornada-{{ jornada }}" {{ "" if jornada == default_jornada else 'style="display:none"' }}>
+<section class="jornada-section mb-6" id="jornada-{{ jornada }}">
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada {{ jornada }}</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         {% for m in matches %}
@@ -128,8 +129,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var select = document.getElementById('jornada-select');
     if (!select) return;
     select.addEventListener('change', function() {
+        var showAll = select.value === 'todas';
         document.querySelectorAll('.jornada-section').forEach(function(el) {
-            el.style.display = (el.id === 'jornada-' + select.value) ? '' : 'none';
+            el.style.display = (showAll || el.id === 'jornada-' + select.value) ? '' : 'none';
         });
     });
 });

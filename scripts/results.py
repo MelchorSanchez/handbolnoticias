@@ -209,16 +209,6 @@ def fetch_results(conn):
         time.sleep(0.5)
 
 
-def _ultima_jornada_disputada(matches_by_jornada: dict) -> int:
-    """Última jornada con todos los partidos ya 'Jugado'; si ninguna, la primera."""
-    if not matches_by_jornada:
-        return 1
-    for jornada in sorted(matches_by_jornada.keys(), reverse=True):
-        if all(m["status"] == "Jugado" for m in matches_by_jornada[jornada]):
-            return jornada
-    return min(matches_by_jornada.keys())
-
-
 def render_results(conn):
     env = Environment(loader=FileSystemLoader(str(BASE / "templates")), autoescape=True)
 
@@ -253,14 +243,12 @@ def render_results(conn):
         slug = comp["slug"]
         matches_by_jornada = db.get_matches_by_jornada(conn, slug)
         standings = db.get_standings(conn, slug)
-        default_jornada = _ultima_jornada_disputada(matches_by_jornada)
         for mode in ("resultados", "clasificaciones"):
             html = comp_tmpl.render(
                 mode=mode,
                 competition=comp,
                 matches_by_jornada=matches_by_jornada,
                 standings=standings,
-                default_jornada=default_jornada,
             )
             out = BASE / "docs" / mode / slug / "index.html"
             out.parent.mkdir(parents=True, exist_ok=True)
