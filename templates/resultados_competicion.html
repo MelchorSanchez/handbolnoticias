@@ -82,7 +82,7 @@
     </select>
 </div>
 {% for jornada, matches in matches_by_jornada.items() | sort %}
-<section class="jornada-section mb-6" id="jornada-{{ jornada }}" {{ "" if jornada == jornada_actual else 'style="display:none"' }}>
+<section class="jornada-section mb-6" id="jornada-{{ jornada }}" {% if jornada != jornada_actual %}style="display:none"{% endif %}>
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada {{ jornada }}</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         {% for m in matches %}
