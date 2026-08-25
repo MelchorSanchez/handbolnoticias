@@ -73,14 +73,42 @@ _CLUB_BASE_TITLE_KWS = (
 )
 
 
+# Title keywords that signal sorteos/regalos, donaciones benéficas o patrocinios —
+# filtrado global (no solo clubes). Se evita la palabra "sorteo" a secas porque en
+# balonmano casi siempre se refiere al sorteo oficial de una competición (Champions,
+# Mundial, Copa...), que sí es noticia editorial real.
+import re as _re
+
+_GIVEAWAY_RE = _re.compile(
+    r"gana \d* ?entradas|gana entradas|sorteamos (un|una|entradas)|"
+    r"n[uú]mero premiado|boleto premiado|billete premiado",
+    _re.IGNORECASE,
+)
+_CHARITY_RE = _re.compile(
+    r"donan |donaci[oó]n de|donaciones|acto ben[eé]fico|gala ben[eé]fica|"
+    r"recaudaci[oó]n ben[eé]fica|solidari|refugio para mujeres",
+    _re.IGNORECASE,
+)
+_SPONSOR_RE = _re.compile(
+    r"patrocinador|patrocina |patrocinio|nuevo patrocinador|acuerdo de patrocinio|"
+    r"sponsor oficial|esponsor|naming rights|title sponsor|hauptsponsor|trikotsponsor",
+    _re.IGNORECASE,
+)
+
+
 def _should_skip_article(article: dict) -> bool:
     """Return True if the article should be dropped before inserting."""
     url = article.get("url", "").lower()
-    title = (article.get("title_orig") or article.get("title") or "").lower()
+    title_raw = article.get("title_orig") or article.get("title") or ""
+    title = title_raw.lower()
     is_club = article.get("source_name", "").lower().endswith("-web")
 
     # Global: commercial URL patterns
     if any(frag in url for frag in _COMMERCIAL_URL_FRAGMENTS):
+        return True
+
+    # Global: sorteos/regalos, donaciones benéficas, patrocinios
+    if _GIVEAWAY_RE.search(title_raw) or _CHARITY_RE.search(title_raw) or _SPONSOR_RE.search(title_raw):
         return True
 
     # Club sources: commercial title keywords
