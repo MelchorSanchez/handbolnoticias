@@ -15,6 +15,7 @@ from renderer import render_all
 from translator import translate_article
 from podcasts import main as render_podcasts
 from results import main as render_results
+from audit_articles import GARBAGE_RE
 
 logging.basicConfig(
     level=logging.INFO,
@@ -103,6 +104,10 @@ def _should_skip_article(article: dict) -> bool:
     title_raw = article.get("title_orig") or article.get("title") or ""
     title = title_raw.lower()
     is_club = article.get("source_name", "").lower().endswith("-web")
+
+    # Global: scrape corrupto (páginas de error 500/404, captcha, "just a moment"...)
+    if GARBAGE_RE.search(title_raw) or GARBAGE_RE.search(article.get("summary") or ""):
+        return True
 
     # Global: commercial URL patterns
     if any(frag in url for frag in _COMMERCIAL_URL_FRAGMENTS):
@@ -245,7 +250,7 @@ def main():
         if insert_article(conn, article):
             new_count += 1
 
-    logger.info("Artículos comerciales/base omitidos: %d", skipped_commercial)
+    logger.info("Artículos comerciales/base/corruptos omitidos: %d", skipped_commercial)
     logger.info("Artículos reclasificados: %d", classified_count)
     logger.info("Artículos duplicados omitidos: %d", dup_count)
     logger.info("Artículos nuevos insertados: %d", new_count)
