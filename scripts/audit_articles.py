@@ -59,21 +59,21 @@ def all_sections(row):
 def main():
     con = sqlite3.connect(DB_PATH)
     cur = con.cursor()
-    cur.execute("SELECT id, title, section, extra_sections, source_name, url FROM articles")
+    cur.execute("SELECT id, title, summary, section, extra_sections, source_name, url FROM articles")
     rows = cur.fetchall()
 
     invalid_slug, garbage, gender_mismatch = [], [], []
 
-    for id_, title, section, extra, source, url in rows:
+    for id_, title, summary, section, extra, source, url in rows:
         secs = all_sections((section, extra))
 
         bad_slugs = [s for s in secs if s not in VALID_SLUGS]
         if bad_slugs:
             invalid_slug.append((id_, title, bad_slugs, source, url))
 
-        if title and GARBAGE_RE.search(title):
+        if (title and GARBAGE_RE.search(title)) or (summary and GARBAGE_RE.search(summary)):
             garbage.append((id_, title, source, url))
-            continue  # no tiene sentido seguir evaluando un título corrupto
+            continue  # no tiene sentido seguir evaluando un artículo corrupto
 
         has_masc = any(s in MASC_SLUGS for s in secs)
         has_fem = any(s in FEM_SLUGS for s in secs)
