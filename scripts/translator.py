@@ -5,6 +5,8 @@ import re
 from deep_translator import GoogleTranslator
 from langdetect import LangDetectException, detect
 
+from audit_articles import GARBAGE_RE
+
 logger = logging.getLogger(__name__)
 
 # IHF/EHF country codes used in French handball media (handnews.fr, etc.)
@@ -140,6 +142,9 @@ def translate_text(conn, text):
     translate_target = core if prefix_es else text
     try:
         translated = GoogleTranslator(source="auto", target="es").translate(translate_target)
+        if not translated or GARBAGE_RE.search(translated):
+            logger.error("Translator devolvió una página de error, se descarta: %r", translate_target[:80])
+            return text, lang
         result = (prefix_es + translated) if prefix_es else translated
         _cache(conn, text, result, lang)
         return result, lang
