@@ -566,6 +566,13 @@ def classify(article):
 
     sections = keyword_sections + team_sections
 
+    # handnews.fr URL slugs (lbe-, lms-, proligue-...) reliably identify the exact
+    # competition — never let team-name matching in the body add a *different*
+    # french/* competition on top (e.g. an LBE preview mentioning a Pro D2 or D2F
+    # club shouldn't also get tagged into those leagues).
+    if url_sec and url_sec.startswith("france/"):
+        sections = [s for s in sections if not s.startswith("france/") or s == url_sec]
+
     # "Proffskollen" is a Swedish-only column about Swedish players abroad — always sweden only
     if re.search(r'\bproffskollen\b', text, re.I):
         sections = ["sweden"]
