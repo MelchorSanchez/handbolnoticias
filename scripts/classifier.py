@@ -79,6 +79,7 @@ _HANDNEWS_URL_RULES = [
     ("/lms-", "france/starligue"),
     ("/proligue-", "france/pro-d2"),
     ("/lbe-", "france/d1f"),
+    ("/d2f-", "france/d2f"),
     ("/ldc-", "europe/champions-women"),   # plain ldc- = women's CL
     ("/all-", "germany/bundesliga"),
     ("/esp-", "spain/asobal"),
