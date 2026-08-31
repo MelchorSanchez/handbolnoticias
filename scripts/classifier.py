@@ -579,6 +579,11 @@ def classify(article):
         sections = ["sweden"]
         return sections
 
+    # Wheelchair handball is its own discipline, unrelated to any domestic league —
+    # country/team-name matches on generic mentions in these articles are always noise.
+    if re.search(r'\bwheelchair\b', text, re.I) or re.search(r'silla de ruedas', text, re.I):
+        return ["ihf/other"]
+
     # If a Catalan-only competition hashtag is present, drop any Spanish national sections
     # that crept in via team-name matching (e.g. a B-team from a national-level club).
     if _CATALAN_ONLY.search(text):

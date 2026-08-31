@@ -59,9 +59,6 @@ rules:
       - "entrenador argelia"
       - "argelia balonmano"
       - "balonmano argelia"
-      - "silla de ruedas mundial"
-      - "mundial silla de ruedas"
-      - "wheelchair world"
     exclude: [femenin, women, mujer, "world championship women", "champions league", "european league"]
 
   - section: ihf/world-women
@@ -92,6 +89,9 @@ rules:
     keywords:
       - "ihf beach handball"
       - "beach handball world"
+      - "silla de ruedas mundial"
+      - "mundial silla de ruedas"
+      - "wheelchair world"
       - "balonmano playa mundial"
       - "campeonato del mundo de balonmano playa"
       - "ihf men's club"
@@ -315,8 +315,8 @@ rules:
 
   - section: spain/seleccion-fem
     tags: [seleccion-espanola-femenina, seleccion-femenina]
-    keywords: [selección femenina, seleccion femenina, selección española femenina,
-               "las guerreras", seleccionadora, "selección nacional femenin",
+    keywords: [selección española femenina,
+               "las guerreras", "selección nacional femenin",
                "seleccion nacional femenin", "equipo nacional femenin",
                "guerreras de la arena", "guerreras júnior", "guerreras junior",
                "guerreras promesas", "guerreraspromesas", "guerreras universitarias",
@@ -326,7 +326,12 @@ rules:
                "mundial universitario femenin", "yacbeachhandball"]
     exclude: [masculina, cadete, infantil, sub-18, sub-21,
               liga guerreras iberdrola, asobal, "primera nacional", "division honor",
-              "división honor"]
+              "división honor",
+              francesa, francés, frances, noruega, noruego, danesa, danés, danes,
+              sueca, sueco, alemana, alemán, aleman, islandesa, islandés, islandes,
+              holandesa, holandés, holandes, croata, serbia, húngara, hungara,
+              rumana, polaca, portuguesa, italiana, montenegrina, eslovena, checa,
+              brasileña, brasilena, argentina, uruguaya]
 
   # ═══════════════════════════════════════════════════════════════════
   # Categorías Base España
