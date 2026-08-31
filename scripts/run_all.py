@@ -215,44 +215,51 @@ def main():
     classified_count = 0
     dup_count = 0
     skipped_commercial = 0
+    error_count = 0
     for article in articles:
-        if article.get("url", "").rstrip("/") in blacklist:
-            continue
-        if _should_skip_article(article):
-            skipped_commercial += 1
-            continue
-        original_section = article["section"]
-        sections = classify(article)
-        if sections:
-            if original_section not in sections and original_section in _TERRITORIAL:
-                sections.append(original_section)
-            if original_section not in sections and original_section in _IHF_PRESERVE:
-                sections.append(original_section)
-            primary = sections[0]
-            extras = "|".join(sections[1:])
-            if primary != original_section:
-                classified_count += 1
-            article["section"] = primary
-            article["extra_sections"] = extras
-        else:
-            article["extra_sections"] = ""
-
-        article.pop("_raw_tags", None)
-
-        # Skip title-dup check for already-known articles (let the UPDATE run normally)
-        if not article_exists(conn, article["id"]):
-            orig_title = article.get("title_orig") or article.get("title", "")
-            if is_title_duplicate(conn, orig_title):
-                dup_count += 1
+        try:
+            if article.get("url", "").rstrip("/") in blacklist:
                 continue
+            if _should_skip_article(article):
+                skipped_commercial += 1
+                continue
+            original_section = article["section"]
+            sections = classify(article)
+            if sections:
+                if original_section not in sections and original_section in _TERRITORIAL:
+                    sections.append(original_section)
+                if original_section not in sections and original_section in _IHF_PRESERVE:
+                    sections.append(original_section)
+                primary = sections[0]
+                extras = "|".join(sections[1:])
+                if primary != original_section:
+                    classified_count += 1
+                article["section"] = primary
+                article["extra_sections"] = extras
+            else:
+                article["extra_sections"] = ""
 
-        article = translate_article(conn, article)
-        if insert_article(conn, article):
-            new_count += 1
+            article.pop("_raw_tags", None)
+
+            # Skip title-dup check for already-known articles (let the UPDATE run normally)
+            if not article_exists(conn, article["id"]):
+                orig_title = article.get("title_orig") or article.get("title", "")
+                if is_title_duplicate(conn, orig_title):
+                    dup_count += 1
+                    continue
+
+            article = translate_article(conn, article)
+            if insert_article(conn, article):
+                new_count += 1
+        except Exception as exc:
+            error_count += 1
+            logger.error("Fallo procesando artículo %r: %s", article.get("url"), exc)
+            continue
 
     logger.info("Artículos comerciales/base/corruptos omitidos: %d", skipped_commercial)
     logger.info("Artículos reclasificados: %d", classified_count)
     logger.info("Artículos duplicados omitidos: %d", dup_count)
+    logger.info("Artículos con error de procesamiento: %d", error_count)
     logger.info("Artículos nuevos insertados: %d", new_count)
 
     _fix_detail_dates(conn)
