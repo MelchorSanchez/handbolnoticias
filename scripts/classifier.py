@@ -609,6 +609,16 @@ def classify(article):
     sections = _apply_priority_rules(sections, kw_set, text,
                                      source_section=source_section)
 
+    # A Spanish national-team section is an unambiguous gender signal — if the generic
+    # "mundialista"/"mundial de balonmano"-type keywords also matched the *wrong*-gender
+    # IHF World Championship section (because the article never spells out "femenino"/
+    # "masculino" explicitly, e.g. it only says "las guerreras"), trust the national-team
+    # signal and swap the IHF section to match.
+    if "spain/seleccion-fem" in sections and "ihf/world-men" in sections and "ihf/world-women" not in sections:
+        sections = ["ihf/world-women" if s == "ihf/world-men" else s for s in sections]
+    if "spain/seleccion-masc" in sections and "ihf/world-women" in sections and "ihf/world-men" not in sections:
+        sections = ["ihf/world-men" if s == "ihf/world-women" else s for s in sections]
+
     # If the source is a non-Spanish foreign country, strip Spanish domestic sections
     # that came only from team-name matching. Prevents short team names in dhp-fem/dhp
     # lists from falsely tagging Swedish, Icelandic, Norwegian, etc. articles.

@@ -315,15 +315,29 @@ rules:
 
   - section: spain/seleccion-fem
     tags: [seleccion-espanola-femenina, seleccion-femenina]
+    # "las guerreras" y variantes son apodos exclusivos de España — nunca deben
+    # excluirse por mención de un país extranjero en el mismo texto (p. ej. un
+    # rival de otro partido citado de pasada, como "Serbia" en una crónica del
+    # Mundial).
     keywords: [selección española femenina,
-               "las guerreras", "selección nacional femenin",
-               "seleccion nacional femenin", "equipo nacional femenin",
-               "guerreras de la arena", "guerreras júnior", "guerreras junior",
-               "guerreras promesas", "guerreraspromesas", "guerreras universitarias",
-               "guerreras juveniles de la arena", "guerreras juveniles",
-               "selección promesas femenina", "seleccion promesas femenina",
-               "mundial junior femenin", "mundial júnior femenin",
-               "mundial universitario femenin", "yacbeachhandball"]
+               "las guerreras", "guerreras de la arena", "guerreras júnior",
+               "guerreras junior", "guerreras promesas", "guerreraspromesas",
+               "guerreras universitarias", "guerreras juveniles de la arena",
+               "guerreras juveniles", "selección promesas femenina",
+               "seleccion promesas femenina", "mundial junior femenin",
+               "mundial júnior femenin", "mundial universitario femenin",
+               "yacbeachhandball"]
+    exclude: [masculina, cadete, infantil, sub-18, sub-21,
+              liga guerreras iberdrola, asobal, "primera nacional", "division honor",
+              "división honor"]
+
+  - section: spain/seleccion-fem
+    tags: [seleccion-espanola-femenina, seleccion-femenina]
+    # Estas frases son genéricas (podrían describir a la selección femenina de
+    # cualquier país en un texto traducido), así que sí necesitan excluir
+    # adjetivos de nacionalidad extranjera.
+    keywords: ["selección nacional femenin", "seleccion nacional femenin",
+               "equipo nacional femenin"]
     exclude: [masculina, cadete, infantil, sub-18, sub-21,
               liga guerreras iberdrola, asobal, "primera nacional", "division honor",
               "división honor",
