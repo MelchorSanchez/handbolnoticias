@@ -25,12 +25,12 @@ BASE = Path(__file__).parent.parent
 COMPETITIONS_PATH = BASE / "config" / "competitions.yaml"
 MATCH_URL = (
     "https://resultadosbalonmano.isquad.es/competicion.php"
-    "?seleccion=0&id={id}&id_ambito=1&id_territorial=9999&id_superficie=1"
+    "?seleccion=0&id={id}&id_ambito={id_ambito}&id_territorial={id_territorial}&id_superficie=1"
     "&iframe=0&id_categoria={id_categoria}&id_competicion={id_competicion}&jornada={jornada}"
 )
 STANDINGS_URL = (
     "https://resultadosbalonmano.isquad.es/clasificacion.php"
-    "?seleccion=0&id={id}&id_ambito=1&id_territorial=9999&id_superficie=1"
+    "?seleccion=0&id={id}&id_ambito={id_ambito}&id_territorial={id_territorial}&id_superficie=1"
     "&iframe=0&id_categoria={id_categoria}&id_competicion={id_competicion}"
 )
 
@@ -165,10 +165,13 @@ def fetch_results(conn):
     competitions = load_competitions()
     for comp in competitions:
         slug = comp["slug"]
+        id_ambito = comp.get("id_ambito", 1)
+        id_territorial = comp.get("id_territorial", 9999)
         try:
             first_page = _get(MATCH_URL.format(
                 id=comp["id"], id_categoria=comp["id_categoria"],
                 id_competicion=comp["id_competicion"], jornada=1,
+                id_ambito=id_ambito, id_territorial=id_territorial,
             ))
         except Exception as exc:
             print(f"  Aviso: no se pudo obtener {slug} jornada 1: {exc}")
@@ -186,6 +189,7 @@ def fetch_results(conn):
                     html = _get(MATCH_URL.format(
                         id=comp["id"], id_categoria=comp["id_categoria"],
                         id_competicion=comp["id_competicion"], jornada=jornada,
+                        id_ambito=id_ambito, id_territorial=id_territorial,
                     ))
                 for match in _parse_jornada(html, slug, jornada):
                     db.upsert_match(conn, match)
@@ -199,6 +203,7 @@ def fetch_results(conn):
             standings_html = _get(STANDINGS_URL.format(
                 id=comp["id"], id_categoria=comp["id_categoria"],
                 id_competicion=comp["id_competicion"],
+                id_ambito=id_ambito, id_territorial=id_territorial,
             ))
             rows = _parse_standings(standings_html, slug)
             db.replace_standings(conn, slug, rows)

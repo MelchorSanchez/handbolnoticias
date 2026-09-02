@@ -45,6 +45,54 @@ competitions:
     id_competicion: 211441
 
   # ══════════════════════════════════════════════════════════════════════════
+  # CATALUÑA — Femenino
+  # ══════════════════════════════════════════════════════════════════════════
+  - slug: catalana-oro-fem-a
+    name: Liga Catalana Oro Femenina - Grupo A
+    gender: fem
+    id: 1038565
+    id_categoria: 3076
+    id_competicion: 211801
+    id_ambito: 0
+    id_territorial: 17
+
+  - slug: catalana-oro-fem-b
+    name: Liga Catalana Oro Femenina - Grupo B
+    gender: fem
+    id: 1038566
+    id_categoria: 3076
+    id_competicion: 211801
+    id_ambito: 0
+    id_territorial: 17
+
+  - slug: catalana-argent-fem
+    name: Liga Catalana Argent Femenina
+    gender: fem
+    id: 1038567
+    id_categoria: 3076
+    id_competicion: 211802
+    id_ambito: 0
+    id_territorial: 17
+
+  - slug: catalana-primera-fem-a
+    name: Primera Catalana Femenina - Grupo A
+    gender: fem
+    id: 1038568
+    id_categoria: 3076
+    id_competicion: 211803
+    id_ambito: 0
+    id_territorial: 17
+
+  - slug: catalana-primera-fem-b
+    name: Primera Catalana Femenina - Grupo B
+    gender: fem
+    id: 1038569
+    id_categoria: 3076
+    id_competicion: 211803
+    id_ambito: 0
+    id_territorial: 17
+
+  # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Masculino
   # ══════════════════════════════════════════════════════════════════════════
   - slug: asobal
@@ -102,3 +150,87 @@ competitions:
     id: 1038400
     id_categoria: 3017
     id_competicion: 211438
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # CATALUÑA — Masculino
+  # ══════════════════════════════════════════════════════════════════════════
+  - slug: catalana-or-a
+    name: Liga Catalana Or Masculina - Grupo A
+    gender: masc
+    id: 1038540
+    id_categoria: 3077
+    id_competicion: 211864
+    id_ambito: 0
+    id_territorial: 17
+
+  - slug: catalana-or-b
+    name: Liga Catalana Or Masculina - Grupo B
+    gender: masc
+    id: 1038541
+    id_categoria: 3077
+    id_competicion: 211864
+    id_ambito: 0
+    id_territorial: 17
+
+  - slug: catalana-argent-masc
+    name: Liga Catalana Argent Masculina
+    gender: masc
+    id: 1038558
+    id_categoria: 3077
+    id_competicion: 211806
+    id_ambito: 0
+    id_territorial: 17
+
+  - slug: catalana-primera-masc-a
+    name: Primera Catalana Masculina - Grupo A
+    gender: masc
+    id: 1038559
+    id_categoria: 3077
+    id_competicion: 211807
+    id_ambito: 0
+    id_territorial: 17
+
+  - slug: catalana-primera-masc-b
+    name: Primera Catalana Masculina - Grupo B
+    gender: masc
+    id: 1038560
+    id_categoria: 3077
+    id_competicion: 211807
+    id_ambito: 0
+    id_territorial: 17
+
+  - slug: catalana-segona-masc-a
+    name: Segona Catalana Masculina - Grupo A
+    gender: masc
+    id: 1038561
+    id_categoria: 3077
+    id_competicion: 211808
+    id_ambito: 0
+    id_territorial: 17
+
+  - slug: catalana-segona-masc-b
+    name: Segona Catalana Masculina - Grupo B
+    gender: masc
+    id: 1038562
+    id_categoria: 3077
+    id_competicion: 211808
+    id_ambito: 0
+    id_territorial: 17
+
+  - slug: catalana-tercera-masc-a
+    name: Tercera Catalana Masculina - Grupo A
+    gender: masc
+    id: 1038563
+    id_categoria: 3077
+    id_competicion: 211809
+    id_ambito: 0
+    id_territorial: 17
+
+  - slug: catalana-tercera-masc-b
+    name: Tercera Catalana Masculina - Grupo B
+    gender: masc
+    id: 1038564
+    id_categoria: 3077
+    id_competicion: 211809
+    id_ambito: 0
+    id_territorial: 17
