@@ -239,7 +239,7 @@ _CLUB_PREFIXES = frozenset({
     'mkb', 'asc', 'bsc', 'dsc', 'hvg', 'spvg', 'rkb', 'skm', 'tkh', 'ahc',
     'cb', 'sd', 'cd', 'bm', 'rcd', 'cdb', 'cem', 'bmj',
     # Generic sport words that appear in many team names but are not distinctive
-    'handball', 'handbal', 'balonmano', 'andebol', 'handebol', 'sport', 'sports', 'club', 'elite', 'united',
+    'handball', 'handbal', 'balonmano', 'andebol', 'handebol', 'sport', 'sports', 'sporting', 'club', 'elite', 'united',
     # Generic words too common in Spanish/Portuguese text to be distinctive team identifiers
     'cantera',  # "cantera" = youth academy, too common to use as team keyword
     'universitario', 'universidad', 'atletico', 'atlético', 'atlética',
