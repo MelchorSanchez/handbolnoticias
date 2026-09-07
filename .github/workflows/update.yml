@@ -13,7 +13,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 75
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
@@ -36,7 +36,7 @@ jobs:
           key: instagram-session-${{ secrets.INSTAGRAM_USERNAME }}-v1
 
       - name: Ejecutar pipeline
-        timeout-minutes: 20
+        timeout-minutes: 70
         env:
           INSTAGRAM_USERNAME: ${{ secrets.INSTAGRAM_USERNAME }}
           INSTAGRAM_PASSWORD: ${{ secrets.INSTAGRAM_PASSWORD }}

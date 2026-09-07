@@ -260,6 +260,13 @@ _CLUB_PREFIXES = frozenset({
 # Minimum word length for partial (word-level) team name matching.
 _WORD_MATCH_MIN_LEN = 7
 
+# Bare team-name aliases that are too generic to use for full-name matching on
+# their own — they collide with an unrelated club of the same nickname in a
+# different country's list (e.g. germany/bundesliga's bare "Füchse" alias for
+# Füchse Berlin vs. austria's bare "Fuchse" alias for BT Füchse Wels). Multi-word
+# entries like "Füchse Berlin" or "BT Füchse" are unaffected and keep matching.
+_AMBIGUOUS_BARE_TEAM_NAMES = frozenset({"füchse", "fuchse"})
+
 
 def _key_words(team_name):
     """Extract distinctive words from a team name for partial matching."""
@@ -285,7 +292,8 @@ def _sections_from_teams(text):
                 continue
             team_lower = team.lower()
             # Full-name match
-            if len(team) >= min_len and team_lower in text:
+            if (team_lower not in _AMBIGUOUS_BARE_TEAM_NAMES
+                    and len(team) >= min_len and team_lower in text):
                 if section not in matched:
                     matched.append(section)
                 break
