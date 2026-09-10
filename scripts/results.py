@@ -215,11 +215,11 @@ def fetch_results(conn):
 
 
 def _jornada_actual(matches_by_jornada: dict) -> int:
-    """Primera jornada con algún partido aún no 'Jugado'; si todas lo están, la última."""
+    """Primera jornada con algún partido aún sin jugar; si todas lo están, la última."""
     if not matches_by_jornada:
         return 1
     for jornada in sorted(matches_by_jornada.keys()):
-        if any(m["status"] != "Jugado" for m in matches_by_jornada[jornada]):
+        if any(m["home_score"] is None or m["away_score"] is None for m in matches_by_jornada[jornada]):
             return jornada
     return max(matches_by_jornada.keys())
 

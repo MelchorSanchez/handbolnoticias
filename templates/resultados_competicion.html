@@ -95,7 +95,7 @@
                 {% endif %}
             </div>
             <div class="flex-shrink-0 text-center px-2">
-                {% if m.status == "Jugado" and m.home_score is not none and m.away_score is not none %}
+                {% if m.home_score is not none and m.away_score is not none %}
                 <span class="font-bold text-gray-900">{{ m.home_score }} - {{ m.away_score }}</span>
                 {% elif m.match_date %}
                 <span class="text-xs text-gray-500 whitespace-nowrap">{{ m.match_date | matchdate }}</span>
