@@ -58,7 +58,7 @@ _TRANSFER_POS = re.compile(
 _TRANSFER_NEG = re.compile(
     r'\b(rumor|rumores|podría|interesa en|en la [oó]rbita|pourrait|'
     r'linked with|could join|interested in|cerca de|'
-    r'forces|partnership|partenariat|sponsoring)\b',
+    r'forces|partnership|partenariat|sponsoring|presencia)\b',
     re.IGNORECASE,
 )
 
