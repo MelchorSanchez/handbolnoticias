@@ -54,3 +54,13 @@ jobs:
             git pull --rebase origin main
             git push
           fi
+
+      - name: Checkpoint diario
+        run: |
+          TAG="checkpoint-$(date -u +%Y-%m-%d)"
+          if git ls-remote --tags origin | grep -q "refs/tags/$TAG$"; then
+            echo "Checkpoint $TAG ya existe"
+          else
+            git tag -a "$TAG" -m "Checkpoint automático diario"
+            git push origin "$TAG"
+          fi
