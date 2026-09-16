@@ -718,7 +718,7 @@ rules:
                "balonmano venezuela", "balonmano colombia", "balonmano peru",
                "balonmano bolivia", "balonmano ecuador",
                "venezuela handball", "colombia handball", "peru handball",
-               "south america handball championship"]
+               "south america handball championship", "odesur"]
 
   - section: europe/other-countries
     keywords: ["handball belgium", "handball belgique", "handball belgien",

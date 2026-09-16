@@ -256,6 +256,7 @@ _CLUB_PREFIXES = frozenset({
     'córdoba', 'cordoba',   # city in Spain AND Argentina
     'cologne',              # city in Germany (EHF venue) AND Italian team name
     'luanda',               # Angolan capital — appears in Portuguese handball context
+    'panorama',             # common Spanish/English word, also "AEP Panorama" (Greece)
 })
 # Minimum word length for partial (word-level) team name matching.
 _WORD_MATCH_MIN_LEN = 7
