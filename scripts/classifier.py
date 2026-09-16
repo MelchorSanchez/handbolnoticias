@@ -644,7 +644,12 @@ def classify(article):
 
     # Transfer detection: add fichajes as extra section if title matches
     title = article.get("title_orig") or article.get("title") or ""
-    if _TRANSFER_POS.search(title) and not _TRANSFER_NEG.search(title):
+    is_transfer = _TRANSFER_POS.search(title) and not _TRANSFER_NEG.search(title)
+    # todohandball.com's own URL slug for its transfer-market section is a reliable
+    # source-specific signal, for titles ("deja X rumbo a Y") that don't match the
+    # generic keyword regex above.
+    is_transfer = is_transfer or "/mercado-de-pases/" in url
+    if is_transfer:
         if "fichajes" not in sections:
             sections.append("fichajes")
 
