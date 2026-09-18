@@ -51,8 +51,21 @@ jobs:
             echo "No hay cambios nuevos"
           else
             git commit -m "Actualización diaria $(date -u +%Y-%m-%d)"
-            git pull --rebase origin main
-            git push
+            # docs/ y data/articles.db son 100% contenido generado: si alguien
+            # pusheó mientras corría el pipeline, un rebase normal choca en
+            # cientos de archivos derivados. En vez de fallar, resolvemos
+            # quedándonos con la versión de origin en lo generado (ya incluye
+            # cualquier fix manual aplicado mientras tanto) y reintentamos el
+            # push con el commit de este run encima.
+            if ! git push; then
+              git fetch origin main
+              if ! git merge origin/main --no-edit; then
+                git checkout --theirs -- data/articles.db docs/ sitemap.xml
+                git add data/articles.db docs/ sitemap.xml
+                git commit --no-edit
+              fi
+              git push
+            fi
           fi
 
       - name: Checkpoint diario
