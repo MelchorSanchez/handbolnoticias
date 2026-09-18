@@ -294,7 +294,11 @@ rules:
   # ═══════════════════════════════════════════════════════════════════
   - section: europe/other
     tags: [ehf, eurohandball]
-    keywords: [eurohandball, "ehf beach handball", "beach handball", "handbol platja"]
+    # "beach handball"/"handbol platja" a secas NO son señal de Europa — son el
+    # término genérico de la disciplina y aparecen igual en noticias argentinas,
+    # mexicanas, del Mundial IHF o de los Juegos Olímpicos de la Juventud en Dakar.
+    # Solo cuenta si el texto especifica explícitamente que es EHF/europeo.
+    keywords: [eurohandball, "ehf beach handball"]
     exclude: [champions league, european league, european cup, copa europea, ehf cup,
               euro men, euro women, world championship, world cup]
 
