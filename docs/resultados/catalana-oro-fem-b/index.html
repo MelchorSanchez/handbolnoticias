@@ -258,9 +258,9 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     <select id="jornada-select" class="border border-gray-300 rounded-lg px-3 py-1.5 text-sm font-medium text-gray-800 bg-white">
         <option value="todas">Todas</option>
         
-        <option value="1" selected>Jornada 1</option>
+        <option value="1" >Jornada 1</option>
         
-        <option value="2" >Jornada 2</option>
+        <option value="2" selected>Jornada 2</option>
         
         <option value="3" >Jornada 3</option>
         
@@ -289,7 +289,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </select>
 </div>
 
-<section class="jornada-section mb-6" id="jornada-1" >
+<section class="jornada-section mb-6" id="jornada-1" style="display:none">
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 1</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
@@ -303,7 +303,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
             </div>
             <div class="flex-shrink-0 text-center px-2">
                 
-                <span class="text-xs text-gray-500 whitespace-nowrap">20/09/2026 12:00</span>
+                <span class="font-bold text-gray-900">21 - 21</span>
                 
             </div>
             <div class="flex-1 flex items-center gap-2 min-w-0">
@@ -312,28 +312,6 @@ document.getElementById('menu-btn').addEventListener('click', function() {
                      onerror="this.onerror=null;this.src='https://balonmano.isquad.es/images/sinescudo.png';">
                 
                 <span class="truncate font-medium text-gray-800">CLUB HANDBOL CARDEDEU VERMELL</span>
-            </div>
-        </div>
-        
-        <div class="flex items-center gap-3 px-4 py-3 text-sm">
-            <div class="flex-1 flex items-center justify-end gap-2 min-w-0">
-                <span class="truncate text-right font-medium text-gray-800">CLUB HANDBOL VILAMAJOR (SFA)</span>
-                
-                <img src="https://balonmano.isquad.es/images/afiliacion_clubs/2894/square_38677071666d72723077.jpg" alt="" class="h-6 w-6 object-contain flex-shrink-0"
-                     onerror="this.onerror=null;this.src='https://balonmano.isquad.es/images/sinescudo.png';">
-                
-            </div>
-            <div class="flex-shrink-0 text-center px-2">
-                
-                <span class="text-xs text-gray-500 whitespace-nowrap">20/09/2026 18:00</span>
-                
-            </div>
-            <div class="flex-1 flex items-center gap-2 min-w-0">
-                
-                <img src="https://balonmano.isquad.es/images/afiliacion_clubs/100192/square_366f786a396432766139.jpg" alt="" class="h-6 w-6 object-contain flex-shrink-0"
-                     onerror="this.onerror=null;this.src='https://balonmano.isquad.es/images/sinescudo.png';">
-                
-                <span class="truncate font-medium text-gray-800">CHE-SANTS A</span>
             </div>
         </div>
         
@@ -356,6 +334,28 @@ document.getElementById('menu-btn').addEventListener('click', function() {
                      onerror="this.onerror=null;this.src='https://balonmano.isquad.es/images/sinescudo.png';">
                 
                 <span class="truncate font-medium text-gray-800">FUNDACIO HANDBOL SANT VICENÇ</span>
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-3 px-4 py-3 text-sm">
+            <div class="flex-1 flex items-center justify-end gap-2 min-w-0">
+                <span class="truncate text-right font-medium text-gray-800">CLUB HANDBOL VILAMAJOR (SFA)</span>
+                
+                <img src="https://balonmano.isquad.es/images/afiliacion_clubs/2894/square_38677071666d72723077.jpg" alt="" class="h-6 w-6 object-contain flex-shrink-0"
+                     onerror="this.onerror=null;this.src='https://balonmano.isquad.es/images/sinescudo.png';">
+                
+            </div>
+            <div class="flex-shrink-0 text-center px-2">
+                
+                <span class="font-bold text-gray-900">5 - 9</span>
+                
+            </div>
+            <div class="flex-1 flex items-center gap-2 min-w-0">
+                
+                <img src="https://balonmano.isquad.es/images/afiliacion_clubs/100192/square_366f786a396432766139.jpg" alt="" class="h-6 w-6 object-contain flex-shrink-0"
+                     onerror="this.onerror=null;this.src='https://balonmano.isquad.es/images/sinescudo.png';">
+                
+                <span class="truncate font-medium text-gray-800">CHE-SANTS A</span>
             </div>
         </div>
         
@@ -384,7 +384,7 @@ document.getElementById('menu-btn').addEventListener('click', function() {
     </div>
 </section>
 
-<section class="jornada-section mb-6" id="jornada-2" style="display:none">
+<section class="jornada-section mb-6" id="jornada-2" >
     <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Jornada 2</h2>
     <div class="bg-white rounded-lg border border-gray-100 shadow-sm divide-y divide-gray-100">
         
