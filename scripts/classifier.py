@@ -140,10 +140,13 @@ _FEMALE_NAMES = re.compile(
     r'\b(?:Maria|Ana|Laura|Carmen|Marta|Sara|Elena|Cristina|Isabel'
     r'|Patricia|Rosa|Lucia|Silvia|Nerea|Itziar|Almudena|Rocio'
     r'|Amaia|Ane|Leire|Miren|Ainhoa|Uxue|Eider|Maite|Miriam|Sandra|Raquel'
-    r'|Noelia|Beatriz|Bea|Estela|Irene|Clara|Paula|Sheila|Jennifer|Darly'
+    r'|Noelia|Beatriz|Bea|Estela|Irene|Paula|Sheila|Jennifer|Darly'
     r'|Mireya|Aileen|Alexandrina|Yuliya|Katarina|Eduarda|Bruna)\b',
     re.IGNORECASE,
 )
+# "Clara" excluded: text is lowercased before this regex runs, and "clara"/"claramente"
+# is an extremely common Spanish sports-report adjective/adverb ("una clara victoria"),
+# so it false-triggers female-name detection far more often than it matches the real name.
 
 
 def _gender_signal(text):
