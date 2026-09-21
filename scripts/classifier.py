@@ -246,7 +246,7 @@ _CLUB_PREFIXES = frozenset({
     # Generic words too common in Spanish/Portuguese text to be distinctive team identifiers
     'cantera',  # "cantera" = youth academy, too common to use as team keyword
     'universitario', 'universidad', 'atletico', 'atlético', 'atlética',
-    'deportivo', 'municipal', 'municipalidad', 'municipio',
+    'deportivo', 'deportiva', 'municipal', 'municipalidad', 'municipio',
     'selección', 'seleccion', 'seleção', 'selecao', 'nacional', 'central', 'general',
     'defensa', 'instituto', 'colegio', 'cultural', 'nuestra',
     'asociación', 'asociacion', 'federación', 'federacion',
