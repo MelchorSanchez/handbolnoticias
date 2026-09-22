@@ -245,7 +245,7 @@ _CLUB_PREFIXES = frozenset({
     'handball', 'handbal', 'handbol', 'balonmano', 'andebol', 'handebol', 'sport', 'sports', 'sporting', 'club', 'elite', 'united',
     # Generic words too common in Spanish/Portuguese text to be distinctive team identifiers
     'cantera',  # "cantera" = youth academy, too common to use as team keyword
-    'universitario', 'universidad', 'atletico', 'atlético', 'atlética',
+    'universitario', 'universidad', 'atletico', 'atlético', 'atlética', 'atlètic',
     'deportivo', 'deportiva', 'municipal', 'municipalidad', 'municipio',
     'selección', 'seleccion', 'seleção', 'selecao', 'nacional', 'central', 'general',
     'defensa', 'instituto', 'colegio', 'cultural', 'nuestra',
@@ -287,6 +287,55 @@ def _key_words(team_name):
     ]
 
 
+_RESERVE_TEAM_SUFFIX = re.compile(
+    r'^(?P<base>.+?)\s+(atl[eè]tic[oa]?|b|ii|promesas|filial)$', re.IGNORECASE
+)
+
+
+def _suppressed_short_names(text):
+    """Bare-name matches suppressed in favor of a same-text, same-priority-group
+    match for that club's explicitly-marked reserve team (e.g. "Barça",
+    spain/asobal, suppressed when "Barça Atlètic", spain/dhp, ALSO matches).
+
+    Deliberately narrow: only fires when the longer name is the short name
+    plus a recognized reserve-team marker (Atlètic/B/II/Promesas/Filial), and
+    only within the same domestic priority group (see _PRIORITY_GROUPS).
+    A plain "longer name contains the short one" rule is NOT safe in general —
+    e.g. "Ademar" (spain/asobal, the actual first team) is a literal substring
+    of "Ademar León" (a separate spain/primera-nacional-masc entry), but
+    "León" is not a reserve marker, it's part of how the first team itself is
+    commonly named in headlines — suppressing "Ademar" there produced wrong
+    results (real ASOBAL articles reclassified as primera-nacional-masc).
+    """
+    teams = _load_teams()
+    matches_by_section = {}
+    for section, team_list in teams.items():
+        min_len = _MIN_NAME_LEN.get(section, _DEFAULT_MIN_NAME_LEN)
+        for team in team_list:
+            if not team:
+                continue
+            team_lower = team.lower()
+            if (team_lower not in _AMBIGUOUS_BARE_TEAM_NAMES
+                    and len(team) >= min_len and team_lower in text):
+                matches_by_section.setdefault(section, set()).add(team_lower)
+
+    suppressed = set()
+    for group in _PRIORITY_GROUPS:
+        group_matches = [
+            (sec, name)
+            for sec in group
+            for name in matches_by_section.get(sec, ())
+        ]
+        for sec_a, name_a in group_matches:
+            for sec_b, name_b in group_matches:
+                if sec_a == sec_b or name_a == name_b:
+                    continue
+                m = _RESERVE_TEAM_SUFFIX.match(name_b)
+                if m and m.group('base') == name_a:
+                    suppressed.add(name_a)
+    return suppressed
+
+
 def _sections_from_teams(text):
     """Return sections matched by team names (ordered, no duplicates).
 
@@ -295,6 +344,7 @@ def _sections_from_teams(text):
     'Melsungen' matches 'MT Melsungen' and vice versa.
     """
     teams = _load_teams()
+    suppressed = _suppressed_short_names(text)
     matched = []
     for section, team_list in teams.items():
         min_len = _MIN_NAME_LEN.get(section, _DEFAULT_MIN_NAME_LEN)
@@ -304,6 +354,7 @@ def _sections_from_teams(text):
             team_lower = team.lower()
             # Full-name match
             if (team_lower not in _AMBIGUOUS_BARE_TEAM_NAMES
+                    and team_lower not in suppressed
                     and len(team) >= min_len and team_lower in text):
                 if section not in matched:
                     matched.append(section)
