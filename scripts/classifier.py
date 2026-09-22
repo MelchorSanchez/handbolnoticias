@@ -262,6 +262,7 @@ _CLUB_PREFIXES = frozenset({
     'panorama',             # common Spanish/English word, also "AEP Panorama" (Greece)
     'alicante',             # city with multiple clubs in different divisions (ASOBAL's
                              # "Horneo BM Alicante" vs. DHP's "Agustinos Alicante")
+    'antonio',              # common Spanish first name, also "Portland San Antonio" (ASOBAL)
 })
 # Minimum word length for partial (word-level) team name matching.
 _WORD_MATCH_MIN_LEN = 7

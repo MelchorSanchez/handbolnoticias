@@ -383,8 +383,7 @@ rules:
   # ═══════════════════════════════════════════════════════════════════
   - section: spain/asobal
     tags: [asobal, liga-asobal]
-    keywords: [asobal, "liga asobal", "liga sacyr asobal", "liga sacyr",
-               "división de honor masculina", "division de honor masculina"]
+    keywords: [asobal, "liga asobal", "liga sacyr asobal", "liga sacyr"]
     exclude: [femenin, juvenil, cadete, infantil, alevín, benjamín, base]
 
   - section: spain/dhp
@@ -722,7 +721,8 @@ rules:
                "balonmano venezuela", "balonmano colombia", "balonmano peru",
                "balonmano bolivia", "balonmano ecuador",
                "venezuela handball", "colombia handball", "peru handball",
-               "south america handball championship", "odesur"]
+               "south america handball championship", "odesur",
+               "juegos suramericanos", "juegos sudamericanos", "south american games"]
 
   - section: europe/other-countries
     keywords: ["handball belgium", "handball belgique", "handball belgien",
