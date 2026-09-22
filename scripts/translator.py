@@ -65,6 +65,34 @@ _COUNTRY_CODES = {
 # Pattern: "HON | " or "Hon | " or "HON: " at start of title (handnews.fr style)
 _COUNTRY_PREFIX_RE = re.compile(r"^([A-Za-z]{2,4})\s*[|:]\s*")
 
+# Native language of each top-level site section, used to override langdetect
+# when it misreads a short foreign-language title as "es"/"en" (very common
+# with short headlines in Icelandic, Polish, Swedish, etc.). Sections not
+# listed here (e.g. "europe", "ihf") are left to langdetect alone.
+_SECTION_LANG = {
+    "france": "fr",
+    "germany": "de",
+    "portugal": "pt",
+    "sweden": "sv",
+    "norway": "no",
+    "denmark": "da",
+    "italy": "it",
+    "croatia": "hr",
+    "slovenia": "sl",
+    "brazil": "pt",
+    "poland": "pl",
+    "austria": "de",
+    "iceland": "is",
+    "turkey": "tr",
+    "czech-republic": "cs",
+}
+
+
+def _section_lang_hint(section):
+    if not section:
+        return None
+    return _SECTION_LANG.get(section.split("/")[0])
+
 # Known section/column names that are proper nouns and should not be translated.
 # These appear as prefixes in article titles from certain sources.
 _PRESERVE_PREFIXES = [
@@ -118,7 +146,7 @@ def _preprocess(text):
     return None, text
 
 
-def translate_text(conn, text):
+def translate_text(conn, text, source_lang_hint=None):
     if not text or not text.strip():
         return text, None
 
@@ -130,7 +158,16 @@ def translate_text(conn, text):
     except LangDetectException:
         return text, None
 
-    if lang in ("es", "en"):
+    # langdetect is unreliable on short headlines: it often misreads a
+    # foreign-language title as "es"/"en". If the source's known language
+    # disagrees, don't trust the "es"/"en" verdict — attempt translation.
+    trust_detection = not (
+        lang in ("es", "en")
+        and source_lang_hint
+        and source_lang_hint not in ("es", "en")
+    )
+
+    if lang in ("es", "en") and trust_detection:
         if prefix_es:
             return prefix_es + core, lang
         return text, lang
@@ -154,9 +191,10 @@ def translate_text(conn, text):
 
 
 def translate_article(conn, article):
-    translated_title, _ = translate_text(conn, article["title_orig"])
+    hint = _section_lang_hint(article.get("section"))
+    translated_title, _ = translate_text(conn, article["title_orig"], hint)
     article["title"] = translated_title
     if article.get("summary"):
-        translated_summary, _ = translate_text(conn, article["summary"][:300])
+        translated_summary, _ = translate_text(conn, article["summary"][:300], hint)
         article["summary"] = translated_summary
     return article
