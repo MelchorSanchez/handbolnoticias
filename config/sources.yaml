@@ -407,15 +407,9 @@ sources:
   # ══════════════════════════════════════════════════════════════════════════
   - name: CatHandbol
     section: spain/catalonia
-    type: scrape
-    url: https://www.cathandbol.cat/
+    type: rss
+    url: https://www.cathandbol.cat/feed/
     max_items: 30
-    selectors:
-      articles: ".nspArt"
-      title: "h4.nspHeader a"
-      link: "h4.nspHeader a"
-      image: "img"
-      date: "span.artdate"
 
   # ══════════════════════════════════════════════════════════════════════════
   # EUROPA — Handball internacional
