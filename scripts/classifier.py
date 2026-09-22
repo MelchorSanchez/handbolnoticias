@@ -250,7 +250,7 @@ _CLUB_PREFIXES = frozenset({
     'selección', 'seleccion', 'seleção', 'selecao', 'nacional', 'central', 'general',
     'defensa', 'instituto', 'colegio', 'cultural', 'nuestra',
     'asociación', 'asociacion', 'federación', 'federacion',
-    'confederación', 'fundación', 'escolinha', 'escola',
+    'confederación', 'fundación', 'fundació', 'escolinha', 'escola',
     # Common Spanish words that appear in Argentine team names but are not distinctive
     'estrella', 'corazón', 'corazon', 'federal', 'lorenzo', 'sagrado',
     'polideportivo', 'argentina', 'juniors', 'juvenil', 'juventud',
@@ -263,6 +263,10 @@ _CLUB_PREFIXES = frozenset({
     'alicante',             # city with multiple clubs in different divisions (ASOBAL's
                              # "Horneo BM Alicante" vs. DHP's "Agustinos Alicante")
     'antonio',              # common Spanish first name, also "Portland San Antonio" (ASOBAL)
+    'asturiano', 'asturianos',  # demonym for people from Asturias, also "Centro Asturiano"
+                                 # (Argentine clubs named after the immigrant community)
+    'igualada',             # common Spanish adjective ("temporada igualada" = close season),
+                             # also the Catalan town/club "Handbol Igualada"
 })
 # Minimum word length for partial (word-level) team name matching.
 _WORD_MATCH_MIN_LEN = 7
