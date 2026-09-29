@@ -1,6 +1,7 @@
 import hashlib
 import logging
 import re
+import time
 
 from deep_translator import GoogleTranslator
 from langdetect import LangDetectException, detect
@@ -8,6 +9,47 @@ from langdetect import LangDetectException, detect
 from audit_articles import GARBAGE_RE
 
 logger = logging.getLogger(__name__)
+
+# Google's free translate endpoint (used via deep_translator) allows ~5 req/s;
+# a full pipeline run can fire off hundreds of translations back to back, which
+# reliably triggers "You made too many requests to the server". That block is
+# not a per-second thing that clears in seconds — it persists (observed for
+# 30+ minutes straight, every single request failing instantly regardless of
+# backoff). So on top of throttling+backoff for isolated blips, trip a circuit
+# breaker once retries are exhausted: stop calling the API entirely for a
+# cooldown period and fail fast (fallback to untranslated text) instead of
+# hammering an endpoint that is already blocking us, which only prolongs it.
+_MIN_INTERVAL = 1.0
+_last_call_ts = 0.0
+_RATE_LIMIT_RETRIES = 2
+_RATE_LIMIT_BACKOFF = (5, 15)
+_CIRCUIT_COOLDOWN = 120
+_circuit_open_until = 0.0
+
+
+def _throttled_translate(target):
+    global _last_call_ts, _circuit_open_until
+    if time.monotonic() < _circuit_open_until:
+        raise RuntimeError("Translator circuit breaker open (rate-limited recently)")
+    for attempt in range(_RATE_LIMIT_RETRIES + 1):
+        wait = _MIN_INTERVAL - (time.monotonic() - _last_call_ts)
+        if wait > 0:
+            time.sleep(wait)
+        _last_call_ts = time.monotonic()
+        try:
+            result = GoogleTranslator(source="auto", target="es").translate(target)
+            _circuit_open_until = 0.0
+            return result
+        except Exception as exc:
+            if "too many requests" not in str(exc).lower():
+                raise
+            if attempt == _RATE_LIMIT_RETRIES:
+                _circuit_open_until = time.monotonic() + _CIRCUIT_COOLDOWN
+                logger.error("Rate limit persistente, pausando el traductor %ds", _CIRCUIT_COOLDOWN)
+                raise
+            delay = _RATE_LIMIT_BACKOFF[min(attempt, len(_RATE_LIMIT_BACKOFF) - 1)]
+            logger.warning("Rate limit del traductor, reintentando en %ds (intento %d)", delay, attempt + 1)
+            time.sleep(delay)
 
 # IHF/EHF country codes used in French handball media (handnews.fr, etc.)
 # Format: "HON | Club name..." where HON = Hongrie (French for Hungary)
@@ -178,7 +220,7 @@ def translate_text(conn, text, source_lang_hint=None):
 
     translate_target = core if prefix_es else text
     try:
-        translated = GoogleTranslator(source="auto", target="es").translate(translate_target)
+        translated = _throttled_translate(translate_target)
         if not translated or GARBAGE_RE.search(translated):
             logger.error("Translator devolvió una página de error, se descarta: %r", translate_target[:80])
             return text, lang
