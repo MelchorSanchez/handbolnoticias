@@ -18,6 +18,16 @@ _CATALAN_ONLY = re.compile(
     r'ligacatargm|ligacatorm|ligacatorf|ligacatargf)',
     re.IGNORECASE,
 )
+# Names the IHF (Men's/Women's) Club World Championship explicitly enough that a
+# headline containing it is reliably ABOUT that tournament (as opposed to a domestic
+# match report that only mentions it in passing as scheduling context, which happens
+# in the body/summary, never the headline, for every real-world case seen so far).
+_IHF_CLUB_WORLD_TITLE = re.compile(
+    r"mundial de clube?s|mundial de balonmano de clubes|"
+    r"campeonato (?:del )?mundo de clubes|copa mundial de clubes|"
+    r"ihf (?:men|women)('|’)?s club|ihf club world",
+    re.IGNORECASE,
+)
 _SPAIN_NATIONAL = frozenset({
     "spain/asobal", "spain/dhp", "spain/primera-nacional-masc",
     "spain/guerreras", "spain/dho-fem", "spain/dhp-fem",
@@ -659,13 +669,34 @@ def classify(article):
     if _CATALAN_ONLY.search(text):
         sections = [s for s in sections if s not in _SPAIN_NATIONAL]
 
+    # A headline that names the "Mundial de Clubes"/"IHF Club World Championship" confirms
+    # the article is about the global IHF tournament, not any domestic league — drop
+    # Spanish/European club sections that only came from a participating club's bare
+    # team-name match (e.g. a "Barça" match at the Mundial de Clubes still matches the
+    # ASOBAL and EHF Champions League bare aliases, but the article isn't league news).
+    # Deliberately checked against the TITLE only, not the full text: articles that are
+    # actually about a domestic match sometimes mention the Mundial de Clubes only in
+    # passing, in the summary, as scheduling context (e.g. "el partido se retrasa por el
+    # Mundial de Clubes") — that must not steal the article away from its real section.
+    # Sections independently confirmed by their own keyword (e.g. a real "Liga ASOBAL"
+    # mention) are always left alone.
+    ihf_club_world = bool(_IHF_CLUB_WORLD_TITLE.search(article.get("title_orig", "") or ""))
+    if ihf_club_world or "ihf/other" in keyword_sections:
+        if ihf_club_world and "ihf/other" not in sections:
+            sections.append("ihf/other")
+        _ihf_kw_set = frozenset(keyword_sections) | ({"ihf/other"} if ihf_club_world else set())
+        team_only = {s for s in sections
+                     if (s in _SPAIN_NATIONAL or s in _EUROPE_CLUB) and s not in _ihf_kw_set}
+        if team_only:
+            sections = [s for s in sections if s not in team_only]
+
     # Territorial Spanish sections (Cataluña, Navarra, Euskadi) must come from keyword
     # or source match — never from team-name matching alone — UNLESS there is also a
     # Spanish national handball section (ASOBAL, DHp, Guerreras…) in the result.
     # This prevents foreign articles (e.g. Swedish site mentioning Granollers) from
     # picking up spain/catalonia as an extra section.
     _SPAIN_TERRITORIAL = frozenset({"spain/catalonia", "spain/navarra", "spain/euskadi"})
-    kw_set = frozenset(keyword_sections)
+    kw_set = frozenset(keyword_sections) | ({"ihf/other"} if ihf_club_world else set())
     source_section = article.get("section", "")
     territorial_team_only = (
         {sec for sec in sections if sec in _SPAIN_TERRITORIAL} - kw_set
@@ -673,7 +704,10 @@ def classify(article):
     )
     non_territorial_spanish = [sec for sec in sections
                                 if sec not in _SPAIN_TERRITORIAL and sec in _SPAIN_NATIONAL]
-    if territorial_team_only and not non_territorial_spanish:
+    # A confirmed Mundial de Clubes headline is itself a valid anchor: it already
+    # explains why a Spanish club's territorial section (e.g. spain/catalonia for
+    # Barça) shows up, without needing a national-league section alongside it.
+    if territorial_team_only and not non_territorial_spanish and "ihf/other" not in kw_set:
         sections = [sec for sec in sections if sec not in territorial_team_only]
 
     sections = _apply_priority_rules(sections, kw_set, text,
