@@ -277,6 +277,8 @@ _CLUB_PREFIXES = frozenset({
                                  # (Argentine clubs named after the immigrant community)
     'igualada',             # common Spanish adjective ("temporada igualada" = close season),
                              # also the Catalan town/club "Handbol Igualada"
+    'justicia',             # common Spanish noun ("hacer justicia a..."), also the
+                             # Argentine (football) club "Defensa y Justicia"
 })
 # Minimum word length for partial (word-level) team name matching.
 _WORD_MATCH_MIN_LEN = 7
