@@ -60,7 +60,7 @@ _PRIORITY_GROUPS = [
 # Transfer detection — positive and negative keywords
 _TRANSFER_POS = re.compile(
     r'\b(ficha(?:je|jes)?|renueva|renov[aá](?:ci[oó]n)?|traspa[sz]o|'
-    r'se incorpora|se une al?\b|jugará en|refuerza|primer contrato|contrato hasta|'
+    r'se incorpora|se une al?(?!\s+grupo\b)\b|jugará en|refuerza|primer contrato|contrato hasta|'
     r'cedi(?:do|da|ón)|cesi[oó]n|'
     r'signs?|verpflichtet|signe|prolonge|rejoint)\b',
     re.IGNORECASE,
