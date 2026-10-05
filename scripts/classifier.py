@@ -28,6 +28,17 @@ _IHF_CLUB_WORLD_TITLE = re.compile(
     r"ihf (?:men|women)('|’)?s club|ihf club world",
     re.IGNORECASE,
 )
+# LanzaCiudadReal (lanzadigital.com) publishes a recurring weekly roundup, under one of a
+# few fixed titles, that lists results/standings/top-scorers across EVERY category where a
+# Ciudad Real province team plays (ASOBAL, Primera Nacional, Guerreras...) — never about a
+# single league. Team-name matching picks up whichever club happens to be mentioned that
+# particular week and mislabels the whole roundup into that one league's section.
+_LANZA_ROUNDUP_TITLE = re.compile(
+    r"resultados y clasificaciones balonmano|"
+    r"m[aá]ximos goleadores balonmano|"
+    r"horarios y resultados en directo balonmano",
+    re.IGNORECASE,
+)
 _SPAIN_NATIONAL = frozenset({
     "spain/asobal", "spain/dhp", "spain/primera-nacional-masc",
     "spain/guerreras", "spain/dho-fem", "spain/dhp-fem",
@@ -665,6 +676,11 @@ def classify(article):
     # country/team-name matches on generic mentions in these articles are always noise.
     if re.search(r'\bwheelchair\b', text, re.I) or re.search(r'silla de ruedas', text, re.I):
         return ["ihf/other"]
+
+    # LanzaCiudadReal's weekly multi-category roundup — never a single-league article,
+    # regardless of which club's team-name match happens to fire that week.
+    if source_name == "LanzaCiudadReal" and _LANZA_ROUNDUP_TITLE.search(article.get("title_orig", "") or ""):
+        return ["spain"]
 
     # If a Catalan-only competition hashtag is present, drop any Spanish national sections
     # that crept in via team-name matching (e.g. a B-team from a national-level club).
