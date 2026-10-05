@@ -378,6 +378,16 @@ rules:
                   sub-20, sub-18, sub-16, sub-14, femení, campiones]
     exclude: [masculin, selección española, seleccion española]
 
+  # berabera.com (Bera Bera, club solo femenino en teams.yaml) publica titulares en euskera
+  # usando "jubenil"/"kadete" (grafía vasca de "juvenil"/"cadete") sin marca de género en
+  # español — el require_any de la regla de arriba nunca dispara porque ninguno de sus
+  # keywords (todos en español/catalán) aparece en el texto. Regla separada, acotada a esta
+  # fuente, para no introducir "jubenil"/"kadete" como keywords genéricos (podrían colisionar
+  # con texto en catalán/otro euskera de clubes masculinos).
+  - section: spain/base-fem
+    keywords: [jubenil, jubenilak, jubenilen, kadete, kadeteak]
+    sources: [BeaBera-web]
+
   # ═══════════════════════════════════════════════════════════════════
   # Liga ASOBAL y otras ligas masculinas España
   # ═══════════════════════════════════════════════════════════════════
