@@ -79,7 +79,8 @@ _TRANSFER_POS = re.compile(
 _TRANSFER_NEG = re.compile(
     r'\b(rumor|rumores|podría|interesa en|en la [oó]rbita|pourrait|'
     r'linked with|could join|interested in|cerca de|'
-    r'forces|partnership|partenariat|sponsoring|presencia)\b',
+    r'forces|partnership|partenariat|sponsoring|presencia|'
+    r'se jugar[aá])\b',
     re.IGNORECASE,
 )
 
@@ -121,6 +122,32 @@ def _handnews_section(url):
         return None
     for slug_prefix, section in _HANDNEWS_URL_RULES:
         if slug_prefix in url:
+            return section
+    return None
+
+# cathandbol.cat's women's-division URL paths reliably identify the exact competition —
+# needed because several Catalan clubs with a women's team in these divisions
+# (Granollers, Lleida...) also have a men's first team of the same bare name in a
+# *different* domestic group (spain/asobal etc.), so team-name matching alone drags
+# in the wrong (men's) section alongside, or instead of, the real one. Substring match
+# (not a fixed prefix) because the site has published the same categories under two
+# different URL schemes over time ("handbol-femeni/..." and "handbol-2/...").
+_CATHANDBOL_FEM_URL_RULES = [
+    ("/divisio-dhonor-femenina/", "spain/guerreras"),
+    ("/divisio-or/", "spain/dho-fem"),
+    ("/divisio-plata/", "spain/dhp-fem"),
+    ("/lliga-catalana-femenina/", "spain/catalonia"),
+    ("/1a-catalana-femenina/", "spain/catalonia"),
+    ("/2a-catalana-femenina/", "spain/catalonia"),
+]
+
+
+def _cathandbol_section(url):
+    """Return section from cathandbol.cat women's-division URL path, or None."""
+    if "cathandbol.cat" not in url:
+        return None
+    for slug, section in _CATHANDBOL_FEM_URL_RULES:
+        if slug in url:
             return section
     return None
 
@@ -643,7 +670,7 @@ def classify(article):
 
     source_name = article.get("source_name", "")
     url = article.get("url", "")
-    url_sec = _handnews_section(url)
+    url_sec = _handnews_section(url) or _cathandbol_section(url)
     keyword_sections = [url_sec] if url_sec else []
     for rule in rules:
         if _matches_rule(rule, text, tags, source_name):
@@ -727,6 +754,14 @@ def classify(article):
     # Barça) shows up, without needing a national-league section alongside it.
     if territorial_team_only and not non_territorial_spanish and "ihf/other" not in kw_set:
         sections = [sec for sec in sections if sec not in territorial_team_only]
+
+    # cathandbol.cat's own women's-division URL path is authoritative — drop any other
+    # _SPAIN_NATIONAL section that only came from team-name matching (e.g. the men's
+    # first team of the same club bare-matching into a different domestic group).
+    if url_sec in _SPAIN_NATIONAL:
+        team_only_national = (set(sections) & _SPAIN_NATIONAL) - {url_sec} - kw_set
+        if team_only_national:
+            sections = [sec for sec in sections if sec not in team_only_national]
 
     sections = _apply_priority_rules(sections, kw_set, text,
                                      source_section=source_section)
