@@ -317,6 +317,8 @@ _CLUB_PREFIXES = frozenset({
                              # also the Catalan town/club "Handbol Igualada"
     'justicia',             # common Spanish noun ("hacer justicia a..."), also the
                              # Argentine (football) club "Defensa y Justicia"
+    'vicente',              # common Spanish first/place name (e.g. "Vicente Trueba",
+                             # Torrelavega's venue), also "Municipalidad de Vicente López" (Argentina)
 })
 # Minimum word length for partial (word-level) team name matching.
 _WORD_MATCH_MIN_LEN = 7
