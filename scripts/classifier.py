@@ -778,6 +778,17 @@ def classify(article):
     if "spain/seleccion-masc" in sections and "ihf/world-women" in sections and "ihf/world-men" not in sections:
         sections = ["ihf/world-men" if s == "ihf/world-women" else s for s in sections]
 
+    # "spain/guerreras" (women's domestic league) is an unambiguous gender signal — if the
+    # article matched the men's "europe/european-league" default (because the title never
+    # spells out "femenina" explicitly) and there's no men's domestic league signal
+    # (spain/asobal) alongside it, trust the women's signal and swap to the women's section.
+    # Mixed roundups that mention both spain/asobal and spain/guerreras cover both genders
+    # at once and are left untouched — there's no single correct swap for those.
+    if ("spain/guerreras" in sections and "europe/european-league" in sections
+            and "europe/european-league-women" not in sections
+            and "spain/asobal" not in sections):
+        sections = ["europe/european-league-women" if s == "europe/european-league" else s for s in sections]
+
     # If the source is a non-Spanish foreign country, strip Spanish domestic sections
     # that came only from team-name matching. Prevents short team names in dhp-fem/dhp
     # lists from falsely tagging Swedish, Icelandic, Norwegian, etc. articles.
