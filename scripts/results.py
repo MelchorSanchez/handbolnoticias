@@ -13,7 +13,7 @@ from pathlib import Path
 
 import httpx
 import yaml
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString
 from jinja2 import Environment, FileSystemLoader
 
 import db
@@ -132,7 +132,16 @@ def _parse_standings(html: str, competition: str) -> list:
         if len(tds) < 11:
             continue
         team_link = tds[1].select_one("a")
-        team = team_link.get_text(strip=True) if team_link else tds[1].get_text(strip=True)
+        if team_link:
+            # El <a> incluye un <span> con el indicador de subida/bajada de puesto
+            # (p.ej. "1" si sube una posición) antes del nombre del equipo; solo el
+            # nombre real llega como texto suelto (NavigableString) directamente
+            # dentro del <a>, así que se ignora cualquier texto anidado en hijos.
+            team = "".join(
+                c for c in team_link.contents if isinstance(c, NavigableString)
+            ).strip()
+        else:
+            team = tds[1].get_text(strip=True)
         crest_el = tds[1].select_one("img.escudo_tabla_clasificacion")
         rows.append({
             "competition": competition,
