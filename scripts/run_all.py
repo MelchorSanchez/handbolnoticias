@@ -74,12 +74,19 @@ _CLUB_BASE_TITLE_KWS = (
     "nachwuchs-wochenende", "wochenendbericht nachwuchs",
 )
 
-
 # Title keywords that signal sorteos/regalos, donaciones benéficas o patrocinios —
 # filtrado global (no solo clubes). Se evita la palabra "sorteo" a secas porque en
 # balonmano casi siempre se refiere al sorteo oficial de una competición (Champions,
 # Mundial, Copa...), que sí es noticia editorial real.
 import re as _re
+
+# Title pattern that signals a weekend fixture-listing post (calendario del próximo
+# fin de semana para todos los equipos del club, no crónica de un partido concreto)
+# — filtrado para fuentes de club. Visto repetidamente en HCEivissa-web: "Partidos
+# del 17 y 18 de Octubre", "Partidos de la base 16 y 17 de Mayo"...
+_CLUB_FIXTURE_LIST_TITLE_RE = _re.compile(
+    r"^partidos (del|de la base) \d{1,2} y \d{1,2} de ", _re.IGNORECASE
+)
 
 _GIVEAWAY_RE = _re.compile(
     r"gana \d* ?entradas|gana entradas|sorteamos (un|una|entradas)|"
@@ -127,6 +134,10 @@ def _should_skip_article(article: dict) -> bool:
 
     # Club sources: base/youth routine report title keywords
     if is_club and any(kw in title for kw in _CLUB_BASE_TITLE_KWS):
+        return True
+
+    # Club sources: weekend fixture-listing post (calendario, no crónica)
+    if is_club and _CLUB_FIXTURE_LIST_TITLE_RE.search(title):
         return True
 
     return False
