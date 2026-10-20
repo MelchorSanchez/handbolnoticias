@@ -88,6 +88,10 @@ _CLUB_FIXTURE_LIST_TITLE_RE = _re.compile(
     r"^partidos (del|de la base) \d{1,2} y \d{1,2} de ", _re.IGNORECASE
 )
 
+_AFFILIATE_RE = _re.compile(
+    r"an[aá]lisis y compar(ativa|aci[oó]n) de l(os|as) (\w+ )?mejores",
+    _re.IGNORECASE,
+)
 _GIVEAWAY_RE = _re.compile(
     r"gana \d* ?entradas|gana entradas|sorteamos (un|una|entradas)|"
     r"n[uú]mero premiado|boleto premiado|billete premiado",
@@ -122,6 +126,10 @@ def _should_skip_article(article: dict) -> bool:
 
     # Global: sorteos/regalos, donaciones benéficas, patrocinios
     if _GIVEAWAY_RE.search(title_raw) or _CHARITY_RE.search(title_raw) or _SPONSOR_RE.search(title_raw):
+        return True
+
+    # Global: listicle SEO/afiliado ("análisis y comparativa de los mejores productos...")
+    if _AFFILIATE_RE.search(title_raw):
         return True
 
     # Club sources: commercial title keywords
