@@ -1,0 +1,5 @@
+# URLs que no deben aparecer en las tarjetas de la portada (siguen en su sección)
+# Una URL por línea. Las líneas que empiezan con # son comentarios.
+https://zprp.pl/archiwa/282907
+https://zprp.pl/archiwa/282904
+https://berabera.com/es/secciones/balonmano/noticias/14173-jubenilen-garaipena-eta-senior-mutilen-berdinketak

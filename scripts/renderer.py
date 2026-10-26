@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 
 TEMPLATES_DIR = Path(__file__).resolve().parent.parent / "templates"
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "docs"
+HOME_EXCLUDE_PATH = Path(__file__).resolve().parent.parent / "config" / "home_exclude.txt"
 BASE_URL = "https://handbolnoticias.com"
 
 SECTION_DESCRIPTIONS = {
@@ -366,6 +367,17 @@ def _render_sitemap(slugs):
     return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(urls) + '\n</urlset>\n'
 
 
+def _load_home_exclude() -> set:
+    if not HOME_EXCLUDE_PATH.exists():
+        return set()
+    urls = set()
+    for line in HOME_EXCLUDE_PATH.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            urls.add(line.rstrip("/"))
+    return urls
+
+
 def render_all(conn):
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
@@ -391,8 +403,15 @@ def render_all(conn):
         updated_at=updated_at,
     )
 
+    home_exclude = _load_home_exclude()
+    home_sections_data = {
+        slug: {**data, "articles": [a for a in data["articles"]
+                                    if (a["url"] or "").rstrip("/") not in home_exclude]}
+        for slug, data in sections_data.items()
+    }
+
     tmpl = env.get_template("index.html")
-    html = tmpl.render(**base_ctx, sections_data=sections_data)
+    html = tmpl.render(**base_ctx, sections_data=home_sections_data)
     (OUTPUT_DIR / "index.html").write_text(html, encoding="utf-8")
     logger.info("Rendered index.html")
 

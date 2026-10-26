@@ -63,3 +63,12 @@ def test_render_creates_empty_section_page(conn_with_data, tmp_path):
     render_all(conn_with_data)
     section_page = tmp_path / "docs" / "germany" / "index.html"
     assert section_page.exists()
+
+
+def test_home_exclude_hides_article_only_from_index(conn_with_data, tmp_path, monkeypatch):
+    exclude = tmp_path / "home_exclude.txt"
+    exclude.write_text("# comentario\nhttps://example.com/test/\n", encoding="utf-8")
+    monkeypatch.setattr("renderer.HOME_EXCLUDE_PATH", exclude)
+    render_all(conn_with_data)
+    assert "Noticia de prueba ASOBAL" not in (tmp_path / "docs" / "index.html").read_text()
+    assert "Noticia de prueba ASOBAL" in (tmp_path / "docs" / "spain" / "asobal" / "index.html").read_text()
