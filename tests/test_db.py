@@ -4,7 +4,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 import pytest
+from datetime import datetime, timedelta, timezone
 from db import init_db, insert_article, article_id, get_articles_by_section, get_recent_by_section
+
+# Relative to now: queries only return articles from the last N days.
+_PUBLISHED = (datetime.now(timezone.utc) - timedelta(days=1)).isoformat()
+_FETCHED = (datetime.now(timezone.utc) - timedelta(hours=22)).isoformat()
 
 
 @pytest.fixture
@@ -26,8 +31,8 @@ def sample_article(url="https://example.com/1", section="spain/asobal", extra_se
         "source_name": "test.es",
         "section": section,
         "extra_sections": extra_sections,
-        "published": "2026-05-26T10:00:00+00:00",
-        "fetched_at": "2026-05-26T12:00:00+00:00",
+        "published": _PUBLISHED,
+        "fetched_at": _FETCHED,
         "is_manual": 0,
     }
 

@@ -3,8 +3,13 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 import pytest
+from datetime import datetime, timedelta, timezone
 from db import init_db, get_connection, insert_article, article_id
 from renderer import render_all
+
+# Relative to now: queries only return articles from the last N days.
+_PUBLISHED = (datetime.now(timezone.utc) - timedelta(days=1)).isoformat()
+_FETCHED = (datetime.now(timezone.utc) - timedelta(hours=22)).isoformat()
 
 
 @pytest.fixture
@@ -28,8 +33,8 @@ def conn_with_data(tmp_path, monkeypatch):
         None,
         "test.es",
         "spain/asobal",
-        "2026-05-26T10:00:00+00:00",
-        "2026-05-26T12:00:00+00:00",
+        _PUBLISHED,
+        _FETCHED,
         0,
     ))
     conn.commit()
