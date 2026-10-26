@@ -12,7 +12,7 @@ from classifier import classify
 from db import get_connection, init_db, insert_article, is_title_duplicate, article_exists
 from fetcher import fetch_all, load_sources, _parse_date_text, _now, HEADERS, TIMEOUT
 from renderer import render_all
-from translator import translate_article
+from translator import translate_article, retranslate_pending
 from podcasts import main as render_podcasts
 from results import main as render_results
 from audit_articles import GARBAGE_RE
@@ -282,6 +282,7 @@ def main():
     logger.info("Artículos nuevos insertados: %d", new_count)
 
     _fix_detail_dates(conn)
+    retranslate_pending(conn)
     render_all(conn)
     conn.close()
     render_podcasts()

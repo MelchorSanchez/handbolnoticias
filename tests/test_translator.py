@@ -5,7 +5,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 import pytest
 from unittest.mock import patch
 from db import init_db, get_connection
-from translator import translate_text, translate_article
+from translator import translate_text, translate_article, retranslate_pending
 
 
 @pytest.fixture
@@ -65,3 +65,22 @@ def test_translate_article_updates_title(conn):
         result = translate_article(conn, article)
     assert result["title"] == "El balonmano es genial"
     assert result["title_orig"] == "Handball ist toll"
+
+
+def test_retranslate_pending_updates_untranslated_titles(conn):
+    rows = [
+        ("a1", "Handball ist toll", "germany/bundesliga"),
+        ("a2", "Balonmano en Granollers", "spain/asobal"),
+    ]
+    for id_, title, section in rows:
+        conn.execute(
+            "INSERT INTO articles (id, url, title, title_orig, section, fetched_at, is_manual) "
+            "VALUES (?, ?, ?, ?, ?, '2026-10-01T00:00:00+00:00', 0)",
+            (id_, f"https://example.com/{id_}", title, title, section),
+        )
+    with patch("translator.detect", return_value="de"), \
+         patch("translator._deepl_translate", return_value="El balonmano es genial") as mock_gt:
+        assert retranslate_pending(conn) == 1
+    assert mock_gt.call_count == 1
+    titles = dict(conn.execute("SELECT id, title FROM articles").fetchall())
+    assert titles == {"a1": "El balonmano es genial", "a2": "Balonmano en Granollers"}

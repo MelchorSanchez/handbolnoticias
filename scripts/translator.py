@@ -285,3 +285,31 @@ def translate_article(conn, article):
         translated_summary, _ = translate_text(conn, article["summary"][:300], hint)
         article["summary"] = translated_summary
     return article
+
+
+def retranslate_pending(conn, max_translations=400):
+    """Retry titles stored untranslated (title == title_orig) in non-Spanish sections.
+
+    Covers articles inserted while the translator was down (e.g. the Sept–Oct
+    2026 Google block) or that hit a transient error. Capped per run to spread
+    the DeepL quota; Spanish/English titles are re-checked by langdetect and
+    skipped without an API call.
+    """
+    rows = conn.execute("""
+        SELECT id, title_orig, section FROM articles
+        WHERE title = title_orig
+          AND section NOT LIKE 'spain%' AND section NOT LIKE 'argentina%'
+          AND section <> 'southamerica'
+        ORDER BY fetched_at DESC
+    """).fetchall()
+    translated = 0
+    for row in rows:
+        if translated >= max_translations or time.monotonic() < _circuit_open_until:
+            break
+        title, _ = translate_text(conn, row["title_orig"], _section_lang_hint(row["section"]))
+        if title != row["title_orig"]:
+            conn.execute("UPDATE articles SET title = ? WHERE id = ?", (title, row["id"]))
+            conn.commit()
+            translated += 1
+    logger.info("Títulos pendientes retraducidos: %d", translated)
+    return translated
