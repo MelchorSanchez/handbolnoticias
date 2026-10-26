@@ -31,8 +31,8 @@ def test_english_text_is_not_translated(conn):
 
 def test_french_text_is_translated(conn):
     with patch("translator.detect", return_value="fr"), \
-         patch("translator.GoogleTranslator") as mock_gt:
-        mock_gt.return_value.translate.return_value = "El balonmano es genial"
+         patch("translator._deepl_translate") as mock_gt:
+        mock_gt.return_value = "El balonmano es genial"
         result, lang = translate_text(conn, "Le handball c'est super")
     assert result == "El balonmano es genial"
     assert lang == "fr"
@@ -40,11 +40,11 @@ def test_french_text_is_translated(conn):
 
 def test_translation_is_cached(conn):
     with patch("translator.detect", return_value="de"), \
-         patch("translator.GoogleTranslator") as mock_gt:
-        mock_gt.return_value.translate.return_value = "Balonmano alemán"
+         patch("translator._deepl_translate") as mock_gt:
+        mock_gt.return_value = "Balonmano alemán"
         translate_text(conn, "Handball Deutschland")
         translate_text(conn, "Handball Deutschland")
-        assert mock_gt.return_value.translate.call_count == 1
+        assert mock_gt.call_count == 1
 
 
 def test_empty_text_returns_as_is(conn):
@@ -60,8 +60,8 @@ def test_translate_article_updates_title(conn):
         "summary": "Zusammenfassung",
     }
     with patch("translator.detect", return_value="de"), \
-         patch("translator.GoogleTranslator") as mock_gt:
-        mock_gt.return_value.translate.side_effect = ["El balonmano es genial", "Resumen"]
+         patch("translator._deepl_translate") as mock_gt:
+        mock_gt.side_effect = ["El balonmano es genial", "Resumen"]
         result = translate_article(conn, article)
     assert result["title"] == "El balonmano es genial"
     assert result["title_orig"] == "Handball ist toll"

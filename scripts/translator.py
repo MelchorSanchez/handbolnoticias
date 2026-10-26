@@ -1,30 +1,72 @@
 import hashlib
 import logging
+import os
 import re
 import time
+from pathlib import Path
 
-from deep_translator import GoogleTranslator
+import httpx
 from langdetect import LangDetectException, detect
 
 from audit_articles import GARBAGE_RE
 
 logger = logging.getLogger(__name__)
 
-# Google's free translate endpoint (used via deep_translator) allows ~5 req/s;
-# a full pipeline run can fire off hundreds of translations back to back, which
-# reliably triggers "You made too many requests to the server". That block is
-# not a per-second thing that clears in seconds — it persists (observed for
-# 30+ minutes straight, every single request failing instantly regardless of
-# backoff). So on top of throttling+backoff for isolated blips, trip a circuit
-# breaker once retries are exhausted: stop calling the API entirely for a
-# cooldown period and fail fast (fallback to untranslated text) instead of
-# hammering an endpoint that is already blocking us, which only prolongs it.
-_MIN_INTERVAL = 1.0
+# Translations go through the official DeepL API. The free Google endpoint
+# scraped by deep_translator started redirecting every request to Google's
+# /sorry captcha page in late Sept 2026, so titles stopped being translated.
+# The key comes from the DEEPL_API_KEY env var (GitHub secret in the Action)
+# or, for local runs, from a DEEPL_API_KEY=... line in the repo's .env file.
+_ENV_FILE = Path(__file__).resolve().parent.parent / ".env"
+
+# Throttle to stay well below DeepL's rate limit; back off on 429 and, once
+# retries are exhausted (or the monthly quota is used up, HTTP 456), trip a
+# circuit breaker so the rest of the run fails fast (fallback to untranslated
+# text) instead of hammering the API.
+_MIN_INTERVAL = 0.5
 _last_call_ts = 0.0
 _RATE_LIMIT_RETRIES = 2
 _RATE_LIMIT_BACKOFF = (5, 15)
 _CIRCUIT_COOLDOWN = 120
 _circuit_open_until = 0.0
+_api_key = None
+
+
+class _RateLimited(Exception):
+    pass
+
+
+class _QuotaExceeded(Exception):
+    pass
+
+
+def _get_api_key():
+    global _api_key
+    if _api_key is None:
+        _api_key = os.environ.get("DEEPL_API_KEY", "").strip()
+        if not _api_key and _ENV_FILE.exists():
+            m = re.search(r'^DEEPL_API_KEY=\s*["\']?([^"\'\s]+)', _ENV_FILE.read_text(), re.M)
+            _api_key = m.group(1) if m else ""
+    return _api_key
+
+
+def _deepl_translate(text):
+    key = _get_api_key()
+    if not key:
+        raise RuntimeError("DEEPL_API_KEY no configurada")
+    host = "api-free.deepl.com" if key.endswith(":fx") else "api.deepl.com"
+    resp = httpx.post(
+        f"https://{host}/v2/translate",
+        headers={"Authorization": f"DeepL-Auth-Key {key}"},
+        json={"text": [text], "target_lang": "ES"},
+        timeout=20,
+    )
+    if resp.status_code == 429:
+        raise _RateLimited("DeepL: too many requests (HTTP 429)")
+    if resp.status_code == 456:
+        raise _QuotaExceeded("DeepL: cuota mensual agotada (HTTP 456)")
+    resp.raise_for_status()
+    return resp.json()["translations"][0]["text"]
 
 
 def _throttled_translate(target):
@@ -37,12 +79,15 @@ def _throttled_translate(target):
             time.sleep(wait)
         _last_call_ts = time.monotonic()
         try:
-            result = GoogleTranslator(source="auto", target="es").translate(target)
+            result = _deepl_translate(target)
             _circuit_open_until = 0.0
             return result
-        except Exception as exc:
-            if "too many requests" not in str(exc).lower():
-                raise
+        except _QuotaExceeded:
+            # Won't recover until next month: stop translating for this run.
+            _circuit_open_until = float("inf")
+            logger.error("Cuota de DeepL agotada, se desactiva el traductor en esta ejecución")
+            raise
+        except _RateLimited:
             if attempt == _RATE_LIMIT_RETRIES:
                 _circuit_open_until = time.monotonic() + _CIRCUIT_COOLDOWN
                 logger.error("Rate limit persistente, pausando el traductor %ds", _CIRCUIT_COOLDOWN)

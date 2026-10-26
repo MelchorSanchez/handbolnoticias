@@ -31,6 +31,8 @@ jobs:
 
       - name: Ejecutar pipeline
         timeout-minutes: 70
+        env:
+          DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
         run: python scripts/run_all.py
 
       - name: Commit y push si hay cambios
