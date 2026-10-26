@@ -5,4 +5,3 @@ __pycache__/
 .env
 data/articles.db
 data/errors.log
-data/instagram_sessions/
