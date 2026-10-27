@@ -151,6 +151,27 @@ def _cathandbol_section(url):
             return section
     return None
 
+# balonmano.info only covers women's handball, and its URL slugs name the exact
+# competition ("jornada-5-dho-resultados", "...-division-honor-oro", "...-liga-
+# guerreras-..."). Team-name matching alone misses DHO roundups that only cite
+# club nicknames, and drags in the men's first team of clubs with the same bare
+# name (spain/asobal, spain/primera-nacional-masc).
+_BALONMANOINFO_URL_RULES = [
+    (re.compile(r'(?:^|[/-])dho(?:[/-]|$)|division-honor-oro'), "spain/dho-fem"),
+    (re.compile(r'(?:^|[/-])dhp(?:[/-]|$)|division-honor-plata'), "spain/dhp-fem"),
+    (re.compile(r'liga-guerreras'), "spain/guerreras"),
+]
+
+
+def _balonmanoinfo_section(url):
+    """Return section from balonmano.info URL slug, or None."""
+    if "balonmano.info" not in url:
+        return None
+    for pattern, section in _BALONMANOINFO_URL_RULES:
+        if pattern.search(url):
+            return section
+    return None
+
 _EUROPE_CLUB = frozenset({
     "europe/champions", "europe/champions-women",
     "europe/european-league", "europe/european-league-women",
@@ -672,7 +693,7 @@ def classify(article):
 
     source_name = article.get("source_name", "")
     url = article.get("url", "")
-    url_sec = _handnews_section(url) or _cathandbol_section(url)
+    url_sec = _handnews_section(url) or _cathandbol_section(url) or _balonmanoinfo_section(url)
     keyword_sections = [url_sec] if url_sec else []
     for rule in rules:
         if _matches_rule(rule, text, tags, source_name):
@@ -757,7 +778,7 @@ def classify(article):
     if territorial_team_only and not non_territorial_spanish and "ihf/other" not in kw_set:
         sections = [sec for sec in sections if sec not in territorial_team_only]
 
-    # cathandbol.cat's own women's-division URL path is authoritative — drop any other
+    # cathandbol.cat's / balonmano.info's own URL path is authoritative — drop any other
     # _SPAIN_NATIONAL section that only came from team-name matching (e.g. the men's
     # first team of the same club bare-matching into a different domestic group).
     if url_sec in _SPAIN_NATIONAL:
