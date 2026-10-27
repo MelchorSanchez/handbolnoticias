@@ -6,6 +6,7 @@ import time
 from pathlib import Path
 
 import httpx
+import yaml
 from langdetect import LangDetectException, detect
 
 from audit_articles import GARBAGE_RE
@@ -66,7 +67,8 @@ def _deepl_translate(text):
     if resp.status_code == 456:
         raise _QuotaExceeded("DeepL: cuota mensual agotada (HTTP 456)")
     resp.raise_for_status()
-    return resp.json()["translations"][0]["text"]
+    result = resp.json()["translations"][0]
+    return result["text"], result.get("detected_source_language", "").lower()
 
 
 def _throttled_translate(target):
@@ -180,6 +182,30 @@ def _section_lang_hint(section):
         return None
     return _SECTION_LANG.get(section.split("/")[0])
 
+
+# Language of each source, taken from the section it is configured with in
+# sources.yaml. Better than the article's own section: a French site writing
+# about the Champions League is stored under "europe/champions", which has no
+# language, but its source is still configured as "france".
+_SOURCES_FILE = Path(__file__).resolve().parent.parent / "config" / "sources.yaml"
+_source_langs = None
+
+
+def _source_lang_hint(source_name):
+    global _source_langs
+    if _source_langs is None:
+        try:
+            sources = yaml.safe_load(_SOURCES_FILE.read_text())["sources"]
+            _source_langs = {s["name"]: _section_lang_hint(s.get("section")) for s in sources}
+        except Exception as exc:
+            logger.error("No se pudo leer sources.yaml para el idioma de las fuentes: %s", exc)
+            _source_langs = {}
+    return _source_langs.get(source_name)
+
+
+def _lang_hint(source_name, section):
+    return _source_lang_hint(source_name) or _section_lang_hint(section)
+
 # Known section/column names that are proper nouns and should not be translated.
 # These appear as prefixes in article titles from certain sources.
 _PRESERVE_PREFIXES = [
@@ -239,25 +265,24 @@ def translate_text(conn, text, source_lang_hint=None):
 
     prefix_es, core = _preprocess(text)
 
-    detect_text = core if (prefix_es and core) else text
-    try:
-        lang = detect(detect_text)
-    except LangDetectException:
-        return text, None
+    untranslated = (prefix_es + core) if prefix_es else text
 
-    # langdetect is unreliable on short headlines: it often misreads a
-    # foreign-language title as "es"/"en". If the source's known language
-    # disagrees, don't trust the "es"/"en" verdict — attempt translation.
-    trust_detection = not (
-        lang in ("es", "en")
-        and source_lang_hint
-        and source_lang_hint not in ("es", "en")
-    )
-
-    if lang in ("es", "en") and trust_detection:
-        if prefix_es:
-            return prefix_es + core, lang
-        return text, lang
+    # Everything that isn't Spanish gets translated, English included.
+    # langdetect is unreliable on short headlines (it reads Polish or French
+    # titles as "en"/"es"), so it is skipped when the source's language is
+    # known; otherwise it only decides which titles are clearly Spanish and
+    # need no API call. DeepL reports the language it detected, so a Spanish
+    # title that langdetect misread is kept as is.
+    if source_lang_hint and source_lang_hint != "es":
+        lang = source_lang_hint
+    else:
+        detect_text = core if (prefix_es and core) else text
+        try:
+            lang = detect(detect_text)
+        except LangDetectException:
+            return text, None
+        if lang == "es":
+            return untranslated, lang
 
     cached = _get_cached(conn, text)
     if cached:
@@ -265,7 +290,10 @@ def translate_text(conn, text, source_lang_hint=None):
 
     translate_target = core if prefix_es else text
     try:
-        translated = _throttled_translate(translate_target)
+        translated, detected = _throttled_translate(translate_target)
+        if detected == "es":
+            _cache(conn, text, untranslated, "es")
+            return untranslated, "es"
         if not translated or GARBAGE_RE.search(translated):
             logger.error("Translator devolvió una página de error, se descarta: %r", translate_target[:80])
             return text, lang
@@ -278,7 +306,7 @@ def translate_text(conn, text, source_lang_hint=None):
 
 
 def translate_article(conn, article):
-    hint = _section_lang_hint(article.get("section"))
+    hint = _lang_hint(article.get("source_name"), article.get("section"))
     translated_title, _ = translate_text(conn, article["title_orig"], hint)
     article["title"] = translated_title
     if article.get("summary"):
@@ -292,11 +320,11 @@ def retranslate_pending(conn, max_translations=400):
 
     Covers articles inserted while the translator was down (e.g. the Sept–Oct
     2026 Google block) or that hit a transient error. Capped per run to spread
-    the DeepL quota; Spanish/English titles are re-checked by langdetect and
-    skipped without an API call.
+    the DeepL quota; titles langdetect reads as Spanish are skipped without an
+    API call, and those DeepL found to be Spanish are cached as such.
     """
     rows = conn.execute("""
-        SELECT id, title_orig, section FROM articles
+        SELECT id, title_orig, section, source_name FROM articles
         WHERE title = title_orig
           AND section NOT LIKE 'spain%' AND section NOT LIKE 'argentina%'
           AND section <> 'southamerica'
@@ -306,7 +334,8 @@ def retranslate_pending(conn, max_translations=400):
     for row in rows:
         if translated >= max_translations or time.monotonic() < _circuit_open_until:
             break
-        title, _ = translate_text(conn, row["title_orig"], _section_lang_hint(row["section"]))
+        title, _ = translate_text(conn, row["title_orig"],
+                                  _lang_hint(row["source_name"], row["section"]))
         if title != row["title_orig"]:
             conn.execute("UPDATE articles SET title = ? WHERE id = ?", (title, row["id"]))
             conn.commit()

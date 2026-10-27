@@ -22,17 +22,44 @@ def test_spanish_text_is_not_translated(conn):
     assert lang == "es"
 
 
-def test_english_text_is_not_translated(conn):
-    with patch("translator.detect", return_value="en"):
+def test_english_text_is_translated(conn):
+    with patch("translator.detect", return_value="en"), \
+         patch("translator._deepl_translate", return_value=("El balonmano es genial", "en")):
         result, lang = translate_text(conn, "Handball is great")
-    assert result == "Handball is great"
+    assert result == "El balonmano es genial"
     assert lang == "en"
+
+
+def test_source_hint_skips_langdetect(conn):
+    # langdetect reads this short Polish headline as English
+    with patch("translator.detect") as mock_detect, \
+         patch("translator._deepl_translate", return_value=("El jueves arranca la Champions", "pl")):
+        result, lang = translate_text(conn, "W czwartek startuje EHF Champions Cup", "pl")
+    assert result == "El jueves arranca la Champions"
+    assert lang == "pl"
+    mock_detect.assert_not_called()
+
+
+def test_spanish_detected_by_deepl_is_kept_and_cached(conn):
+    with patch("translator.detect", return_value="pt"), \
+         patch("translator._deepl_translate", return_value=("Ortega, sin confianzas", "es")) as mock_gt:
+        assert translate_text(conn, "Ortega, sin confianzas")[0] == "Ortega, sin confianzas"
+        assert translate_text(conn, "Ortega, sin confianzas")[0] == "Ortega, sin confianzas"
+    assert mock_gt.call_count == 1
+
+
+def test_source_lang_hint_from_sources_yaml():
+    from translator import _lang_hint
+    assert _lang_hint("Handnews-fr", "europe/champions") == "fr"
+    assert _lang_hint("ZPRP-Poland", "europe/other") == "pl"
+    assert _lang_hint("MiBalonmano", "europe/champions") is None
+    assert _lang_hint("Desconocida", "germany/bundesliga") == "de"
 
 
 def test_french_text_is_translated(conn):
     with patch("translator.detect", return_value="fr"), \
          patch("translator._deepl_translate") as mock_gt:
-        mock_gt.return_value = "El balonmano es genial"
+        mock_gt.return_value = ("El balonmano es genial", "fr")
         result, lang = translate_text(conn, "Le handball c'est super")
     assert result == "El balonmano es genial"
     assert lang == "fr"
@@ -41,7 +68,7 @@ def test_french_text_is_translated(conn):
 def test_translation_is_cached(conn):
     with patch("translator.detect", return_value="de"), \
          patch("translator._deepl_translate") as mock_gt:
-        mock_gt.return_value = "Balonmano alemán"
+        mock_gt.return_value = ("Balonmano alemán", "de")
         translate_text(conn, "Handball Deutschland")
         translate_text(conn, "Handball Deutschland")
         assert mock_gt.call_count == 1
@@ -61,7 +88,7 @@ def test_translate_article_updates_title(conn):
     }
     with patch("translator.detect", return_value="de"), \
          patch("translator._deepl_translate") as mock_gt:
-        mock_gt.side_effect = ["El balonmano es genial", "Resumen"]
+        mock_gt.side_effect = [("El balonmano es genial", "de"), ("Resumen", "de")]
         result = translate_article(conn, article)
     assert result["title"] == "El balonmano es genial"
     assert result["title_orig"] == "Handball ist toll"
@@ -79,7 +106,7 @@ def test_retranslate_pending_updates_untranslated_titles(conn):
             (id_, f"https://example.com/{id_}", title, title, section),
         )
     with patch("translator.detect", return_value="de"), \
-         patch("translator._deepl_translate", return_value="El balonmano es genial") as mock_gt:
+         patch("translator._deepl_translate", return_value=("El balonmano es genial", "de")) as mock_gt:
         assert retranslate_pending(conn) == 1
     assert mock_gt.call_count == 1
     titles = dict(conn.execute("SELECT id, title FROM articles").fetchall())
