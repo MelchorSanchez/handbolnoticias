@@ -367,6 +367,14 @@ def _render_sitemap(slugs):
     return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(urls) + '\n</urlset>\n'
 
 
+def _is_home_candidate(article, home_exclude) -> bool:
+    # Las webs oficiales de club (fuentes "*-web") publican sobre todo crónicas de
+    # cantera, patrocinios y promos: siguen en su sección pero no salen en portada.
+    if (article["source_name"] or "").endswith("-web"):
+        return False
+    return (article["url"] or "").rstrip("/") not in home_exclude
+
+
 def _load_home_exclude() -> set:
     if not HOME_EXCLUDE_PATH.exists():
         return set()
@@ -406,7 +414,7 @@ def render_all(conn):
     home_exclude = _load_home_exclude()
     home_sections_data = {
         slug: {**data, "articles": [a for a in data["articles"]
-                                    if (a["url"] or "").rstrip("/") not in home_exclude]}
+                                    if _is_home_candidate(a, home_exclude)]}
         for slug, data in sections_data.items()
     }
 

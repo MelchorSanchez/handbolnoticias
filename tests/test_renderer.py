@@ -72,3 +72,11 @@ def test_home_exclude_hides_article_only_from_index(conn_with_data, tmp_path, mo
     render_all(conn_with_data)
     assert "Noticia de prueba ASOBAL" not in (tmp_path / "docs" / "index.html").read_text()
     assert "Noticia de prueba ASOBAL" in (tmp_path / "docs" / "spain" / "asobal" / "index.html").read_text()
+
+
+def test_club_web_sources_hidden_only_from_index(conn_with_data, tmp_path):
+    conn_with_data.execute("UPDATE articles SET source_name = 'RheinNeckar-web' WHERE title = 'Noticia de prueba ASOBAL'")
+    conn_with_data.commit()
+    render_all(conn_with_data)
+    assert "Noticia de prueba ASOBAL" not in (tmp_path / "docs" / "index.html").read_text()
+    assert "Noticia de prueba ASOBAL" in (tmp_path / "docs" / "spain" / "asobal" / "index.html").read_text()
