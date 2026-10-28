@@ -7,6 +7,14 @@ from unittest.mock import patch, MagicMock
 from fetcher import fetch_rss, extract_image
 
 
+@pytest.fixture
+def mock_http():
+    with patch("fetcher.httpx.get") as mock_get:
+        mock_get.return_value.content = b"<rss/>"
+        mock_get.return_value.is_error = False
+        yield mock_get
+
+
 RSS_SOURCE = {
     "name": "Test Feed",
     "section": "spain/asobal",
@@ -26,7 +34,7 @@ MOCK_ENTRY.enclosures = []
 MOCK_ENTRY.media_content = []
 
 
-def test_fetch_rss_returns_articles():
+def test_fetch_rss_returns_articles(mock_http):
     mock_feed = MagicMock()
     mock_feed.entries = [MOCK_ENTRY]
     with patch("fetcher.feedparser.parse", return_value=mock_feed):
@@ -39,7 +47,7 @@ def test_fetch_rss_returns_articles():
     assert articles[0]["is_manual"] == 0
 
 
-def test_fetch_rss_skips_entry_without_link():
+def test_fetch_rss_skips_entry_without_link(mock_http):
     no_link = MagicMock()
     no_link.get.side_effect = lambda k, d="": {"link": "", "title": "X", "summary": "", "published": ""}.get(k, d)
     no_link.enclosures = []
@@ -51,13 +59,20 @@ def test_fetch_rss_skips_entry_without_link():
     assert articles == []
 
 
-def test_fetch_rss_returns_empty_on_error():
+def test_fetch_rss_returns_empty_on_error(mock_http):
     with patch("fetcher.feedparser.parse", side_effect=Exception("Network error")):
         articles = fetch_rss(RSS_SOURCE)
     assert articles == []
 
 
-def test_fetch_rss_respects_max_items():
+def test_fetch_rss_uses_timeout_and_survives_it(mock_http):
+    import httpx
+    mock_http.side_effect = httpx.ReadTimeout("timed out")
+    assert fetch_rss(RSS_SOURCE) == []
+    assert mock_http.call_args.kwargs["timeout"]
+
+
+def test_fetch_rss_respects_max_items(mock_http):
     mock_feed = MagicMock()
     mock_feed.entries = [MOCK_ENTRY] * 20
     source = {**RSS_SOURCE, "max_items": 5}
@@ -143,6 +158,9 @@ def test_fetch_all_combines_rss_and_scrape():
          respx.mock:
         respx.get("https://scrape.example.com/news").mock(
             return_value=_httpx.Response(200, text=SAMPLE_HTML)
+        )
+        respx.get("https://rss.example.com/feed/").mock(
+            return_value=_httpx.Response(200, text="<rss/>")
         )
         from fetcher import fetch_all
         articles = fetch_all(sources)

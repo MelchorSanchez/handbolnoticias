@@ -170,9 +170,26 @@ def _passes_filter(source: dict, title: str, summary: str, url: str = "") -> boo
     return has_sport and has_team
 
 
+RSS_TIMEOUT = 30.0
+_FEEDPARSER_HEADERS = {"User-Agent": feedparser.USER_AGENT}
+
+
+def _download_feed(url: str) -> bytes:
+    """Download a feed with a timeout: feedparser.parse(url) has none, and a feed
+    server that accepted the connection but never answered hung the whole Action
+    until its 70-minute limit (2026-10-28). The browser User-Agent gets past the
+    WAF of several Prensa Ibérica / Vocento feeds that reject feedparser's, while
+    a few sites (teamesbjerg.dk) only accept feedparser's, so fall back to it."""
+    resp = httpx.get(url, headers=HEADERS, timeout=RSS_TIMEOUT, follow_redirects=True)
+    if resp.is_error:
+        resp = httpx.get(url, headers=_FEEDPARSER_HEADERS, timeout=RSS_TIMEOUT, follow_redirects=True)
+    resp.raise_for_status()
+    return resp.content
+
+
 def fetch_rss(source: dict) -> list:
     try:
-        feed = feedparser.parse(source["url"])
+        feed = feedparser.parse(_download_feed(source["url"]))
         articles = []
         for entry in feed.entries[: source.get("max_items", 50)]:
             url = entry.get("link", "")
