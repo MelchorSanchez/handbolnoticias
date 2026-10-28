@@ -167,3 +167,39 @@ def test_fetch_all_combines_rss_and_scrape():
 
     assert any(a["section"] == "spain/asobal" for a in articles)
     assert any(a["section"] == "spain/catalonia" for a in articles)
+
+
+@respx.mock
+def test_fetch_scrape_resolves_relative_links_against_base_href():
+    html = """<html><head><base href="https://example-scrape.com:443/si/"></head><body>
+      <div class="item"><h2><a href="novice/2026/1-gol">Gol</a></h2><img src="img/1.jpg"></div>
+      <a class="card" href="/en/news/2"><h3>Tarjeta que es el enlace</h3></a>
+    </body></html>"""
+    respx.get("https://example-scrape.com/noticias").mock(return_value=_httpx.Response(200, text=html))
+    from fetcher import fetch_scrape
+    source = {**SCRAPE_SOURCE, "selectors": {"articles": "div.item, a.card", "title": "h2, h3",
+                                              "link": "h2 a[href]", "image": "img"}}
+    articles = fetch_scrape(source)
+    assert [a["url"] for a in articles] == ["https://example-scrape.com/si/novice/2026/1-gol",
+                                           "https://example-scrape.com/en/news/2"]
+    assert articles[0]["image_url"] == "https://example-scrape.com/si/img/1.jpg"
+
+
+@respx.mock
+def test_fetch_json_maps_fields():
+    respx.get("https://api.example.com/news").mock(return_value=_httpx.Response(200, json=[
+        {"introTitle": "EHF EURO draw", "url": "/en/news/draw/", "introPreview": "Groups set",
+         "creationDate": "2026-10-28T13:00:00", "introImageUrl2": "/media/x.jpg"},
+        {"introTitle": "", "url": "/en/news/empty/"},
+    ]))
+    from fetcher import fetch_source
+    source = {"name": "EHF", "section": "europe/other", "type": "json",
+              "url": "https://api.example.com/news",
+              "fields": {"title": "introTitle", "link": "url", "summary": "introPreview",
+                         "date": "creationDate", "image": "introImageUrl2"}}
+    articles, stats = fetch_source(source)
+    assert stats["raw"] == 2 and stats["passed"] == 1
+    a = articles[0]
+    assert a["url"] == "https://api.example.com/en/news/draw/"
+    assert a["summary"] == "Groups set" and a["published"].startswith("2026-10-28")
+    assert a["image_url"] == "https://api.example.com/media/x.jpg"

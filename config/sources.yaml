@@ -418,14 +418,11 @@ sources:
 
   - name: EHF-news
     section: europe/other
-    type: scrape
-    url: https://www.eurohandball.com/en/news/
+    # La página de noticias se rellena con JavaScript desde esta API (contentId de /en/news/)
+    type: json
+    url: https://www.eurohandball.com/umbraco/api/newsapi/GetNewsItems?contentId=1090
     max_items: 30
-    selectors:
-      articles: "article, .news-item"
-      title: "h2, h3, .title"
-      link: "a[href]"
-      image: "img"
+    fields: {title: introTitle, link: url, summary: introPreview, date: creationDate, image: introImageUrl2}
 
   # ══════════════════════════════════════════════════════════════════════════
   # INTERNACIONAL — Francia
@@ -433,7 +430,7 @@ sources:
   - name: Handnews-fr
     section: france
     type: rss
-    url: https://www.handnews.fr/feed/
+    url: https://handnews.fr/feed/
     max_items: 20
 
   # ══════════════════════════════════════════════════════════════════════════
@@ -451,14 +448,9 @@ sources:
   # ══════════════════════════════════════════════════════════════════════════
   - name: FPA-Portugal
     section: portugal
-    type: scrape
-    url: https://www.fpa.pt/noticias
+    type: rss
+    url: https://portal.fpa.pt/feed/
     max_items: 20
-    selectors:
-      articles: "article, .noticia"
-      title: "h2, h3"
-      link: "a[href]"
-      image: "img"
 
   - name: Record-pt
     section: portugal
@@ -489,14 +481,9 @@ sources:
   # ══════════════════════════════════════════════════════════════════════════
   - name: NHF-Noruega
     section: norway
-    type: scrape
-    url: https://www.handball.no/nyheter/
+    type: rss
+    url: https://www.handball.no/nyheter/Rss
     max_items: 20
-    selectors:
-      articles: "article"
-      title: "h2, h3"
-      link: "a[href]"
-      image: "img"
 
   - name: NRK-sport
     section: norway
@@ -508,16 +495,6 @@ sources:
   # ══════════════════════════════════════════════════════════════════════════
   # INTERNACIONAL — Dinamarca
   # ══════════════════════════════════════════════════════════════════════════
-  - name: DHF-Dinamarca
-    section: denmark
-    type: scrape
-    url: https://www.dhf.dk/nyheder/
-    max_items: 20
-    selectors:
-      articles: "article, .news"
-      title: "h2, h3"
-      link: "a[href]"
-      image: "img"
 
   # ══════════════════════════════════════════════════════════════════════════
   # INTERNACIONAL — Italia
@@ -553,12 +530,12 @@ sources:
   - name: RZS-Slovenia
     section: slovenia
     type: scrape
-    url: https://www.rokometna-zveza.si/novice/
+    url: https://www.rokometna-zveza.si/si/novice
     max_items: 20
     selectors:
-      articles: "article, .novica"
-      title: "h2, h3"
-      link: "a[href]"
+      articles: "div.news-listing-item"
+      title: "h2"
+      link: "h2 a[href]"
       image: "img"
 
   # ══════════════════════════════════════════════════════════════════════════
@@ -650,7 +627,8 @@ sources:
   - name: FrischAuf-web
     section: germany/bundesliga
     type: rss
-    url: https://www.frisch-auf.de/feed/
+    # frisch-auf.de ya es de otro club; el feed TYPO3 del FRISCH AUF! Göppingen
+    url: https://www.frischauf-gp.de/startseite/?type=9818
     max_items: 10
 
   - name: DHfKLeipzig-web
@@ -736,9 +714,14 @@ sources:
 
   - name: BMCuenca-web
     section: spain/asobal
-    type: rss
-    url: https://www.bmciudadencantada.es/feed/
+    type: scrape
+    url: https://www.bmciudadencantada.es/index.php?sec=noticias
     max_items: 10
+    selectors:
+      articles: "li.blog-list-item"
+      title: "h4"
+      link: "h4 a[href]"
+      image: "img"
 
   - name: BMSinfin-web
     section: spain/asobal
@@ -796,7 +779,7 @@ sources:
   - name: MontpellierHB-web
     section: france/starligue
     type: rss
-    url: https://montpellier-handball.com/feed/
+    url: https://www.montpellierhandball.com/feed/
     max_items: 10
 
   - name: MetzHandball-web
@@ -865,27 +848,10 @@ sources:
     url: https://handballargentina.org/cah/category/noticias/feed/
     max_items: 15
 
-  - name: PanamSports
-    section: ihf/world-women
-    type: rss
-    url: https://www.panamsports.org/feed/
-    max_items: 10
-    filter_keywords: [handball, balonmano, handebol]
-    filter_title_only: true
 
   # ══════════════════════════════════════════════════════════════════════════
   # INTERNACIONAL — Brasil
   # ══════════════════════════════════════════════════════════════════════════
-  - name: CBHB-Brazil
-    section: brazil
-    type: scrape
-    url: https://www.cbhb.org.br/noticias/
-    max_items: 10
-    selectors:
-      articles: "article, .post, .noticia, .card"
-      title: "h2, h3, h4"
-      link: "a[href]"
-      image: "img"
 
   - name: HCEivissa-web
     section: spain/dhp

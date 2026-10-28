@@ -3,7 +3,7 @@ import logging
 import re
 import time
 from datetime import datetime, timezone
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 import feedparser
 import httpx
@@ -241,31 +241,39 @@ def _date_from_url(url: str):
     return None
 
 
+def _drop_default_port(url: str) -> str:
+    """https://site:443/x -> https://site/x (some <base href> carry the port)."""
+    return re.sub(r'^(https://[^/:]+):443(?=/|$)|^(http://[^/:]+):80(?=/|$)',
+                  lambda m: m.group(1) or m.group(2), url)
+
+
 def _fetch_scrape(source: dict) -> tuple:
     resp = httpx.get(source["url"], headers=HEADERS, timeout=TIMEOUT, follow_redirects=True)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "lxml")
     sel = source["selectors"]
-    base = urlparse(source["url"])
+    # Relative links ("novice/2026/...") resolve against <base href> if the page sets one
+    base_tag = soup.find("base", href=True)
+    base_url = urljoin(str(resp.url), base_tag["href"]) if base_tag else str(resp.url)
     articles = []
     items = soup.select(sel["articles"])
     for item in items[: source.get("max_items", 30)]:
         title_el = item.select_one(sel["title"])
-        link_el = item.select_one(sel["link"])
+        # The article card may itself be the link (<a class="teaser-card">...</a>)
+        link_el = item.select_one(sel["link"]) or (item if item.name == "a" and item.get("href") else None)
         if not title_el or not link_el:
             continue
         href = link_el.get("href", "")
-        if href.startswith("/"):
-            href = f"{base.scheme}://{base.netloc}{href}"
         if not href:
             continue
+        href = _drop_default_port(urljoin(base_url, href))
         title_text = _clean_cdata(title_el.get_text().strip())
         if not _passes_filter(source, title_text, "", href):
             continue
         img_el = item.select_one(sel.get("image", "img"))
         image_url = img_el.get("src") if img_el else None
-        if image_url and image_url.startswith("/"):
-            image_url = f"{base.scheme}://{base.netloc}{image_url}"
+        if image_url:
+            image_url = _drop_default_port(urljoin(base_url, image_url))
         date_sel = sel.get("date", "")
         date_el = item.select_one(date_sel) if date_sel else None
         if date_el:
@@ -283,6 +291,42 @@ def _fetch_scrape(source: dict) -> tuple:
             "source_name": source["name"],
             "section": source["section"],
             "published": published,
+            "fetched_at": _now(),
+            "is_manual": 0,
+        })
+    return len(items), articles
+
+
+def _fetch_json(source: dict) -> tuple:
+    """Fetch a JSON news API that returns a list of items. `fields` in sources.yaml
+    maps title/link/summary/date/image to the API's keys (e.g. EHF's GetNewsItems)."""
+    resp = httpx.get(source["url"], headers={**HEADERS, "Accept": "application/json"},
+                     timeout=TIMEOUT, follow_redirects=True)
+    resp.raise_for_status()
+    items = resp.json()
+    fields = source["fields"]
+    articles = []
+    for item in items[: source.get("max_items", 30)]:
+        title = (item.get(fields["title"]) or "").strip()
+        href = item.get(fields["link"]) or ""
+        if not title or not href:
+            continue
+        url = urljoin(source["url"], href)
+        summary = (item.get(fields.get("summary", "")) or "")[:500]
+        if not _passes_filter(source, title, summary, url):
+            continue
+        image = item.get(fields.get("image", ""))
+        date = item.get(fields.get("date", ""))
+        articles.append({
+            "id": _article_id(url),
+            "url": url,
+            "title": title,
+            "title_orig": title,
+            "summary": summary,
+            "image_url": urljoin(source["url"], image) if image else None,
+            "source_name": source["name"],
+            "section": source["section"],
+            "published": _parse_date_text(date) if date else _now(),
             "fetched_at": _now(),
             "is_manual": 0,
         })
@@ -387,7 +431,7 @@ def fetch_manual_links() -> list:
 
 
 _FETCHERS = {"rss": (_fetch_rss, "RSS"), "scrape": (_fetch_scrape, "Scrape"),
-             "nextjs": (_fetch_nextjs, "Next.js scrape")}
+             "nextjs": (_fetch_nextjs, "Next.js scrape"), "json": (_fetch_json, "JSON")}
 
 
 def fetch_source(source: dict, kind: str = None) -> tuple:
