@@ -203,3 +203,11 @@ def test_fetch_json_maps_fields():
     assert a["url"] == "https://api.example.com/en/news/draw/"
     assert a["summary"] == "Groups set" and a["published"].startswith("2026-10-28")
     assert a["image_url"] == "https://api.example.com/media/x.jpg"
+
+
+def test_team_keyword_passes_only_with_sport_context():
+    from fetcher import _passes_filter
+    src = {"filter_keywords": ["balonmano"], "team_keywords": ["zarautz"], "filter_title_only": True}
+    assert _passes_filter(src, "Duro examen copero para el Amenabar Zarautz", "Crónica de balonmano")
+    assert _passes_filter(src, "Duro examen para el Zarautz", "", "https://x.es/deportes/balonmano/1")
+    assert not _passes_filter(src, "Fiestas de Zarautz", "Programa de las fiestas")

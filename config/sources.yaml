@@ -130,11 +130,8 @@ sources:
   - name: DiarioNavarra-dep
     section: spain/navarra
     type: rss
-    url: https://www.diariodenavarra.es/rss/deportes.xml
+    url: https://www.diariodenavarra.es/rss/deportes/balonmano.xml
     max_items: 30
-    filter_keywords: [balonmano, handball, handbol, eskubaloia]
-    team_keywords: [anaitasuna, beti onak, oberena, txantrea, ardoi, burlada, tafalla, noain, uharte, ultzama]
-    filter_title_only: true
 
   - name: DiarioVasco-dep
     section: spain/euskadi
@@ -205,12 +202,6 @@ sources:
     url: https://www.elnortedecastilla.es/rss/2.0/?section=deportes/balonmano
     max_items: 20
     filter_keywords: [balonmano, handball]
-
-  - name: BurgosConecta-dep
-    section: spain
-    type: rss
-    url: https://www.burgosconecta.es/rss/2.0/?section=deportes/balonmano
-    max_items: 15
 
   - name: DiarioLeon-dep
     section: spain
@@ -363,13 +354,6 @@ sources:
       link: "a[href]"
       image: "img"
 
-  - name: DeporteCienPorcien
-    section: spain
-    type: rss
-    url: https://deportecienporcien.com/feed/
-    max_items: 30
-    filter_keywords: [balonmano, handball, handbol, guerreras, asobal, selección, seleccion]
-
   # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Balonmano masculino especializado
   # ══════════════════════════════════════════════════════════════════════════
@@ -384,12 +368,6 @@ sources:
       link: "a[href]"
       image: "img"
       date: "span.span-date"
-
-  - name: BalonmanoActual
-    section: spain
-    type: rss
-    url: https://balonmanoactual.com/feed/
-    max_items: 30
 
   # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Balonmano Cataluña
@@ -499,12 +477,6 @@ sources:
   # ══════════════════════════════════════════════════════════════════════════
   # INTERNACIONAL — Italia
   # ══════════════════════════════════════════════════════════════════════════
-  - name: Gazzetta-sport
-    section: italy
-    type: rss
-    url: https://www.gazzetta.it/rss/altri-sport.xml
-    max_items: 30
-    filter_keywords: [pallamano, handball]
 
   - name: Corriere-sport
     section: italy
@@ -518,14 +490,9 @@ sources:
   # ══════════════════════════════════════════════════════════════════════════
   - name: HRS-Croatia
     section: croatia
-    type: scrape
-    url: https://www.hrs.hr/novosti/
+    type: rss
+    url: https://hrs.hr/feed/
     max_items: 20
-    selectors:
-      articles: "article"
-      title: "h2, h3"
-      link: "a[href]"
-      image: "img"
 
   - name: RZS-Slovenia
     section: slovenia
@@ -541,17 +508,6 @@ sources:
   # ══════════════════════════════════════════════════════════════════════════
   # CLUBES ESPAÑOLES — Sitios web oficiales
   # ══════════════════════════════════════════════════════════════════════════
-  - name: Guardes-web
-    section: spain/guerreras
-    type: scrape
-    url: https://balonmanatleticoguardes.com/category/noticias/
-    max_items: 10
-    selectors:
-      articles: ".post"
-      title: "h2, h3"
-      link: "a[href]"
-      image: "img"
-      date: "time[datetime]"
 
   - name: CostaSolMalaga-web
     section: spain/guerreras
@@ -595,7 +551,8 @@ sources:
   - name: Magdeburg-web
     section: germany/bundesliga
     type: rss
-    url: https://sc-magdeburg.de/feed/
+    # sc-magdeburg.de es un WordPress vacío; la web del equipo de balonmano es scm-handball.de
+    url: https://www.scm-handball.de/feed/
     max_items: 10
 
   - name: Flensburg-web
@@ -608,7 +565,8 @@ sources:
   - name: HSVHamburg-web
     section: germany/bundesliga
     type: rss
-    url: https://www.hsv-handball.de/feed/
+    # hsv-handball.de solo publica cantera; el primer equipo (HCH) está en hamburg-handball.de
+    url: https://hamburg-handball.de/feed/
     max_items: 10
 
   - name: Gummersbach-web
@@ -830,8 +788,6 @@ sources:
     url: https://www.gog.dk/feed/
     max_items: 10
 
-
-
   # ══════════════════════════════════════════════════════════════════════════
   # INTERNACIONAL — Argentina / Sudamérica
   # ══════════════════════════════════════════════════════════════════════════
@@ -847,7 +803,6 @@ sources:
     type: rss
     url: https://handballargentina.org/cah/category/noticias/feed/
     max_items: 15
-
 
   # ══════════════════════════════════════════════════════════════════════════
   # INTERNACIONAL — Brasil
@@ -933,10 +888,11 @@ sources:
   - name: PlzenskyDenik-Hazena
     section: czech-republic
     type: scrape
-    url: https://plzensky.denik.cz/hazena/
+    # /hazena/ redirige a "otros deportes": balonmano solo por la URL del artículo
+    url: https://plzensky.denik.cz/ostatni-sporty/
     max_items: 15
     min_title_length: 15
-    include_url_patterns: ["/hazena/"]
+    include_url_patterns: ["hazena", "talent-plzen"]
     selectors:
       articles: "article, .article"
       title: "h2, h3, h4"

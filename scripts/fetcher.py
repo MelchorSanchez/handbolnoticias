@@ -166,9 +166,12 @@ def _passes_filter(source: dict, title: str, summary: str, url: str = "") -> boo
         return True
     if not team_keywords:
         return False
-    # team keywords only pass when also a sport term is found
+    # A team name alone ("Gernika", "Zamora" are also cities) passes only when a sport
+    # term backs it up somewhere — summary or URL (/deportes/balonmano/) — even for
+    # filter_title_only sources: e.g. "Duro examen copero para el Amenabar Zarautz".
     has_team = any(kw.lower() in text for kw in team_keywords)
-    return has_sport and has_team
+    context = f"{title} {summary} {url}".lower()
+    return has_team and any(kw.lower() in context for kw in keywords)
 
 
 RSS_TIMEOUT = 30.0
