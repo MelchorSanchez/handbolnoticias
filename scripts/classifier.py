@@ -84,6 +84,11 @@ _TRANSFER_NEG = re.compile(
     re.IGNORECASE,
 )
 
+# A single word in quotes is used figuratively: "El Barça 'ficha' por fin a un
+# jugador..." is a player back from injury, not a signing. Strip such words
+# before looking for transfer keywords.
+_SCARE_QUOTED_WORD = re.compile(r"(?<!\w)['‘\"“«]\w+['’\"”»](?!\w)")
+
 _SPECIFIC_EHF = frozenset({
     "europe/champions", "europe/champions-women",
     "europe/european-league", "europe/european-league-women",
@@ -827,7 +832,8 @@ def classify(article):
 
     # Transfer detection: add fichajes as extra section if title matches
     title = article.get("title_orig") or article.get("title") or ""
-    is_transfer = _TRANSFER_POS.search(title) and not _TRANSFER_NEG.search(title)
+    transfer_title = _SCARE_QUOTED_WORD.sub(" ", title)
+    is_transfer = _TRANSFER_POS.search(transfer_title) and not _TRANSFER_NEG.search(transfer_title)
     # todohandball.com's own URL slug for its transfer-market section is a reliable
     # source-specific signal, for titles ("deja X rumbo a Y") that don't match the
     # generic keyword regex above.
