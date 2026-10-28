@@ -303,17 +303,6 @@ sources:
     filter_title_only: true
 
   # ══════════════════════════════════════════════════════════════════════════
-  # ESPAÑA — Prensa regional: Valencia / Alicante
-  # ══════════════════════════════════════════════════════════════════════════
-  - name: EonAlicante
-    section: spain
-    type: rss
-    url: https://eonalicante.com/feed/
-    max_items: 10
-    filter_keywords: [balonmano, handball]
-    filter_title_only: true
-
-  # ══════════════════════════════════════════════════════════════════════════
   # ESPAÑA — Prensa regional: Asturias / Cantabria
   # ══════════════════════════════════════════════════════════════════════════
   - name: ElComercio-dep
@@ -808,12 +797,6 @@ sources:
     section: france/starligue
     type: rss
     url: https://montpellier-handball.com/feed/
-    max_items: 10
-
-  - name: PSGHandball-web
-    section: france/starligue
-    type: rss
-    url: https://www.psg.fr/handball/feed/
     max_items: 10
 
   - name: MetzHandball-web
