@@ -8,7 +8,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import httpx
 from bs4 import BeautifulSoup
 
-from classifier import classify
+from classifier import resolve_sections
 from db import get_connection, init_db, insert_article, is_title_duplicate, article_exists
 from fetcher import fetch_all, load_sources, _parse_date_text, _now, HEADERS, TIMEOUT
 from renderer import render_all
@@ -223,11 +223,6 @@ def main():
     articles = fetch_all(sources)
     logger.info("Artículos obtenidos: %d", len(articles))
 
-    # Territorial sections are always kept as extra even when article is reclassified
-    _TERRITORIAL = {"spain/catalonia", "spain/navarra", "spain/euskadi"}
-    # IHF source defaults are preserved as extra when classifier finds a more specific section
-    _IHF_PRESERVE = {"ihf/other", "ihf/world-men", "ihf/world-women"}
-
     blacklist = _load_blacklist()
 
     new_count = 0
@@ -243,20 +238,11 @@ def main():
                 skipped_commercial += 1
                 continue
             original_section = article["section"]
-            sections = classify(article)
-            if sections:
-                if original_section not in sections and original_section in _TERRITORIAL:
-                    sections.append(original_section)
-                if original_section not in sections and original_section in _IHF_PRESERVE:
-                    sections.append(original_section)
-                primary = sections[0]
-                extras = "|".join(sections[1:])
-                if primary != original_section:
-                    classified_count += 1
-                article["section"] = primary
-                article["extra_sections"] = extras
-            else:
-                article["extra_sections"] = ""
+            primary, extras = resolve_sections(article)
+            if primary != original_section:
+                classified_count += 1
+            article["section"] = primary
+            article["extra_sections"] = "|".join(extras)
 
             article.pop("_raw_tags", None)
 

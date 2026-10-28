@@ -843,3 +843,23 @@ def classify(article):
             sections.append("fichajes")
 
     return sections
+
+
+# Territorial sections are always kept as extra even when article is reclassified
+_TERRITORIAL_PRESERVE = frozenset({"spain/catalonia", "spain/navarra", "spain/euskadi"})
+# IHF source defaults are preserved as extra when classifier finds a more specific section
+_IHF_PRESERVE = frozenset({"ihf/other", "ihf/world-men", "ihf/world-women"})
+
+
+def resolve_sections(article):
+    """Final (primary, extras) as stored in the DB. `article["section"]` must hold the
+    source's default section; it is kept when classify() finds nothing."""
+    original_section = article["section"]
+    sections = classify(article)
+    if not sections:
+        return original_section, []
+    if original_section not in sections and original_section in _TERRITORIAL_PRESERVE:
+        sections.append(original_section)
+    if original_section not in sections and original_section in _IHF_PRESERVE:
+        sections.append(original_section)
+    return sections[0], sections[1:]
