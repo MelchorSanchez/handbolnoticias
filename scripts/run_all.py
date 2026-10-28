@@ -15,6 +15,7 @@ from renderer import render_all
 from translator import translate_article, retranslate_pending
 from podcasts import main as render_podcasts
 from results import main as render_results
+from source_health import report as report_source_health
 from audit_articles import GARBAGE_RE
 
 logging.basicConfig(
@@ -220,7 +221,8 @@ def main():
     sources = load_sources()
     logger.info("Fuentes cargadas: %d", len(sources))
 
-    articles = fetch_all(sources)
+    health = []
+    articles = fetch_all(sources, health)
     logger.info("Artículos obtenidos: %d", len(articles))
 
     blacklist = _load_blacklist()
@@ -230,6 +232,7 @@ def main():
     dup_count = 0
     skipped_commercial = 0
     error_count = 0
+    new_by_source = {}
     for article in articles:
         try:
             if article.get("url", "").rstrip("/") in blacklist:
@@ -256,6 +259,7 @@ def main():
             article = translate_article(conn, article)
             if insert_article(conn, article):
                 new_count += 1
+                new_by_source[article["source_name"]] = new_by_source.get(article["source_name"], 0) + 1
         except Exception as exc:
             error_count += 1
             logger.error("Fallo procesando artículo %r: %s", article.get("url"), exc)
@@ -266,6 +270,11 @@ def main():
     logger.info("Artículos duplicados omitidos: %d", dup_count)
     logger.info("Artículos con error de procesamiento: %d", error_count)
     logger.info("Artículos nuevos insertados: %d", new_count)
+
+    try:
+        report_source_health(conn, health, new_by_source)
+    except Exception as exc:
+        logger.error("Informe de salud de fuentes falló: %s", exc)
 
     _fix_detail_dates(conn)
     retranslate_pending(conn)

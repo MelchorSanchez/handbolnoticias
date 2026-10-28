@@ -44,6 +44,17 @@ def init_db():
             CREATE TABLE IF NOT EXISTS blocked_articles (
                 url TEXT PRIMARY KEY
             );
+            CREATE TABLE IF NOT EXISTS source_health (
+                source_name  TEXT PRIMARY KEY,
+                last_run_at  TEXT NOT NULL,
+                raw          INTEGER NOT NULL,
+                passed       INTEGER NOT NULL,
+                new          INTEGER NOT NULL,
+                error        TEXT NOT NULL DEFAULT '',
+                seconds      REAL NOT NULL,
+                bad_runs     INTEGER NOT NULL DEFAULT 0,
+                last_good_at TEXT
+            );
             CREATE TABLE IF NOT EXISTS matches (
                 match_id    TEXT PRIMARY KEY,
                 competition TEXT NOT NULL,

@@ -1,6 +1,7 @@
 import hashlib
 import logging
 import re
+import time
 from datetime import datetime, timezone
 from urllib.parse import urlparse
 
@@ -187,38 +188,34 @@ def _download_feed(url: str) -> bytes:
     return resp.content
 
 
-def fetch_rss(source: dict) -> list:
-    try:
-        feed = feedparser.parse(_download_feed(source["url"]))
-        articles = []
-        for entry in feed.entries[: source.get("max_items", 50)]:
-            url = entry.get("link", "")
-            if not url:
-                continue
-            summary_html = entry.get("summary", "") or ""
-            summary_text = BeautifulSoup(summary_html, "lxml").get_text()[:500]
-            title = _clean_cdata(entry.get("title", "").strip())
-            if not _passes_filter(source, title, summary_text, url):
-                continue
-            raw_tags = [t.get("term", "") for t in getattr(entry, "tags", []) if t.get("term")]
-            articles.append({
-                "id": _article_id(url),
-                "url": url,
-                "title": title,
-                "title_orig": title,
-                "summary": summary_text,
-                "image_url": extract_image(entry),
-                "source_name": source["name"],
-                "section": source["section"],
-                "published": _rss_date(entry),
-                "fetched_at": _now(),
-                "is_manual": 0,
-                "_raw_tags": raw_tags,
-            })
-        return articles
-    except Exception as exc:
-        logger.error("RSS error %s: %s", source["name"], exc)
-        return []
+def _fetch_rss(source: dict) -> tuple:
+    feed = feedparser.parse(_download_feed(source["url"]))
+    articles = []
+    for entry in feed.entries[: source.get("max_items", 50)]:
+        url = entry.get("link", "")
+        if not url:
+            continue
+        summary_html = entry.get("summary", "") or ""
+        summary_text = BeautifulSoup(summary_html, "lxml").get_text()[:500]
+        title = _clean_cdata(entry.get("title", "").strip())
+        if not _passes_filter(source, title, summary_text, url):
+            continue
+        raw_tags = [t.get("term", "") for t in getattr(entry, "tags", []) if t.get("term")]
+        articles.append({
+            "id": _article_id(url),
+            "url": url,
+            "title": title,
+            "title_orig": title,
+            "summary": summary_text,
+            "image_url": extract_image(entry),
+            "source_name": source["name"],
+            "section": source["section"],
+            "published": _rss_date(entry),
+            "fetched_at": _now(),
+            "is_manual": 0,
+            "_raw_tags": raw_tags,
+        })
+    return len(feed.entries), articles
 
 
 def _date_from_url(url: str):
@@ -244,55 +241,52 @@ def _date_from_url(url: str):
     return None
 
 
-def fetch_scrape(source: dict) -> list:
-    try:
-        resp = httpx.get(source["url"], headers=HEADERS, timeout=TIMEOUT, follow_redirects=True)
-        resp.raise_for_status()
-        soup = BeautifulSoup(resp.text, "lxml")
-        sel = source["selectors"]
-        base = urlparse(source["url"])
-        articles = []
-        for item in soup.select(sel["articles"])[: source.get("max_items", 30)]:
-            title_el = item.select_one(sel["title"])
-            link_el = item.select_one(sel["link"])
-            if not title_el or not link_el:
-                continue
-            href = link_el.get("href", "")
-            if href.startswith("/"):
-                href = f"{base.scheme}://{base.netloc}{href}"
-            if not href:
-                continue
-            title_text = _clean_cdata(title_el.get_text().strip())
-            if not _passes_filter(source, title_text, "", href):
-                continue
-            img_el = item.select_one(sel.get("image", "img"))
-            image_url = img_el.get("src") if img_el else None
-            if image_url and image_url.startswith("/"):
-                image_url = f"{base.scheme}://{base.netloc}{image_url}"
-            date_sel = sel.get("date", "")
-            date_el = item.select_one(date_sel) if date_sel else None
-            if date_el:
-                dt_attr = date_el.get("datetime", "").strip()
-                published = _parse_date_text(dt_attr) if dt_attr else _parse_date_text(date_el.get_text())
-            else:
-                published = _date_from_url(href) or _now()
-            articles.append({
-                "id": _article_id(href),
-                "url": href,
-                "title": title_text,
-                "title_orig": title_text,
-                "summary": "",
-                "image_url": image_url,
-                "source_name": source["name"],
-                "section": source["section"],
-                "published": published,
-                "fetched_at": _now(),
-                "is_manual": 0,
-            })
-        return articles
-    except Exception as exc:
-        logger.error("Scrape error %s: %s", source["name"], exc)
-        return []
+def _fetch_scrape(source: dict) -> tuple:
+    resp = httpx.get(source["url"], headers=HEADERS, timeout=TIMEOUT, follow_redirects=True)
+    resp.raise_for_status()
+    soup = BeautifulSoup(resp.text, "lxml")
+    sel = source["selectors"]
+    base = urlparse(source["url"])
+    articles = []
+    items = soup.select(sel["articles"])
+    for item in items[: source.get("max_items", 30)]:
+        title_el = item.select_one(sel["title"])
+        link_el = item.select_one(sel["link"])
+        if not title_el or not link_el:
+            continue
+        href = link_el.get("href", "")
+        if href.startswith("/"):
+            href = f"{base.scheme}://{base.netloc}{href}"
+        if not href:
+            continue
+        title_text = _clean_cdata(title_el.get_text().strip())
+        if not _passes_filter(source, title_text, "", href):
+            continue
+        img_el = item.select_one(sel.get("image", "img"))
+        image_url = img_el.get("src") if img_el else None
+        if image_url and image_url.startswith("/"):
+            image_url = f"{base.scheme}://{base.netloc}{image_url}"
+        date_sel = sel.get("date", "")
+        date_el = item.select_one(date_sel) if date_sel else None
+        if date_el:
+            dt_attr = date_el.get("datetime", "").strip()
+            published = _parse_date_text(dt_attr) if dt_attr else _parse_date_text(date_el.get_text())
+        else:
+            published = _date_from_url(href) or _now()
+        articles.append({
+            "id": _article_id(href),
+            "url": href,
+            "title": title_text,
+            "title_orig": title_text,
+            "summary": "",
+            "image_url": image_url,
+            "source_name": source["name"],
+            "section": source["section"],
+            "published": published,
+            "fetched_at": _now(),
+            "is_manual": 0,
+        })
+    return len(items), articles
 
 
 def _find_nextjs_articles(obj, results=None):
@@ -311,64 +305,60 @@ def _find_nextjs_articles(obj, results=None):
     return results
 
 
-def fetch_nextjs(source: dict) -> list:
+def _fetch_nextjs(source: dict) -> tuple:
     """Fetch articles from a Next.js page by extracting __NEXT_DATA__ JSON."""
-    try:
-        resp = httpx.get(source["url"], headers=HEADERS, timeout=TIMEOUT, follow_redirects=True)
-        resp.raise_for_status()
-        soup = BeautifulSoup(resp.text, "lxml")
-        script = soup.find("script", id="__NEXT_DATA__")
-        if not script:
-            logger.warning("No __NEXT_DATA__ found for %s", source["name"])
-            return []
-        import json as _json
-        data = _json.loads(script.string)
-        raw_articles = _find_nextjs_articles(data)
-        seen_ids = set()
-        articles = []
-        base = urlparse(source["url"])
-        base_url = f"{base.scheme}://{base.netloc}"
-        for item in raw_articles:
-            art_id = item.get("id")
-            slug = item.get("slug", "")
-            if not art_id or not slug or art_id in seen_ids:
-                continue
-            seen_ids.add(art_id)
-            section_path = (item.get("mainSection") or {}).get("path", "")
-            url = f"{base_url}/clanek/{section_path}/{slug}-{art_id}" if section_path else f"{base_url}/clanek/{slug}-{art_id}"
-            title_obj = item.get("title", {})
-            title_text = (title_obj.get("main") if isinstance(title_obj, dict) else title_obj) or ""
-            if not _passes_filter(source, title_text, "", url):
-                continue
-            pub = item.get("publication") or {}
-            ts = pub.get("firstPublished") or pub.get("datePublished") or item.get("dateUpdated")
-            if ts:
-                published = datetime.fromtimestamp(ts, tz=timezone.utc).isoformat()
-            else:
-                published = _now()
-            preview_image = item.get("previewImage") or {}
-            image_url = preview_image.get("src") if isinstance(preview_image, dict) else None
-            perex_raw = item.get("perex") or ""
-            perex = perex_raw.get("text", "") if isinstance(perex_raw, dict) else (perex_raw or "")
-            articles.append({
-                "id": _article_id(url),
-                "url": url,
-                "title": title_text,
-                "title_orig": title_text,
-                "summary": perex[:500],
-                "image_url": image_url,
-                "source_name": source["name"],
-                "section": source["section"],
-                "published": published,
-                "fetched_at": _now(),
-                "is_manual": 0,
-            })
-            if len(articles) >= source.get("max_items", 15):
-                break
-        return articles
-    except Exception as exc:
-        logger.error("Next.js scrape error %s: %s", source["name"], exc)
-        return []
+    resp = httpx.get(source["url"], headers=HEADERS, timeout=TIMEOUT, follow_redirects=True)
+    resp.raise_for_status()
+    soup = BeautifulSoup(resp.text, "lxml")
+    script = soup.find("script", id="__NEXT_DATA__")
+    if not script:
+        logger.warning("No __NEXT_DATA__ found for %s", source["name"])
+        return 0, []
+    import json as _json
+    data = _json.loads(script.string)
+    raw_articles = _find_nextjs_articles(data)
+    seen_ids = set()
+    articles = []
+    base = urlparse(source["url"])
+    base_url = f"{base.scheme}://{base.netloc}"
+    for item in raw_articles:
+        art_id = item.get("id")
+        slug = item.get("slug", "")
+        if not art_id or not slug or art_id in seen_ids:
+            continue
+        seen_ids.add(art_id)
+        section_path = (item.get("mainSection") or {}).get("path", "")
+        url = f"{base_url}/clanek/{section_path}/{slug}-{art_id}" if section_path else f"{base_url}/clanek/{slug}-{art_id}"
+        title_obj = item.get("title", {})
+        title_text = (title_obj.get("main") if isinstance(title_obj, dict) else title_obj) or ""
+        if not _passes_filter(source, title_text, "", url):
+            continue
+        pub = item.get("publication") or {}
+        ts = pub.get("firstPublished") or pub.get("datePublished") or item.get("dateUpdated")
+        if ts:
+            published = datetime.fromtimestamp(ts, tz=timezone.utc).isoformat()
+        else:
+            published = _now()
+        preview_image = item.get("previewImage") or {}
+        image_url = preview_image.get("src") if isinstance(preview_image, dict) else None
+        perex_raw = item.get("perex") or ""
+        perex = perex_raw.get("text", "") if isinstance(perex_raw, dict) else (perex_raw or "")
+        articles.append({
+            "id": _article_id(url),
+            "url": url,
+            "title": title_text,
+            "title_orig": title_text,
+            "summary": perex[:500],
+            "image_url": image_url,
+            "source_name": source["name"],
+            "section": source["section"],
+            "published": published,
+            "fetched_at": _now(),
+            "is_manual": 0,
+        })
+        if len(articles) >= source.get("max_items", 15):
+            break
+    return len(raw_articles), articles
 
 
 def fetch_manual_links() -> list:
@@ -396,14 +386,49 @@ def fetch_manual_links() -> list:
     return articles
 
 
-def fetch_all(sources: list) -> list:
+_FETCHERS = {"rss": (_fetch_rss, "RSS"), "scrape": (_fetch_scrape, "Scrape"),
+             "nextjs": (_fetch_nextjs, "Next.js scrape")}
+
+
+def fetch_source(source: dict, kind: str = None) -> tuple:
+    """Fetch one source. Returns (articles, stats); never raises. stats records
+    how many entries the feed/page had (`raw`), how many passed the source filter
+    (`passed`), the error if any and the time taken, for the source health report."""
+    fetch, label = _FETCHERS[kind or source["type"]]
+    start = time.monotonic()
+    raw, articles, error = 0, [], ""
+    try:
+        raw, articles = fetch(source)
+    except Exception as exc:
+        logger.error("%s error %s: %s", label, source["name"], exc)
+        error = f"{type(exc).__name__}: {exc}"[:300]
+    stats = {"name": source["name"], "raw": raw, "passed": len(articles),
+             "error": error, "seconds": round(time.monotonic() - start, 1)}
+    return articles, stats
+
+
+def fetch_rss(source: dict) -> list:
+    return fetch_source(source, "rss")[0]
+
+
+def fetch_scrape(source: dict) -> list:
+    return fetch_source(source, "scrape")[0]
+
+
+def fetch_nextjs(source: dict) -> list:
+    return fetch_source(source, "nextjs")[0]
+
+
+def fetch_all(sources: list, health: list = None) -> list:
+    """Fetch every source. If `health` is given, one stats dict per source is
+    appended to it (see fetch_source)."""
     articles = []
     for source in sources:
-        if source["type"] == "rss":
-            articles.extend(fetch_rss(source))
-        elif source["type"] == "scrape":
-            articles.extend(fetch_scrape(source))
-        elif source["type"] == "nextjs":
-            articles.extend(fetch_nextjs(source))
+        if source["type"] not in _FETCHERS:
+            continue
+        found, stats = fetch_source(source)
+        articles.extend(found)
+        if health is not None:
+            health.append(stats)
     articles.extend(fetch_manual_links())
     return articles
