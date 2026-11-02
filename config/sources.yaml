@@ -708,9 +708,17 @@ sources:
   # ── Clubes Liga Guerreras Iberdrola ──────────────────────────────────────
   - name: BeaBera-web
     section: spain/guerreras
-    type: rss
-    url: https://berabera.com/es/secciones/balonmano/noticias?format=feed
+    # el feed de Joomla (?format=feed) devuelve 404 desde 2026-11-02
+    type: scrape
+    url: https://berabera.com/es/secciones/balonmano/noticias
     max_items: 10
+    selectors:
+      articles: "div.blog-item"
+      # el <a> de la imagen va antes del h2 y no tiene texto, así que el título
+      # se pide explícitamente al h2
+      title: "h2"
+      link: "h2 a[href]"
+      image: "img"
 
   - name: Rocasa-web
     section: spain/guerreras
