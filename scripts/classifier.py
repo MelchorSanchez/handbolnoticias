@@ -84,6 +84,19 @@ _TRANSFER_NEG = re.compile(
     re.IGNORECASE,
 )
 
+# Joining a national team is a call-up, never a transfer: "se incorpora a la
+# convocatoria de los Hispanos", "se une a los 'Hispanos' para el duelo ante
+# Portugal". The weak join verbs in _TRANSFER_POS ("se une a", "se incorpora")
+# match those titles, so call-up vocabulary has to veto them. Checked against the
+# raw title, before scare-quote stripping, because the nickname itself is often
+# quoted ("se une a los 'Hispanos'").
+_CALLUP = re.compile(
+    r'\bconvocatoria\b|\bconvocad[oa]s?\b|\blista de convocados\b|'
+    r'se (?:une|incorpora) a (?:(?:los|las|la)\s+)?[\'‘"“«]?'
+    r'(?:hispanos|guerreras|selecci[oó]n)',
+    re.IGNORECASE,
+)
+
 # A single word in quotes is used figuratively: "El Barça 'ficha' por fin a un
 # jugador..." is a player back from injury, not a signing. Strip such words
 # before looking for transfer keywords.
@@ -833,11 +846,17 @@ def classify(article):
     # Transfer detection: add fichajes as extra section if title matches
     title = article.get("title_orig") or article.get("title") or ""
     transfer_title = _SCARE_QUOTED_WORD.sub(" ", title)
-    is_transfer = _TRANSFER_POS.search(transfer_title) and not _TRANSFER_NEG.search(transfer_title)
+    is_transfer = (_TRANSFER_POS.search(transfer_title)
+                   and not _TRANSFER_NEG.search(transfer_title)
+                   and not _CALLUP.search(title))
     # todohandball.com's own URL slug for its transfer-market section is a reliable
     # source-specific signal, for titles ("deja X rumbo a Y") that don't match the
     # generic keyword regex above.
     is_transfer = is_transfer or "/mercado-de-pases/" in url
+    # ...and its refereeing slug is the reverse signal: "La EHF renueva su estructura
+    # arbitral" matches "renueva" without anyone changing clubs.
+    if "/arbitraje/" in url:
+        is_transfer = False
     if is_transfer:
         if "fichajes" not in sections:
             sections.append("fichajes")
