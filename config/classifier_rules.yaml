@@ -302,6 +302,21 @@ rules:
     exclude: [champions league, european league, european cup, copa europea, ehf cup,
               euro men, euro women, world championship, world cup]
 
+  # Noticias institucionales de la EHF: comités, reglamento, congreso,
+  # nombramientos. No son de ninguna competición, así que sin esta regla caen en
+  # la sección por defecto de la fuente — una nota de la EHF sobre su estructura
+  # arbitral acabó en "argentina" por venir de TodoHandball. "ehf" a secas es
+  # demasiado genérico, así que exige además un término institucional.
+  - section: europe/other
+    keywords: [ehf, "federación europea de handball", "federación europea de balonmano",
+               "european handball federation", "europäische handballföderation"]
+    require_any: ["comité", "comite", "committee", "reglamento", "rule change",
+                  "congreso", "congress", "asamblea", "junta directiva",
+                  "nombramiento", "estructura arbitral", "officiating",
+                  "comisión", "comision", "statutes", "estatutos"]
+    exclude: [champions league, european league, european cup, copa europea, ehf cup,
+              euro men, euro women, world championship, world cup]
+
   # ═══════════════════════════════════════════════════════════════════
   # Selección Nacional España
   # ═══════════════════════════════════════════════════════════════════
