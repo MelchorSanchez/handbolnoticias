@@ -80,7 +80,14 @@ _TRANSFER_NEG = re.compile(
     r'\b(rumor|rumores|podría|interesa en|en la [oó]rbita|pourrait|'
     r'linked with|could join|interested in|cerca de|'
     r'forces|partnership|partenariat|sponsoring|presencia|'
-    r'se jugar[aá])\b',
+    r'se jugar[aá])\b|'
+    # "refuerza"/"renueva" only mean a signing when the object is the squad or a
+    # contract ("refuerza su portería", "renueva su contrato"). With an abstract
+    # object it is a sponsor or a TV deal: "EITB refuerza su apuesta por el
+    # balonmano", "Occident renueva su alianza con Bera Bera".
+    r'\b(?:refuerzan?|renuevan?|prolongan?|ampl[ií]an?)\s+(?:su|la|el|sus)?\s*'
+    r'(?:apuesta|compromiso|proyecto|imagen|v[ií]nculo|alianza|acuerdo|'
+    r'presencia|liderazgo|liderato|candidatura)\b',
     re.IGNORECASE,
 )
 
@@ -337,6 +344,8 @@ _CLUB_PREFIXES = frozenset({
     'selección', 'seleccion', 'seleção', 'selecao', 'nacional', 'central', 'general',
     'defensa', 'instituto', 'colegio', 'cultural', 'nuestra',
     'asociación', 'asociacion', 'federación', 'federacion',
+    'alianza',  # "Alianza Villa María" (Argentina) vs. the common noun: an
+                # agreement between a TV channel and a league is "una alianza"
     'confederación', 'fundación', 'fundació', 'escolinha', 'escola',
     # Common Spanish words that appear in Argentine team names but are not distinctive
     'estrella', 'corazón', 'corazon', 'federal', 'lorenzo', 'sagrado',
