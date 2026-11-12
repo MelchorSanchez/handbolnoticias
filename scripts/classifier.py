@@ -346,6 +346,9 @@ _CLUB_PREFIXES = frozenset({
     'asociación', 'asociacion', 'federación', 'federacion',
     'alianza',  # "Alianza Villa María" (Argentina) vs. the common noun: an
                 # agreement between a TV channel and a league is "una alianza"
+    'prestigio',  # "Elda Prestigio" (Liga Guerreras) vs. the common noun — and
+                  # word matching is substring-based, so it also fired on
+                  # "el torneo más prestigioso del handball europeo"
     'confederación', 'fundación', 'fundació', 'escolinha', 'escola',
     # Common Spanish words that appear in Argentine team names but are not distinctive
     'estrella', 'corazón', 'corazon', 'federal', 'lorenzo', 'sagrado',
