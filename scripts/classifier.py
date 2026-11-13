@@ -87,7 +87,8 @@ _TRANSFER_NEG = re.compile(
     # balonmano", "Occident renueva su alianza con Bera Bera".
     r'\b(?:refuerzan?|renuevan?|prolongan?|ampl[ií]an?)\s+(?:su|la|el|sus)?\s*'
     r'(?:apuesta|compromiso|proyecto|imagen|v[ií]nculo|alianza|acuerdo|'
-    r'presencia|liderazgo|liderato|candidatura)\b',
+    r'presencia|liderazgo|liderato|candidatura|'
+    r'moral|[aá]nimo|autoestima|confianza|ilusi[oó]n)\b',
     re.IGNORECASE,
 )
 
