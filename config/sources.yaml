@@ -444,7 +444,11 @@ sources:
   - name: Aftonbladet-sport
     section: sweden
     type: rss
-    url: https://www.aftonbladet.se/sportbladet/rss.xml
+    # /sportbladet/rss.xml devuelve 404 desde el 2026-11-11; el feed vivo es el de
+    # rss.aftonbladet.se. No hay feed de la sección de handboll (sí de fotboll y
+    # hockey), así que seguimos con el de todo Sportbladet y el filtro por palabra:
+    # la URL no sirve para acotar, la mayoría de artículos van sin sección.
+    url: https://rss.aftonbladet.se/rss2/small/pages/sections/sportbladet
     max_items: 30
     filter_keywords: [handboll, handball]
 
