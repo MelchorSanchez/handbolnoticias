@@ -88,7 +88,15 @@ _TRANSFER_NEG = re.compile(
     r'\b(?:refuerzan?|renuevan?|prolongan?|ampl[ií]an?)\s+(?:su|la|el|sus)?\s*'
     r'(?:apuesta|compromiso|proyecto|imagen|v[ií]nculo|alianza|acuerdo|'
     r'presencia|liderazgo|liderato|candidatura|'
-    r'moral|[aá]nimo|autoestima|confianza|ilusi[oó]n)\b',
+    r'moral|[aá]nimo|autoestima|confianza|ilusi[oó]n)\b|'
+    # "ficha" is also the squad slot a club has for a competition, and losing one
+    # is the opposite of a signing: "Carlos Ortega pierde una ficha para la
+    # Champions".
+    r'\b(?:pierde|pierda|pierden|perder|perdi[oó])\s+(?:una|la|su|dos|\d+)?\s*fichas?\b|'
+    # A club "se une a" another one in the knockout stage — both qualified, nobody
+    # moved: "El BM Granollers se une al Flensburg en las eliminatorias".
+    r'\bse une a\w*\b.*\b(?:eliminatorias|cruces|octavos|cuartos|semifinales|'
+    r'fase de grupos|play-?off)\b',
     re.IGNORECASE,
 )
 
