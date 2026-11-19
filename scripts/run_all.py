@@ -103,6 +103,22 @@ _CHARITY_RE = _re.compile(
     r"recaudaci[oó]n ben[eé]fica|solidari|refugio para mujeres",
     _re.IGNORECASE,
 )
+# Tramos de URL de la sección de otro deporte en un diario. NO se incluye
+# /futbol/: en Mundo Deportivo los artículos del balonmano del Barça viven en
+# /futbol/fc-barcelona/.
+_OTHER_SPORT_URL_FRAGMENTS = (
+    "/ciclismo/", "/cyclisme/", "/tenis/", "/golf/", "/motogp/", "/motor/",
+    "/formula-1/", "/formula1/", "/atletismo/", "/natacion/", "/nataci",
+    "/padel/", "/p-del/", "/baloncesto/", "/basket/", "/rugby/", "/beisbol/",
+    "/voleibol/", "/waterpolo/", "/boxeo/", "/mma/",
+    # ojo: NO "/esports/" — es "deportes" en catalán (eixdiari.cat/esports/...)
+)
+_HANDBALL_RE = _re.compile(
+    r"balonmano|handball|handbol|handboll|h[aá]ndbol|hentbol|h[aá]zen|asobal|"
+    r"guerreras iberdrola|bundesliga de balonmano",
+    _re.IGNORECASE,
+)
+
 _SPONSOR_RE = _re.compile(
     r"patrocinador|patrocina |patrocinio|nuevo patrocinador|acuerdo de patrocinio|"
     r"sponsor oficial|esponsor|naming rights|title sponsor|hauptsponsor|trikotsponsor",
@@ -123,6 +139,16 @@ def _should_skip_article(article: dict) -> bool:
 
     # Global: commercial URL patterns
     if any(frag in url for frag in _COMMERCIAL_URL_FRAGMENTS):
+        return True
+
+    # Global: artículo de otro deporte. Los scrapers de secciones de diario
+    # arrastran recomendados del lateral ("Impactante fichaje de Primoz Roglic"
+    # entró desde mundodeportivo.com/balonmano), y "fichaje" o "renueva" en el
+    # titular los clasifica como si fueran de balonmano. Solo se descarta si
+    # además el texto no menciona el deporte: /futbol/fc-barcelona/ y /canarias/
+    # son la ruta de artículos de balonmano reales en Mundo Deportivo.
+    if (any(frag in url for frag in _OTHER_SPORT_URL_FRAGMENTS)
+            and not _HANDBALL_RE.search(f"{title_raw} {article.get('summary') or ''}")):
         return True
 
     # Global: sorteos/regalos, donaciones benéficas, patrocinios
