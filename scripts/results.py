@@ -23,18 +23,42 @@ TIMEOUT = 20
 
 BASE = Path(__file__).parent.parent
 COMPETITIONS_PATH = BASE / "config" / "competitions.yaml"
+# embed=1 es imprescindible desde noviembre de 2026: isquad estrenó una web
+# nueva (una SPA en /maqueta/ que pide los datos por POST a json/beta.php) y las
+# páginas clásicas responden 302 hacia ella. Con embed=1 siguen devolviendo el
+# HTML de siempre, que es lo que parsea este script; la propia SPA las usa así
+# para las secciones que aún no ha migrado.
 MATCH_URL = (
     "https://resultadosbalonmano.isquad.es/competicion.php"
     "?seleccion=0&id={id}&id_ambito={id_ambito}&id_territorial={id_territorial}&id_superficie=1"
     "&iframe=0&id_categoria={id_categoria}&id_competicion={id_competicion}&jornada={jornada}"
+    "&embed=1"
 )
 STANDINGS_URL = (
     "https://resultadosbalonmano.isquad.es/clasificacion.php"
     "?seleccion=0&id={id}&id_ambito={id_ambito}&id_territorial={id_territorial}&id_superficie=1"
     "&iframe=0&id_categoria={id_categoria}&id_competicion={id_competicion}"
+    "&embed=1"
 )
 
 _INT_RE = re.compile(r"-?\d+")
+_DATE_RE = re.compile(r"^\d{1,2}/\d{1,2}/\d{4}$")
+
+
+def _cell_int(td, default=0):
+    """Número de una celda de la clasificación.
+
+    Las celdas llevan ahora un segundo valor dentro de un <div> (el porcentaje
+    de partidos ganados, los goles por partido), así que el texto plano sale
+    pegado: "276" + "30.67 gol/part." = "27630.67", y la base guardaba 27630
+    goles a favor. El atributo data-export trae el valor limpio.
+    """
+    if td is None:
+        return default
+    exported = td.get("data-export")
+    if exported is not None:
+        return _first_int(exported, default)
+    return _first_int(td.get_text(), default)
 
 
 def load_competitions() -> list:
@@ -48,6 +72,21 @@ def _first_int(text: str, default=None):
 
 
 def _get(url: str) -> str:
+    """Descarga una página clásica de isquad, reintentando si nos frena.
+
+    isquad limita las peticiones seguidas: pedimos una página por jornada y por
+    competición (bastantes cientos en una pasada), y a partir de cierto punto
+    responde 429. Como las ligas catalanas van al final de competitions.yaml,
+    eran justo las que se quedaban sin actualizar. Con una espera creciente la
+    petición entra al segundo o tercer intento.
+    """
+    for intento, espera in enumerate((30, 60, 120)):
+        resp = httpx.get(url, headers=HEADERS, timeout=TIMEOUT, follow_redirects=True)
+        if resp.status_code != 429:
+            resp.raise_for_status()
+            return resp.text
+        print(f"  isquad nos frena (429), espero {espera} s y reintento...")
+        time.sleep(espera)
     resp = httpx.get(url, headers=HEADERS, timeout=TIMEOUT, follow_redirects=True)
     resp.raise_for_status()
     return resp.text
@@ -82,7 +121,14 @@ def _parse_jornada(html: str, competition: str, jornada: int) -> list:
         home_score = _first_int(local_el.get_text() if local_el else "")
         away_score = _first_int(visitante_el.get_text() if visitante_el else "")
 
-        date_el = tr.select_one(".negrita")
+        # El primer .negrita de la fila ya no es la fecha: el nombre del equipo
+        # local también lleva esa clase, y con ".negrita" a secas la fecha salía
+        # como "HANDBOL GAVÀ (A)" y se perdía (716 de 5310 partidos con fecha).
+        # Se busca el div cuyo texto sea una fecha dd/mm/aaaa.
+        date_el = next(
+            (d for d in tr.select("div.negrita") if _DATE_RE.match(d.get_text(strip=True))),
+            None,
+        )
         date_text = date_el.get_text(strip=True) if date_el else ""
         match_date = None
         if date_text:
@@ -149,14 +195,14 @@ def _parse_standings(html: str, competition: str) -> list:
             "sort_order": sort_order,
             "team": team,
             "crest": crest_el.get("src") if crest_el else None,
-            "points": _first_int(tds[3].get_text(), 0),
-            "played": _first_int(tds[4].get_text(), 0),
-            "won": _first_int(tds[5].get_text(), 0),
-            "drawn": _first_int(tds[6].get_text(), 0),
-            "lost": _first_int(tds[7].get_text(), 0),
-            "gf": _first_int(tds[8].get_text(), 0),
-            "gc": _first_int(tds[9].get_text(), 0),
-            "diff": _first_int(tds[10].get_text(), 0),
+            "points": _cell_int(tds[3]),
+            "played": _cell_int(tds[4]),
+            "won": _cell_int(tds[5]),
+            "drawn": _cell_int(tds[6]),
+            "lost": _cell_int(tds[7]),
+            "gf": _cell_int(tds[8]),
+            "gc": _cell_int(tds[9]),
+            "diff": _cell_int(tds[10]),
             "fetched_at": fetched_at,
         })
     return rows
