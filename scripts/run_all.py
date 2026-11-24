@@ -98,6 +98,15 @@ _GIVEAWAY_RE = _re.compile(
     r"n[uú]mero premiado|boleto premiado|billete premiado",
     _re.IGNORECASE,
 )
+# Programa de iniciación para los más pequeños (babyhand en Francia, de 3 a 5
+# años): murales de valores, "mes del babyhand", jornadas de psicomotricidad.
+# Es promoción y dinamización de la federación, no noticia deportiva — filtrado
+# global, lo publican las federaciones, no solo los clubes. Se deja fuera
+# "minihand"/"minibalonmano": ahí sí hay torneos con crónica.
+_GRASSROOTS_PROMO_RE = _re.compile(
+    r"baby ?-? ?hand(ball)?|baby ?balonmano",
+    _re.IGNORECASE,
+)
 _CHARITY_RE = _re.compile(
     r"donan |donaci[oó]n de|donaciones|acto ben[eé]fico|gala ben[eé]fica|"
     r"recaudaci[oó]n ben[eé]fica|solidari|refugio para mujeres",
@@ -153,6 +162,10 @@ def _should_skip_article(article: dict) -> bool:
 
     # Global: sorteos/regalos, donaciones benéficas, patrocinios
     if _GIVEAWAY_RE.search(title_raw) or _CHARITY_RE.search(title_raw) or _SPONSOR_RE.search(title_raw):
+        return True
+
+    # Global: promoción del programa de iniciación infantil (babyhand)
+    if _GRASSROOTS_PROMO_RE.search(title_raw):
         return True
 
     # Global: listicle SEO/afiliado ("análisis y comparativa de los mejores productos...")

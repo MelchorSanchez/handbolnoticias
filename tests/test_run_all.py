@@ -26,3 +26,14 @@ def test_handball_article_under_another_sport_path_is_kept():
     assert not _should_skip_article(_article(
         "https://www.eixdiari.cat/esports/doc/122319/subcampiones-despanya",
         "Subcampiones d'Espanya", "L'equip d'handbol del Ribes", "EixDiari-handbol"))
+
+
+def test_babyhand_promo_is_skipped():
+    from run_all import _should_skip_article
+    assert _should_skip_article(_article(
+        "https://www.ffhandball.fr/actualite/lactualite-du-hand/mois-du-babyhand-lart-de-bouger-ensemble/",
+        "MOIS DU BABYHAND : L’ART DE BOUGER ENSEMBLE", source="FFHandball-fed"))
+    # El minihandball sí tiene torneos con crónica: no se filtra.
+    assert not _should_skip_article(_article(
+        "https://www.ffhandball.fr/actualite/finale-minihand/",
+        "Finale du tournoi national de minihand", source="FFHandball-fed"))
