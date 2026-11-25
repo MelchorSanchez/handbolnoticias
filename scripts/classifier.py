@@ -399,6 +399,48 @@ def _key_words(team_name):
     ]
 
 
+# Letters that can precede a match, i.e. that mean the "team name" is really the
+# tail of a longer word.
+_WORD_TAIL = re.compile(r'[^\W\d_]$', re.UNICODE)
+
+
+# Grafías alternativas de un nombre de equipo que no empiezan por el nombre en
+# sí. Hacen falta porque el nombre se busca desde el principio de palabra: "el
+# Oporto", como llama la prensa española al FC Porto, ya no casaría con "porto".
+_NAME_VARIANTS = {"porto": ("oporto",)}
+
+
+def _name_in_text(text, name):
+    """True if the team name, or una grafía alternativa suya, aparece en text."""
+    if _contains_as_word_start(text, name):
+        return True
+    return any(_contains_as_word_start(text, v) for v in _NAME_VARIANTS.get(name, ()))
+
+
+# Arroba de una cuenta social seguida de las siglas del club: en "@bmguadalajara"
+# el nombre del equipo no empieza palabra, pero la mención es igual de buena.
+_HANDLE_PREFIX = re.compile(r'@[^\W\d_]{1,4}$', re.UNICODE)
+
+
+def _contains_as_word_start(text, needle):
+    """True if `needle` appears in `text` starting at a word boundary.
+
+    The match is still open-ended on the right: the German names are matched as
+    a prefix on purpose, so that the key word "flensburg" keeps matching
+    "Flensburger". But a name that starts in the middle of a word is never the
+    club: "Gradec" (Slovenj Gradec, slovenia) was matching inside "agradeció",
+    which put an article about the Paraguayan referees' committee in Slovenia.
+    """
+    start = 0
+    while True:
+        i = text.find(needle, start)
+        if i < 0:
+            return False
+        if i == 0 or not _WORD_TAIL.match(text[i - 1]) or _HANDLE_PREFIX.search(text[:i]):
+            return True
+        start = i + 1
+
+
 _RESERVE_TEAM_SUFFIX = re.compile(
     r'^(?P<base>.+?)\s+(atl[eè]tic[oa]?|b|ii|promesas|filial)$', re.IGNORECASE
 )
@@ -428,7 +470,8 @@ def _suppressed_short_names(text):
                 continue
             team_lower = team.lower()
             if (team_lower not in _AMBIGUOUS_BARE_TEAM_NAMES
-                    and len(team) >= min_len and team_lower in text):
+                    and len(team) >= min_len
+                    and _name_in_text(text, team_lower)):
                 matches_by_section.setdefault(section, set()).add(team_lower)
 
     suppressed = set()
@@ -467,13 +510,14 @@ def _sections_from_teams(text):
             # Full-name match
             if (team_lower not in _AMBIGUOUS_BARE_TEAM_NAMES
                     and team_lower not in suppressed
-                    and len(team) >= min_len and team_lower in text):
+                    and len(team) >= min_len
+                    and _name_in_text(text, team_lower)):
                 if section not in matched:
                     matched.append(section)
                 break
             # Word-level match: any long distinctive word from the team name
             kws = _key_words(team)
-            if kws and any(kw in text for kw in kws):
+            if kws and any(_contains_as_word_start(text, kw) for kw in kws):
                 if section not in matched:
                     matched.append(section)
                 break
