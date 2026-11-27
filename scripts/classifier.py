@@ -93,6 +93,10 @@ _TRANSFER_NEG = re.compile(
     # is the opposite of a signing: "Carlos Ortega pierde una ficha para la
     # Champions".
     r'\b(?:pierde|pierda|pierden|perder|perdi[oó])\s+(?:una|la|su|dos|\d+)?\s*fichas?\b|'
+    # "de/tras/desde su fichaje" mira hacia atrás a un fichaje ya hecho: el tema
+    # es el rendimiento del jugador, no un traspaso. "Seif Elderaa está mostrando
+    # por fin el porqué de su fichaje".
+    r'\b(?:de|tras|desde|despu[eé]s de)\s+su\s+fichaje\b|'
     # A club "se une a" another one in the knockout stage — both qualified, nobody
     # moved: "El BM Granollers se une al Flensburg en las eliminatorias".
     r'\bse une a\w*\b.*\b(?:eliminatorias|cruces|octavos|cuartos|semifinales|'

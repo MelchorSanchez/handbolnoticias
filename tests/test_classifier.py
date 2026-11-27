@@ -28,3 +28,20 @@ def test_club_initials_in_a_social_handle_still_match():
 def test_spanish_spelling_of_porto_matches():
     assert "portugal" in _sections_from_teams(
         "el barça venció al oporto en la supercopa ibérica")
+
+
+def test_retrospective_signing_is_not_a_transfer():
+    # "el porqué de su fichaje" habla del rendimiento, no de un traspaso.
+    from classifier import resolve_sections
+    primary, extra = resolve_sections({
+        "url": "https://www.sport.es/es/videos/barca/balonmano/20261126/"
+               "seif-elderaa-mostrando-fichaje-ultimos/136870428.shtml",
+        "title_orig": "Seif Elderaa está mostrando por fin el porqué de su "
+                      "fichaje en los últimos partidos en el Barça",
+        "summary": "", "source_name": "Sport-balonmano", "section": "spain"})
+    assert "fichajes" not in [primary] + extra
+    # Un fichaje de verdad sigue entrando.
+    primary, extra = resolve_sections({
+        "url": "https://example.com/a", "title_orig": "El Barça ficha a Dika Mem",
+        "summary": "", "source_name": "Sport-balonmano", "section": "spain"})
+    assert "fichajes" in [primary] + extra
